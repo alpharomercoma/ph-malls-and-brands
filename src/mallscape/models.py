@@ -14,6 +14,9 @@ class Mall:
     address: str | None = None
     mall_code: str | None = None   # chain-internal code (SM API mallCode)
     source_url: str | None = None
+    # "mall" vs non-mall retail (amusement park, condo podium, office annex);
+    # filter on this before comparing chains — see classify_property_type
+    property_type: str = "mall"
     extra: dict = field(default_factory=dict)
 
     def to_row(self) -> dict:

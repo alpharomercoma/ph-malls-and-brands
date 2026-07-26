@@ -32,6 +32,25 @@ REGIONS = [
 ]
 
 
+def classify_property_type(name: str, region: str | None) -> str:
+    """SM's directory lists more than malls.
+
+    SM Prime reports roughly 80-90 *malls* in the Philippines, but this API
+    returns 126 entries: the geographic buckets hold the actual malls, while
+    the `smdc` bucket is SM's residential developer (condo retail podiums) and
+    `others` mixes in amusement parks and office annexes. Classify so chain
+    comparisons can filter to real malls instead of overstating SM's footprint.
+    """
+    n = name.lower()
+    if "sky ranch" in n:
+        return "amusement-park"
+    if any(k in n for k in ("annex", "building", "bldg", "tower")):
+        return "office-annex"
+    if region == "smdc" or n.startswith("smdc"):
+        return "residential-retail"
+    return "mall"
+
+
 class SMScraper(MallChainScraper):
     chain = "sm"
 
@@ -79,6 +98,13 @@ class SMScraper(MallChainScraper):
         untagged = [m.mall_id for m in by_code.values() if m.region is None]
         if untagged:
             self.warn(f"{len(untagged)} malls without region: {untagged}")
+
+        for mall in by_code.values():
+            mall.property_type = classify_property_type(mall.mall_name, mall.region)
+        counts: dict[str, int] = {}
+        for mall in by_code.values():
+            counts[mall.property_type] = counts.get(mall.property_type, 0) + 1
+        print(f"[{self.chain}] property types: {counts}")
         return sorted(by_code.values(), key=lambda m: m.mall_id)
 
     def scrape_mall(self, mall: Mall) -> list[Store]:

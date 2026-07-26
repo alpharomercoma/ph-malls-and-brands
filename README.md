@@ -11,7 +11,7 @@ coverage is verified against corporate disclosures rather than assumed:
 
 | Chain | Operator's own count | Directories we scrape | Gap |
 |---|---|---|---|
-| SM | ~80-90 malls (SM Prime) | 126 properties, 123 with directories | The 126 includes non-malls (Sky Ranch parks, SMDC condo podiums, office annexes) — see `property_type` discussion below |
+| SM | ~80-90 malls (SM Prime) | 126 properties, 123 with directories | The 126 includes non-malls: 3 Sky Ranch amusement parks, 20 SMDC condo retail podiums, 2 office annexes. `property_type` marks these — **filter to `property_type == "mall"` (101 for SM, 187 overall) before comparing chains** |
 | Robinsons | 57 malls (RLC, end-2025) | 54 properties, 53 with directories | 7 Robinsons Townville community malls + The Mall @ NUSTAR publish no directory |
 | Ayala | ~46 retail properties (Wikipedia table) | 32 properties, 31 with directories | Arca South (2026), Evo City (2025) and ~12 smaller strips are absent from Ayala's API |
 
@@ -38,7 +38,7 @@ against the previous one, so history accumulates automatically.
 data/
 ├── raw/<date>/<chain>/     # every fetched response body (cache; re-parse without re-fetch)
 ├── processed/<date>/
-│   ├── malls.parquet/.csv      # chain, mall_id, mall_name, region, address, ...
+│   ├── malls.parquet/.csv      # chain, mall_id, mall_name, region, address, property_type, ...
 │   ├── stores.parquet/.csv     # chain, mall_id, store_name_raw, category, floor, phone, ...
 │   ├── brand_presence.*        # (brand_key, chain, mall, region) long-format matrix
 │   ├── brand_summary.*         # per brand: #SM malls, #Robinsons malls, cross-chain flag
