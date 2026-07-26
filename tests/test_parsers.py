@@ -306,3 +306,28 @@ class TestAuditRegressions:
         for floor, building in [("2F", "MAIN"), ("GF", "EXPANSION")]:
             keys.add(("", "POTATO CORNER", floor, building))
         assert len(keys) == 2
+
+
+class TestReportDeterminism:
+    def test_report_is_byte_identical_across_runs(self, tmp_path, monkeypatch):
+        import pandas as pd
+        from mallscape import report, storage
+
+        monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
+        out = storage.processed_dir("2026-01-01")
+        malls = pd.DataFrame({
+            "chain": ["sm", "ayala"], "mall_id": ["a", "b"],
+            "mall_name": ["A Mall", "B Mall"], "region": ["metro-manila", "visayas"],
+            "property_type": ["mall", "mall"], "scraped_at": ["2026-01-01"] * 2,
+        })
+        stores = pd.DataFrame({
+            "chain": ["sm", "sm", "ayala"], "mall_id": ["a", "a", "b"],
+            "store_name_raw": ["X", "Y", "Z"],
+        })
+        storage.write_table(malls, out, "malls")
+        storage.write_table(stores, out, "stores")
+        first = report.build("2026-01-01")
+        second = report.build("2026-01-01")
+        assert first == second
+        # and it must actually contain the numbers, not just be stable-empty
+        assert "3" in first and "A Mall" in first

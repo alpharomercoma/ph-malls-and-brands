@@ -6,6 +6,7 @@ import pandas as pd
 import typer
 
 from . import analyze as analyze_mod
+from . import report as report_mod
 from . import storage, validate
 from .fetch import Fetcher
 from .scrapers.araneta import AranetaScraper
@@ -110,6 +111,16 @@ def analyze(date: str = typer.Option(None, help="snapshot date, default newest")
     tables = analyze_mod.build_tables(run_date)
     analyze_mod.print_headlines(tables)
     print(f"\nTables written to data/processed/{run_date}/ (and data/latest/)")
+
+
+@app.command()
+def report(date: str = typer.Option(None, help="snapshot date, default newest usable")):
+    """Write a deterministic breakdown of a snapshot to breakdown.md."""
+    run_date = date or storage.latest_usable_run()
+    if run_date is None:
+        raise SystemExit("no usable snapshot found — run `mallscape scrape` first")
+    path = report_mod.write(run_date)
+    print(f"wrote {path}")
 
 
 if __name__ == "__main__":

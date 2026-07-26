@@ -1,4 +1,11 @@
-data/
+# Raw HTTP cache: large (~47MB), regenerable, and rewritten in place on every
+# re-run — it is a scratch area, not provenance. Snapshots are the record.
+data/raw/
+
+# data/latest/ is a copy of the newest processed snapshot, produced by
+# `mallscape analyze`. The snapshots themselves ARE committed.
+data/latest/
+
 .venv/
 __pycache__/
 *.pyc
