@@ -230,3 +230,49 @@ class TestAranetaParser:
         assert len(stores) == 88
         handyman = next(x for x in stores if x.store_name_raw == "HANDYMAN")
         assert handyman.floor == "LGF"
+
+
+class TestSnapshotIntegrity:
+    """Guards against the partial-snapshot failure: a crashed or single-chain
+    run must never be published as `latest` or silently analyzed."""
+
+    def _snapshot(self, tmp_path, monkeypatch, malls_df, stores_df, date="2026-01-01"):
+        from mallscape import storage
+
+        monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
+        out = storage.processed_dir(date)
+        storage.write_table(malls_df, out, "malls")
+        storage.write_table(stores_df, out, "stores")
+        return storage
+
+    def test_empty_snapshot_is_not_usable(self, tmp_path, monkeypatch):
+        import pandas as pd
+
+        storage = self._snapshot(
+            tmp_path, monkeypatch,
+            pd.DataFrame({"scraped_at": []}), pd.DataFrame({"scraped_at": []}),
+        )
+        assert storage.is_usable("2026-01-01") is False
+
+    def test_update_latest_refuses_empty(self, tmp_path, monkeypatch):
+        import pandas as pd
+        import pytest as _pytest
+
+        storage = self._snapshot(
+            tmp_path, monkeypatch,
+            pd.DataFrame({"scraped_at": []}), pd.DataFrame({"scraped_at": []}),
+        )
+        with _pytest.raises(ValueError, match="refusing to publish"):
+            storage.update_latest("2026-01-01")
+
+    def test_latest_usable_skips_broken_newer_snapshot(self, tmp_path, monkeypatch):
+        import pandas as pd
+
+        good_m = pd.DataFrame({"chain": ["sm"], "mall_id": ["x"], "scraped_at": ["2026-01-01"]})
+        good_s = pd.DataFrame({"chain": ["sm"], "mall_id": ["x"], "store_name_raw": ["Y"]})
+        storage = self._snapshot(tmp_path, monkeypatch, good_m, good_s, "2026-01-01")
+        # a newer but empty snapshot must be skipped, not selected
+        out = storage.processed_dir("2026-01-02")
+        storage.write_table(pd.DataFrame({"scraped_at": []}), out, "malls")
+        storage.write_table(pd.DataFrame({"scraped_at": []}), out, "stores")
+        assert storage.latest_usable_run() == "2026-01-01"

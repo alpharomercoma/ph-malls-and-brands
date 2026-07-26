@@ -45,7 +45,40 @@ def read_table(run_date: str, name: str) -> pd.DataFrame | None:
     return pd.read_parquet(path) if path.exists() else None
 
 
+def is_usable(run_date: str) -> bool:
+    """A snapshot is usable only if it actually holds mall and store rows.
+
+    A crashed or single-chain run can leave a zero-row snapshot behind; those
+    must never be picked as `latest` or silently analyzed.
+    """
+    malls = read_table(run_date, "malls")
+    stores = read_table(run_date, "stores")
+    return (
+        malls is not None
+        and stores is not None
+        and not malls.empty
+        and not stores.empty
+        and "chain" in malls.columns
+        and "store_name_raw" in stores.columns
+    )
+
+
+def latest_usable_run() -> str | None:
+    root = DATA_DIR / "processed"
+    if not root.exists():
+        return None
+    for run in sorted((p.name for p in root.iterdir() if p.is_dir()), reverse=True):
+        if is_usable(run):
+            return run
+    return None
+
+
 def update_latest(run_date: str) -> None:
+    if not is_usable(run_date):
+        raise ValueError(
+            f"refusing to publish {run_date} as `latest`: snapshot is empty or "
+            f"missing required columns"
+        )
     src = processed_dir(run_date)
     dest = DATA_DIR / "latest"
     if dest.exists():
