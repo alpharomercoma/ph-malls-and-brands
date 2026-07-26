@@ -49,6 +49,15 @@ class TestDrupalParser:
         stores = scraper._parse_drupal(mall, html)
         assert len(stores) > 600
 
+    def test_galleria_non_level_floors(self, scraper, mall):
+        # flagship mall using basement/upper-ground/lower-ground field names
+        html = (FIXTURES / "rob-galleria.html").read_text()
+        stores = scraper._parse_drupal(mall, html)
+        assert len(stores) == 404
+        floors = {s.floor for s in stores}
+        assert any("asement" in (f or "") for f in floors)
+        assert mall.address is not None
+
 
 class TestVMDParser:
     def test_plaza_categories_and_floors(self, scraper, mall):

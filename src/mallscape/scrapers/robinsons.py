@@ -156,10 +156,19 @@ class RobinsonsScraper(MallChainScraper):
     def _parse_drupal(self, mall: Mall, html: str) -> list[Store]:
         tree = HTMLParser(html)
         stores: list[Store] = []
-        for block in tree.css("div[class*='field--name-field-level-']"):
+        # floors are separate Drupal fields with varying names: field-level-N,
+        # field-basement-N, field-upper-ground, field-linkod-pinoy, ... —
+        # match any field block that actually contains store items
+        address = tree.css_first("div[class*='field--name-field-address'] .field--item")
+        if address is not None and not mall.address:
+            mall.address = re.sub(r"\s+", " ", address.text(separator=" ", strip=True)) or None
+        for block in tree.css("div[class*='field--name-field-']"):
+            items = block.css("li.store-name")
+            if not items:
+                continue
             label_node = block.css_first("h4.field--label")
             floor = label_node.text(strip=True) if label_node else None
-            for item in block.css("li.store-name"):
+            for item in items:
                 text = re.sub(r"\s+", " ", item.text(separator=" ", strip=True))
                 if not text:
                     continue
