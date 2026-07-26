@@ -30,7 +30,11 @@ class MallChainScraper(ABC):
         print(f"[{self.chain}] discovered {len(malls)} malls")
         stores: list[Store] = []
         for i, mall in enumerate(malls, 1):
-            mall_stores = self.scrape_mall(mall)
+            try:
+                mall_stores = self.scrape_mall(mall)
+            except Exception as exc:  # one mall must not kill the whole run
+                self.warn(f"FAILED {mall.mall_id}: {type(exc).__name__}: {exc}")
+                continue
             if not mall_stores:
                 self.warn(f"0 stores for {mall.mall_id}")
             stores.extend(mall_stores)

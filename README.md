@@ -91,6 +91,13 @@ fails the handshake. Always run through `uv run` (Python 3.12).
 
 ## Etiquette
 
-Rate-limited to 3 req/s with exponential backoff, identifying user-agent,
-and aggressive response caching so parser development never re-hits the
-sites. Keep it that way.
+Rate-limited (default 3 req/s, `--rate` to change) with exponential backoff,
+identifying user-agent, and aggressive response caching so parser development
+never re-hits the sites. Keep it that way.
+
+**Observed (2026-07):** SM's WAF issues a temporary domain-wide 403 ban after
+roughly 1,500–2,000 requests in one session at 3 req/s. The ban lifts on its
+own (minutes–hours). The fetcher retries 403s with long backoff and the
+per-mall isolation keeps the run alive; on a re-run the raw cache resumes
+where the ban hit. For SM prefer `--rate 1.5` and expect a full first scrape
+to need a resume pass.

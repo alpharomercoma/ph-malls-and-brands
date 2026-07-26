@@ -35,7 +35,9 @@ def _retryable(exc: BaseException) -> bool:
     if isinstance(exc, httpx.TransportError):
         return True
     if isinstance(exc, httpx.HTTPStatusError):
-        return exc.response.status_code in (429, 500, 502, 503, 504)
+        # 403: SM's WAF rate-limits sustained clients; blocks lift after a
+        # cooldown, so back off hard and retry rather than dying mid-run
+        return exc.response.status_code in (403, 429, 500, 502, 503, 504)
     return False
 
 
@@ -72,8 +74,8 @@ class Fetcher:
 
     @retry(
         retry=retry_if_exception(_retryable),
-        wait=wait_exponential(multiplier=1, min=2, max=60),
-        stop=stop_after_attempt(5),
+        wait=wait_exponential(multiplier=2, min=5, max=300),
+        stop=stop_after_attempt(8),
         reraise=True,
     )
     def _request(self, url: str, params: dict | None) -> str:
