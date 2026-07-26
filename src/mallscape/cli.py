@@ -12,6 +12,7 @@ from .scrapers.araneta import AranetaScraper
 from .scrapers.ayala import AyalaScraper
 from .scrapers.filinvest import FilinvestScraper
 from .scrapers.fishermall import FishermallScraper
+from .scrapers.gmall import GmallScraper
 from .scrapers.megaworld import MegaworldScraper
 from .scrapers.ortigas import OrtigasScraper
 from .scrapers.robinsons import RobinsonsScraper
@@ -34,6 +35,7 @@ SCRAPERS = {
     "fishermall": FishermallScraper,
     "ortigas": OrtigasScraper,
     "xentro": XentroScraper,
+    "gmall": GmallScraper,
 }
 
 

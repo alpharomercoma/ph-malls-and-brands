@@ -57,6 +57,56 @@
    "status": "no-current-directory",
    "finding": "Their official domain shangrila-plaza.com no longer resolves (no DNS), and shangrilaplaza.com.ph is a ParkLogic parked page offering the domain for sale. The only surviving official store listing is a Google Sites page at sites.google.com/view/shangcommunity/store-listing, which is explicitly stamped 'Updated as of February 02, 2021' \u2014 COVID-era data, five years stale. NOT scraped: importing 2021 tenants into a 2026 snapshot would silently corrupt month-over-month brand analysis.",
    "recheck": "Watch for a relaunched Shang Properties mall site. The Google Sites listing IS parseable (same Google Sites structure as the Robinsons VMD parser) if stale data is ever acceptable for a one-off backfill."
+  },
+  {
+   "chain": "gaisanogrand",
+   "name": "Gaisano Grand Malls",
+   "site": "https://gaisanograndmalls.com",
+   "malls_known": 46,
+   "status": "no-tenant-directory",
+   "finding": "VERIFIED. WordPress; branches are ordinary posts (slug gaisano-grand-mall-<place>) reachable via /wp-json/wp/v2/posts and a paginated /branches/ listing. Each branch post contains only ADDRESS, MALL HOURS (supermarket + department store) and PHONE NUMBER \u2014 no tenant list. These are department-store/supermarket-anchored retail centres, not tenant-leased malls.",
+   "recheck": "Branch list (~46) IS scrapeable today via the WP posts API if mall-level coverage is wanted."
+  },
+  {
+   "chain": "gaisanocapital",
+   "name": "Gaisano Capital Group",
+   "site": "https://gaisanocapital.com",
+   "status": "blocked-not-verified",
+   "finding": "NOT VERIFIED. Site returns HTTP 403 to scripted requests. Whether a tenant directory exists behind it is unknown.",
+   "recheck": "Needs a browser session to get past the 403."
+  },
+  {
+   "chain": "nccc",
+   "name": "NCCC Malls",
+   "site": "https://nccc.com.ph",
+   "malls_known": 9,
+   "status": "likely-no-tenant-directory",
+   "finding": "PARTIALLY VERIFIED. nccc.com.ph/business-unit/nccc-malls/ is a corporate business-unit page (company profile, vision/mission, press) with no tenant listing found. ~9 branches across Davao, Tagum and Palawan per their own copy. No per-mall directory URL located.",
+   "recheck": "Search for a separate consumer mall site before concluding no directory exists."
+  },
+  {
+   "chain": "lcc",
+   "name": "LCC Group (Bicol)",
+   "site": "https://lccgroup.com.ph",
+   "status": "blocked-not-verified",
+   "finding": "NOT VERIFIED. Serves a 4.6KB 'Redirecting...' bot-challenge shell to scripted requests (same WAF pattern as XentroMall's parked domain and Shangri-La's).",
+   "recheck": "Needs a browser session."
+  },
+  {
+   "chain": "ltsmalls",
+   "name": "LTS Malls",
+   "site": null,
+   "status": "not-located",
+   "finding": "NOT VERIFIED. No official domain located; ltsmalls.com does not resolve. Search results conflate it with NCCC. Operator identity needs confirming before scraping.",
+   "recheck": "Confirm the corporate identity/branding first."
+  },
+  {
+   "chain": "puregold",
+   "name": "Puregold Price Club",
+   "site": "https://puregold.com.ph",
+   "status": "out-of-scope-shape",
+   "finding": "NOT a mall operator in this dataset's sense: each Puregold branch is a single supermarket/hypermarket, not a leased mall with a tenant roster. Adding ~400 branches would inject 400 'malls' each holding one 'tenant' (itself) and would badly skew brand-presence and mall-size analysis. /store-locator/ 404s; the correct locator path was not found before running out of budget.",
+   "recheck": "If wanted, model Puregold as a BRAND that appears inside other operators' malls (it already appears as a tenant), or add it with property_type='supermarket' and exclude it from mall comparisons."
   }
  ],
  "notes": [
@@ -67,6 +117,7 @@
   "Filinvest's IL CORSO directory lists only 19 shops, which is sparse for a mall of its size \u2014 an upstream data limitation, not a parse failure (verified against raw table row counts).",
   "WalterMart IS scraped: waltermart.com.ph is behind an sgcaptcha challenge, but the malls.waltermart.com.ph subdomain serves plain HTML with no challenge. Store data rides on a.wm-store data-* attributes on /malls/<slug>/<category> pages.",
   "xentromall.com.ph is a parked domain; the live XentroMalls site is www.xentromalls.com.",
-  "XentroMall Antipolo, Polangui and ShopKing publish only the leasing-requirements checklist on their locator pages, no tenant list \u2014 their zero counts are an upstream gap, verified."
+  "XentroMall Antipolo, Polangui and ShopKing publish only the leasing-requirements checklist on their locator pages, no tenant list \u2014 their zero counts are an upstream gap, verified.",
+  "GMall (DSG Sons) IS scraped: gaisanomalls.com/mall-directory/ ships all 944 tenant rows server-side for a client-side DataTable, so one request gets everything. Their branch filter lists 6 malls (incl. Cebu and GenSan) but only 4 have tenant rows \u2014 an upstream gap."
  ]
 }
