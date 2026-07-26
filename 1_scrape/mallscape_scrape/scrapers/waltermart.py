@@ -8,12 +8,12 @@ challenge:
   per-mall slug.
 - ``/malls/<slug>/`` -> the mall page, whose "View All" links name the
   categories that mall actually has (food-choices, shops, cybermart, wellness,
-  services, amusement — but only the ones present).
+  services, amusement - but only the ones present).
 - ``/malls/<slug>/<category>`` -> the full category listing. Store details ride
   on ``a.wm-store`` data attributes (``data-name``, ``data-address``,
   ``data-operatinghours``, ``data-contactnumber``).
 
-IMPORTANT — counts from this chain are a FLOOR, not a total. Every category
+IMPORTANT - counts from this chain are a FLOOR, not a total. Every category
 page caps at 10 tenants (95 of 276 cached category pages sit at exactly 10),
 and the mall page returns the identical set, so there is no richer source.
 No pagination, offset, limit or show=all parameter lifts the cap (tested
@@ -22,7 +22,7 @@ No pagination, offset, limit or show=all parameter lifts the cap (tested
 Mabalacat, San Pascual and Silang legitimately return zero stores: their
 category pages contain only the empty store-detail modal template
 (``#wm-store-name`` etc.) and no ``a.wm-store`` tenant anchors at all.
-Verified against the live site 2026-07 — an upstream gap, not a selector bug.
+Verified against the live site 2026-07 - an upstream gap, not a selector bug.
 """
 
 from __future__ import annotations
@@ -79,7 +79,7 @@ class WaltermartScraper(MallChainScraper):
                 source_url=f"{BASE}/malls/{slug}/",
             )
         if not malls:
-            self.warn("no malls parsed from /malls/ — page structure may have changed")
+            self.warn("no malls parsed from /malls/ - page structure may have changed")
         return sorted(malls.values(), key=lambda m: m.mall_id)
 
     def scrape_mall(self, mall: Mall) -> list[Store]:
@@ -126,6 +126,6 @@ class WaltermartScraper(MallChainScraper):
         if capped:
             self.warn(
                 f"{mall.mall_id}: categories {capped} returned exactly "
-                f"{CATEGORY_CAP} (the site cap) — true tenant count is higher"
+                f"{CATEGORY_CAP} (the site cap) - true tenant count is higher"
             )
         return list(by_name.values())

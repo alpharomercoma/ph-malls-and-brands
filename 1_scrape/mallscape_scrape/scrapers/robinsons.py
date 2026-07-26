@@ -2,11 +2,11 @@
 
 Two complementary sources (verified 2026-07):
 
-1. Drupal site ``robinsonsmalls.com/mall-info/<slug>`` — primary. The store
+1. Drupal site ``robinsonsmalls.com/mall-info/<slug>`` - primary. The store
    directory is embedded inline: ``<li class="store-name level-N">Name | phone</li>``
    grouped under ``div.field--name-field-level-N`` blocks whose
    ``h4.field--label`` holds the floor label. Floor + phone, no category.
-2. VMD site ``vmd.robinsonsmalls.com`` (Google Sites on a custom domain) —
+2. VMD site ``vmd.robinsonsmalls.com`` (Google Sites on a custom domain) -
    canonical region-grouped mall list at ``/list-of-malls`` and a fallback
    store directory (category sections + "📍 <floor>" markers) for malls that
    have no Drupal page yet (e.g. The Plaza Bagong Silang).
@@ -26,8 +26,8 @@ from importlib import resources
 
 from selectolax.parser import HTMLParser
 
-from mallscape_scrape import coverage
 from mallscape_core.models import Mall, Store
+from mallscape_scrape import coverage
 from mallscape_scrape.scrapers.base import MallChainScraper
 
 DRUPAL_BASE = "https://robinsonsmalls.com/mall-info/"
@@ -84,7 +84,6 @@ class RobinsonsScraper(MallChainScraper):
         registry = load_registry()
         by_key = {_norm_key(entry["name"]): entry for entry in registry}
         known_vmd = {e["vmd_slug"] for e in registry if e["vmd_slug"]}
-        known_drupal = {e["drupal_slug"] for e in registry if e["drupal_slug"]}
 
         # New malls on the VMD site that the registry doesn't know yet.
         live_vmd = self._live_vmd_slugs()
@@ -99,8 +98,8 @@ class RobinsonsScraper(MallChainScraper):
             }
             registry.append(entry)
             self.warn(
-                f"NEW mall on VMD not in registry: {slug} ({region}) — "
-                f"drupal_slug={entry['drupal_slug']} — add it to robinsons_malls.json"
+                f"NEW mall on VMD not in registry: {slug} ({region}) - "
+                f"drupal_slug={entry['drupal_slug']} - add it to robinsons_malls.json"
             )
 
         # Chatbot roster names that match nothing we know → likely a new mall
@@ -164,7 +163,7 @@ class RobinsonsScraper(MallChainScraper):
         tree = HTMLParser(html)
         stores: list[Store] = []
         # floors are separate Drupal fields with varying names: field-level-N,
-        # field-basement-N, field-upper-ground, field-linkod-pinoy, ... —
+        # field-basement-N, field-upper-ground, field-linkod-pinoy, ... -
         # match any field block that actually contains store items
         address = tree.css_first("div[class*='field--name-field-address'] .field--item")
         if address is not None and not mall.address:

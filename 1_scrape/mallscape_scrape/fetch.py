@@ -21,10 +21,9 @@ from tenacity import (
     wait_exponential,
 )
 
-USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/126.0 Safari/537.36 mallscape-research/0.1"
-)
+from mallscape_core import config
+
+USER_AGENT = config.USER_AGENT
 
 
 class FetchError(Exception):
@@ -45,12 +44,16 @@ class Fetcher:
     def __init__(
         self,
         cache_dir: Path,
-        rate: float = 3.0,
-        timeout: float = 30.0,
+        rate: float | None = None,
+        timeout: float | None = None,
         headers: dict[str, str] | None = None,
     ):
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
+        rate = config.REQUEST_RATE if rate is None else rate
+        timeout = config.REQUEST_TIMEOUT if timeout is None else timeout
+        if rate <= 0:
+            raise ValueError(f"rate must be positive, got {rate}")
         self.min_interval = 1.0 / rate
         self._last_request = 0.0
         self.client = httpx.Client(
@@ -81,8 +84,8 @@ class Fetcher:
 
     @retry(
         retry=retry_if_exception(_retryable),
-        wait=wait_exponential(multiplier=2, min=5, max=300),
-        stop=stop_after_attempt(8),
+        wait=wait_exponential(multiplier=2, min=5, max=config.RETRY_MAX_WAIT),
+        stop=stop_after_attempt(config.RETRY_ATTEMPTS),
         reraise=True,
     )
     def _request(self, url: str, params: dict | None) -> str:
@@ -106,7 +109,7 @@ class Fetcher:
         try:
             return json.loads(body)
         except json.JSONDecodeError as exc:
-            # poisoned cache entry (e.g. an HTML error page) — drop and refetch once
+            # poisoned cache entry (e.g. an HTML error page) - drop and refetch once
             cache = self._cache_path(url, params)
             if cache.exists() and not force:
                 cache.unlink()

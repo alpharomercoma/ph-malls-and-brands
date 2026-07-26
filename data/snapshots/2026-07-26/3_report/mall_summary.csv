@@ -190,7 +190,7 @@ xentro,mall-of-the-valley,64,64,,Mall Of The Valley,,24
 starmall,edsa-shaw,64,64,"dining (25), shopping (23), services (12)",Starmall EDSA-Shaw,metro-manila,20
 sm,sm-megacenter-cabanatuan,61,61,"cyberzone (18), dining (17), shopping (15)",SM Megacenter Cabanatuan,north-luzon,2
 robinsons,robinsons-otis,60,60,,Robinsons Otis,metro-manila,26
-filinvest,main-square,58,57,"dining (12), government offices (12), health, beauty and wellness (8)",Main Square,south-luzon,32
+filinvest,main-square,58,57,"government offices (12), dining (12), health, beauty and wellness (8)",Main Square,south-luzon,32
 megaworld,lucky-chinatown-prosperity-wing,56,56,"dine (30), services (22), shop (4)",Lucky Chinatown - Prosperity Wing,,10
 robinsons,robinsons-cainta,56,56,,Robinsons Cainta,metro-manila,13
 sm,sm-city-san-fernando-downtown,56,55,"dining (22), cyberzone (18), shopping (8)",SM City San Fernando Downtown,north-luzon,3
@@ -199,69 +199,69 @@ ayala,ayala-fairview-mall,53,53,"dine (22), shop (16), essentials (9)",Fairview 
 megaworld,san-lorenzo-place-mall,53,53,"dine (24), services (17), shop (12)",San Lorenzo Place Mall,,14
 araneta,gateway-mall-2,50,50,,Gateway Mall 2,metro-manila,6
 ayala,ayala-metropoint,50,44,"shop (15), dine (13), essentials (10)",Metro Point Mall,metro-manila,8
-waltermart,dasmarinas,49,49,"food choices (10), shops (10), cybermart (10)",WalterMart Dasmariñas,south-luzon,6
+waltermart,dasmarinas,49,49,"shops (10), food choices (10), cybermart (10)",WalterMart Dasmariñas,south-luzon,6
 robinsons,robinsons-los-banos,49,45,,Robinsons Town Mall Los Banos,south-luzon,9
 robinsons,robinsons-cagayan-de-oro,49,47,,Robinsons Cagayan de Oro,mindanao,24
-waltermart,makati,47,46,"food choices (10), shops (10), cybermart (10)",WalterMart Makati,metro-manila,5
-waltermart,sta-maria,46,46,"food choices (10), shops (10), cybermart (10)",WalterMart Sta. Maria,north-luzon,1
+waltermart,makati,47,46,"shops (10), food choices (10), cybermart (10)",WalterMart Makati,metro-manila,5
+waltermart,sta-maria,46,46,"shops (10), food choices (10), cybermart (10)",WalterMart Sta. Maria,north-luzon,1
 xentro,northstar-mall,46,46,,Northstar Mall,,22
 sm,smdc-light-mall,46,46,"dining (18), wellness (11), hobbies-and-specialty (6)",SMDC Light Mall,smdc,5
-waltermart,north-edsa,45,45,"food choices (10), shops (10), cybermart (10)",WalterMart North EDSA,metro-manila,6
+waltermart,north-edsa,45,45,"food choices (10), services (10), shops (10)",WalterMart North EDSA,metro-manila,6
 ayala,ayala-one-bonifacio-high-street,45,40,"dine (20), shop (20), services (4)",One Bonifacio High Street,metro-manila,8
-waltermart,gapan,45,45,"food choices (10), shops (10), cybermart (10)",WalterMart Gapan,north-luzon,8
+waltermart,gapan,45,45,"shops (10), services (10), cybermart (10)",WalterMart Gapan,north-luzon,8
 megaworld,california-garden-square,45,45,"services (21), dine (17), shop (7)",California Garden Square,,21
 waltermart,sucat,44,43,"shops (10), food choices (9), cybermart (9)",WalterMart Sucat,metro-manila,3
-waltermart,antipolo,43,43,"food choices (10), shops (10), services (10)",WalterMart Antipolo,metro-manila,10
+waltermart,antipolo,43,43,"shops (10), services (10), food choices (10)",WalterMart Antipolo,metro-manila,10
 megaworld,festive-walk-parade,42,42,"dine (22), services (15), shop (4)",Festive Walk Parade,,29
-waltermart,bicutan,42,42,"food choices (10), shops (10), cybermart (9)",WalterMart Bicutan,metro-manila,4
+waltermart,bicutan,42,42,"shops (10), food choices (10), cybermart (9)",WalterMart Bicutan,metro-manila,4
 megaworld,mactan-newtown,42,42,"dine (22), services (13), shop (6)",Mactan Newtown,,17
-waltermart,bacoor,42,42,"food choices (10), shops (10), services (10)",WalterMart Bacoor,south-luzon,4
-waltermart,erodriguez,41,41,"food choices (10), shops (10), cybermart (9)",WalterMart E.Rodriguez,metro-manila,3
+waltermart,bacoor,42,42,"shops (10), food choices (10), services (10)",WalterMart Bacoor,south-luzon,4
+waltermart,erodriguez,41,41,"shops (10), food choices (10), cybermart (9)",WalterMart E.Rodriguez,metro-manila,3
 waltermart,guiguinto,41,41,"food choices (10), shops (9), cybermart (9)",WalterMart Guiguinto,north-luzon,5
-waltermart,balayan,41,40,"food choices (10), shops (10), cybermart (10)",WalterMart Balayan,south-luzon,3
+waltermart,balayan,41,40,"shops (10), food choices (10), cybermart (10)",WalterMart Balayan,south-luzon,3
 xentro,xentro-mall-tumauini,41,41,,XentroMall Tumauini,,11
 xentro,morong-centerpoint,41,41,,Morong Centerpoint,,16
-waltermart,subic,41,41,"food choices (10), shops (10), cybermart (9)",WalterMart Subic,north-luzon,1
+waltermart,subic,41,41,"shops (10), food choices (10), cybermart (9)",WalterMart Subic,north-luzon,1
 megaworld,uptown-parade,41,41,"dine (22), services (11), experience (4)",Uptown Parade,,27
 ayala,ayala-the-district-dasmarinas,40,34,"essentials (15), shop (11), dine (7)",The District Dasmarinas,south-luzon,6
 robinsons,robinsons-luisita,40,39,,Robinsons Luisita,north-luzon,12
 sm,sm-savemore-tacloban,40,39,"shopping (11), dining (11), cyberzone (9)",SM Savemore Tacloban,visayas,2
-waltermart,plaridel,39,39,"food choices (10), shops (10), cybermart (7)",WalterMart Plaridel,north-luzon,5
-waltermart,san-fernando,39,39,"food choices (10), shops (10), services (9)",WalterMart San Fernando,north-luzon,2
+waltermart,plaridel,39,39,"shops (10), food choices (10), cybermart (7)",WalterMart Plaridel,north-luzon,5
+waltermart,san-fernando,39,39,"shops (10), food choices (10), services (9)",WalterMart San Fernando,north-luzon,2
 ortigas,tiendesitas,39,36,"1 (21), 4 (13)",Tiendesitas,metro-manila,23
-waltermart,concepcion,39,39,"food choices (10), shops (10), cybermart (10)",WalterMart Concepcion,north-luzon,0
+waltermart,concepcion,39,39,"shops (10), cybermart (10), food choices (10)",WalterMart Concepcion,north-luzon,0
 sm,sm-by-the-bay,39,38,"dining (36), shopping (2), entertainment (1)",SM By the Bay,metro-manila,16
-waltermart,paniqui,39,39,"food choices (10), shops (10), cybermart (10)",WalterMart Paniqui,north-luzon,2
+waltermart,paniqui,39,39,"shops (10), food choices (10), cybermart (10)",WalterMart Paniqui,north-luzon,2
 sm,smdc-jazz-mall,38,38,"dining (19), hobbies-and-specialty (4), food-beverages (4)",SMDC Jazz Mall,smdc,5
 sm,sm-cherry-antipolo,38,38,"dining (11), shopping (9), services (4)",SM Center Antipolo Downtown,metro-manila,13
-waltermart,taytay,38,37,"food choices (10), shops (10), services (10)",WalterMart Taytay,metro-manila,6
-waltermart,sta-rosa,38,38,"food choices (10), shops (10), services (9)",WalterMart Sta. Rosa,south-luzon,5
+waltermart,taytay,38,37,"shops (10), food choices (10), services (10)",WalterMart Taytay,metro-manila,6
+waltermart,sta-rosa,38,38,"shops (10), food choices (10), services (9)",WalterMart Sta. Rosa,south-luzon,5
 megaworld,lucky-chinatown-imperial-wing,38,38,"dine (25), services (10), shop (3)",Lucky Chinatown - Imperial Wing,,19
 megaworld,mckinley-west,38,34,"dine (21), services (12), shop (5)",McKinley West,,13
 xentro,sta-ana-public-market,37,37,,Sta Ana Public Market,,19
-waltermart,nasugbu,37,37,"food choices (10), shops (10), cybermart (9)",WalterMart Nasugbu,south-luzon,0
+waltermart,nasugbu,37,37,"shops (10), food choices (10), cybermart (9)",WalterMart Nasugbu,south-luzon,0
 sm,sm-cherry-shaw,37,36,"dining (14), wellness (9), hobbies-and-specialty (4)",SM Center Shaw,metro-manila,12
 ayala,ayala-serendra,37,36,"dine (19), essentials (7), shop (6)",Shops at Serendra,metro-manila,15
 ortigas,the-strip,36,22,"1 (12), 4 (10), 9 (1)",The Strip,metro-manila,13
-waltermart,balanga,35,35,"food choices (10), shops (10), cybermart (7)",WalterMart Balanga,north-luzon,3
+waltermart,balanga,35,35,"shops (10), food choices (10), cybermart (7)",WalterMart Balanga,north-luzon,3
 waltermart,general-trias,34,34,"shops (10), food choices (9), cybermart (5)",WalterMart General Trias,south-luzon,2
 robinsons,robinsons-tagaytay,34,32,,Robinsons Tagaytay,south-luzon,9
-waltermart,baliwag,34,33,"food choices (10), shops (10), services (5)",WalterMart Baliwag,north-luzon,2
-waltermart,tanauan,34,34,"food choices (10), shops (10), services (5)",WalterMart Tanauan,south-luzon,3
+waltermart,baliwag,34,33,"shops (10), food choices (10), services (5)",WalterMart Baliwag,north-luzon,2
+waltermart,tanauan,34,34,"shops (10), food choices (10), services (5)",WalterMart Tanauan,south-luzon,3
 megaworld,alabang-west-parade,34,34,"dine (19), services (8), shop (7)",Alabang West Parade,,23
-waltermart,naic,34,34,"food choices (10), shops (10), cybermart (8)",WalterMart Naic,south-luzon,3
+waltermart,naic,34,34,"shops (10), food choices (10), cybermart (8)",WalterMart Naic,south-luzon,3
 waltermart,arayat,33,33,"shops (10), food choices (9), cybermart (7)",WalterMart Arayat,north-luzon,3
 waltermart,malolos,33,33,"food choices (10), shops (9), wellness (5)",WalterMart Malolos,north-luzon,4
-waltermart,san-jose,33,33,"food choices (10), shops (10), cybermart (8)",WalterMart San Jose,north-luzon,0
+waltermart,san-jose,33,33,"shops (10), food choices (10), cybermart (8)",WalterMart San Jose,north-luzon,0
 megaworld,paseo-center,33,33,"dine (23), shop (5), services (5)",Paseo Center,,9
-waltermart,caloocan,32,32,"shops (9), food choices (8), cybermart (5)",WalterMart Caloocan,metro-manila,2
-waltermart,muntinlupa,32,32,"food choices (10), shops (10), services (6)",WalterMart Muntinlupa,metro-manila,3
+waltermart,caloocan,32,32,"shops (9), food choices (8), services (5)",WalterMart Caloocan,metro-manila,2
+waltermart,muntinlupa,32,32,"shops (10), food choices (10), services (6)",WalterMart Muntinlupa,metro-manila,3
 megaworld,greenhouse-village-square,32,32,"dine (15), services (11), shop (6)",The Greenhouse at Village Square,,13
 waltermart,makiling,32,32,"shops (10), food choices (9), services (7)",WalterMart Makiling,south-luzon,6
 xentro,xentro-mall-cabagan,32,32,,XentroMall Cabagan,,23
-waltermart,pasay,32,32,"food choices (10), shops (10), wellness (6)",WalterMart Pasay,metro-manila,4
-waltermart,trece-martires,31,31,"food choices (10), shops (10), services (7)",WalterMart Trece Martires,south-luzon,4
-waltermart,macapagal,30,30,"food choices (10), shops (10), wellness (4)",WalterMart Macapagal,metro-manila,2
+waltermart,pasay,32,32,"shops (10), food choices (10), wellness (6)",WalterMart Pasay,metro-manila,4
+waltermart,trece-martires,31,31,"shops (10), food choices (10), services (7)",WalterMart Trece Martires,south-luzon,4
+waltermart,macapagal,30,30,"shops (10), food choices (10), services (4)",WalterMart Macapagal,metro-manila,2
 sm,moa-square,30,30,"shopping (11), dining (11), home (4)",MOA Square,metro-manila,15
 megaworld,arcovia-city,29,29,"dine (21), shop (4), services (4)",Arcovia City,,8
 waltermart,cabanatuan,29,29,"food choices (10), shops (9), services (6)",WalterMart Cabanatuan,north-luzon,0
@@ -278,7 +278,7 @@ sm,smdc-fame-mall,23,23,"dining (9), services (4), groceries (3)",SMDC Fame Mall
 sm,sm-savemore-apalit,23,23,"cyberzone (9), shopping (6), dining (6)",SM Savemore Apalit,north-luzon,2
 sm,smdc-grace-mall,23,23,"dining (12), wellness (6), hobbies-and-specialty (2)",SMDC Grace Mall,smdc,5
 sm,smdc-air-mall,23,23,"dining (12), wellness (6), services (3)",SMDC Air Mall,smdc,9
-waltermart,the-junction,23,23,"food choices (7), shops (7), cybermart (5)",WalterMart The Junction,metro-manila,3
+waltermart,the-junction,23,23,"shops (7), food choices (7), cybermart (5)",WalterMart The Junction,metro-manila,3
 waltermart,batangas-city,22,22,"food choices (10), shops (7), cybermart (3)",WalterMart Batangas City,south-luzon,1
 waltermart,cabuyao,22,22,"food choices (10), shops (5), services (3)",WalterMart Cabuyao,south-luzon,3
 waltermart,carmona,21,21,"food choices (10), shops (6), wellness (3)",WalterMart Carmona,south-luzon,2
@@ -292,7 +292,7 @@ sm,smdc-strip-at-grass,17,17,"dining (7), wellness (4), hobbies-and-specialty (3
 megaworld,twin-lakes,16,15,"dine (12), services (3), shop (1)",Twin Lakes,,3
 sm,sm-marketmall-dasmarinas,16,16,"shopping (4), dining (3), cyberzone (3)",SM Marketmall Dasmarinas,south-luzon,6
 sm,sm-hypermarket-sucat-lopez,16,16,"dining (9), cyberzone (2), atm (1)",SM Hypermarket Sucat Lopez,metro-manila,2
-waltermart,talavera,15,15,"food choices (4), shops (4), cybermart (4)",WalterMart Talavera,north-luzon,0
+waltermart,talavera,15,15,"shops (4), food choices (4), cybermart (4)",WalterMart Talavera,north-luzon,0
 sm,smdc-strip-at-sea,15,15,"hobbies-and-specialty (4), wellness (4), dining (4)",SMDC Strip at Sea,smdc,5
 sm,smdc-strip-at-shore,15,15,"dining (7), wellness (4), hobbies-and-specialty (2)",SMDC Strip at Shore,smdc,8
 megaworld,three-central,14,14,"services (7), dine (4), shop (3)",Three Central Mall,,6

@@ -12,12 +12,13 @@ return ``[]``), and responses are 12 items per page.
 
 from __future__ import annotations
 
+from mallscape_core import config
 from mallscape_core.models import Mall, Store
 from mallscape_scrape.scrapers.base import MallChainScraper
 
 BASE = "https://www.smsupermalls.com/"
 PAGE_SIZE = 12
-MAX_PAGES = 500  # loop guard; largest mall is ~30 pages
+MAX_PAGES = config.MAX_PAGES  # loop guard; largest mall is ~30 pages
 
 # Region buckets used by the site's filter checkboxes. Together they cover
 # all malls (verified: 36+25+22+10+8+20+5 = 126 in 2026-07).
@@ -111,7 +112,7 @@ class SMScraper(MallChainScraper):
         # Deduplicate on (slug, name, floor, building): SM's pagination is not
         # a stable sort, so a tenant can repeat across page boundaries. The key
         # deliberately includes floor/building because ~1% of records have an
-        # empty tenant_slug — keying on slug alone silently merged genuinely
+        # empty tenant_slug - keying on slug alone silently merged genuinely
         # distinct outlets of the same brand within one mall.
         by_slug: dict[str, Store] = {}
         page = 0
@@ -140,7 +141,7 @@ class SMScraper(MallChainScraper):
                 break
             for t in batch:
                 # ~1% of records carry an empty tenant_slug, so the key must
-                # also carry floor/building — otherwise two genuinely distinct
+                # also carry floor/building - otherwise two genuinely distinct
                 # outlets of one brand in the same mall collapse into one, and
                 # which floor survives depends on the (unstable) page order.
                 slug = (
@@ -169,7 +170,7 @@ class SMScraper(MallChainScraper):
         # `counts` still runs ahead of what pagination serves for some malls
         # (hidden/inactive tenants); verified unrecoverable via asc/desc/floor
         # ordering and per-category sweeps. The threshold is deliberately loose
-        # for that reason — it is a smoke alarm for a broken mall, not a
+        # for that reason - it is a smoke alarm for a broken mall, not a
         # completeness assertion.
         if expected:
             shortfall = (expected - len(stores)) / expected
@@ -178,6 +179,6 @@ class SMScraper(MallChainScraper):
             elif shortfall > 0.20:
                 self.warn(
                     f"{mall.mall_id}: only {len(stores)} of {expected} reported "
-                    f"tenants served ({shortfall:.0%} short) — investigate"
+                    f"tenants served ({shortfall:.0%} short) - investigate"
                 )
         return stores

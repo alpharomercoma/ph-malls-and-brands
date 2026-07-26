@@ -1,28 +1,32 @@
 """Build viz-ready analysis tables from the latest snapshot.
 
 Outputs (written next to the snapshot tables):
-- brand_presence: one row per (brand_key, chain, mall_id) — long-format matrix
-- brand_summary:  per brand — malls per chain, total, cross-chain flag
+- brand_presence: one row per (brand_key, chain, mall_id) - long-format matrix
+- brand_summary:  per brand - malls per chain, total, cross-chain flag
 - unique_brands:  brands present in exactly one mall
-- mall_summary:   per mall — store count, distinct brands, top categories
+- mall_summary:   per mall - store count, distinct brands, top categories
 """
 
 from __future__ import annotations
 
 import pandas as pd
 
-from mallscape_core import storage
 from mallscape_clean.normalize import brand_key
+from mallscape_core import storage
 
 
 def build_tables(run_date: str) -> dict[str, pd.DataFrame]:
-    malls = storage.read_table(run_date, "malls")
-    stores = storage.read_table(run_date, "stores")
+    malls = storage.read(run_date, storage.SCRAPE, "malls")
+    # prefer stage 2 output: brand_key and category_std are already computed
+    stores = storage.read(run_date, storage.CLEAN, "stores_clean")
+    if stores is None:
+        stores = storage.read(run_date, storage.SCRAPE, "stores")
     if malls is None or stores is None:
-        raise SystemExit(f"no snapshot for {run_date} — run `mallscape scrape` first")
+        raise SystemExit(f"no snapshot for {run_date} - run `mallscape scrape` first")
 
     stores = stores.copy()
-    stores["brand_key"] = stores["store_name_raw"].map(brand_key)
+    if "brand_key" not in stores.columns:
+        stores["brand_key"] = stores["store_name_raw"].map(brand_key)
     stores = stores[stores["brand_key"] != ""]
 
     presence = (
@@ -88,10 +92,6 @@ def build_tables(run_date: str) -> dict[str, pd.DataFrame]:
         "unique_brands": unique,
         "mall_summary": mall_summary,
     }
-    out = storage.processed_dir(run_date)
-    for name, df in tables.items():
-        storage.write_table(df, out, name)
-    storage.update_latest(run_date)
     return tables
 
 

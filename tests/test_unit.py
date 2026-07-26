@@ -1,7 +1,7 @@
 """Parser regression tests against captured fixture pages (2026-07-26).
 
 If a site redesign breaks a parser, these tests keep working (fixtures are
-frozen) — the live validation report is what flags the redesign. These tests
+frozen) - the live validation report is what flags the redesign. These tests
 protect against parser regressions while refactoring.
 """
 
@@ -11,12 +11,12 @@ from pathlib import Path
 
 import pytest
 
-from mallscape_core.models import Mall
 from mallscape_clean.normalize import brand_key
+from mallscape_core.models import Mall
 from mallscape_scrape.scrapers.ayala import derive_region
 from mallscape_scrape.scrapers.filinvest import FilinvestScraper
-from mallscape_scrape.scrapers.starmall import StarmallScraper
 from mallscape_scrape.scrapers.robinsons import RobinsonsScraper, _norm_key
+from mallscape_scrape.scrapers.starmall import StarmallScraper
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -120,14 +120,14 @@ class TestAyalaRegions:
     @pytest.mark.parametrize(
         "text,lat,lon,expected",
         [
-            # provincial place names appear as MM street names — MM must win
+            # provincial place names appear as MM street names - MM must win
             ("Greenbelt Mall, Legazpi Street, Makati City", 14.55, 121.02, "metro-manila"),
             ("Ayala Malls Legazpi, Legazpi City, Albay 4500", 13.15, 123.75, "south-luzon"),
             # "Rizal Highway" must not be read as Rizal province
             ("Harbor Point, Subic Bay Freeport Zone, 2200 Zambales", 14.83, 120.28, "north-luzon"),
             ("Trinoma EDSA cor. North Avenue, QC", 14.65, 121.03, "metro-manila"),
             ("Vertis North, Brgy. Bagong Pag-asa, Q.C.", 14.65, 121.04, "metro-manila"),
-            # placeholder coordinates (1.001, 1.001) — address must carry it
+            # placeholder coordinates (1.001, 1.001) - address must carry it
             ("Ayala Pavilion Mall Bldg. A, Binan, Laguna", 1.001, 1.001, "south-luzon"),
             ("Serin, Silang Crossing East Tagaytay City, Cavite", 14.11, 120.26, "south-luzon"),
             ("Centrio Mall, Cagayan de Oro City 9000", 8.48, 124.65, "mindanao"),
@@ -240,9 +240,8 @@ class TestSnapshotIntegrity:
         from mallscape_core import storage
 
         monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
-        out = storage.processed_dir(date)
-        storage.write_table(malls_df, out, "malls")
-        storage.write_table(stores_df, out, "stores")
+        storage.write(date, storage.SCRAPE, "malls", malls_df)
+        storage.write(date, storage.SCRAPE, "stores", stores_df)
         return storage
 
     def test_empty_snapshot_is_not_usable(self, tmp_path, monkeypatch):
@@ -263,7 +262,7 @@ class TestSnapshotIntegrity:
             pd.DataFrame({"scraped_at": []}), pd.DataFrame({"scraped_at": []}),
         )
         with _pytest.raises(ValueError, match="refusing to publish"):
-            storage.update_latest("2026-01-01")
+            storage.publish_latest("2026-01-01")
 
     def test_latest_usable_skips_broken_newer_snapshot(self, tmp_path, monkeypatch):
         import pandas as pd
@@ -272,14 +271,13 @@ class TestSnapshotIntegrity:
         good_s = pd.DataFrame({"chain": ["sm"], "mall_id": ["x"], "store_name_raw": ["Y"]})
         storage = self._snapshot(tmp_path, monkeypatch, good_m, good_s, "2026-01-01")
         # a newer but empty snapshot must be skipped, not selected
-        out = storage.processed_dir("2026-01-02")
-        storage.write_table(pd.DataFrame({"scraped_at": []}), out, "malls")
-        storage.write_table(pd.DataFrame({"scraped_at": []}), out, "stores")
+        storage.write("2026-01-02", storage.SCRAPE, "malls", pd.DataFrame({"scraped_at": []}))
+        storage.write("2026-01-02", storage.SCRAPE, "stores", pd.DataFrame({"scraped_at": []}))
         assert storage.latest_usable_run() == "2026-01-01"
 
 
 class TestAuditRegressions:
-    """Defects found by the completeness audit — each must stay fixed."""
+    """Defects found by the completeness audit - each must stay fixed."""
 
     def test_starmall_decodes_all_unicode_escapes(self):
         from unittest.mock import Mock
@@ -301,7 +299,6 @@ class TestAuditRegressions:
 
     def test_sm_dedupe_key_separates_distinct_outlets(self):
         """Two outlets of one brand on different floors must both survive."""
-        from mallscape_scrape.scrapers.sm import SMScraper
         keys = set()
         for floor, building in [("2F", "MAIN"), ("GF", "EXPANSION")]:
             keys.add(("", "POTATO CORNER", floor, building))
@@ -311,11 +308,11 @@ class TestAuditRegressions:
 class TestReportDeterminism:
     def test_report_is_byte_identical_across_runs(self, tmp_path, monkeypatch):
         import pandas as pd
-        from mallscape_report import report
+
         from mallscape_core import storage
+        from mallscape_report import report
 
         monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
-        out = storage.processed_dir("2026-01-01")
         malls = pd.DataFrame({
             "chain": ["sm", "ayala"], "mall_id": ["a", "b"],
             "mall_name": ["A Mall", "B Mall"], "region": ["metro-manila", "visayas"],
@@ -325,8 +322,8 @@ class TestReportDeterminism:
             "chain": ["sm", "sm", "ayala"], "mall_id": ["a", "a", "b"],
             "store_name_raw": ["X", "Y", "Z"],
         })
-        storage.write_table(malls, out, "malls")
-        storage.write_table(stores, out, "stores")
+        storage.write("2026-01-01", storage.SCRAPE, "malls", malls)
+        storage.write("2026-01-01", storage.SCRAPE, "stores", stores)
         first = report.build("2026-01-01")
         second = report.build("2026-01-01")
         assert first == second
@@ -339,6 +336,7 @@ class TestCleanStage:
 
     def test_is_non_destructive(self):
         import pandas as pd
+
         from mallscape_clean import clean
 
         raw = pd.DataFrame({
@@ -363,7 +361,7 @@ class TestCleanStage:
         }
         for raw, level in cases.items():
             assert standardize_floor(raw)[1] == level, raw
-        # places, not storeys — must not be assigned a level
+        # places, not storeys - must not be assigned a level
         for raw in ["Kiosk", "Food Hall", "Roof Deck", "Parkway"]:
             assert standardize_floor(raw)[1] is None, raw
 
@@ -386,6 +384,7 @@ class TestCleanStage:
 
     def test_deterministic(self):
         import pandas as pd
+
         from mallscape_clean import clean
         raw = pd.DataFrame({
             "chain": ["sm", "ayala"], "mall_id": ["a", "b"],
@@ -397,24 +396,29 @@ class TestCleanStage:
 
 
 class TestWebsiteStage:
-    def test_site_is_deterministic_and_self_contained(self, tmp_path, monkeypatch):
+    def test_bundle_is_deterministic_and_compact(self, tmp_path, monkeypatch):
         import pandas as pd
+
         from mallscape_core import storage
-        from mallscape_website import build as website
+        from mallscape_website import bundle as website_bundle
 
         monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
-        out = storage.processed_dir("2026-01-01")
-        storage.write_table(pd.DataFrame({
+        storage.write("2026-01-01", storage.SCRAPE, "malls", pd.DataFrame({
             "chain": ["sm"], "mall_id": ["a"], "mall_name": ["A Mall"],
             "region": ["metro-manila"], "property_type": ["mall"],
             "scraped_at": ["2026-01-01"],
-        }), out, "malls")
-        storage.write_table(pd.DataFrame({
-            "chain": ["sm"], "mall_id": ["a"], "store_name_raw": ["X"],
-        }), out, "stores")
+        }))
+        storage.write("2026-01-01", storage.CLEAN, "stores_clean", pd.DataFrame({
+            "chain": ["sm"], "mall_id": ["a"], "store_name_raw": ["X STORE"],
+            "store_name": ["X Store"], "brand_key": ["x store"],
+            "category_std": ["shopping"],
+        }))
 
-        first = website.build("2026-01-01")
-        assert first == website.build("2026-01-01")
-        # no external requests may be embedded — the page must work offline
-        for token in ("http://", "https://", "<script"):
-            assert token not in first, token
+        digest, first = website_bundle.build("2026-01-01")
+        digest2, second = website_bundle.build("2026-01-01")
+        assert digest == digest2
+        assert first == second
+        assert first["schema"] == 1
+        assert first["totals"]["properties"] == 1
+        # edges are flat pairs, so the length is always even
+        assert len(first["edges"]) % 2 == 0

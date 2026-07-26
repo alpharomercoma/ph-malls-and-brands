@@ -1,4 +1,23 @@
-"""Run-folder management: dated raw/processed snapshots + `latest` copy."""
+"""Snapshot storage: stage-owned artifacts under one dated snapshot root.
+
+Layout::
+
+    data/
+      cache/<date>/<chain>/     stage 1 HTTP cache (scratch, not committed)
+      snapshots/<date>/
+        1_scrape/               malls, stores, run_report.md
+        2_clean/                stores_clean, category_mapping
+        3_report/               brand_*, mall_summary, breakdown.md
+        4_website/              bundle.json
+
+Each stage writes only into its own directory and reads only from earlier
+stages. Lineage is therefore visible on the filesystem: if a file looks wrong
+you know which stage produced it without reading any code, and deleting one
+stage's directory reruns exactly that stage.
+
+The date is the unit of atomicity, so a snapshot always describes one point in
+time across every stage.
+"""
 
 from __future__ import annotations
 
@@ -8,51 +27,68 @@ from pathlib import Path
 
 import pandas as pd
 
-DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+from mallscape_core import config
+
+DATA_DIR = config.DATA_DIR
+
+SCRAPE, CLEAN, REPORT, WEBSITE = "1_scrape", "2_clean", "3_report", "4_website"
+STAGES = (SCRAPE, CLEAN, REPORT, WEBSITE)
 
 
 def today() -> str:
     return dt.date.today().isoformat()
 
 
-def raw_dir(run_date: str, chain: str) -> Path:
-    d = DATA_DIR / "raw" / run_date / chain
+def cache_dir(run_date: str, chain: str) -> Path:
+    d = DATA_DIR / "cache" / run_date / chain
     d.mkdir(parents=True, exist_ok=True)
     return d
 
 
-def processed_dir(run_date: str) -> Path:
-    d = DATA_DIR / "processed" / run_date
+def stage_dir(run_date: str, stage: str) -> Path:
+    if stage not in STAGES:
+        raise ValueError(f"unknown stage {stage!r}; expected one of {STAGES}")
+    d = DATA_DIR / "snapshots" / run_date / stage
     d.mkdir(parents=True, exist_ok=True)
     return d
 
 
-def previous_run(run_date: str) -> str | None:
-    root = DATA_DIR / "processed"
-    if not root.exists():
-        return None
-    runs = sorted(p.name for p in root.iterdir() if p.is_dir() and p.name < run_date)
-    return runs[-1] if runs else None
+def write(run_date: str, stage: str, name: str, df: pd.DataFrame) -> None:
+    """Parquet is what the code reads; CSV ships alongside so the data stays
+    inspectable and diffable without a parquet reader."""
+    out = stage_dir(run_date, stage)
+    df.to_parquet(out / f"{name}.parquet", index=False)
+    df.to_csv(out / f"{name}.csv", index=False)
 
 
-def write_table(df: pd.DataFrame, out_dir: Path, name: str) -> None:
-    df.to_parquet(out_dir / f"{name}.parquet", index=False)
-    df.to_csv(out_dir / f"{name}.csv", index=False)
-
-
-def read_table(run_date: str, name: str) -> pd.DataFrame | None:
-    path = processed_dir(run_date) / f"{name}.parquet"
+def read(run_date: str, stage: str, name: str) -> pd.DataFrame | None:
+    path = DATA_DIR / "snapshots" / run_date / stage / f"{name}.parquet"
     return pd.read_parquet(path) if path.exists() else None
 
 
-def is_usable(run_date: str) -> bool:
-    """A snapshot is usable only if it actually holds mall and store rows.
+def write_text(run_date: str, stage: str, name: str, text: str) -> Path:
+    path = stage_dir(run_date, stage) / name
+    path.write_text(text)
+    return path
 
-    A crashed or single-chain run can leave a zero-row snapshot behind; those
-    must never be picked as `latest` or silently analyzed.
-    """
-    malls = read_table(run_date, "malls")
-    stores = read_table(run_date, "stores")
+
+def runs() -> list[str]:
+    root = DATA_DIR / "snapshots"
+    if not root.exists():
+        return []
+    return sorted(p.name for p in root.iterdir() if p.is_dir() and p.name != "latest")
+
+
+def previous_run(run_date: str) -> str | None:
+    earlier = [r for r in runs() if r < run_date]
+    return earlier[-1] if earlier else None
+
+
+def is_usable(run_date: str) -> bool:
+    """Usable means stage 1 actually produced mall and store rows. A crashed or
+    empty run must never be selected as the newest snapshot."""
+    malls = read(run_date, SCRAPE, "malls")
+    stores = read(run_date, SCRAPE, "stores")
     return (
         malls is not None
         and stores is not None
@@ -64,23 +100,20 @@ def is_usable(run_date: str) -> bool:
 
 
 def latest_usable_run() -> str | None:
-    root = DATA_DIR / "processed"
-    if not root.exists():
-        return None
-    for run in sorted((p.name for p in root.iterdir() if p.is_dir()), reverse=True):
+    for run in reversed(runs()):
         if is_usable(run):
             return run
     return None
 
 
-def update_latest(run_date: str) -> None:
+def publish_latest(run_date: str) -> None:
+    """Mirror a snapshot to snapshots/latest so downstream paths stay stable."""
     if not is_usable(run_date):
         raise ValueError(
-            f"refusing to publish {run_date} as `latest`: snapshot is empty or "
-            f"missing required columns"
+            f"refusing to publish {run_date} as latest: stage 1 output is empty "
+            f"or missing required columns"
         )
-    src = processed_dir(run_date)
-    dest = DATA_DIR / "latest"
+    dest = DATA_DIR / "snapshots" / "latest"
     if dest.exists():
         shutil.rmtree(dest)
-    shutil.copytree(src, dest)
+    shutil.copytree(DATA_DIR / "snapshots" / run_date, dest)

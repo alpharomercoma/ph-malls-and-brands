@@ -1,6 +1,6 @@
 """Filinvest Malls scraper (includes Festival Mall).
 
-``filinvestlifemalls.com`` is the live site — ``filinvestmalls.com`` is a
+``filinvestlifemalls.com`` is the live site - ``filinvestmalls.com`` is a
 parked domain that bounces to a lander. Each mall has a server-rendered shops
 directory at ``/shops-directory/<slug>/`` holding a single table:
 
@@ -53,7 +53,7 @@ class FilinvestScraper(MallChainScraper):
 
     def _check_roster(self) -> None:
         """The mall list is hardcoded (the site publishes no machine-readable
-        roster), so verify it against the live nav every run — otherwise a
+        roster), so verify it against the live nav every run - otherwise a
         newly opened mall would be missed silently."""
         try:
             html = self.fetcher.get_text(f"{BASE}festival-mall/")
@@ -62,12 +62,12 @@ class FilinvestScraper(MallChainScraper):
             return
         live = set(re.findall(r'href="[^"]*shops-directory/([a-z0-9-]+)/"', html))
         if not live:
-            self.warn("mall roster check found no nav links — site markup may have changed")
+            self.warn("mall roster check found no nav links - site markup may have changed")
             return
         new = sorted(live - set(MALLS))
         gone = sorted(set(MALLS) - live)
         if new:
-            self.warn(f"NEW mall(s) on the site not in MALLS: {new} — add them to filinvest.py")
+            self.warn(f"NEW mall(s) on the site not in MALLS: {new} - add them to filinvest.py")
         if gone:
             self.warn(f"mall(s) in MALLS no longer linked on the site: {gone}")
 

@@ -2,7 +2,7 @@
 
 Each mall has a ``/stores-<slug>/`` page whose directory is rendered by an
 Elementor "filterable gallery" widget. The store cards are not in the page
-markup directly — they sit inside a JSON-escaped blob in an inline attribute,
+markup directly - they sit inside a JSON-escaped blob in an inline attribute,
 so the parser unescapes that blob first and then parses the HTML fragments:
 
     <div class="... eael-cf-<category>"> ...
@@ -55,7 +55,7 @@ class StarmallScraper(MallChainScraper):
         ]
 
     def _check_roster(self) -> None:
-        """Hardcoded roster — verify against the live /malls/ page each run so a
+        """Hardcoded roster - verify against the live /malls/ page each run so a
         new Starmall surfaces as a warning instead of vanishing."""
         try:
             html = self.fetcher.get_text(f"{BASE}malls/")
@@ -64,12 +64,12 @@ class StarmallScraper(MallChainScraper):
             return
         live = set(re.findall(r'href="[^"]*stores-([a-z-]+)/"', html))
         if not live:
-            self.warn("mall roster check found no store-page links — markup may have changed")
+            self.warn("mall roster check found no store-page links - markup may have changed")
             return
         new = sorted(live - set(MALLS))
         gone = sorted(set(MALLS) - live)
         if new:
-            self.warn(f"NEW Starmall not in MALLS: {new} — add it to starmall.py")
+            self.warn(f"NEW Starmall not in MALLS: {new} - add it to starmall.py")
         if gone:
             self.warn(f"mall(s) in MALLS no longer linked: {gone}")
 
@@ -122,5 +122,5 @@ def _after(text: str, label: str) -> str | None:
     value = rest.split("Contact Number:")[0].split("Location:")[0]
     # the card fragment can carry trailing markup scraps past the value
     value = value.split("<")[0]
-    value = re.sub(r"\s+", " ", value).strip(" |/<> ")
+    value = re.sub(r"^[\s|/<>]+|[\s|/<>]+$", "", re.sub(r"\s+", " ", value))
     return value or None

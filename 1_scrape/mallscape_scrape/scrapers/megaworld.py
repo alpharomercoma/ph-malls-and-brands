@@ -12,13 +12,16 @@ delivery credentials were found by observing the site's own network traffic
 This is the richest of the chains scraped so far: category *and* sub-type
 *and* floor come straight from the API.
 
-Note: ``megaworldlifestylemalls.com`` (no hyphen) is NOT Megaworld — that
+Note: ``megaworldlifestylemalls.com`` (no hyphen) is NOT Megaworld - that
 domain has lapsed and now redirects to an unrelated ad/scam site. The live
 site is ``megaworld-lifestylemalls.com``.
 """
 
 from __future__ import annotations
 
+from typing import ClassVar
+
+from mallscape_core import config
 from mallscape_core.models import Mall, Store
 from mallscape_scrape.scrapers.base import MallChainScraper
 
@@ -29,13 +32,13 @@ PAGE = 100
 
 class MegaworldScraper(MallChainScraper):
     chain = "megaworld"
-    # NOT secrets. These are Contentstack *delivery* tokens — read-only, scoped
+    # NOT secrets. These are Contentstack *delivery* tokens - read-only, scoped
     # to the published prod environment, and served to every visitor of
     # megaworld-lifestylemalls.com in plain JavaScript. They are reproduced here
     # so the scraper works out of the box; treat them as part of the public
     # site, not as credentials. If they rotate, re-read them from the site's
     # network requests.
-    extra_headers = {
+    extra_headers: ClassVar[dict[str, str]] = {
         "api_key": "blt827157d7af7bc6d4",
         "access_token": "cs12c8f62754c81457af4cc5fc",
         "Referer": "https://www.megaworld-lifestylemalls.com/",
@@ -50,7 +53,9 @@ class MegaworldScraper(MallChainScraper):
         out: list[dict] = []
         skip = 0
         total = None
-        while True:
+        # Bounded so a misbehaving API turns into a loud failure instead of an
+        # infinite loop that quietly accumulates duplicates.
+        for _ in range(config.MAX_PAGES):
             data = self.fetcher.get_json(
                 f"{CDN}{content_type}/entries/",
                 {"environment": ENV, "include_count": "true", "limit": PAGE, "skip": skip},
@@ -64,6 +69,11 @@ class MegaworldScraper(MallChainScraper):
             skip += len(entries)
             if total and skip >= total:
                 break
+        else:
+            raise RuntimeError(
+                f"{content_type}: exceeded MAX_PAGES ({config.MAX_PAGES}) without "
+                f"reaching the reported count ({total}); the API may be ignoring skip"
+            )
         if total and len(out) != total:
             self.warn(f"{content_type}: collected {len(out)} of {total} entries")
         return out

@@ -39,7 +39,7 @@ def report_gaps(scraper, scraped_names: set[str]) -> None:
             continue
         opened = entry.get("opened")
         # count malls that are open; a null opening date means "operating,
-        # date unrecorded" — only an explicitly future date is excluded
+        # date unrecorded" - only an explicitly future date is excluded
         is_open = opened is None or opened[:10] <= today
         if entry.get("property_type", "").endswith("mall") and is_open:
             when = f" (opened {opened})" if opened else ""
@@ -47,11 +47,11 @@ def report_gaps(scraper, scraped_names: set[str]) -> None:
 
     if missing:
         scraper.warn(
-            "operating malls with no published directory — absent from store "
+            "operating malls with no published directory - absent from store "
             "data by necessity: " + "; ".join(missing)
         )
     for name in appeared:
         scraper.warn(
-            f"{name} now appears upstream — remove it from "
+            f"{name} now appears upstream - remove it from "
             f"registry/{scraper.chain}_coverage.json so its stores get scraped"
         )

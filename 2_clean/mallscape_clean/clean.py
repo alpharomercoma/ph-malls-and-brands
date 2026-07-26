@@ -1,10 +1,10 @@
-"""Stage 2 — standardize and normalize the scraped listings.
+"""Stage 2 - standardize and normalize the scraped listings.
 
 Strictly non-destructive: `stores.parquet` from stage 1 is never modified.
 This stage reads it and writes `stores_clean.parquet` alongside, where every
 raw column survives untouched and normalized values are added as new columns.
 When a normalization is uncertain the raw value is kept and the row is flagged
-rather than silently coerced — a wrong-but-clean value is worse than a
+rather than silently coerced - a wrong-but-clean value is worse than a
 recognisably messy one.
 
 Columns added
@@ -12,9 +12,9 @@ Columns added
 ``store_name``      display form: unicode-normalized, whitespace-collapsed,
                     smart quotes folded, ALL-CAPS title-cased
 ``brand_key``       matching key (from :mod:`mallscape_clean.normalize`)
-``category_std``    harmonized taxonomy — the twelve chains publish 101
+``category_std``    harmonized taxonomy - the twelve chains publish 101
                     different category strings for the same handful of concepts
-``floor_std``       canonical floor label ("Level 2", "Lower Ground", …)
+``floor_std``       canonical floor label ("Level 2", "Lower Ground", ...)
 ``floor_level``     signed integer level where one can be inferred (basement
                     negative, ground 0); null when the label is not a level
 ``phone_e164``      first phone in +63 E.164 form, null if unparseable
@@ -62,16 +62,18 @@ _NON_LEVEL = re.compile(
     r"|carpark|car ?park|roof|concourse|mezzanine|wing|atrium|activity|garden",
     re.I,
 )
-_SMART = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-"})
+_SMART = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-"})  # noqa: RUF001 - the table maps these on purpose
+# leading/trailing separators left over from the source markup
+_EDGE_JUNK = re.compile(r"^[\s\-,|]+|[\s\-,|]+$")
 _PHONE_SPLIT = re.compile(r"\s*(?:/|;|,| or )\s*", re.I)
 
 
 def clean_name(raw: str) -> str:
     """Display-ready store name. Case is only changed for ALL-CAPS input, where
-    it carries no information — mixed-case names are left alone because their
+    it carries no information - mixed-case names are left alone because their
     capitalization is usually deliberate (``iStore``, ``BENCH/``)."""
     s = unicodedata.normalize("NFKC", str(raw)).translate(_SMART)
-    s = re.sub(r"\s+", " ", s).strip(" -–—,|")
+    s = _EDGE_JUNK.sub("", re.sub(r"\s+", " ", s))
     if s and s == s.upper():
         s = s.title()
         # repair possessives and common initialisms mangled by .title()
@@ -97,7 +99,7 @@ def standardize_category(raw, chain: str) -> str:
 
 def standardize_floor(raw) -> tuple[str | None, int | None]:
     """Return (canonical label, numeric level). Level is null when the label
-    denotes a place rather than a storey (Kiosk, Food Hall, Roof Deck…)."""
+    denotes a place rather than a storey (Kiosk, Food Hall, Roof Deck...)."""
     if raw is None or (isinstance(raw, float) and pd.isna(raw)):
         return None, None
     text = re.sub(r"\s+", " ", str(raw)).strip()
@@ -105,7 +107,7 @@ def standardize_floor(raw) -> tuple[str | None, int | None]:
         return None, None
     low = text.lower()
 
-    # basements first — "B2"/"Basement 2" are negative levels
+    # basements first - "B2"/"Basement 2" are negative levels
     m = re.search(r"\b(?:basement|b)\s*(\d+)\b", low)
     if m:
         n = int(m.group(1))
@@ -121,8 +123,8 @@ def standardize_floor(raw) -> tuple[str | None, int | None]:
 
     # numeric storeys. Two shapes, because "2F" has no word boundary between
     # the digit and the F (Megaworld and Ortigas both use it):
-    #   compact — "2F", "2/F", "2L"
-    #   spelled — "Level 2", "2nd Floor", "Floor 2"
+    #   compact - "2F", "2/F", "2L"
+    #   spelled - "Level 2", "2nd Floor", "Floor 2"
     level = None
     compact = re.match(r"^(\d{1,2})\s*/?\s*(?:f|l)\b", low)
     spelled = re.search(r"(?:level|floor)\s*(\d{1,2})|\b(\d{1,2})\s*(?:st|nd|rd|th)?\s*(?:floor|level)", low)
@@ -136,7 +138,7 @@ def standardize_floor(raw) -> tuple[str | None, int | None]:
     if level is not None and not _NON_LEVEL.search(low):
         return f"Level {level}", level
 
-    # a real place, not a storey — keep the label, no numeric level
+    # a real place, not a storey - keep the label, no numeric level
     return text.title() if text == text.upper() else text, None
 
 
@@ -168,7 +170,7 @@ def build(stores: pd.DataFrame, malls: pd.DataFrame | None = None) -> pd.DataFra
     df["store_name"] = df["store_name_raw"].map(clean_name)
     df["brand_key"] = df["store_name"].map(brand_key)
     df["category_std"] = [
-        standardize_category(c, ch) for c, ch in zip(df["category"], df["chain"])
+        standardize_category(c, ch) for c, ch in zip(df["category"], df["chain"], strict=False)
     ]
     floors = [standardize_floor(f) for f in df["floor"]]
     df["floor_std"] = [f[0] for f in floors]
@@ -209,7 +211,7 @@ def category_mapping(stores: pd.DataFrame) -> pd.DataFrame:
     rows = (
         stores.assign(
             category_std=[
-                standardize_category(c, ch) for c, ch in zip(stores["category"], stores["chain"])
+                standardize_category(c, ch) for c, ch in zip(stores["category"], stores["chain"], strict=False)
             ]
         )
         .groupby(["chain", "category", "category_std"], dropna=False)

@@ -1,4 +1,4 @@
-# Mall directory scrape — breakdown (2026-07-26)
+# Mall directory scrape - breakdown (2026-07-26)
 
 **328 properties · 42,412 listings · 12 chains**
 
@@ -26,9 +26,9 @@ Generated deterministically from the snapshot in `data/processed/2026-07-26/`. R
 
 ### Accuracy caveats
 
-- **ayala** — Ayala's API returns duplicate `(mall, merchant)` pairs with distinct ids but no distinguishing fields, so listing counts run above the number of unique brands present.
-- **waltermart** — **Counts are a FLOOR.** Every category page caps at 10 tenants and the mall page returns an identical set; no pagination or limit parameter lifts it. Malls with a capped category are truncated upstream.
-- **xentro** — Some source list items merge two tenants into one line; those names are preserved verbatim rather than split on a guess.
+- **ayala** - Ayala's API returns duplicate `(mall, merchant)` pairs with distinct ids but no distinguishing fields, so listing counts run above the number of unique brands present.
+- **waltermart** - **Counts are a FLOOR.** Every category page caps at 10 tenants and the mall page returns an identical set; no pagination or limit parameter lifts it. Malls with a capped category are truncated upstream.
+- **xentro** - Some source list items merge two tenants into one line; those names are preserved verbatim rather than split on a guess.
 
 ## Properties
 
@@ -447,35 +447,35 @@ Operators investigated but not scraped. Each entry records the finding and what 
 | operator                            | malls | status                     |
 |-------------------------------------|------:|----------------------------|
 | CityMall (DoubleDragon)             |    43 | no-tenant-directory        |
-| Gaisano Capital Group               |     — | blocked-not-verified       |
+| Gaisano Capital Group               |     - | blocked-not-verified       |
 | Gaisano Grand Malls                 |    46 | no-tenant-directory        |
-| LCC Group (Bicol)                   |     — | blocked-not-verified       |
-| LTS Malls                           |     — | not-located                |
+| LCC Group (Bicol)                   |     - | blocked-not-verified       |
+| LTS Malls                           |     - | not-located                |
 | NCCC Malls                          |     9 | likely-no-tenant-directory |
 | Primark Town Centers (LKY Group)    |    45 | no-tenant-directory        |
-| Puregold Price Club                 |     — | out-of-scope-shape         |
+| Puregold Price Club                 |     - | out-of-scope-shape         |
 | Shangri-La Plaza (Shang Properties) |     1 | no-current-directory       |
 | Vista Malls (Vista Land)            |    20 | no-tenant-directory        |
 
-**CityMall (DoubleDragon)** — citymall.com.ph is a thin DoubleDragon corporate shell; /citymall_map returns a 423-byte stub. DoubleDragon reported 43 operating CityMalls at end-2024 with a target of 100 by 2030. These are small community malls anchored by a supermarket; no per-mall tenant directory is published on any official domain found.
+**CityMall (DoubleDragon)** - citymall.com.ph is a thin DoubleDragon corporate shell; /citymall_map returns a 423-byte stub. DoubleDragon reported 43 operating CityMalls at end-2024 with a target of 100 by 2030. These are small community malls anchored by a supermarket; no per-mall tenant directory is published on any official domain found.
 
-**Gaisano Capital Group** — NOT VERIFIED. Site returns HTTP 403 to scripted requests. Whether a tenant directory exists behind it is unknown.
+**Gaisano Capital Group** - NOT VERIFIED. Site returns HTTP 403 to scripted requests. Whether a tenant directory exists behind it is unknown.
 
-**Gaisano Grand Malls** — VERIFIED. WordPress; branches are ordinary posts (slug gaisano-grand-mall-<place>) reachable via /wp-json/wp/v2/posts and a paginated /branches/ listing. Each branch post contains only ADDRESS, MALL HOURS (supermarket + department store) and PHONE NUMBER — no tenant list. These are department-store/supermarket-anchored retail centres, not tenant-leased malls.
+**Gaisano Grand Malls** - VERIFIED. WordPress; branches are ordinary posts (slug gaisano-grand-mall-<place>) reachable via /wp-json/wp/v2/posts and a paginated /branches/ listing. Each branch post contains only ADDRESS, MALL HOURS (supermarket + department store) and PHONE NUMBER — no tenant list. These are department-store/supermarket-anchored retail centres, not tenant-leased malls.
 
-**LCC Group (Bicol)** — NOT VERIFIED. Serves a 4.6KB 'Redirecting...' bot-challenge shell to scripted requests (same WAF pattern as XentroMall's parked domain and Shangri-La's).
+**LCC Group (Bicol)** - NOT VERIFIED. Serves a 4.6KB 'Redirecting...' bot-challenge shell to scripted requests (same WAF pattern as XentroMall's parked domain and Shangri-La's).
 
-**LTS Malls** — NOT VERIFIED. No official domain located; ltsmalls.com does not resolve. Search results conflate it with NCCC. Operator identity needs confirming before scraping.
+**LTS Malls** - NOT VERIFIED. No official domain located; ltsmalls.com does not resolve. Search results conflate it with NCCC. Operator identity needs confirming before scraping.
 
-**NCCC Malls** — PARTIALLY VERIFIED. nccc.com.ph/business-unit/nccc-malls/ is a corporate business-unit page (company profile, vision/mission, press) with no tenant listing found. ~9 branches across Davao, Tagum and Palawan per their own copy. No per-mall directory URL located.
+**NCCC Malls** - PARTIALLY VERIFIED. nccc.com.ph/business-unit/nccc-malls/ is a corporate business-unit page (company profile, vision/mission, press) with no tenant listing found. ~9 branches across Davao, Tagum and Palawan per their own copy. No per-mall directory URL located.
 
-**Primark Town Centers (LKY Group)** — ~45 provincial community centers exposed as WordPress pages named location-<place> (plus location-luzon-malls / -visayas-malls / -mindanao-malls index pages). Each page carries only a street address and leasing contact — no tenant list. Mall list IS obtainable from the WP REST API.
+**Primark Town Centers (LKY Group)** - ~45 provincial community centers exposed as WordPress pages named location-<place> (plus location-luzon-malls / -visayas-malls / -mindanao-malls index pages). Each page carries only a street address and leasing contact — no tenant list. Mall list IS obtainable from the WP REST API.
 
-**Puregold Price Club** — NOT a mall operator in this dataset's sense: each Puregold branch is a single supermarket/hypermarket, not a leased mall with a tenant roster. Adding ~400 branches would inject 400 'malls' each holding one 'tenant' (itself) and would badly skew brand-presence and mall-size analysis. /store-locator/ 404s; the correct locator path was not found before running out of budget.
+**Puregold Price Club** - NOT a mall operator in this dataset's sense: each Puregold branch is a single supermarket/hypermarket, not a leased mall with a tenant roster. Adding ~400 branches would inject 400 'malls' each holding one 'tenant' (itself) and would badly skew brand-presence and mall-size analysis. /store-locator/ 404s; the correct locator path was not found before running out of budget.
 
-**Shangri-La Plaza (Shang Properties)** — Their official domain shangrila-plaza.com no longer resolves (no DNS), and shangrilaplaza.com.ph is a ParkLogic parked page offering the domain for sale. The only surviving official store listing is a Google Sites page at sites.google.com/view/shangcommunity/store-listing, which is explicitly stamped 'Updated as of February 02, 2021' — COVID-era data, five years stale. NOT scraped: importing 2021 tenants into a 2026 snapshot would silently corrupt month-over-month brand analysis.
+**Shangri-La Plaza (Shang Properties)** - Their official domain shangrila-plaza.com no longer resolves (no DNS), and shangrilaplaza.com.ph is a ParkLogic parked page offering the domain for sale. The only surviving official store listing is a Google Sites page at sites.google.com/view/shangcommunity/store-listing, which is explicitly stamped 'Updated as of February 02, 2021' — COVID-era data, five years stale. NOT scraped: importing 2021 tenants into a 2026 snapshot would silently corrupt month-over-month brand analysis.
 
-**Vista Malls (Vista Land)** — WordPress site with a page per mall and a /stores/<slug>/ route, but the store sections render only logo carousels — no tenant names in the markup. The dev mirror (dev.vistamalls.com.ph/<mall>/store/) still contains Lorem ipsum placeholders, so the directory was never populated. Mall list IS obtainable from the WP REST API (/wp-json/wp/v2/pages).
+**Vista Malls (Vista Land)** - WordPress site with a page per mall and a /stores/<slug>/ route, but the store sections render only logo carousels — no tenant names in the markup. The dev mirror (dev.vistamalls.com.ph/<mall>/store/) still contains Lorem ipsum placeholders, so the directory was never populated. Mall list IS obtainable from the WP REST API (/wp-json/wp/v2/pages).
 
 ## Known gaps inside scraped chains
 
@@ -483,13 +483,13 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 | property                    | region       | opened | type          |
 |-----------------------------|--------------|--------|---------------|
-| Cyberpark Tower 1           | metro-manila | —      | office-retail |
-| Cyberpark Tower 2           | metro-manila | —      | office-retail |
-| Farmers Market              | metro-manila | —      | public-market |
-| Fiesta Carnival Arcade      | metro-manila | —      | arcade-retail |
-| Gateway Tower Shops         | metro-manila | —      | office-retail |
-| New Frontier Theater Arcade | metro-manila | —      | arcade-retail |
-| Shopwise Araneta City       | metro-manila | —      | supermarket   |
+| Cyberpark Tower 1           | metro-manila | -      | office-retail |
+| Cyberpark Tower 2           | metro-manila | -      | office-retail |
+| Farmers Market              | metro-manila | -      | public-market |
+| Fiesta Carnival Arcade      | metro-manila | -      | arcade-retail |
+| Gateway Tower Shops         | metro-manila | -      | office-retail |
+| New Frontier Theater Arcade | metro-manila | -      | arcade-retail |
+| Shopwise Araneta City       | metro-manila | -      | supermarket   |
 
 ### ayala
 
@@ -498,7 +498,7 @@ Operators investigated but not scraped. Each entry records the finding and what 
 | Ayala Malls Arca South           | metro-manila | 2026-02-13 | mall            |
 | Ayala Malls Evo City             | south-luzon  | 2025-09-05 | mall            |
 | Ayala Malls Gatewalk             | visayas      | 2026-12-16 | mall            |
-| Ayala Malls Parklinks            | metro-manila | —          | mall            |
+| Ayala Malls Parklinks            | metro-manila | -          | mall            |
 | Azuela High Street               | mindanao     | 2024-10    | lifestyle-strip |
 | Garden Bloc at Cebu IT Park      | visayas      | 2015       | lifestyle-strip |
 | Seagrove                         | visayas      | 2024-01    | lifestyle-strip |
@@ -515,13 +515,13 @@ Operators investigated but not scraped. Each entry records the finding and what 
 | property                           | region       | opened | type           |
 |------------------------------------|--------------|--------|----------------|
 | Robinsons Bulacan Town Center      | north-luzon  | 2027   | mall           |
-| Robinsons Townville BF Paranaque   | metro-manila | —      | community-mall |
-| Robinsons Townville Buhay na Tubig | south-luzon  | —      | community-mall |
+| Robinsons Townville BF Paranaque   | metro-manila | -      | community-mall |
+| Robinsons Townville Buhay na Tubig | south-luzon  | -      | community-mall |
 | Robinsons Townville Cabanatuan     | north-luzon  | 2008   | community-mall |
-| Robinsons Townville Meycauayan     | north-luzon  | —      | community-mall |
-| Robinsons Townville Perdices       | visayas      | —      | community-mall |
+| Robinsons Townville Meycauayan     | north-luzon  | -      | community-mall |
+| Robinsons Townville Perdices       | visayas      | -      | community-mall |
 | Robinsons Townville Pulilan        | north-luzon  | 2010   | community-mall |
-| Robinsons Townville Regalado       | metro-manila | —      | community-mall |
+| Robinsons Townville Regalado       | metro-manila | -      | community-mall |
 | The Jewel                          | metro-manila | 2027   | mall           |
 | The Mall @ NUSTAR                  | visayas      | 2022   | luxury-mall    |
 

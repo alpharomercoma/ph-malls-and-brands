@@ -7,12 +7,12 @@ whose "Shops" tab lists tenants as plain ``<li>`` items inside
 
 The upstream data is rough: some list items merge several brands into one line
 ("ROBINSONS SUPERMARKET HOT TICKET FASHION SHOP"), and there is no floor or
-category. Names are captured verbatim — brand normalization happens downstream
+category. Names are captured verbatim - brand normalization happens downstream
 in ``normalize.py`` rather than by guessing at split points here.
 
 The portfolio mixes XentroMall-branded malls with other names the same group
 operates (Montalban Town Center, ShopKing, Northstar Mall, Sta. Ana Public
-Market …), all served from the same locator.
+Market ...), all served from the same locator.
 """
 
 from __future__ import annotations
@@ -100,7 +100,7 @@ class XentroScraper(MallChainScraper):
                 # skip nav-ish entries and prose
                 if not name or len(name) > 90 or name.lower() in seen:
                     continue
-                # NOTE: do not filter on a trailing "." — real tenants end in
+                # NOTE: do not filter on a trailing "." - real tenants end in
                 # "INC.", "CORP.", "ACC." and were being silently dropped.
                 if any(c in name for c in ("©", "@")):
                     continue

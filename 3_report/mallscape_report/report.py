@@ -2,7 +2,7 @@
 
 Given the same snapshot, this module always produces byte-identical Markdown:
 no wall-clock timestamps, every collection sorted, fixed column widths. That
-makes the report diffable across runs — a change in the output means a change
+makes the report diffable across runs - a change in the output means a change
 in the data, never a change in the weather.
 
 Everything is derived from the snapshot tables plus the coverage registries,
@@ -13,8 +13,6 @@ from __future__ import annotations
 
 import json
 from importlib import resources
-
-import pandas as pd
 
 from mallscape_core import storage
 
@@ -86,8 +84,12 @@ def _unscraped() -> dict:
 
 
 def build(run_date: str) -> str:
-    malls = storage.read_table(run_date, "malls")
-    stores = storage.read_table(run_date, "stores")
+    malls = storage.read(run_date, storage.SCRAPE, "malls")
+    # prefer stage 2 output; fall back to stage 1 so the report still builds
+    # before cleaning has run
+    stores = storage.read(run_date, storage.CLEAN, "stores_clean")
+    if stores is None:
+        stores = storage.read(run_date, storage.SCRAPE, "stores")
     if malls is None or stores is None:
         raise SystemExit(f"no snapshot for {run_date}")
 
@@ -98,7 +100,7 @@ def build(run_date: str) -> str:
     out: list[str] = []
     add = out.append
 
-    add(f"# Mall directory scrape — breakdown ({run_date})")
+    add(f"# Mall directory scrape - breakdown ({run_date})")
     add("")
     add(
         f"**{len(malls):,} properties · {len(stores):,} listings · "
@@ -120,7 +122,7 @@ def build(run_date: str) -> str:
         cm = malls[malls["chain"] == chain]
         mall_only = int((cm["property_type"] == "mall").sum())
         fetched = sorted(cm["scraped_at"].unique())
-        host, method = SOURCES.get(chain, ("—", "—"))
+        host, _method = SOURCES.get(chain, ("-", "-"))
         rows.append([
             chain,
             f"{len(cm):,}",
@@ -156,7 +158,7 @@ def build(run_date: str) -> str:
         add("### Accuracy caveats")
         add("")
         for chain in flagged:
-            add(f"- **{chain}** — {CAVEATS[chain]}")
+            add(f"- **{chain}** - {CAVEATS[chain]}")
         add("")
 
     # ---------- per-property ----------
@@ -171,7 +173,7 @@ def build(run_date: str) -> str:
         rows = [
             [
                 str(r.mall_name),
-                str(r.region or "—"),
+                str(r.region or "-"),
                 str(r.property_type),
                 f"{int(r.listings):,}",
             ]
@@ -212,13 +214,13 @@ def build(run_date: str) -> str:
         known = entry.get("malls_known")
         rows.append([
             entry["name"],
-            str(known) if known else "—",
+            str(known) if known else "-",
             entry["status"],
         ])
     add(_fmt_table(rows, ["operator", "malls", "status"], align_right={1}))
     add("")
     for entry in sorted(unscraped["chains"], key=lambda e: e["chain"]):
-        add(f"**{entry['name']}** — {entry['finding']}")
+        add(f"**{entry['name']}** - {entry['finding']}")
         add("")
 
     # ---------- known gaps within scraped chains ----------
@@ -238,9 +240,9 @@ def build(run_date: str) -> str:
         rows = [
             [
                 e["name"],
-                str(e.get("region") or "—"),
-                str(e.get("opened") or "—"),
-                str(e.get("property_type") or "—"),
+                str(e.get("region") or "-"),
+                str(e.get("opened") or "-"),
+                str(e.get("property_type") or "-"),
             ]
             for e in sorted(entries, key=lambda e: e["name"])
         ]
@@ -251,7 +253,7 @@ def build(run_date: str) -> str:
         add("")
 
     # ---------- brand headline ----------
-    brand_summary = storage.read_table(run_date, "brand_summary")
+    brand_summary = storage.read(run_date, storage.REPORT, "brand_summary")
     if brand_summary is not None and not brand_summary.empty:
         add("## Brand reach")
         add("")
@@ -271,8 +273,3 @@ def build(run_date: str) -> str:
     return "\n".join(out).rstrip() + "\n"
 
 
-def write(run_date: str) -> str:
-    path = storage.processed_dir(run_date) / "breakdown.md"
-    text = build(run_date)
-    path.write_text(text)
-    return str(path)

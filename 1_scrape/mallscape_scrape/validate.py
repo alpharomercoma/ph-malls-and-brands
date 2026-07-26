@@ -16,7 +16,7 @@ def build_report(
     stores: pd.DataFrame,
     warnings: list[str],
 ) -> str:
-    lines = [f"# mallscape run report — {run_date}", ""]
+    lines = [f"# mallscape run report - {run_date}", ""]
 
     for chain, chain_malls in malls.groupby("chain"):
         chain_stores = stores[stores["chain"] == chain]
@@ -30,8 +30,8 @@ def build_report(
     prev_date = storage.previous_run(run_date)
     if prev_date:
         lines.append(f"\n## Diff vs {prev_date}")
-        prev_stores = storage.read_table(prev_date, "stores")
-        prev_malls = storage.read_table(prev_date, "malls")
+        prev_stores = storage.read(prev_date, storage.SCRAPE, "stores")
+        prev_malls = storage.read(prev_date, storage.SCRAPE, "malls")
         if prev_malls is not None:
             gone = set(prev_malls["mall_id"]) - set(malls["mall_id"])
             new = set(malls["mall_id"]) - set(prev_malls["mall_id"])
@@ -52,12 +52,11 @@ def build_report(
             else:
                 lines.append("- no anomalous store-count drops")
     else:
-        lines.append("\n_First run — no previous snapshot to diff against._")
+        lines.append("\n_First run - no previous snapshot to diff against._")
 
     if warnings:
         lines.append("\n## Scraper warnings")
         lines.extend(f"- {w}" for w in warnings)
 
     report = "\n".join(lines) + "\n"
-    (storage.processed_dir(run_date) / "report.md").write_text(report)
     return report

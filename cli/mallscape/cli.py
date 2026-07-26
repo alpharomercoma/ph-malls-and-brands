@@ -1,158 +1,85 @@
-"""mallscape CLI: `mallscape scrape` / `mallscape analyze`."""
+"""Philippine Mall Explorer command line.
+
+Thin orchestration only. Every command resolves a snapshot date, delegates to
+the stage that owns the work, and prints the result. No stage logic lives here,
+so each stage can also be driven directly from Python or a test.
+"""
 
 from __future__ import annotations
 
-import pandas as pd
 import typer
 
-from mallscape_clean import clean as clean_mod
-from mallscape_report import analyze as analyze_mod
-from mallscape_report import report as report_mod
-from mallscape_website import build as website_mod
+from mallscape_clean import pipeline as clean_stage
 from mallscape_core import storage
-from mallscape_scrape import validate
-from mallscape_scrape.fetch import Fetcher
-from mallscape_scrape.scrapers.araneta import AranetaScraper
-from mallscape_scrape.scrapers.ayala import AyalaScraper
-from mallscape_scrape.scrapers.filinvest import FilinvestScraper
-from mallscape_scrape.scrapers.fishermall import FishermallScraper
-from mallscape_scrape.scrapers.gmall import GmallScraper
-from mallscape_scrape.scrapers.megaworld import MegaworldScraper
-from mallscape_scrape.scrapers.ortigas import OrtigasScraper
-from mallscape_scrape.scrapers.robinsons import RobinsonsScraper
-from mallscape_scrape.scrapers.sm import SMScraper
-from mallscape_scrape.scrapers.xentro import XentroScraper
-from mallscape_scrape.scrapers.starmall import StarmallScraper
-from mallscape_scrape.scrapers.waltermart import WaltermartScraper
+from mallscape_report import pipeline as report_stage
+from mallscape_scrape import pipeline as scrape_stage
+from mallscape_scrape.registry_of_scrapers import SCRAPERS
+from mallscape_website import pipeline as website_stage
 
-app = typer.Typer(no_args_is_help=True, add_completion=False)
+app = typer.Typer(no_args_is_help=True, add_completion=False, help=__doc__)
 
-SCRAPERS = {
-    "sm": SMScraper,
-    "robinsons": RobinsonsScraper,
-    "ayala": AyalaScraper,
-    "megaworld": MegaworldScraper,
-    "filinvest": FilinvestScraper,
-    "starmall": StarmallScraper,
-    "waltermart": WaltermartScraper,
-    "araneta": AranetaScraper,
-    "fishermall": FishermallScraper,
-    "ortigas": OrtigasScraper,
-    "xentro": XentroScraper,
-    "gmall": GmallScraper,
-}
+
+def _resolve(date: str | None) -> str:
+    run_date = date or storage.latest_usable_run()
+    if run_date is None:
+        raise SystemExit("no usable snapshot found; run `mallscape scrape` first")
+    return run_date
 
 
 @app.command()
 def scrape(
-    chain: str = typer.Option("all", help="sm | robinsons | all"),
-    date: str = typer.Option(None, help="run date (YYYY-MM-DD), default today"),
+    chain: str = typer.Option("all", help=f"one of {', '.join(SCRAPERS)}, or 'all'"),
+    date: str = typer.Option(None, help="snapshot date (YYYY-MM-DD), default today"),
     rate: float = typer.Option(3.0, help="max requests per second"),
 ):
-    """Scrape mall directories and write a dated snapshot."""
-    run_date = date or storage.today()
+    """Stage 1. Fetch directories and write malls plus stores."""
+    if chain != "all" and chain not in SCRAPERS:
+        raise SystemExit(f"unknown chain {chain!r}; expected one of {', '.join(SCRAPERS)}")
     chains = list(SCRAPERS) if chain == "all" else [chain]
-
-    all_malls, all_stores, warnings = [], [], []
-    # Keep other chains' rows when scraping a single chain. Seed from this
-    # date's snapshot if it exists, else carry forward the previous run —
-    # otherwise the first single-chain scrape on a new day silently produces
-    # a snapshot containing only that chain.
-    prev_malls = storage.read_table(run_date, "malls")
-    prev_stores = storage.read_table(run_date, "stores")
-    if prev_malls is None and chain != "all":
-        carry_from = storage.previous_run(run_date)
-        if carry_from:
-            prev_malls = storage.read_table(carry_from, "malls")
-            prev_stores = storage.read_table(carry_from, "stores")
-            if prev_malls is not None:
-                kept = sorted(set(prev_malls["chain"]) - set(chains))
-                print(f"[scrape] carrying forward {carry_from} rows for chains: {kept}")
-
-    for name in chains:
-        cls = SCRAPERS[name]
-        fetcher = Fetcher(
-            storage.raw_dir(run_date, name), rate=rate, headers=cls.extra_headers
-        )
-        scraper = cls(fetcher)
-        try:
-            malls, stores = scraper.scrape_all()
-        finally:
-            fetcher.close()
-        print(
-            f"[{name}] done: {len(malls)} malls, {len(stores)} stores "
-            f"({fetcher.requests_made} requests, {fetcher.cache_hits} cache hits)"
-        )
-        all_malls.extend(m.to_row() for m in malls)
-        all_stores.extend(s.to_row() for s in stores)
-        warnings.extend(scraper.warnings)
-
-    malls_df = pd.DataFrame(all_malls)
-    stores_df = pd.DataFrame(all_stores)
-    # Stamp only what was actually fetched this run. Carried-forward rows keep
-    # their original scraped_at, so a stale chain is never presented as fresh.
-    malls_df["scraped_at"] = run_date
-    stores_df["scraped_at"] = run_date
-    if prev_malls is not None and chain != "all":
-        malls_df = pd.concat([prev_malls[~prev_malls["chain"].isin(chains)], malls_df])
-        stores_df = pd.concat([prev_stores[~prev_stores["chain"].isin(chains)], stores_df])
-
-    out = storage.processed_dir(run_date)
-    storage.write_table(malls_df, out, "malls")
-    storage.write_table(stores_df, out, "stores")
-    storage.update_latest(run_date)
-
-    print("\n" + validate.build_report(run_date, malls_df, stores_df, warnings))
-
-
-@app.command()
-def analyze(date: str = typer.Option(None, help="snapshot date, default newest")):
-    """Build brand-presence analysis tables from a snapshot."""
-    run_date = date or storage.latest_usable_run()
-    if run_date is None:
-        raise SystemExit("no usable snapshot found — run `mallscape scrape` first")
-    tables = analyze_mod.build_tables(run_date)
-    analyze_mod.print_headlines(tables)
-    print(f"\nTables written to data/processed/{run_date}/ (and data/latest/)")
+    run_date = date or storage.today()
+    scrape_stage.run(chains, run_date, rate)
+    storage.publish_latest(run_date)
 
 
 @app.command()
 def clean(date: str = typer.Option(None, help="snapshot date, default newest usable")):
-    """Stage 2 - standardize listings into stores_clean.* (non-destructive)."""
-    run_date = date or storage.latest_usable_run()
-    if run_date is None:
-        raise SystemExit("no usable snapshot found - run `mallscape scrape` first")
-    stores = storage.read_table(run_date, "stores")
-    cleaned = clean_mod.build(stores)
-    out = storage.processed_dir(run_date)
-    storage.write_table(cleaned, out, "stores_clean")
-    storage.write_table(clean_mod.category_mapping(stores), out, "category_mapping")
-
-    flagged = (cleaned["dq_flags"] != "").sum()
-    print(f"cleaned {len(cleaned):,} listings -> {out}/stores_clean.parquet")
-    print(f"  brands: {cleaned.brand_key.nunique():,} distinct")
-    print(f"  categories mapped: {(cleaned.category_std != 'unknown').mean():.1%}")
-    print(f"  floors with a numeric level: {cleaned.floor_level.notna().mean():.1%}")
-    print(f"  rows carrying a dq flag: {flagged:,} ({flagged/len(cleaned):.1%})")
+    """Stage 2. Standardize listings without modifying stage 1 output."""
+    run_date = _resolve(date)
+    clean_stage.run(run_date)
+    storage.publish_latest(run_date)
 
 
 @app.command()
 def report(date: str = typer.Option(None, help="snapshot date, default newest usable")):
-    """Write a deterministic breakdown of a snapshot to breakdown.md."""
-    run_date = date or storage.latest_usable_run()
-    if run_date is None:
-        raise SystemExit("no usable snapshot found — run `mallscape scrape` first")
-    path = report_mod.write(run_date)
-    print(f"wrote {path}")
+    """Stage 3. Build brand analysis tables and the breakdown document."""
+    run_date = _resolve(date)
+    report_stage.run(run_date)
+    storage.publish_latest(run_date)
 
 
 @app.command()
-def website(date: str = typer.Option(None, help="snapshot date, default newest usable")):
-    """Stage 4 - build the self-contained static site."""
-    run_date = date or storage.latest_usable_run()
-    if run_date is None:
-        raise SystemExit("no usable snapshot found - run `mallscape scrape` first")
-    print(f"wrote {website_mod.write(run_date)}")
+def website(
+    date: str = typer.Option(None, help="snapshot date, default newest usable"),
+    serve: bool = typer.Option(False, "--serve", help="serve the site after building"),
+    port: int = typer.Option(3000, help="port used by --serve"),
+):
+    """Stage 4. Build the static site, optionally serving it."""
+    run_date = _resolve(date)
+    website_stage.run(run_date)
+    storage.publish_latest(run_date)
+    if serve:
+        website_stage.serve(port)
+
+
+@app.command()
+def build(date: str = typer.Option(None, help="snapshot date, default newest usable")):
+    """Run stages 2 through 4 over an existing scrape."""
+    run_date = _resolve(date)
+    clean_stage.run(run_date)
+    report_stage.run(run_date, quiet=True)
+    website_stage.run(run_date)
+    storage.publish_latest(run_date)
+    print(f"\n[build] stages 2-4 complete for {run_date}")
 
 
 if __name__ == "__main__":

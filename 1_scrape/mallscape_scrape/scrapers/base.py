@@ -3,15 +3,16 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import ClassVar
 
-from mallscape_scrape.fetch import Fetcher
 from mallscape_core.models import Mall, Store
+from mallscape_scrape.fetch import Fetcher
 
 
 class MallChainScraper(ABC):
     chain: str  # short id, e.g. "sm"
     # extra HTTP headers this chain's endpoints require (e.g. CORS Origin)
-    extra_headers: dict[str, str] = {}
+    extra_headers: ClassVar[dict[str, str]] = {}
 
     def __init__(self, fetcher: Fetcher):
         self.fetcher = fetcher

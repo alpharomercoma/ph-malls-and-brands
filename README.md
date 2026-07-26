@@ -1,120 +1,159 @@
-# mallscape
+# Philippine Mall Explorer
 
-Recurring scraper and brand-presence dataset for Philippine mall directories.
-**328 properties · 42,412 store listings · 12 operators**, refreshed on a
-schedule and diffed against the previous run.
+A reproducible dataset of what is inside Philippine malls, and a site for
+exploring it.
+
+**328 properties, 42,412 store listings, 11,660 brands, 12 operators.**
 
 | | |
 |---|---|
-| Data | [`data/processed/2026-07-26/`](data/processed/2026-07-26/) — committed, see [docs/DATA.md](docs/DATA.md) |
-| Site | [`4_website/site/index.html`](4_website/site/index.html) — generated, self-contained |
-| Breakdown | [`breakdown.md`](data/processed/2026-07-26/breakdown.md) — every chain and property |
+| Explore | `make dev`, then <http://localhost:3000> |
+| Data | [`data/snapshots/2026-07-26/`](data/snapshots/2026-07-26/) |
+| Breakdown | [`breakdown.md`](data/snapshots/2026-07-26/3_report/breakdown.md) |
 | Design | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
-| Hard-won lessons | [docs/PITFALLS.md](docs/PITFALLS.md) |
+| Mistakes worth not repeating | [docs/PITFALLS.md](docs/PITFALLS.md) |
 
-## Pipeline
-
-```
-1_scrape/   ->  2_clean/   ->  3_report/   ->  4_website/
-raw HTML        standardize    analysis +      self-contained
-& JSON          & normalize    breakdown       static site
-```
+## Just run it
 
 ```bash
-uv sync
-uv run mallscape scrape     # 1 - all chains (~25 min cold; seconds from cache)
-uv run mallscape clean      # 2 - stores_clean.* (non-destructive)
-uv run mallscape analyze    # 3 - brand-presence tables
-uv run mallscape report     # 3 - deterministic breakdown -> breakdown.md
-uv run mallscape website    # 4 - static site -> 4_website/site/index.html
-uv run pytest               # 43 offline regression tests
+make setup   # dependencies, plus the browser used by end-to-end tests
+make all     # stages 2 to 4 over the committed snapshot
+make dev     # serve the site on http://localhost:3000
 ```
 
-Each stage folder holds one Python package (`mallscape_scrape`, `mallscape_clean`,
-`mallscape_report`, `mallscape_website`), with shared models and snapshot I/O in
-`common/mallscape_core`. **Stage N may import stages below it and the core,
-never the reverse** - the dependency direction is the pipeline direction.
+The snapshot is committed, so nothing above touches the network. `make scrape`
+re-fetches from the operators and is the only slow step.
 
-Stage 2 is strictly additive: it reads `stores.parquet` and writes
-`stores_clean.parquet` beside it. Raw values are never overwritten, and any
-value that could not be normalized confidently is kept as-is and flagged in
-`dq_flags` rather than coerced.
+## Follow it step by step
 
-Re-run monthly or weekly. Each run writes a dated snapshot, diffs itself
-against the previous one, and reports anomalies.
+The pipeline is four stages. Each reads the stage before it and writes only its
+own directory, so lineage is visible on disk and any stage can be rerun alone.
 
-## Chains
+```
+1_scrape  ->  2_clean  ->  3_report  ->  4_website
+```
 
-| chain | properties | malls | listings | source |
-|---|---:|---:|---:|---|
-| sm | 126 | 101 | 19,640 | JSON API |
-| robinsons | 54 | 54 | 8,392 | Drupal HTML + Google Sites fallback |
-| ayala | 32 | 32 | 5,640 | explore-v2 JSON API |
-| megaworld | 26 | 26 | 2,118 | Contentstack headless CMS |
-| waltermart | 46 | 46 | 1,497 | server-rendered HTML |
-| ortigas | 4 | 4 | 1,279 | Laravel/Inertia embedded JSON |
-| xentro | 19 | 19 | 1,006 | server-rendered HTML |
-| filinvest | 5 | 5 | 956 | server-rendered table |
-| gmall | 6 | 6 | 944 | server-rendered DataTable |
-| fishermall | 2 | 2 | 342 | HTML fragment endpoint |
-| araneta | 4 | 4 | 319 | server-rendered HTML |
-| starmall | 4 | 4 | 279 | Elementor JSON-escaped blob |
+### 1. Scrape
 
-`malls` excludes non-mall retail (condo podiums, amusement parks, office
-annexes). **Filter to `property_type == "mall"` before comparing chains.**
+```bash
+uv run mallscape scrape              # every operator
+uv run mallscape scrape --chain sm   # or one
+```
 
-Per-chain scraping notes — endpoints, gotchas, dead domains — live in each
-module's docstring under `1_scrape/mallscape_scrape/scrapers/`.
+Writes `data/snapshots/<date>/1_scrape/`: `malls`, `stores`, and a run report
+that diffs against the previous snapshot. Store names are recorded verbatim;
+nothing interpretive happens here. Full details in [1_scrape/README.md](1_scrape/README.md).
+
+Cold, this is about 3,000 requests over 25 minutes. Responses are cached, so
+re-parsing is free and offline.
+
+### 2. Clean
+
+```bash
+uv run mallscape clean
+```
+
+Writes `data/snapshots/<date>/2_clean/stores_clean.*`, which keeps every raw
+column and adds normalized ones: display name, brand key, a ten-bucket category
+harmonized from 101 operator-specific strings, floor label and numeric level,
+phone in `+63` form, and quality flags.
+
+Values that cannot be normalized confidently are kept raw and flagged rather
+than coerced. See [2_clean/README.md](2_clean/README.md).
+
+### 3. Report
+
+```bash
+uv run mallscape report
+```
+
+Writes analysis tables and `breakdown.md`, which is byte identical for the same
+snapshot. A diff in the report always means a diff in the data. See
+[3_report/README.md](3_report/README.md).
+
+### 4. Website
+
+```bash
+uv run mallscape website --serve     # http://localhost:3000
+```
+
+Writes a content hashed JSON bundle next to a checked-in page. The list is
+virtualized, search is instant, and every value is written as text rather than
+markup. See [4_website/README.md](4_website/README.md).
+
+## Operators covered
+
+| operator | properties | malls | listings |
+|---|---:|---:|---:|
+| SM Supermalls | 126 | 101 | 19,640 |
+| Robinsons Malls | 54 | 54 | 8,392 |
+| Ayala Malls | 32 | 32 | 5,640 |
+| Megaworld Lifestyle Malls | 26 | 26 | 2,118 |
+| WalterMart | 46 | 46 | 1,497 |
+| Ortigas Land | 4 | 4 | 1,279 |
+| XentroMalls | 19 | 19 | 1,006 |
+| Filinvest Malls | 5 | 5 | 956 |
+| GMall (DSG Sons) | 6 | 6 | 944 |
+| Fisher Mall | 2 | 2 | 342 |
+| Araneta City | 4 | 4 | 319 |
+| Starmall | 4 | 4 | 279 |
+
+`malls` excludes non-mall retail such as condo podiums, amusement parks and
+office annexes. Compare operators on that column, not on `properties`.
 
 ## Coverage is verified, not assumed
 
-Each operator's own website is an incomplete view of its portfolio, so the
-roster is checked against corporate disclosures:
+Each operator's website is an incomplete view of its own portfolio, so rosters
+are checked against corporate disclosures. SM publishes 126 properties but
+around 90 malls. Robinsons reported 57 malls while their site lists 54. Ayala's
+API exposes 32 of roughly 46 properties, missing Arca South and Evo City
+entirely.
 
-| chain | operator's own count | we scrape | the gap |
-|---|---|---|---|
-| SM | ~80–90 malls (SM Prime) | 126 properties, 101 malls | the rest are SMDC podiums, Sky Ranch parks, office annexes |
-| Robinsons | 57 malls (RLC, end-2025) | 54 properties | 7 Townville community malls + The Mall @ NUSTAR publish no directory |
-| Ayala | ~46 properties | 32 | Arca South (2026), Evo City (2025) and ~12 strips are absent from Ayala's own API |
-| GMall | 6 branches | 6 | Cebu and GenSan publish no tenant rows |
+Ten operators were investigated and deliberately not scraped, including Vista
+Malls, CityMall, Gaisano Grand and Puregold. Every gap is recorded as data in
+`1_scrape/mallscape_scrape/registry/`, is re-reported on each run, and appears
+in `breakdown.md` with the evidence.
 
-Known gaps are **data**, not footnotes: `1_scrape/mallscape_scrape/registry/*_coverage.json`
-records each one with its evidence, and every run re-reports them — including
-the good case, where a previously missing mall appears upstream and should be
-promoted out of the registry.
+## Accuracy limits
 
-Operators investigated and deliberately **not** scraped — Vista Malls, Primark,
-CityMall, Gaisano Grand, Gaisano Capital, LCC, NCCC, LTS, Shangri-La Plaza,
-Puregold — are in `registry/unscraped_chains.json` with the finding and
-re-check criteria for each. `breakdown.md` reproduces this in full.
+- **WalterMart totals are a floor.** Its category pages cap at 10 tenants
+  server side and no parameter lifts the cap.
+- **Ayala listing counts run about 7 percent high.** Its API returns duplicate
+  merchant rows with no distinguishing fields. Brand presence is unaffected.
+- **Roughly 27 percent of listings carry no usable category upstream** and are
+  reported as `unknown` rather than being guessed.
 
-## Accuracy limits worth knowing
+## Configuration
 
-- **WalterMart totals are a floor.** Category pages cap at 10 tenants server-side
-  and no parameter lifts it. Capped categories emit a warning per run.
-- **Ayala listing counts run ~7% high** — their API returns duplicate
-  `(mall, merchant)` pairs with no distinguishing fields. Brand presence is
-  unaffected.
-- **Category vocabularies are per-chain in stage 1** (101 distinct strings) and
-  harmonized into 10 canonical buckets by stage 2. Use `category_std` from
-  `stores_clean`, not the raw `category`. About 27% of listings carry no usable
-  category upstream and land in `unknown`.
+Every operational value reads from the environment with a working default, so
+the pipeline runs with nothing set. Copy `.env.example` only to change
+something. An invalid value fails immediately and names itself rather than
+being ignored.
+
+## Tests
+
+```bash
+make check   # lint, unit, integration
+make e2e     # drives the built site in a real browser
+```
+
+| layer | what it protects |
+|---|---|
+| lint | style and dead code, via ruff |
+| unit | parsers against frozen fixtures, with exact expected counts |
+| integration | the handoff between stages, including carry-forward and schema |
+| end to end | the built site: bundle validity, search, virtualization, mobile layout, no script errors |
 
 ## Etiquette
 
-Rate-limited (3 req/s default), exponential backoff, identifying user-agent,
-and a response cache so parser work never re-hits the sites. SM's WAF issues a
-temporary domain-wide 403 after roughly 1,500–2,000 requests in a session; it
-lifts on its own and the fetcher retries with long backoff. Prefer
-`--rate 1.5` for SM.
+Rate limited to 3 requests per second with backoff and an identifying user
+agent, and every response cached so parser work never re-hits a site.
 
 ## Open items
 
-- `region` is null for all Megaworld (26) and XentroMall (19) properties.
-  Megaworld has addresses for all 26 and `ayala.derive_region()` would resolve
-  them; it simply is not called. XentroMall parses no address at all.
-- `property_type` is classified only for SM, so XentroMall's
-  `sta-ana-public-market` currently compares against SM malls as a peer.
-- `megaworld._entries()` loops without a page guard, unlike `sm.MAX_PAGES`.
+- `region` is null for all Megaworld and XentroMall properties. Megaworld has
+  addresses that `derive_region()` would resolve; it is simply not called.
+- `property_type` is classified only for SM, so XentroMall's public market
+  currently compares against SM malls as a peer.
 - Gaisano Capital, LCC Group and NCCC are blocked or unconfirmed rather than
-  proven directory-less; each needs a browser session.
+  proven directory-less. Each needs a browser session.

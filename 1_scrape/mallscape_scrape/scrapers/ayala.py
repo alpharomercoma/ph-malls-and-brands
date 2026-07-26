@@ -21,9 +21,10 @@ SM and Robinsons region buckets. No floor/level data is exposed by this API
 from __future__ import annotations
 
 import re
+from typing import ClassVar
 
-from mallscape_scrape import coverage
 from mallscape_core.models import Mall, Store
+from mallscape_scrape import coverage
 from mallscape_scrape.scrapers.base import MallChainScraper
 
 API = "https://api.ayalamalls.com/api/explore-v2/"
@@ -93,7 +94,7 @@ def derive_region(text: str, lat: float | None, lon: float | None) -> str | None
 class AyalaScraper(MallChainScraper):
     chain = "ayala"
     # the API rejects requests without a matching site origin
-    extra_headers = {
+    extra_headers: ClassVar[dict[str, str]] = {
         "Origin": "https://www.ayalamalls.com",
         "Referer": "https://www.ayalamalls.com/",
     }
@@ -163,6 +164,6 @@ class AyalaScraper(MallChainScraper):
         if not rows and mall.extra.get("explore_enabled") is False:
             self.warn(
                 f"{mall.mall_id}: no directory published (mall has explore=false "
-                f"in Ayala's API — genuinely absent upstream, not a parse failure)"
+                f"in Ayala's API - genuinely absent upstream, not a parse failure)"
             )
         return stores

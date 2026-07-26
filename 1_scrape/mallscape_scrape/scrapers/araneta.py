@@ -7,15 +7,15 @@
       <a href="/establishment/478"> <img alt="HANDYMAN"> </a>
       <div class="caption"><h4>HANDYMAN</h4><p>LGF</p></div>
 
-The ``<p>`` under the caption is the floor code (LGF/UGF/2F/…). There is no
-pagination — the "pagination" token in the page belongs to a Swiper carousel
+The ``<p>`` under the caption is the floor code (LGF/UGF/2F/...). There is no
+pagination - the "pagination" token in the page belongs to a Swiper carousel
 config, not the directory.
 
 Araneta City is one operator running several adjacent venues in Cubao. The
 four shopping malls are scraped as ``property_type="mall"``; the remaining
 retail venues in the complex (Farmers Market, the Cyberpark towers, Shopwise,
 the New Frontier Theater and Fiesta Carnival arcades) are listed in
-``registry/araneta_coverage.json`` — they are office/market/arcade retail
+``registry/araneta_coverage.json`` - they are office/market/arcade retail
 rather than malls.
 """
 
@@ -30,7 +30,7 @@ from mallscape_scrape.scrapers.base import MallChainScraper
 
 BASE = "https://aranetacity.com"
 
-# non-mall Araneta City venues, documented in registry/araneta_coverage.json —
+# non-mall Araneta City venues, documented in registry/araneta_coverage.json -
 # listed here so the roster check does not re-flag them every run
 _NON_MALL_VENUES = {
     "farmers-market", "gateway-tower-shop", "cyberpark-tower-1",
@@ -76,13 +76,13 @@ class AranetaScraper(MallChainScraper):
             return
         live = set(re.findall(r'href="/shopping/([a-z0-9-]+)"', html))
         if not live:
-            self.warn("roster check found no /shopping/ links — markup may have changed")
+            self.warn("roster check found no /shopping/ links - markup may have changed")
             return
         known = set(MALLS) | set(_NON_MALL_VENUES)
         new = sorted(live - known)
         if new:
             self.warn(
-                f"NEW Araneta venue(s) not classified: {new} — add to MALLS in "
+                f"NEW Araneta venue(s) not classified: {new} - add to MALLS in "
                 f"araneta.py or to registry/araneta_coverage.json"
             )
 
@@ -111,5 +111,5 @@ class AranetaScraper(MallChainScraper):
                 )
             )
         if not stores:
-            self.warn(f"{mall.mall_id}: no gallery-item tenants found — markup may have changed")
+            self.warn(f"{mall.mall_id}: no gallery-item tenants found - markup may have changed")
         return stores

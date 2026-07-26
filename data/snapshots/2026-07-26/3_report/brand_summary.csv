@@ -229,7 +229,7 @@ beautederm,0,3,0,0,0,0,0,6,22,0,0,0,31,3,False,True,BEAUTEDERM
 healthy options,0,13,1,0,0,2,1,1,13,0,0,0,31,6,False,True,HEALTHY OPTIONS
 imono,2,0,1,2,0,1,0,4,21,0,0,0,31,6,False,True,IMONO
 ramen kuroda,0,6,1,0,0,4,0,2,18,0,0,0,31,5,False,True,RAMEN KURODA
-gerrys grill,0,11,1,1,0,3,1,14,0,0,0,0,31,6,False,True,Gerry's Grill
+gerrys grill,0,11,1,1,0,3,1,14,0,0,0,0,31,6,False,True,GERRY'S GRILL
 converse,1,12,1,0,3,4,1,7,2,0,0,0,31,8,False,True,Converse
 gerrys restaurant,0,0,0,0,0,0,0,0,31,0,0,0,31,1,False,False,GERRY'S RESTAURANT
 fully booked,1,9,0,0,0,1,1,0,19,0,0,0,31,5,False,True,FULLY BOOKED
@@ -566,7 +566,7 @@ smart gadget,0,0,0,0,0,0,0,2,11,0,0,0,13,2,False,True,SMART GADGET
 joyroom,0,0,0,0,0,0,0,1,12,0,0,0,13,2,False,True,JOYROOM
 julies bakeshop,0,1,1,0,0,0,0,6,4,0,1,0,13,5,False,True,Julie's Bakeshop
 fossil,0,4,1,0,0,0,0,1,7,0,0,0,13,4,False,True,FOSSIL
-samgyupsalamat,0,1,1,1,0,3,0,2,4,0,0,0,12,6,False,True,Samgyupsalamat
+samgyupsalamat,0,1,1,1,0,3,0,2,4,0,0,0,12,6,False,True,SAMGYUPSALAMAT
 sams everything on sticks,0,3,0,0,0,0,0,4,5,0,0,0,12,3,False,True,SAMS EVERYTHING ON STICKS
 samsonite,0,5,0,0,0,1,0,1,5,0,0,0,12,4,False,True,SAMSONITE
 nubia,0,0,1,0,0,0,0,3,8,0,0,0,12,3,False,True,NUBIA
@@ -680,7 +680,7 @@ pnb,0,0,1,1,2,2,1,3,0,0,0,0,10,6,False,True,PNB
 perry ellis,0,4,1,0,0,0,0,2,3,0,0,0,10,4,False,True,PERRY ELLIS
 jewelrich,0,0,0,0,2,0,0,1,1,1,0,5,10,5,False,True,JEWELRICH
 charriol,0,5,0,0,0,1,1,2,1,0,0,0,10,5,False,True,CHARRIOL
-beauche,0,0,0,1,0,0,0,6,0,0,1,2,10,4,False,True,BEAUCHE
+beauche,0,0,0,1,0,0,0,6,0,0,1,2,10,4,False,True,Beauche
 j co donuts and coffee,0,10,0,0,0,0,0,0,0,0,0,0,10,1,False,False,J. CO DONUTS AND COFFEE
 healthy lemon,0,0,1,0,0,1,0,5,3,0,0,0,10,4,False,True,HEALTHY LEMON
 pacsafe,0,3,0,0,0,0,0,1,6,0,0,0,10,3,False,True,PACSAFE
@@ -723,7 +723,7 @@ aqua mineral,1,1,1,0,0,0,0,2,4,0,0,0,9,5,False,True,AQUA MINERAL
 edamama,0,5,0,0,0,1,0,3,0,0,0,0,9,3,False,True,EDAMAMA
 kamay kainan,0,1,0,0,0,0,0,2,6,0,0,0,9,3,False,True,KAMAY KAINAN
 sports barbers,0,0,0,0,0,0,0,1,8,0,0,0,9,2,False,True,SPORTS BARBERS
-crisostomo,0,4,0,0,0,2,1,2,0,0,0,0,9,4,False,True,Crisostomo
+crisostomo,0,4,0,0,0,2,1,2,0,0,0,0,9,4,False,True,CRISOSTOMO
 apartment 8,0,8,0,0,0,0,1,0,0,0,0,0,9,2,False,True,APARTMENT 8
 scent for senses,1,1,0,0,0,1,0,1,5,0,0,0,9,5,False,True,SCENT FOR SENSES
 rcbc atm,0,0,0,0,1,4,0,0,0,0,0,4,9,3,False,True,RCBC ATM
@@ -788,7 +788,7 @@ mothercare,0,5,0,0,0,1,0,0,2,0,0,0,8,3,False,True,MOTHERCARE
 government services express,0,0,0,0,0,0,0,0,8,0,0,0,8,1,False,False,GOVERNMENT SERVICES EXPRESS
 healthway medical,0,8,0,0,0,0,0,0,0,0,0,0,8,1,False,False,HEALTHWAY MEDICAL
 champion,0,4,0,0,0,0,0,0,4,0,0,0,8,2,False,True,CHAMPION
-lots a pizza,0,1,0,2,0,0,1,2,1,0,0,1,8,6,False,True,Lots A Pizza
+lots a pizza,0,1,0,2,0,0,1,2,1,0,0,1,8,6,False,True,LOT'S A PIZZA
 8telcom,0,2,0,0,1,0,0,0,5,0,0,0,8,3,False,True,8TELCOM
 fixifoot,0,6,0,0,0,1,0,1,0,0,0,0,8,3,False,True,FIXIFOOT
 nespresso,0,5,0,0,0,0,0,1,2,0,0,0,8,3,False,True,NESPRESSO
@@ -796,7 +796,7 @@ chef tonys popcorn,0,0,0,0,0,0,0,0,8,0,0,0,8,1,False,False,CHEF TONYS POPCORN
 hq barbershop,0,0,1,0,0,2,1,0,4,0,0,0,8,4,False,True,HQ BARBERSHOP
 beauty bar,0,4,0,0,0,1,0,2,1,0,0,0,8,4,False,True,BEAUTY BAR
 palawan express,0,2,1,0,1,4,0,0,0,0,0,0,8,4,False,True,Palawan Express
-sandugo,1,0,0,1,0,0,0,3,0,1,0,2,8,5,False,True,SANDUGO
+sandugo,1,0,0,1,0,0,0,3,0,1,0,2,8,5,False,True,Sandugo
 rrj,0,0,0,2,1,0,0,3,0,0,1,1,8,5,False,True,RRJ
 shrimp bucket,0,6,0,0,0,1,1,0,0,0,0,0,8,3,False,True,SHRIMP BUCKET
 nail tropics,0,5,1,0,0,1,0,1,0,0,0,0,8,4,False,True,NAIL TROPICS
@@ -810,7 +810,7 @@ dr james dental clinic,0,0,0,0,0,0,0,0,1,0,7,0,8,2,False,True,Dr. James Dental C
 nail addik by creative nails,0,1,0,0,0,0,0,0,7,0,0,0,8,2,False,True,NAIL ADDIK BY CREATIVE NAILS
 shi lin,0,5,0,0,0,1,1,0,1,0,0,0,8,4,False,True,SHI LIN
 cybertech,0,1,0,0,0,0,0,2,5,0,0,0,8,3,False,True,CYBERTECH
-tokyo milk cheese factory,0,2,0,0,0,2,0,2,2,0,0,0,8,4,False,True,Tokyo Milk Cheese Factory
+tokyo milk cheese factory,0,2,0,0,0,2,0,2,2,0,0,0,8,4,False,True,TOKYO MILK CHEESE FACTORY
 techknow,0,0,1,0,0,0,0,0,7,0,0,0,8,2,False,True,TECHKNOW
 tim hortons,0,0,0,0,0,3,0,0,5,0,0,0,8,2,False,True,TIM HORTONS
 choobi choobi,0,1,0,0,0,1,0,2,4,0,0,0,8,4,False,True,CHOOBI CHOOBI
@@ -866,7 +866,7 @@ jamaican pattie,0,0,1,2,0,0,1,3,0,0,0,0,7,4,False,True,Jamaican Pattie
 chix inasal,0,0,0,0,0,0,0,2,5,0,0,0,7,2,False,True,CHIX INASAL
 paper moon,0,3,0,0,0,0,0,0,4,0,0,0,7,2,False,True,PAPER MOON
 fred perry,0,4,0,0,0,1,0,1,1,0,0,0,7,4,False,True,FRED PERRY
-shake shack,0,1,0,0,0,0,2,1,3,0,0,0,7,4,False,True,Shake Shack
+shake shack,0,1,0,0,0,0,2,1,3,0,0,0,7,4,False,True,SHAKE SHACK
 steak break,0,2,1,0,0,0,0,1,3,0,0,0,7,4,False,True,STEAK BREAK
 calvin klein,0,4,0,0,0,0,1,1,1,0,0,0,7,4,False,True,CALVIN KLEIN
 mietubl,0,0,0,0,0,0,0,1,6,0,0,0,7,2,False,True,MIETUBL
@@ -999,7 +999,7 @@ healthy smile for kids,0,0,0,0,0,0,0,0,6,0,0,0,6,1,False,False,HEALTHY SMILE FOR
 fiftea,0,1,0,0,1,0,0,1,3,0,0,0,6,4,False,True,FIFTEA
 phonix cellular,0,0,0,0,0,0,0,0,6,0,0,0,6,1,False,False,PHONIX CELLULAR
 all about lemon,0,0,0,1,0,0,0,0,4,0,1,0,6,3,False,True,ALL ABOUT LEMON
-zamin foreign exchange,0,3,0,0,0,1,0,2,0,0,0,0,6,3,False,True,Zamin Foreign Exchange
+zamin foreign exchange,0,3,0,0,0,1,0,2,0,0,0,0,6,3,False,True,ZAMIN FOREIGN EXCHANGE
 play telecom,0,0,0,0,0,0,0,4,2,0,0,0,6,2,False,True,Play Telecom
 dell,0,0,0,0,2,0,0,0,4,0,0,0,6,2,False,True,DELL
 famous amos,0,1,0,0,0,0,0,2,3,0,0,0,6,3,False,True,FAMOUS AMOS
@@ -1075,12 +1075,12 @@ chinabank,0,0,0,0,0,2,2,1,0,0,0,1,6,4,False,True,Chinabank
 koomi,0,0,0,1,0,0,0,2,3,0,0,0,6,3,False,True,KOOMI
 art bar,0,2,0,0,0,0,0,1,3,0,0,0,6,3,False,True,ART BAR
 waki,0,0,0,0,0,1,0,1,4,0,0,0,6,3,False,True,WAKI
-art circle gallery,0,1,1,0,0,1,0,1,2,0,0,0,6,5,False,True,Art Circle Gallery
+art circle gallery,0,1,1,0,0,1,0,1,2,0,0,0,6,5,False,True,ART CIRCLE GALLERY
 fox,0,1,0,0,0,0,0,1,4,0,0,0,6,3,False,True,FOX
 victory christian fellowship,0,2,2,0,0,0,0,2,0,0,0,0,6,3,False,True,VICTORY CHRISTIAN FELLOWSHIP
 strom mobile gadgets,0,0,0,0,0,0,0,0,6,0,0,0,6,1,False,False,STROM MOBILE GADGETS
 hannahs cake decors party needs,0,0,0,0,0,0,0,0,6,0,0,0,6,1,False,False,HANNAHS CAKE DECORS PARTY NEEDS
-nokia,0,0,0,0,2,0,0,0,3,0,1,0,6,3,False,True,NOKIA
+nokia,0,0,0,0,2,0,0,0,3,0,1,0,6,3,False,True,Nokia
 eastwest bank,0,0,2,0,1,1,1,0,0,0,1,0,6,5,False,True,EastWest Bank
 nail a holics,0,0,1,0,0,3,0,2,0,0,0,0,6,3,False,True,Nail-A-Holics
 quiksilver,0,0,0,0,0,0,0,0,6,0,0,0,6,1,False,False,QUIKSILVER
@@ -1090,7 +1090,7 @@ midas bag shoe and leather spa,0,1,0,0,0,0,0,0,5,0,0,0,6,2,False,True,MIDAS BAG 
 starbucks reserve,0,2,0,0,0,0,1,0,3,0,0,0,6,3,False,True,STARBUCKS RESERVE
 sunnies flask,0,4,1,0,0,0,0,0,1,0,0,0,6,3,False,True,SUNNIES FLASK
 oro galleria center,0,2,0,0,0,1,0,0,3,0,0,0,6,3,False,True,ORO GALLERIA CENTER
-gerrys,0,0,0,0,0,1,0,4,1,0,0,0,6,3,False,True,GERRY'S
+gerrys,0,0,0,0,0,1,0,4,1,0,0,0,6,3,False,True,Gerry's
 t&j salon,0,0,0,0,0,3,0,2,0,0,1,0,6,3,False,True,T&J Salon
 vacant,0,0,0,0,0,0,0,0,0,0,0,6,6,1,False,False,VACANT
 banapple,0,0,0,0,0,0,0,0,6,0,0,0,6,1,False,False,BANAPPLE
@@ -1128,7 +1128,7 @@ lawson,0,0,0,0,0,6,0,0,0,0,0,0,6,1,False,False,Lawson
 vibes massage services,0,0,0,0,0,0,0,0,3,0,2,0,5,2,False,True,VIBES MASSAGE SERVICES
 stylash eyelash salon,0,0,0,0,0,0,0,0,5,0,0,0,5,1,False,False,STYLASH EYELASH SALON
 i do nails,0,1,0,0,0,2,1,1,0,0,0,0,5,4,False,True,I Do Nails
-gamextreme,0,0,0,0,0,2,1,1,1,0,0,0,5,4,False,True,GAMEXTREME
+gamextreme,0,0,0,0,0,2,1,1,1,0,0,0,5,4,False,True,Gamextreme
 dimsum break,0,0,0,0,0,0,0,1,4,0,0,0,5,2,False,True,DIMSUM BREAK
 gnc live well,0,0,0,0,0,0,0,0,5,0,0,0,5,1,False,False,GNC LIVE WELL
 canon,0,0,0,0,0,0,1,0,4,0,0,0,5,2,False,True,CANON
@@ -1187,7 +1187,7 @@ eo premier,0,1,1,0,0,0,0,0,3,0,0,0,5,3,False,True,EO PREMIER
 eo kids up,0,0,0,0,0,0,0,0,5,0,0,0,5,1,False,False,EO KIDS UP
 asian home appliance center,0,5,0,0,0,0,0,0,0,0,0,0,5,1,False,False,ASIAN HOME APPLIANCE CENTER
 cafe mediterranean,0,2,0,0,0,0,1,0,2,0,0,0,5,3,False,True,CAFE MEDITERRANEAN
-lemon hub,0,0,0,0,0,0,0,3,2,0,0,0,5,2,False,True,LEMON HUB
+lemon hub,0,0,0,0,0,0,0,3,2,0,0,0,5,2,False,True,Lemon Hub
 nutrition depot,0,1,0,0,0,0,0,0,4,0,0,0,5,2,False,True,NUTRITION DEPOT
 pinctada,0,0,1,0,0,0,0,0,4,0,0,0,5,2,False,True,PINCTADA
 rice in a box,0,0,0,0,0,0,0,3,0,1,0,1,5,3,False,True,RICE IN A BOX
@@ -1256,10 +1256,10 @@ timberland,0,1,0,0,0,0,0,0,4,0,0,0,5,2,False,True,TIMBERLAND
 sushi nori,0,2,0,0,0,0,0,0,3,0,0,0,5,2,False,True,SUSHI NORI
 amici,0,2,0,0,0,1,1,0,1,0,0,0,5,4,False,True,AMICI
 pritong manok,0,0,0,0,4,0,0,1,0,0,0,0,5,2,False,True,Pritong Manok
-farinas ilocos empanada,0,1,1,0,0,0,0,3,0,0,0,0,5,3,False,True,FARINAS ILOCOS EMPANADA
+farinas ilocos empanada,0,1,1,0,0,0,0,3,0,0,0,0,5,3,False,True,FARIÑAS ILOCOS EMPANADA
 d candy station,0,0,0,0,0,0,0,1,4,0,0,0,5,2,False,True,D CANDY STATION
 fantastic baka,0,0,0,0,0,0,0,0,5,0,0,0,5,1,False,False,FANTASTIC BAKA
-mr pluffy,0,0,0,0,0,0,0,4,0,0,0,1,5,2,False,True,Mr. Pluffy
+mr pluffy,0,0,0,0,0,0,0,4,0,0,0,1,5,2,False,True,MR. PLUFFY
 karaoke hub,0,0,0,0,0,0,0,1,4,0,0,0,5,2,False,True,KARAOKE HUB
 dot coffee,0,0,0,0,0,3,0,1,1,0,0,0,5,3,False,True,Dot Coffee
 instamp,0,0,0,0,0,0,0,1,4,0,0,0,5,2,False,True,INSTAMP
@@ -1464,7 +1464,7 @@ extreme bingo,0,1,0,0,0,0,0,0,3,0,0,0,4,2,False,True,EXTREME BINGO
 telefono,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,TELEFONO
 seafood paradise,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,SEAFOOD PARADISE
 slicktight,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,SLICKTIGHT
-sebago,1,1,1,0,0,0,0,0,1,0,0,0,4,4,False,True,SEBAGO
+sebago,1,1,1,0,0,0,0,0,1,0,0,0,4,4,False,True,Sebago
 tender juicy,0,0,0,0,0,0,0,4,0,0,0,0,4,1,False,False,TENDER JUICY
 sec helmet,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,SEC HELMET
 i sports,0,0,1,0,0,0,0,2,1,0,0,0,4,3,False,True,I SPORTS
@@ -1510,7 +1510,7 @@ fabric warehouse,0,1,0,0,0,0,1,0,2,0,0,0,4,3,False,True,FABRIC WAREHOUSE
 smb travel tours,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,SMB TRAVEL TOURS
 hour dee parfums,0,0,0,0,0,0,0,1,3,0,0,0,4,2,False,True,Hour Dee Parfums
 smart driving school,0,0,1,0,0,2,0,1,0,0,0,0,4,3,False,True,Smart Driving School
-reva,1,1,1,0,0,0,0,1,0,0,0,0,4,4,False,True,Reva
+reva,1,1,1,0,0,0,0,1,0,0,0,0,4,4,False,True,REVA
 titan,0,2,0,0,0,0,0,0,2,0,0,0,4,2,False,True,TITAN
 e es takuyaki,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,E ES TAKUYAKI
 whoops,0,0,0,0,0,0,0,1,3,0,0,0,4,2,False,True,WHOOPS
@@ -1522,7 +1522,7 @@ lush,0,4,0,0,0,0,0,0,0,0,0,0,4,1,False,False,LUSH
 bingo bonanza,0,0,0,0,0,0,0,2,2,0,0,0,4,2,False,True,BINGO BONANZA
 nail cocktales,0,0,1,0,0,0,0,2,0,0,0,1,4,3,False,True,Nail Cocktales
 advanced dentistry by dr james,0,0,1,0,0,0,0,0,3,0,0,0,4,2,False,True,ADVANCED DENTISTRY BY DR JAMES
-nail addik,0,0,0,0,0,1,0,3,0,0,0,0,4,2,False,True,NAIL ADDIK
+nail addik,0,0,0,0,0,1,0,3,0,0,0,0,4,2,False,True,Nail Addik
 american tourister,1,2,0,0,0,0,0,1,0,0,0,0,4,3,False,True,American Tourister
 passionails,0,1,1,0,0,0,1,0,1,0,0,0,4,4,False,True,PASSIONAILS
 mac cosmetics,0,0,0,0,0,3,0,1,0,0,0,0,4,2,False,True,MAC Cosmetics
@@ -1611,9 +1611,9 @@ basement salon,0,0,0,0,0,1,0,2,1,0,0,0,4,3,False,True,Basement Salon
 krispy krust,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,KRISPY KRUST
 barrio fiesta,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,BARRIO FIESTA
 barenaked,0,0,1,0,0,2,1,0,0,0,0,0,4,3,False,True,Barenaked
-uno factory outlet,0,0,0,0,0,0,0,0,0,0,2,2,4,2,False,True,UNO FACTORY OUTLET
+uno factory outlet,0,0,0,0,0,0,0,0,0,0,2,2,4,2,False,True,UNO Factory Outlet
 original boat noodle,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,THE ORIGINAL BOAT NOODLE
-b1t1 takeaway coffee,0,0,0,0,0,2,0,2,0,0,0,0,4,2,False,True,B1T1 TAKEAWAY COFFEE
+b1t1 takeaway coffee,0,0,0,0,0,2,0,2,0,0,0,0,4,2,False,True,B1T1 Takeaway Coffee
 lartizan,0,2,0,0,0,0,0,1,1,0,0,0,4,3,False,True,LARTIZAN
 loccitane,0,2,0,0,0,0,1,0,1,0,0,0,4,3,False,True,L'OCCITANE
 tylex,0,0,0,0,0,0,0,1,3,0,0,0,4,2,False,True,TYLEX
@@ -1636,7 +1636,7 @@ kimono ken,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,KIMONO KEN
 viptek,0,0,0,0,3,0,0,0,1,0,0,0,4,2,False,True,Viptek
 legion,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,LEGION
 villarica pawnshop,0,0,0,0,0,0,0,0,0,0,4,0,4,1,False,False,Villarica Pawnshop
-automatic centre,2,0,1,0,0,0,0,0,1,0,0,0,4,3,False,True,Automatic Centre
+automatic centre,2,0,1,0,0,0,0,0,1,0,0,0,4,3,False,True,AUTOMATIC CENTRE
 ucc coffee shop,0,0,0,0,0,4,0,0,0,0,0,0,4,1,False,False,UCC Coffee Shop
 khao khai,0,0,0,0,0,0,0,1,3,0,0,0,4,2,False,True,KHAO KHAI
 av surfer,0,3,0,0,0,0,0,1,0,0,0,0,4,2,False,True,AV SURFER
@@ -1658,7 +1658,7 @@ abe,0,2,0,0,0,1,0,0,1,0,0,0,4,3,False,True,ABE
 adobo connection,0,0,0,0,3,0,0,1,0,0,0,0,4,2,False,True,Adobo Connection
 isports,0,0,0,1,0,0,0,3,0,0,0,0,4,2,False,True,ISPORTS
 tita paring suman latik,0,1,0,0,0,0,0,0,3,0,0,0,4,2,False,True,TITA PARING SUMAN LATIK
-tj hotdog,0,0,0,1,0,0,1,1,0,0,0,1,4,4,False,True,TJ HOTDOG
+tj hotdog,0,0,0,1,0,0,1,1,0,0,0,1,4,4,False,True,TJ Hotdog
 ytelecom,0,1,0,0,1,0,0,0,2,0,0,0,4,3,False,True,YTELECOM
 brow lounge eyebrow grooming & waxing,0,4,0,0,0,0,0,0,0,0,0,0,4,1,False,False,BROW LOUNGE EYEBROW GROOMING & WAXING
 mobile blitz,0,0,0,0,0,0,0,1,3,0,0,0,4,2,False,True,MOBILE BLITZ
@@ -1676,7 +1676,7 @@ jacks lemonade,0,3,0,0,0,0,0,1,0,0,0,0,4,2,False,True,JACK'S LEMONADE
 maxs,0,0,1,0,0,0,2,1,0,0,0,0,4,3,False,True,Max's
 brow lounge,0,0,1,0,0,0,2,1,0,0,0,0,4,3,False,True,Brow Lounge
 a 1 driving school,0,4,0,0,0,0,0,0,0,0,0,0,4,1,False,False,A-1 DRIVING SCHOOL
-mixue,0,0,0,0,0,2,0,2,0,0,0,0,4,2,False,True,MIXUE
+mixue,0,0,0,0,0,2,0,2,0,0,0,0,4,2,False,True,Mixue
 acom consumer finance corp,0,0,0,0,0,0,0,0,0,0,4,0,4,1,False,False,ACOM Consumer Finance Corp
 jabra,0,0,0,0,0,0,0,0,4,0,0,0,4,1,False,False,JABRA
 merrymart grocery,1,3,0,0,0,0,0,0,0,0,0,0,4,2,False,True,MERRYMART GROCERY
@@ -1728,7 +1728,7 @@ statech,0,2,0,0,0,0,0,0,1,0,0,0,3,2,False,True,STATECH
 limon citrus juicery,0,0,0,0,0,1,0,0,2,0,0,0,3,2,False,True,LIMON CITRUS JUICERY
 waffle house,0,0,0,0,0,0,0,1,2,0,0,0,3,2,False,True,WAFFLE HOUSE
 lionesse,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,LIONESSE
-cookies by the bucket,0,0,0,0,0,1,0,2,0,0,0,0,3,2,False,True,Cookies By The Bucket
+cookies by the bucket,0,0,0,0,0,1,0,2,0,0,0,0,3,2,False,True,Cookies by the Bucket
 coolectzone,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,COOLECTZONE
 gigahertz,0,0,1,0,0,0,1,1,0,0,0,0,3,3,False,True,Gigahertz
 little farmers,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,LITTLE FARMERS
@@ -1775,10 +1775,10 @@ mitsubishi motors,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,MITSUBISHI MOTORS
 kusinang pinoy,0,0,0,0,0,0,0,1,2,0,0,0,3,2,False,True,KUSINANG PINOY
 sibyullee flavors of seoul,0,3,0,0,0,0,0,0,0,0,0,0,3,1,False,False,SIBYULLEE FLAVORS OF SEOUL
 siapno tada optical,0,0,0,0,0,0,0,1,2,0,0,0,3,2,False,True,SIAPNO-TADA OPTICAL
-razons,0,0,1,1,0,0,0,1,0,0,0,0,3,3,False,True,RAZON'S
+razons,0,0,1,1,0,0,0,1,0,0,0,0,3,3,False,True,Razons
 du hsiao yueh,0,0,1,0,0,0,1,0,1,0,0,0,3,3,False,True,Du Hsiao Yueh
 mitsubishi digital,0,0,0,0,3,0,0,0,0,0,0,0,3,1,False,False,Mitsubishi Digital
-kuya j,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,KUYA J
+kuya j,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,Kuya J
 oppo service center,0,1,1,0,0,0,0,0,1,0,0,0,3,3,False,True,OPPO SERVICE CENTER
 miutiso,0,2,1,0,0,0,0,0,0,0,0,0,3,2,False,True,MIUTISO
 balai pandesal,0,2,0,0,0,0,0,0,1,0,0,0,3,2,False,True,BALAI PANDESAL
@@ -1830,7 +1830,7 @@ clipdata computer center,0,0,0,0,0,0,0,2,1,0,0,0,3,2,False,True,CLIPDATA COMPUTE
 ojo signature kids,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,OJO SIGNATURE KIDS
 reli tours,0,0,0,0,0,1,0,0,2,0,0,0,3,2,False,True,RELI TOURS
 sit & relax,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,SIT & RELAX
-latt liv,0,0,0,0,1,0,0,2,0,0,0,0,3,2,False,True,LATT LIV
+latt liv,0,0,0,0,1,0,0,2,0,0,0,0,3,2,False,True,Latt Liv
 verzion,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,VERZION
 lavelier,0,1,0,0,0,1,0,0,1,0,0,0,3,3,False,True,LAVELIER
 renegade folk,0,2,0,0,0,1,0,0,0,0,0,0,3,2,False,True,RENEGADE FOLK
@@ -1942,7 +1942,7 @@ manila bankers life insurance corporation,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,Fals
 snowplus,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,Snowplus
 manila derm,0,3,0,0,0,0,0,0,0,0,0,0,3,1,False,False,MANILA DERM
 mos burger,0,2,0,0,0,0,0,1,0,0,0,0,3,2,False,True,MOS BURGER
-yi fang,0,0,0,0,0,0,1,2,0,0,0,0,3,2,False,True,YI FANG (0967 442 8345)
+yi fang,0,0,0,0,0,0,1,2,0,0,0,0,3,2,False,True,Yi Fang
 santouka,0,0,0,0,0,0,1,0,2,0,0,0,3,2,False,True,SANTOUKA
 fat seed cafe roastery,0,3,0,0,0,0,0,0,0,0,0,0,3,1,False,False,THE FAT SEED CAFE + ROASTERY
 fat bunny club,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,THE FAT BUNNY CLUB
@@ -2011,7 +2011,7 @@ ysl,0,0,0,0,0,1,0,2,0,0,0,0,3,2,False,True,YSL
 fone edge,0,0,0,0,0,0,0,1,2,0,0,0,3,2,False,True,FONE EDGE
 sports barber,0,2,0,0,0,0,0,1,0,0,0,0,3,2,False,True,SPORTS BARBER
 daily by bos coffee,0,0,0,0,0,2,0,0,1,0,0,0,3,2,False,True,Daily by Bo's Coffee
-spa wellness,0,0,0,0,0,0,1,1,1,0,0,0,3,3,False,True,THE SPA WELLNESS
+spa wellness,0,0,0,0,0,0,1,1,1,0,0,0,3,3,False,True,The Spa Wellness
 daily detox juices,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,DAILY DETOX JUICES
 spa,0,3,0,0,0,0,0,0,0,0,0,0,3,1,False,False,THE SPA
 everlove,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,EVERLOVE
@@ -2074,13 +2074,13 @@ japan homes,0,0,0,0,0,0,0,2,0,0,0,1,3,2,False,True,Japan Homes
 hezekiah r&n fashion,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,HEZEKIAH R&N FASHION
 tiger manju,0,1,0,0,0,0,0,0,2,0,0,0,3,2,False,True,TIGER MANJU
 tuf,0,1,0,0,0,0,0,0,2,0,0,0,3,2,False,True,TUF
-k egg,0,0,0,0,0,0,0,2,1,0,0,0,3,2,False,True,K-Egg
+k egg,0,0,0,0,0,0,0,2,1,0,0,0,3,2,False,True,K Egg
 potato corner xp,0,0,0,0,0,0,1,1,1,0,0,0,3,3,False,True,POTATO CORNER XP
 k line smile center,0,0,0,0,0,1,0,0,2,0,0,0,3,2,False,True,K LINE SMILE CENTER
 tala by kyla,1,0,0,0,0,0,0,0,2,0,0,0,3,2,False,True,TALA BY KYLA
 butternut bakery,0,0,0,0,0,1,0,0,2,0,0,0,3,2,False,True,BUTTERNUT BAKERY
 poea,0,0,0,0,0,0,0,2,1,0,0,0,3,2,False,True,POEA
-inengs special bbq,0,1,0,0,0,0,0,2,0,0,0,0,3,2,False,True,Ineng’s Special BBQ
+inengs special bbq,0,1,0,0,0,0,0,2,0,0,0,0,3,2,False,True,INENG'S SPECIAL BBQ
 bees wax,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,BEES WAX
 tech synergy,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,Tech Synergy
 toms,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,TOMS
@@ -2093,7 +2093,7 @@ j co doughnuts & coffee,0,0,0,0,0,3,0,0,0,0,0,0,3,1,False,False,J.Co Doughnuts &
 burger beast,0,0,0,0,0,3,0,0,0,0,0,0,3,1,False,False,Burger Beast
 polish nail studio,0,2,0,0,0,1,0,0,0,0,0,0,3,2,False,True,POLISH NAIL STUDIO
 pepper lunch express plus,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,PEPPER LUNCH EXPRESS PLUS
-pos digital,0,1,0,0,0,0,0,2,0,0,0,0,3,2,False,True,POS Digital
+pos digital,0,1,0,0,0,0,0,2,0,0,0,0,3,2,False,True,POS DIGITAL
 tori takoyaki,0,0,0,0,0,1,0,2,0,0,0,0,3,2,False,True,Tori Takoyaki
 king chef,0,1,0,0,0,1,0,0,1,0,0,0,3,3,False,True,KING CHEF
 blooming cotton candy,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,BLOOMING COTTON CANDY
@@ -2106,7 +2106,7 @@ house of obagi,0,2,0,0,0,0,0,1,0,0,0,0,3,2,False,True,HOUSE OF OBAGI
 case logic,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,CASE LOGIC
 kind ventures wellness products,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,KIND VENTURES WELLNESS PRODUCTS
 i lash extensions salon,0,1,0,0,1,0,0,1,0,0,0,0,3,3,False,True,I-LASH EXTENSIONS SALON
-philsys,0,0,1,0,0,0,0,2,0,0,0,0,3,2,False,True,Philsys (TEMPORARILY CLOSED)
+philsys,0,0,1,0,0,0,0,2,0,0,0,0,3,2,False,True,Philsys (national Id)
 philpost,0,0,0,0,0,1,0,1,0,1,0,0,3,3,False,True,Philpost
 tambunting,0,2,1,0,0,0,0,0,0,0,0,0,3,2,False,True,TAMBUNTING
 philippine explorer,0,0,1,0,0,0,0,2,0,0,0,0,3,2,False,True,PHILIPPINE EXPLORER
@@ -2163,7 +2163,7 @@ jmy money changer,0,2,0,0,0,0,0,1,0,0,0,0,3,2,False,True,JMY MONEY CHANGER
 byrons backribs,0,0,0,0,0,0,0,2,1,0,0,0,3,2,False,True,Byron's Backribs
 heavenly stitchin moment,0,0,0,1,0,0,0,0,2,0,0,0,3,2,False,True,HEAVENLY STITCHIN MOMENT
 jd bakeshop,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,JD Bakeshop
-playbook store,0,1,0,0,0,0,1,1,0,0,0,0,3,3,False,True,THE PLAYBOOK STORE (NEW)
+playbook store,0,1,0,0,0,0,1,1,0,0,0,0,3,3,False,True,THE PLAYBOOK STORE
 hot kitchen by fresh option,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,HOT KITCHEN BY FRESH OPTION
 kg oriental bowl,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,KG ORIENTAL BOWL
 impressions art gallery,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,IMPRESSIONS ART GALLERY
@@ -2234,7 +2234,7 @@ bum equipment,1,1,0,0,0,0,0,1,0,0,0,0,3,3,False,True,BUM EQUIPMENT
 hpt,0,0,0,0,3,0,0,0,0,0,0,0,3,1,False,False,HPT
 uniq,0,0,1,0,0,0,0,0,2,0,0,0,3,2,False,True,UNIQ
 itech,0,0,1,0,0,0,0,1,1,0,0,0,3,3,False,True,ITECH
-itel,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,ITEL
+itel,0,0,0,0,0,0,0,3,0,0,0,0,3,1,False,False,Itel
 casa daza empanadas by chef sandy,0,0,0,0,0,0,0,0,3,0,0,0,3,1,False,False,CASA DAZA EMPANADAS BY CHEF SANDY
 hp world,0,0,0,0,0,0,1,1,1,0,0,0,3,3,False,True,HP WORLD
 harlan holden,0,2,0,0,0,0,0,1,0,0,0,0,3,2,False,True,HARLAN+HOLDEN
@@ -2294,7 +2294,7 @@ ice scramble ni momshie sarah,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ICE SCRAMB
 jin joo korean grill,0,1,0,0,0,1,0,0,0,0,0,0,2,2,False,True,JIN JOO KOREAN GRILL
 ez shop,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,EZ SHOP
 maristella fine jewelry,0,0,0,0,0,0,2,0,0,0,0,0,2,1,False,False,Maristella Fine Jewelry
-marina seafoods,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Marina Seafoods
+marina seafoods,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,MARINA SEAFOODS
 marisons,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Marison’s
 fantech,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,FANTECH
 fairyland,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,FAIRYLAND
@@ -2307,15 +2307,15 @@ pc gadget technologies,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PC GADGET TECHNOL
 jonies chicken,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JONIES CHICKEN
 fit n style,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,FIT 'N STYLE
 fit knead bakeshop,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,FIT KNEAD BAKESHOP
-fisher supermarket,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Fisher Supermarket
-potato madness,0,0,0,0,1,0,0,0,0,0,0,1,2,2,False,True,POTATO MADNESS
+fisher supermarket,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,FISHER SUPERMARKET
+potato madness,0,0,0,0,1,0,0,0,0,0,0,1,2,2,False,True,Potato Madness
 pc gate,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,PC Gate
-man barbers,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,MAN BARBERS
-fisher box office,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Fisher Box Office
+man barbers,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Man Barbers
+fisher box office,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,FISHER BOX OFFICE
 potdog yummy delights,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Potdog Yummy Delights
 fish & co,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Fish & Co.
 pc madness,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Pc Madness
-pc office solution,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,PC OFFICE SOLUTION
+pc office solution,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,PC Office Solution
 firefly,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,FIREFLY
 samgyuniku,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Samgyuniku
 samgyup saab,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,SAMGYUP SAAB
@@ -2332,18 +2332,18 @@ mai wei fang,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Mai Wei Fang
 pound x flatterie,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,POUND X FLATTERIE
 mail plus,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MAIL PLUS
 my pro,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MY PRO
-pound,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Pound
+pound,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,POUND
 pc central,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PC CENTRAL
 mama empanada,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,MAMA EMPANADA
 sales,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SALES
 mala house,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,MALA HOUSE
-sallys kakanin,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,SALLY'S KAKANIN
+sallys kakanin,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,Sally's Kakanin
 mall ocean train,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,MALL OCEAN TRAIN
 flaming franks,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,FLAMING FRANKS
 my girl milktea & coffee,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,My Girl Milktea & Coffee
 pc corner,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PC CORNER
 fix & free salon,0,0,2,0,0,0,0,0,0,0,0,0,2,1,False,False,Fix & Free Salon
-i bloom massage,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,I-BLOOM MASSAGE
+i bloom massage,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,I-Bloom Massage
 mandarin chinese drugstore,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Mandarin Chinese Drugstore
 saturday dress,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SATURDAY DRESS
 mso music academy,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,MSO MUSIC ACADEMY
@@ -2352,17 +2352,17 @@ santa barbara polo & racquet club,2,0,0,0,0,0,0,0,0,0,0,0,2,1,False,False,Santa 
 manila bankers life insurance,0,0,0,0,0,0,0,1,0,1,0,0,2,2,False,True,MANILA BANKERS LIFE INSURANCE
 fcj pizza,0,0,0,0,0,0,0,1,0,0,0,1,2,2,False,True,FCJ Pizza
 pearls and gems,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,PEARLS AND GEMS
-santinos pizza,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Santino's Pizza
+santinos pizza,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Santino’s Pizza
 jmj,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,JMJ
 manjaru outdoors,0,0,0,0,0,0,0,1,0,1,0,0,2,2,False,True,Manjaru Outdoors
-sanyang,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,SANYANG
+sanyang,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Sanyang
 mipanda,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MIPANDA
 jmc watch repair and key duplicate,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JMC WATCH REPAIR AND KEY DUPLICATE
 sarabia jewelry,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Sarabia Jewelry
 jm s shawarma,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,JM\'s Shawarma
 pelican fresh farm produce,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,PELICAN FRESH FARM PRODUCE
 jlindeberg,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JLINDEBERG
-positive living station,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Positive Living Station
+positive living station,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,POSITIVE LIVING STATION
 positive living,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Positive Living
 mr potato,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Mr. Potato
 feelmore,0,0,0,0,0,0,0,0,1,0,0,1,2,2,False,True,FEELMORE
@@ -2405,7 +2405,7 @@ shilvys delicacies,0,0,0,1,0,0,0,0,1,0,0,0,2,2,False,True,Shilvy's Delicacies
 mm sweet fix,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MM SWEET FIX
 electric studio,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Electric Studio
 mgs philippines,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MGS PHILIPPINES
-mlhuillier,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Mlhuillier
+mlhuillier,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,MLhuillier
 its a small world kids play center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ITS A SMALL WORLD KIDS PLAY CENTER
 pks mobile,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,PKS Mobile
 elars lechon,0,0,0,1,0,0,1,0,0,0,0,0,2,2,False,True,Elar's Lechon
@@ -2418,7 +2418,7 @@ phone center,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Phone Center
 shake n slurp,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,SHAKE N' SLURP
 eo kids,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,EO Kids
 meralco,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,MERALCO
-philippine airlines,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,PHILIPPINE AIRLINES
+philippine airlines,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Philippine Airlines
 eo active eyewear,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,EO ACTIVE EYEWEAR
 eo,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,EO
 meridian,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,MERIDIAN
@@ -2432,7 +2432,7 @@ mobile craze,0,0,0,0,0,0,0,1,0,0,1,0,2,2,False,True,Mobile Craze
 pho hoa my thai,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Pho Hoa / My Thai
 share tea,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Share Tea
 elyao frozen yogurt,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ELYAO FROZEN YOGURT
-mobile care,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,MOBILE CARE
+mobile care,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Mobile Care
 phone care,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,Phone Care
 metro department store,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,METRO DEPARTMENT STORE
 metro department store & supermarket,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,METRO DEPARTMENT STORE & SUPERMARKET
@@ -2441,15 +2441,15 @@ pizza planet,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Pizza Planet
 shoe hub,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Shoe Hub
 island tea company,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Island Tea Company
 eat pizza,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,EAT PIZZA
-pink honey,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Pink Honey
-misuta gyoza,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,MISUTA GYOZA
+pink honey,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,PINK HONEY
+misuta gyoza,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Misuta Gyoza
 mister labada,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,MISTER LABADA
 siklab,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Siklab
-ming fu asian cuisine,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Ming Fu Asian Cuisine
+ming fu asian cuisine,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,MING FU ASIAN CUISINE
 mirangcurl,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MIRANGCURL
 isabela vision,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,ISABELA VISION
 east west bank,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,East West Bank
-silver finds,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Silver Finds
+silver finds,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,SILVER FINDS
 pink parlour prestige,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Pink Parlour Prestige
 earl of sandwich,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,EARL OF SANDWICH
 miranda optical,0,1,0,0,0,0,0,0,0,0,0,1,2,2,False,True,MIRANDA OPTICAL
@@ -2478,7 +2478,7 @@ ipxpress,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,IPXPRESS
 shrimp shack,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,The Shrimp Shack
 pinoy siopao,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Pinoy Siopao
 istyle mobile accessories,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ISTYLE MOBILE ACCESSORIES
-istudio plus,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,iStudio Plus
+istudio plus,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,IStudio Plus
 pinoy pao,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,PINOY PAO
 istudio,0,0,1,0,0,0,1,0,0,0,0,0,2,2,False,True,Istudio
 issy,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Issy
@@ -2491,17 +2491,17 @@ mooon cafe,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,MOOON CAFE
 mayet dela rosa fine jewelry,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Mayet Dela Rosa Fine Jewelry
 motech auto service center,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,MOTECH AUTO SERVICE CENTER
 mbt,0,1,1,0,0,0,0,0,0,0,0,0,2,2,False,True,MBT
-sea choice,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,SEA CHOICE
+sea choice,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Sea Choice
 moromax money changer,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Moromax Money Changer
 morning after,0,1,1,0,0,0,0,0,0,0,0,0,2,2,False,True,THE MORNING AFTER
 seafood island,0,1,0,0,0,1,0,0,0,0,0,0,2,2,False,True,SEAFOOD ISLAND
 mc master siomai hut,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MC MASTER SIOMAI HUT
 iguanas sandals,0,0,0,0,0,0,0,1,0,0,0,1,2,2,False,True,Iguanas Sandals
-moonleaf,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,MOONLEAF
+moonleaf,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Moonleaf
 scribe writing essentials,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SCRIBE WRITING ESSENTIALS
 florsheim shoe company,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,FLORSHEIM SHOE COMPANY
 mookies oatmeal cookies,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MOOKIES OATMEAL COOKIES
-pngb,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,PNGB
+pngb,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Pngb
 pet safari,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Pet Safari
 ikshava fresh sugar,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,IKSHAVA FRESH SUGAR
 monster mango,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Monster Mango
@@ -2523,10 +2523,10 @@ matrix,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Matrix
 iconique,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,ICONIQUE
 jems barber shop,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Jem's Barber Shop (OPEN)
 maybank,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Maybank
-scouts honor,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,SCOUT'S HONOR (9853060953)
+scouts honor,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Scout's Honor
 maxicare primary care clinic,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,MAXICARE PRIMARY CARE CLINIC
 jems barber salon,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Jem's Barber Salon
-pooch park,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Pooch Park
+pooch park,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,POOCH PARK
 jelly g,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,JELLY G
 screen protexzone,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SCREEN PROTEXZONE
 maxwax,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,MAXWAX
@@ -2536,11 +2536,11 @@ monster burger,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,MONSTER BURGER
 jcs music,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,JCS Music
 sewing room & alterations specialist,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,THE SEWING ROOM & ALTERATIONS SPECIALIST
 indio filipino,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Indio Filipino
-meetrovi,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,MEETROVI
+meetrovi,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Meetrovi
 seohyun fashion jewelry,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Seohyun Fashion Jewelry
 in tune pro music center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,IN-TUNE PRO MUSIC CENTER
 petshop ph,0,1,1,0,0,0,0,0,0,0,0,0,2,2,False,True,PETSHOP.PH
-phat pho,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Phat Pho
+phat pho,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,PHAT PHO
 seoul samgyupsal,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SEOUL SAMGYUPSAL
 jay js inasal & restaurant,0,0,0,0,0,0,0,0,0,2,0,0,2,1,False,False,JAY-J'S INASAL & RESTAURANT
 seoul yummy,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Seoul Yummy
@@ -2549,7 +2549,7 @@ indio filipino clothing,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Indio Filipino Cl
 euro baker,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Euro Baker
 jaslime,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JASLIME
 megacare medical services,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MEGACARE MEDICAL SERVICES
-megapixel,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,MEGAPIXEL
+megapixel,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Megapixel
 esencia day spa,0,1,0,0,0,1,0,0,0,0,0,0,2,2,False,True,ESENCIA DAY SPA
 platinum karaoke,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Platinum Karaoke
 memo xpress,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Memo Xpress
@@ -2568,7 +2568,7 @@ medco dental,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Medco Dental
 monarc,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MONARC
 petal avenue,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PETAL AVENUE
 jbl store,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,JBL STORE
-medicard,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,MediCard
+medicard,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,Medicard
 jbl dare to listen,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JBL DARE TO LISTEN
 in 2 skating garments and accessories,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,IN 2 SKATING GARMENTS AND ACCESSORIES
 jbl acoustical space,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JBL ACOUSTICAL SPACE
@@ -2577,7 +2577,7 @@ evernew,0,0,0,0,0,0,2,0,0,0,0,0,2,1,False,False,Evernew
 everlast rings,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,EVERLAST RINGS
 seiko showroom,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SEIKO SHOWROOM
 imono jewelry,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,IMONO JEWELRY
-playland,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Playland
+playland,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,PLAYLAND (L1-L2)
 sen ryo,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,sen-ryo
 imperium,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,IMPERIUM
 seafood pier,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SEAFOOD PIER
@@ -2586,13 +2586,13 @@ sakura,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,SAKURA
 purple pad thai,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PURPLE PAD THAI
 kids depot,0,1,1,0,0,0,0,0,0,0,0,0,2,2,False,True,KIDS' DEPOT
 lavish lashes,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Lavish Lashes
-kids box by kidzooona,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,KID'S BOX BY KIDZOOONA
+kids box by kidzooona,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,KIDS BOX BY KIDZOOONA
 healthy thoughts,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HEALTHY THOUGHTS
 repair master gadget center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,REPAIR MASTER GADGET CENTER
 purple rice,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Purple Rice
 hearts and arrows,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,HEARTS AND ARROWS
 oh so playhouse,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,OH SO PLAYHOUSE
-hearts and bells,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,HEARTS AND BELLS
+hearts and bells,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Hearts and Bells
 pad by padis point,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THE PAD by PADIS POINT
 glorys ilocos empanada,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GLORY'S ILOCOS EMPANADA
 healthy shabu shabu,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Healthy Shabu-Shabu
@@ -2605,7 +2605,7 @@ purple haze designs,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Purple Haze Designs
 glass pp cellphone accessories,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GLASS PP CELLPHONE ACCESSORIES
 retrosweets,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,RETROSWEETS
 le katsu,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Le Katsu
-island souvenirs,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Island Souvenirs
+island souvenirs,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,ISLAND SOUVENIRS
 kids hair salon,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,KIDS HAIR SALON
 lavie,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,LAVIE
 khaleb shawarma,0,0,0,0,0,0,0,0,1,0,1,0,2,2,False,True,KHALEB SHAWARMA
@@ -2648,14 +2648,14 @@ gerrys restaurant and bar,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GERRYS RESTAUR
 levi s,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Levi\'s
 panda shabu shabu,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PANDA SHABU SHABU
 henrys professional,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,HENRY'S PROFESSIONAL
-lfafa enterprise,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,Lfafa Enterprise (Massage Chairs)
+lfafa enterprise,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,LFAFA Enterprise
 psalm medical center,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Psalm Medical Center
 north face,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THE NORTH FACE
 geotime fusion,0,0,0,0,0,0,0,1,0,1,0,0,2,2,False,True,Geotime Fusion
 hey fried rice,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,HEY FRIED RICE
 hey gulu,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HEY GULU
 nora hair salon,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,NORA HAIR SALON
-george and onnies,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,GEORGE and ONNIE'S
+george and onnies,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,George and Onnie's
 george,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,GEORGE
 noonsaram,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Noonsaram
 palawan pawnshop,0,0,0,0,0,0,0,1,0,0,1,0,2,2,False,True,PALAWAN PAWNSHOP
@@ -2692,7 +2692,7 @@ ortiz skin clinic,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ORTIZ SKIN CLINIC
 r a f,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,R.A.F (INSIDE MAISONETTE)
 hanamaruken ramen,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Hanamaruken Ramen
 greenwich to go,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,GREENWICH TO GO
-klgo mobile accessories,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,KLGO MOBILE ACCESSORIES
+klgo mobile accessories,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,KLGO Mobile Accessories
 hangout resto place,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HANGOUT RESTO PLACE
 hannah marielles bakes and cakes,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HANNAH MARIELLES BAKES AND CAKES
 kutie kuts,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,KUTIE KUTS
@@ -2707,32 +2707,32 @@ green kitchen,0,0,0,0,0,0,0,0,1,0,1,0,2,2,False,True,GREEN KITCHEN
 quicklean,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Quicklean
 kwentong barbero,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,KWENTONG BARBERO
 rbrs gadget center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,RBRS GADGET CENTER
-rbx rice in a box,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,RBX Rice In A Box
+rbx rice in a box,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,RBX RICE IN A BOX
 oppa studio,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,OPPA STUDIO
 happy leaf milk tea place,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HAPPY LEAF MILK TEA PLACE
 options,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Options
 r florete jewelry,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,R. Florete Jewelry
 golden glow traditional thai massage and,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,GOLDEN GLOW TRADITIONAL THAI MASSAGE AND
 ramen daisho,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,RAMEN DAISHO
-habagat,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,HABAGAT
+habagat,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Habagat
 h2o life source,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,H2O Life Source
 koibitos world of gelato,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,KOIBITOS WORLD OF GELATO
 rafabels cafe and patisserie,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,RAFABELS CAFE AND PATISSERIE
 original cake,0,0,0,0,0,0,0,0,1,1,0,0,2,2,False,True,ORIGINAL CAKE
-hai sha,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Hai-Sha
+hai sha,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Hai-sha
 orodiam jewellery,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ORODIAM JEWELLERY
 hainanese delights,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Hainanese Delights
 orogem jewellers,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,OROGEM JEWELLERS
 kogi q,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,KOGI Q
 ramen dojo,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,RAMEN DOJO
-ramen young wasabi,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,RAMEN YOUNG WASABI
+ramen young wasabi,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Ramen Young Wasabi
 hair studio,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Hair Studio
 haircutters de legazpi city,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HAIRCUTTERS DE LEGAZPI CITY
 guanzon,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Guanzon
 ortigas cinemas,0,0,0,0,0,0,2,0,0,0,0,0,2,1,False,False,Ortigas Cinemas
 knickerbocker refreshment stall,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,KNICKERBOCKER REFRESHMENT STALL
 origin gold jewelers,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ORIGIN GOLD JEWELERS
-hairscape ph,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Hairscape.Ph
+hairscape ph,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,HAIRSCAPE.PH
 orange bucket,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,The Orange Bucket
 ramen nagi tendon akimitsu,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,RAMEN NAGI / TENDON AKIMITSU
 ramen sage,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,Ramen Sage
@@ -2774,15 +2774,15 @@ ooh la lash,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,OOH LA LASH
 our pet care services,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,OUR PET CARE SERVICES
 rc perfume collection,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,RC PERFUME COLLECTION
 l optique paris,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,L OPTIQUE PARIS
-ono poke,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,Ono Poke
-ongpin express,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,ONGPIN EXPRESS
+ono poke,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,ONO Poke
+ongpin express,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Ongpin Express
 our wellness,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,OUR WELLNESS
 graphic gadgets,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GRAPHIC GADGETS
 kings bakeshop,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,King's Bakeshop
 hard rock cafe,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,HARD ROCK CAFE
 grande maison,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GRANDE MAISON
 hashi pan asian restaurant,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Hashi Pan-Asian Restaurant
-ready set relax massage & spa,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Ready-Set-Relax Massage & Spa
+ready set relax massage & spa,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Ready-set-relax Massage & Spa
 kingplus,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,KINGPLUS
 havaianas by all flip flops,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HAVAIANAS BY ALL FLIP FLOPS
 havaianas pop up shop,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HAVAIANAS POP-UP SHOP
@@ -2797,11 +2797,11 @@ house of fruitas,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,House Of Fruitas
 luxelle,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,LUXELLE
 fresh,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,FRESH
 house of lemonade,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,HOUSE OF LEMONADE
-luxury seats,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,LUXURY SEATS
+luxury seats,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Luxury Seats
 lydias lechon,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,LYDIAS LECHON
 lyfe bowls,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Lyfe Bowls
 jv shop n shop,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,JV SHOP N’ SHOP
-party in the city,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,PARTY IN THE CITY
+party in the city,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,Party In The City
 freshaire salon,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,FRESHAIRE SALON
 lzm restaurant,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,LZM RESTAURANT
 rtop cellphone accessories,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,RTOP CELLPHONE ACCESSORIES
@@ -2828,10 +2828,10 @@ nars,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,NARS
 naomi jewelry,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,NAOMI JEWELRY
 luminox,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,LUMINOX
 hotdog on stick,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Hotdog on Stick
-nam rai spa,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,NAM RAI SPA
+nam rai spa,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Nam Rai Spa
 nanbantei of tokyo,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,NANBANTEI OF TOKYO
 fruitas de original jamaican pattie shop,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,FRUITAS / DE ORIGINAL JAMAICAN PATTIE SHOP
-hotpot session,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,HOTPOT SESSION (0991 421 6242)
+hotpot session,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,HotPot Session
 k pop optical,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,K-Pop Optical
 paris baguette,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,PARIS BAGUETTE
 nami ph,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,NAMI PH
@@ -2839,7 +2839,7 @@ nami art gallery,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Nami Art Gallery
 frotea,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,FROTEA
 luxallure aesthetic center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,LUXALLURE AESTHETIC CENTER
 rrj and mr lee,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,RRJ AND MR. LEE
-nail cocktales hand and foot spa,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Nail Cocktales Hand and Foot Spa
+nail cocktales hand and foot spa,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,NAIL COCKTALES HAND AND FOOT SPA
 pasarabo delicacies,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,PASARABO DELICACIES
 junrex cellphones,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JUNREX CELLPHONES
 fone fix technoshop,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,FONE FIX TECHNOSHOP
@@ -2850,13 +2850,13 @@ paul boulangerie patisserie salon de the restaurant,0,0,0,0,0,0,0,0,2,0,0,0,2,1,
 juan miro art gallery,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,JUAN MIRO ART GALLERY
 paws around the town pet store,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,PAWS AROUND THE TOWN PET STORE
 myung jang,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,MYUNG JANG
-fone style,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Fone Style
+fone style,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,FONE STYLE
 sachi,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SACHI
 js diamond,0,1,0,0,0,1,0,0,0,0,0,0,2,2,False,True,J’S DIAMOND
-jrs express,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,JRS EXPRESS
+jrs express,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,JRS Express
 runnr,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,RUNNR
 fone edge plus,0,0,0,0,0,0,0,1,0,1,0,0,2,2,False,True,Fone Edge Plus
-jrose fine jewelry,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,JROSE FINE JEWELRY
+jrose fine jewelry,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,JRose Fine Jewelry
 fon,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Fon+
 folded & hung,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,FOLDED & HUNG
 myphone,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,MYPHONE
@@ -2927,7 +2927,7 @@ pru life uk,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Pru Life Uk
 rizal commercial banking corporation,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,RIZAL COMMERCIAL BANKING CORPORATION
 gemuine gold,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GEMUINE GOLD
 highland brew coffee,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HIGHLAND BREW COFFEE
-kathnails,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Kathnails
+kathnails,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,KATHNAILS
 ling nam,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Ling Nam
 highlands coffee,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Highlands Coffee
 gems and gold by heidi,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GEMS AND GOLD BY HEIDI
@@ -2935,12 +2935,12 @@ gear up,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,GEAR UP
 link plus,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,LINK PLUS
 gemline,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GEMLINE
 gelato filipino,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GELATO FILIPINO
-lionesse beauty bar,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,LIONESSE BEAUTY BAR
+lionesse beauty bar,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Lionesse Beauty Bar
 himay himay,0,0,0,0,0,0,0,0,1,0,1,0,2,2,False,True,HIMAY-HIMAY
-liquid flask,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,LIQUID FLASK
+liquid flask,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Liquid Flask
 rme salon,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,RME SALON
 hinam is,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,HINAM-IS
-lito sy studio,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,LITO SY STUDIO
+lito sy studio,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Lito Sy Studio
 property pro,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,PROPERTY PRO
 paper moon cafe,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,PAPER MOON CAFE
 gadgetlab service center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GADGETLAB SERVICE CENTER
@@ -2970,7 +2970,7 @@ fuji film digital imaging,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,FUJI FILM DIGI
 fudge rock,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,FUDGE ROCK
 furry tails,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,FURRY TAILS
 ronnie joe,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,RONNIE JOE
-lovelink,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,LOVELINK
+lovelink,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,LoveLink
 g gadgets,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,G GADGETS
 rockstar,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,ROCKSTAR
 gadget station,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Gadget Station
@@ -2982,11 +2982,11 @@ lomi imua,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Lomi Imua
 gadget phonecare,0,0,0,0,0,0,0,0,1,0,1,0,2,2,False,True,GADGET PHONECARE
 gadget multiverse,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,GADGET MULTIVERSE
 look at me,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,LOOK AT ME
-look boutique,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,The Look Boutique
+look boutique,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,THE LOOK BOUTIQUE
 rolex lucerne,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,ROLEX-LUCERNE
 lorenzos way,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,LORENZO’S WAY
 kanzen sushi roll,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,KANZEN SUSHI ROLL
-new bombay,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,New Bombay
+new bombay,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,NEW BOMBAY
 pretzelmaker,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Pretzelmaker
 nesh fashion,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,NESH FASHION
 g&g,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,G&G
@@ -3018,17 +3018,17 @@ wk design,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,WK DESIGN
 wiwu,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,WIWU
 spa signature,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SPA SIGNATURE
 wonderland for kids,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Wonderland for Kids
-beauty atelier,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,BEAUTY ATELIER
+beauty atelier,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Beauty Atelier
 cassalleyah beauty products,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Cassalleyah Beauty Products
 technomarine,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,TECHNOMARINE
 souk london,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Souk London
 twu,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,TWU (Things We Use)
 aloha ice cream shake,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Aloha Ice Cream Shake
-sunrays money exchange,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Sunray's Money Exchange
+sunrays money exchange,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,SUNRAY'S MONEY EXCHANGE
 alot barbero lokal,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,ALOT BARBERO LOKAL
 casa daza by chef sandy,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,CASA DAZA BY CHEF SANDY
-casa daza empanada,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Casa Daza Empanada
-u s polo assn,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,U.S POLO ASSN.
+casa daza empanada,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,CASA DAZA EMPANADA
+u s polo assn,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,U.S. Polo Assn.
 techno planet,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TECHNO PLANET
 danidoo,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,DANIDOO
 bench fix lab,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,BENCH FIX LAB
@@ -3052,7 +3052,7 @@ tangfruits,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,TangFruits
 white drip,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THE WHITE DRIP
 crunch boneless fried chicken,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THE CRUNCH BONELESS FRIED CHICKEN
 bbb car stickers,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BBB CAR STICKERS
-cell station,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,CELL STATION
+cell station,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Cell Station
 bay tal mal,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,BAY TAL MAL
 crown park restaurant,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Crown Park Restaurant
 squeezy lemon,0,0,0,1,0,0,0,0,1,0,0,0,2,2,False,True,Squeezy Lemon
@@ -3065,21 +3065,21 @@ bathroom,0,0,0,0,0,0,2,0,0,0,0,0,2,1,False,False,Bathroom
 tapawan dental clinic,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Tapawan Dental Clinic
 ct zone,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CT ZONE
 beauty and butter,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BEAUTY AND BUTTER
-wiijump trampoline park,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,WiiJUMP Trampoline Park
+wiijump trampoline park,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,Wiijump Trampoline Park
 cebuana lhuiller,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,CEBUANA LHUILLER
-cyma,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,CYMA
+cyma,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Cyma
 cyberwidget,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CYBERWIDGET
 tastes from the greens,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TASTES FROM THE GREENS
 cybertech gaming,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CYBERTECH GAMING
 cyber center,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CYBER CENTER
-wingers unlimited,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Wingers Unlimited
+wingers unlimited,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,WINGERS UNLIMITED
 taste of czaczacza cafe,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THE TASTE OF CZACZACZA CAFE
 beanbag coffee,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Beanbag Coffee
 cv cebu,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CV CEBU
 cutting edge,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,CUTTING EDGE
 cuts for tots,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Cuts For Tots
 cut encarnacion,0,0,0,0,0,0,0,0,0,1,0,1,2,2,False,True,CUT ENCARNACION
-sports warehouse,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,THE SPORTS WAREHOUSE
+sports warehouse,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Sports Warehouse
 sports zone,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,SPORTS ZONE
 cupi,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Cupi
 cell act,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CELL ACT
@@ -3095,25 +3095,25 @@ yaki yaki sumo,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Yaki Yaki Sumo
 true vision,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,TRUE VISION
 snowpy ice cream,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Snowpy Ice Cream
 cafe janggeum,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CAFE JANGGEUM
-aiko sushi,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,Aiko Sushi
+aiko sushi,0,0,0,2,0,0,0,0,0,0,0,0,2,1,False,False,AIKO SUSHI
 dental lounge,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THE DENTAL LOUNGE
 xtreme appliances,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,XTREME APPLIANCES
 soban,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,SOBAN
 xtreme appliance,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,XTREME APPLIANCE
 tsokolateria,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Tsokolateria
-aj thai street food,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,AJ Thai Street Food
+aj thai street food,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Aj Thai Street Food
 thaiwadee,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,THAIWADEE
 thai bbq,0,0,0,0,0,0,2,0,0,0,0,0,2,1,False,False,Thai BBQ
 cake miss,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,CAKE MISS
 denta care,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Denta Care
-biggs diner,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Bigg's Diner
+biggs diner,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,BIGG'S DINER
 tff,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,TFF
 yakiniku like,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,YAKINIKU LIKE
 dental world manila,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,DENTAL WORLD MANILA
 bigbucks money changer,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,Bigbucks Money Changer
 sneakerlab,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,SNEAKERLAB
 aficionado perfume,0,0,0,0,0,0,0,0,0,2,0,0,2,1,False,False,AFICIONADO PERFUME
-trollbeads,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Trollbeads
+trollbeads,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,TROLLBEADS
 bingo republic,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Bingo Republic
 smiles at 34th dental clinic,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SMILES AT 34TH DENTAL CLINIC
 ca exhibit,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,CA EXHIBIT
@@ -3126,25 +3126,25 @@ bingo extravaganza,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BINGO EXTRAVAGANZA
 caerus specialty coffee bistro,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CAERUS SPECIALTY COFFEE BISTRO
 dentista nina juan,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,DENTISTA NINA JUAN
 agsa medical service,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,AGSA MEDICAL SERVICE
-aguahome,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,AGUAHOME
+aguahome,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Aguahome
 ahkie swirl,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,Ahkie Swirl
 ahkie swirl station,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,AHKIE SWIRL STATION
 sneaker kyler,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Sneaker Kyler
 thinkingtoolsmall,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,THINKINGTOOLSMALL
 bigbys restaurant,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Bigby's Restaurant
 tex mex,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TEX MEX
-cartel,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,CARTEL
+cartel,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Cartel
 alert driving academy,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,ALERT DRIVING ACADEMY
 teng roma,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Teng Roma
 de navelte,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,DE NAVELTE
 candyup cotton candy,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CANDYUP COTTON CANDY
 better barbers,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BETTER BARBERS
-caps & things,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Caps & Things
+caps & things,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,CAPS & THINGS
 aliya,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Aliya
 caps things,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CAPS THINGS
 dd store,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,DD STORE
 tempus,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,TEMPUS
-best takoyaki,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,BEST TAKOYAKI
+best takoyaki,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Best Takoyaki
 all about you day spa,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ALL ABOUT YOU DAY SPA
 wow mobile center,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Wow Mobile Center
 tela fabrica,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TELA FABRICA
@@ -3168,7 +3168,7 @@ tubo ko,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TUBO KO
 tesda,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,TESDA
 tudor,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Tudor
 alba,0,0,0,0,0,0,2,0,0,0,0,0,2,1,False,False,ALBA
-alberto g&g,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Alberto/G&G
+alberto g&g,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,ALBERTO / G&G
 delco computer installation,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,Delco Computer Installation
 del mundo eye clinic,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,DEL MUNDO EYE CLINIC
 alberto shoes,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Alberto Shoes
@@ -3183,7 +3183,7 @@ takoyummy,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Takoyummy
 coffee buddy,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,COFFEE BUDDY
 vanity k,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,VANITY K
 chiggy s kessaku,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Chiggy\'s Kessaku
-coffee bean and tea leaf,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,THE COFFEE BEAN AND TEA LEAF
+coffee bean and tea leaf,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Coffee Bean And Tea Leaf
 strip & browhaus,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,STRIP & BROWHAUS
 asian derma,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,ASIAN DERMA
 strip ministry of waxing,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,STRIP MINISTRY OF WAXING
@@ -3197,8 +3197,8 @@ vitor tours and travel,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,VITOR TOURS AND T
 studiomatic,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Studiomatic
 sushi box,0,0,0,0,0,0,0,0,1,0,1,0,2,2,False,True,THE SUSHI BOX
 assi fresh,0,0,0,0,0,2,0,0,0,0,0,0,2,1,False,False,Assi Fresh
-stylash,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,STYLASH
-clydes breads & pastries,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,CLYDE'S BREADS & PASTRIES
+stylash,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,Stylash
+clydes breads & pastries,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Clyde’s Breads & Pastries
 club synergy,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CLUB SYNERGY
 vanguard,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,VANGUARD
 coffee corner,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Coffee Corner
@@ -3213,27 +3213,27 @@ chicago flame dog,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Chicago Flame Dog
 coleman,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Coleman
 stop n smile dental clinic,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,STOP N SMILE DENTAL CLINIC
 arya,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,Arya
-w express,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,W EXPRESS
+w express,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,W Express
 as lemonade station,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,AS LEMONADE STATION
 chicha san chen,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Chicha San Chen
 ash letrato,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Ash Letrato
 coffee overdose,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Coffee Overdose
 chicken bacolod,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,CHICKEN BACOLOD
 chicken charlie,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Chicken Charlie
-coffee drop,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,COFFEE DROP
-coffee dream plus,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Coffee Dream Plus
+coffee drop,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Coffee Drop
+coffee dream plus,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,COFFEE DREAM PLUS
 vpharma,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,VPHARMA
 subscribers place,0,0,0,0,0,0,0,1,0,0,1,0,2,2,False,True,Subscriber's Place
 clinica manila,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CLINICA MANILA
 crescendo,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CRESCENDO
 chongs siomai rice,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,CHONG’S SIOMAI RICE
-b braun dialysis center,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,B. Braun Dialysis Center
+b braun dialysis center,0,0,1,0,0,1,0,0,0,0,0,0,2,2,False,True,B.braun Dialysis Center
 autokicks ph,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,AUTOKICKS PH
 automobile association of the philippines,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,AUTOMOBILE ASSOCIATION OF THE PHILIPPINES
-chooks diner,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,CHOOK'S DINER
+chooks diner,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Chooks Diner
 sumo takoyaki,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SUMO TAKOYAKI
 citybites,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CITYBITES
-sumosam,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Sumosam
+sumosam,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,SUMOSAM
 vervince,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,VERVINCE
 sun shop,0,0,0,1,0,0,0,0,0,0,0,1,2,2,False,True,The Sun Shop
 azb88 driving school,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,AZB88 Driving School
@@ -3245,7 +3245,7 @@ avon,1,0,0,0,0,0,0,1,0,0,0,0,2,2,False,True,AVON
 avo bravo,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,AVO BRAVO
 chungchun rice corn dog,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CHUNGCHUN RICE CORN DOG
 sunnies cafe,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,SUNNIES CAFE
-sunnies studio,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,SUNNIES STUDIO
+sunnies studio,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Sunnies Studio
 ck underwear,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,CK UNDERWEAR
 sukiya,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Sukiya
 suds laundry & dry cleaning services,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,SUDS LAUNDRY & DRY CLEANING SERVICES
@@ -3264,7 +3264,7 @@ baan khun thai,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Baan Khun Thai
 augustus,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Augustus
 aula,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,AULA
 chn cafe,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CHN CAFÉ
-chocful of nuts,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,Chocful of Nuts
+chocful of nuts,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,Chocful Of Nuts
 aurea pearls,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,AUREA PEARLS
 aurum,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,AURUM
 supersam,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Supersam
@@ -3272,18 +3272,18 @@ chocolates by nicole,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CHOCOLATES BY NICOL
 bakebe,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BAKEBE
 baked puff ph,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BAKED PUFF PH
 colours digital foto,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,COLOURS DIGITAL FOTO
-st jude optical clinic,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,St. Jude Optical Clinic
+st jude optical clinic,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,ST. JUDE OPTICAL CLINIC
 certified calm,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,CERTIFIED CALM
 anything creation,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ANYTHING CREATION
 wealthbank,0,1,0,0,0,1,0,0,0,0,0,0,2,2,False,True,WEALTHBANK
-taho boy,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Taho Boy
+taho boy,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,TAHO BOY
 champas mexican grill and taqueria,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CHAMPAS MEXICAN GRILL AND TAQUERIA
 chantel collections,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Chantel Collections
 chapel,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Chapel
 cotton on kids,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,COTTON ON KIDS
 chapes keto cakes,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,CHAPES KETO CAKES
 cosmolash salon,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,COSMOLASH SALON
-tactical specialist,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Tactical Specialist
+tactical specialist,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,TACTICAL SPECIALIST
 chapters & pages,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Chapters & Pages
 chapters and pages,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,CHAPTERS AND PAGES
 barcino wine resto bar,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BARCINO WINE RESTO BAR
@@ -3291,11 +3291,11 @@ corrsys kitchen,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CORRSYS KITCHEN
 appe thai zing,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,APPE THAI-ZING
 star frappe,0,0,0,0,0,0,0,1,0,0,0,1,2,2,False,True,Star Frappe
 apple & eve,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,APPLE & EVE
-star mobile,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,STAR MOBILE
+star mobile,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Star Mobile
 universal eyecheck,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Universal Eyecheck
 craft coffee revolution,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CRAFT COFFEE REVOLUTION
 sweetblooms,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SWEETBLOOMS
-basekamp,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,BASEKAMP
+basekamp,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Basekamp
 cellpod,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,CELLPOD
 batchoy king,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Batchoy King
 united coconut planters bank,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,UNITED COCONUT PLANTERS BANK
@@ -3306,8 +3306,8 @@ takoyaki king,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,Takoyaki King
 anta basketball,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,ANTA BASKETBALL
 takoyaki empress,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,TAKOYAKI EMPRESS
 cre8 salon premier,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CRE8 SALON PREMIER
-cre8 salon,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Cre8 Salon
-wellness plus,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Wellness Plus
+cre8 salon,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,CRE8 SALON
+wellness plus,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,WELLNESS PLUS
 basil,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,BASIL
 crazy curry,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,CRAZY CURRY
 wellcare,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,Wellcare
@@ -3337,8 +3337,8 @@ stephens party depot,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,STEPHENS PARTY DEPO
 sweetisan,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SWEETISAN
 art 68 coffee corner,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ART 68 COFFEE CORNER
 v,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,V!
-comic alley,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,COMIC ALLEY
-steak station,0,0,0,1,0,1,0,0,0,0,0,0,2,2,False,True,Steak Station
+comic alley,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Comic Alley
+steak station,0,0,0,1,0,1,0,0,0,0,0,0,2,2,False,True,STEAK STATION
 cong caphe,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Cong Caphe
 ussc service store,0,0,0,0,0,0,0,1,0,0,0,1,2,2,False,True,USSC SERVICE STORE
 aquazorb,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Aquazorb
@@ -3349,14 +3349,14 @@ urban revivo,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,URBAN REVIVO
 urban roots,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Urban Roots
 aqua smartguard,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,AQUA SMARTGUARD
 coopers coffee haus,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,COOPER'S COFFEE HAUS
-aquaflask kids,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,AQUAFLASK KIDS
+aquaflask kids,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Aquaflask Kids
 starfrappe,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Starfrappe
 usams,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,USAMS
 symmetry lab parfums,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SYMMETRY LAB PARFUMS
 wat pho thai massage,0,0,1,0,0,0,0,0,1,0,0,0,2,2,False,True,Wat Pho Thai Massage
 bambu,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Bambu
 aranaz,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,ARANAZ
-contis bakeshop,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,Conti’s Bakeshop
+contis bakeshop,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,Contis Bakeshop
 washington,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,WASHINGTON
 consumer welfare desk,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,CONSUMER WELFARE DESK
 wash up laundry,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Wash Up Laundry
@@ -3367,12 +3367,12 @@ zia salon premier,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ZIA SALON PREMIER
 disneyworld travel & tours,0,0,0,0,0,0,0,0,0,0,2,0,2,1,False,False,DISNEYWORLD TRAVEL & TOURS
 dito,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,DITO
 bonita,0,1,0,0,0,0,1,0,0,0,0,0,2,2,False,True,BONITA
-time zone,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,TIME ZONE (TEMPORARILY CLOSED)
+time zone,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,TIME ZONE
 skl touch,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SKL TOUCH
 blessings copy center bookbinding services,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BLESSINGS COPY CENTER BOOKBINDING SERVICES
-360 barbers & beauty,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,360 Barbers & Beauty
+360 barbers & beauty,0,0,0,1,0,0,0,1,0,0,0,0,2,2,False,True,360 BARBERS & BEAUTY
 dream land,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,DREAM LAND
-bum,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,Bum
+bum,0,0,0,0,1,0,0,1,0,0,0,0,2,2,False,True,BUM
 zig,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,ZIG
 token fun station,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TOKEN FUN STATION
 360 tea shop,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,360° Tea Shop
@@ -3412,7 +3412,7 @@ breakfast at antonios,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,BREAKFAST AT ANTON
 time central,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Time Central
 black canyon coffee,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,BLACK CANYON COFFEE
 burger factory,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,BURGER FACTORY
-ding how,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Ding How
+ding how,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,DING HOW
 siomai lab,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,SIOMAI LAB
 time concept,0,0,0,0,0,0,0,1,0,0,0,1,2,2,False,True,Time Concept
 black crust pizza co,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BLACK CRUST PIZZA CO
@@ -3434,11 +3434,11 @@ brothers burger,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,BROTHER'S BURGER
 bodytech,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,Bodytech
 browhaus,0,2,0,0,0,0,0,0,0,0,0,0,2,1,False,False,BROWHAUS
 blushing beauty,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,BLUSHING BEAUTY
-buffalo wings n things,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,BUFFALO WINGS' N' THINGS
+buffalo wings n things,0,0,0,0,0,1,0,1,0,0,0,0,2,2,False,True,Buffalo Wings N' Things
 a&r beauty,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,A&R Beauty
 tipsy pig,0,0,0,0,0,1,1,0,0,0,0,0,2,2,False,True,Tipsy Pig
 top trust,0,0,0,0,0,0,0,1,0,0,0,1,2,2,False,True,Top Trust
-don don tei,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,DON DON TEI
+don don tei,0,0,0,0,0,0,1,1,0,0,0,0,2,2,False,True,Don Don Tei
 skin by ledeecia,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SKIN BY LEDEECIA
 skin body face station,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,"SKIN, BODY FACE STATION"
 bubi trampoline,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,BUBI TRAMPOLINE
@@ -3453,7 +3453,7 @@ bobs footwear,0,0,0,0,0,0,0,0,0,0,0,2,2,1,False,False,BOB'S FOOTWEAR
 brood,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,BROOD
 dough creamery,0,0,0,0,0,0,1,0,1,0,0,0,2,2,False,True,Dough Creamery
 skin manila,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Skin Manila
-toryanos chicken haus,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,TORYANOS CHICKEN HAUS
+toryanos chicken haus,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Toryanos Chicken Haus
 528 ilawod cafe,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,528 ILAWOD CAFE
 529 polish nail studio,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,529 POLISH NAIL STUDIO
 buko zone,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,BUKO ZONE
@@ -3465,12 +3465,12 @@ buko republic,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,Buko Republic
 yugen,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,YUGEN (9773649805)
 tori yamu japanese bbq,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TORI YAMU JAPANESE BBQ
 yummy dumplings,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,YUMMY DUMPLINGS
-brique,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,Brique
+brique,0,1,0,0,0,0,0,1,0,0,0,0,2,2,False,True,BRIQUE
 blu nektar,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BLU NEKTAR
 bon banhmi,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BON BANHMI
 briquito silvanas,0,1,0,0,0,0,0,0,1,0,0,0,2,2,False,True,BRIQUITO SILVANAS
 abenson appliance,0,0,0,0,1,0,0,0,0,0,1,0,2,2,False,True,Abenson Appliance
-bon appetea,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,BON APPETEA
+bon appetea,0,0,0,0,1,0,0,0,1,0,0,0,2,2,False,True,Bon Appetea
 7c silver,0,0,0,0,0,0,0,2,0,0,0,0,2,1,False,False,7C Silver
 zen zone,0,0,0,0,2,0,0,0,0,0,0,0,2,1,False,False,Zen Zone
 bom gosto,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Bom Gosto!
@@ -3489,7 +3489,7 @@ bistro ocean city,0,0,0,0,0,1,0,0,1,0,0,0,2,2,False,True,Bistro Ocean City
 yoga,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,YOGA
 sm development corporation,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,SM DEVELOPMENT CORPORATION
 bos shoes bags repair shop,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,BOS SHOES BAGS REPAIR SHOP
-bos bistro,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Bo's Bistro
+bos bistro,0,0,1,0,0,0,0,1,0,0,0,0,2,2,False,True,Bo’s Bistro
 buzzz cafe,0,0,0,0,0,0,0,1,1,0,0,0,2,2,False,True,The Buzzz Cafe
 ties that travel,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,TIES THAT TRAVEL
 zullo coffee and loaf,0,0,0,0,0,0,0,0,2,0,0,0,2,1,False,False,ZULLO COFFEE AND LOAF
@@ -3608,7 +3608,7 @@ victorious event organizer,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,VICTORIOUS EV
 orocher jewellery store,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,OROCHER JEWELLERY STORE
 oro talia,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Oro Talia
 oro shawarma rice company,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,ORO SHAWARMA RICE COMPANY
-oro shawarma,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Oro Shawarma
+oro shawarma,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,ORO SHAWARMA
 victorias secret,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,VICTORIAS SECRET
 oro italia jewelry shop,0,0,0,0,1,0,0,0,0,0,0,0,1,1,False,False,Oro Italia Jewelry Shop
 totu,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,TOTU
@@ -3686,7 +3686,7 @@ one up,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,One Up (World Balance)
 venoyfe,0,0,1,0,0,0,0,0,0,0,0,0,1,1,False,False,Venoyfe
 one stop food shop,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,ONE STOP FOOD SHOP
 one pot shabu shabu restaurant,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,ONE POT SHABU-SHABU RESTAURANT
-toothville,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Toothville
+toothville,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TOOTHVILLE
 toothfix,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Toothfix
 one network bank,0,0,0,0,1,0,0,0,0,0,0,0,1,1,False,False,One Network Bank (ATM)
 one life,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,One Life
@@ -3695,7 +3695,7 @@ one fine pictures,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,One Fine Pictures
 one blue moo cafe,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,One Blue Moo Cafe
 peri peri 8366 5928 09664010054,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Peri Peri 8366-5928 / 09664010054
 one audio acoustics,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,One Audio Acoustics
-toob oh treats,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Toob Oh Treats
+toob oh treats,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TOOB OH TREATS
 toocki,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,TOOCKI
 vape depot philippines,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,VAPE DEPOT PHILIPPINES
 oldtown white coffee,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,OldTown White Coffee
@@ -3890,7 +3890,7 @@ twin chocos,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TWIN CHOCO'S
 panco cafe,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,PANCO CAFÉ
 twelve 28th cafe,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,The Twelve 28th Café
 trendz,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Trendz
-twelve plus,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Twelve Plus
+twelve plus,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TWELVE PLUS
 twelvebikes shop,0,0,1,0,0,0,0,0,0,0,0,0,1,1,False,False,Twelvebikes Shop
 twenty four bakeshop,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,Twenty Four Bakeshop
 panapton open,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,PANAPTON OPEN
@@ -4324,7 +4324,7 @@ my dollar store plus,1,0,0,0,0,0,0,0,0,0,0,0,1,1,False,False,MY DOLLAR STORE PLU
 world master international travel,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,WORLD MASTER INTERNATIONAL TRAVEL
 my diamond technomarine,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,MY DIAMOND / TECHNOMARINE
 my destination tours and travel,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,MY DESTINATION TOURS AND TRAVEL
-world of fun 9058818079,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,WORLD OF FUN 9058818079 (OPEN)
+world of fun 9058818079,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,WORLD OF FUN 9058818079
 my box,0,0,0,0,1,0,0,0,0,0,0,0,1,1,False,False,My Box
 world of fun 9063309735,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,World of Fun 9063309735
 my angels two fashion,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,MY ANGELS TWO FASHION
@@ -5133,7 +5133,7 @@ square meal food services,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Square Meal Fo
 roy and popoys batchoy food house,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,ROY AND POPOYS BATCHOY FOOD HOUSE
 sqeeze n twist,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Sqeeze N Twist
 rover system,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,Rover System
-route 80,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Route 80
+route 80,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,ROUTE 80
 sqj pasalubong,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,SQJ PASALUBONG
 round the clock cafe and bakery,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,ROUND-THE-CLOCK CAFE AND BAKERY
 squad skates,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,SQUAD SKATES
@@ -5162,7 +5162,7 @@ rs tech,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,Rs Tech
 rs jewels,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,RS JEWELS
 splash,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,Splash
 rrj greatfit,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,RRJ/GREATFIT
-sploop,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Sploop
+sploop,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,SPLOOP
 rrj cai cellphone & accessories,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,RRJ CAI CELLPHONE & ACCESSORIES
 rrj blues brothers inc,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,"RRJ/ BLUES BROTHERS, INC."
 spoofs,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,SPOOFS
@@ -5360,7 +5360,7 @@ reyes hair cutter,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,REYES HAIR CUTTER
 reyes barbeque,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,REYES BARBEQUE
 streat balls,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,STREAT BALLS
 reycon watch repair center,0,0,0,0,0,0,0,0,0,0,1,0,1,1,False,False,REYCON WATCH REPAIR CENTER
-street pro,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Street Pro
+street pro,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,STREET PRO
 rey silver station & watch repair center zsj dimsum hauz,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,REY SILVER STATION & WATCH REPAIR CENTER ZSJ DIMSUM HAUZ ( SIOMAI KING )
 streetyard,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,STREETYARD
 rexcue fone,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,REXCUE FONE
@@ -5431,7 +5431,7 @@ robots & dolls salon,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Robots & Dolls Salo
 robots & dolls,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Robots & Dolls
 sta barbara,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Sta. Barbara
 robisnons deparment store,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,ROBISNONS DEPARMENT STORE
-sta lucia holdings,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Sta. Lucia Holdings
+sta lucia holdings,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,STA. LUCIA HOLDINGS
 robinsons supermarket hot ticket fashion shop,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,ROBINSONS SUPERMARKET HOT TICKET FASHION SHOP
 sst laptop & pc shop,0,0,1,0,0,0,0,0,0,0,0,0,1,1,False,False,Sst Laptop & Pc Shop
 roger vivier,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,ROGER VIVIER
@@ -5941,7 +5941,7 @@ smile and beyond,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,SMILE AND BEYOND
 smell me,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Smell Me
 scoop pilates studio,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,SCOOP PILATES STUDIO
 scoobys 422 2761,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,SCOOBY'S 422-2761
-scoobys,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Scooby's
+scoobys,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,SCOOBY'S
 scissors palace sandugo,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,Scissors Palace SANDUGO
 school bus internet,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,School Bus Internet
 smart telecommunications,0,0,0,0,1,0,0,0,0,0,0,0,1,1,False,False,Smart Telecommunications
@@ -6085,7 +6085,7 @@ predire wellness,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Predire Wellness
 tech stnergy,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TECH STNERGY
 predire,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Predire
 tech21,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,TECH21
-precision driving school,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,PRECISION DRIVING SCHOOL (OPEN)
+precision driving school,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,PRECISION DRIVING SCHOOL
 techie mobile zone,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Techie Mobile Zone
 precious teeth,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,PRECIOUS TEETH
 precious journey,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,PRECIOUS JOURNEY
@@ -6651,12 +6651,12 @@ tako bros,0,0,0,0,0,0,0,0,0,0,1,0,1,1,False,False,Tako Bros
 psalm diagnostic center,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Psalm Diagnostic Center
 psa philsys natl id registration,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,PSA PHILSYS NAT'L ID REGISTRATION
 takoyakings,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,TAKOYAKINGS
-takuyaki,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Takuyaki
+takuyaki,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TAKUYAKI
 takuyaki go,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TAKUYAKI GO
 takuyaki japanese food,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Takuyaki Japanese Food
 talk a tees,0,0,0,0,1,0,0,0,0,0,0,0,1,1,False,False,Talk A Tees
 tamago,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Tamago
-tambilawan kamayan restaurant,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Tambilawan Kamayan Restaurant
+tambilawan kamayan restaurant,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,TAMBILAWAN KAMAYAN RESTAURANT
 prudential guarantee and assurance inc,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,PRUDENTIAL GUARANTEE AND ASSURANCE INC
 proxpert,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,PROXPERT
 tako depot,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,TAKO DEPOT
@@ -7396,7 +7396,7 @@ chapes keto cakes and donuts,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,CHAPES KETO
 chapes keto dream cakes,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,CHAPES KETO DREAM CAKES
 chapos grill & sizzlers,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Chapo's Grill & Sizzlers
 chapos grill and sizzlers,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,CHAPOS GRILL AND SIZZLERS
-charging station,0,0,0,1,0,0,0,0,0,0,0,0,1,1,False,False,Charging Station (LGF)
+charging station,0,0,0,1,0,0,0,0,0,0,0,0,1,1,False,False,Charging Station (3RD)
 charina sarte,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,CHARINA SARTE
 charitos delights,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Charito's Delights
 chai connection,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,CHAI CONNECTION
@@ -7852,7 +7852,7 @@ dd backyard hydroponic farm,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,DD BACKYARD 
 davids salon & topten nails,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,DAVID'S SALON & TOPTEN NAILS
 david & gian enterprises swift mighty meaty,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,DAVID & GIAN ENTERPRISES/ SWIFT MIGHTY MEATY
 dental district centre,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,DENTAL DISTRICT CENTRE
-daves funhouse,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,DAVE'S FUNHOUSE (OPEN)
+daves funhouse,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,DAVE'S FUNHOUSE
 dannys delicacies,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Danny's Delicacies
 dans,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,DANS
 dans bike shop,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,DAN'S BIKE SHOP
@@ -9030,7 +9030,7 @@ bcs cellphone repair,0,0,0,0,1,0,0,0,0,0,0,0,1,1,False,False,BCS Cellphone Repai
 bdo cash hub,0,0,0,0,0,0,0,0,0,0,1,0,1,1,False,False,BDO Cash Hub
 bdo consumer lending,0,0,0,0,0,0,0,0,0,0,1,0,1,1,False,False,BDO Consumer Lending
 bdo dunkin donut,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,BDO DUNKIN DONUT
-bdo network bank,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,BDO Network Bank
+bdo network bank,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,BDO NETWORK BANK
 bap bowls,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Bap Bowls
 banila co,0,0,1,0,0,0,0,0,0,0,0,0,1,1,False,False,Banila Co
 beauty eves cosmetics,0,0,0,0,0,0,0,0,0,0,1,0,1,1,False,False,Beauty Eve's Cosmetics
@@ -10548,7 +10548,7 @@ gashapon bandai official,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,GASHAPON BANDAI
 gat petshop,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,GAT Petshop
 gatchalian medical center,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GATCHALIAN MEDICAL CENTER
 gatsu man,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Gatsu-Man
-gaudencious lugaw to go,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Gaudencious Lugaw To Go
+gaudencious lugaw to go,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Gaudenciou's Lugaw To Go
 gayles flower shop pampanga,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GAYLES FLOWER SHOP PAMPANGA
 gb mobile,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GB MOBILE
 gc collectibles,0,0,0,0,0,0,1,0,0,0,0,0,1,1,False,False,Gc Collectibles
@@ -10603,7 +10603,7 @@ gelron lugawan,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GELRON LUGAWAN
 gem gallery,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GEM GALLERY
 general photo,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,GENERAL PHOTO
 gems & jewels,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,GEMS & JEWELS
-gems empanada,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Gems Empanada
+gems empanada,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,GEM'S EMPANADA
 gems jewel by carla,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GEMS JEWEL BY CARLA
 gemstone jewellery,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GEMSTONE JEWELLERY
 gen korean bbq house,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,GEN KOREAN BBQ HOUSE
@@ -10899,7 +10899,7 @@ fibrella service center,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,FIBRELLA SERVICE
 fickle fingers internet cafe,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,FICKLE FINGERS INTERNET CAFÉ
 fielas sticky bun cafe,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,FIELAS STICKY BUN CAFE
 fiesta,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,FIESTA
-fiesta bingo,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Fiesta Bingo (OPEN)
+fiesta bingo,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Fiesta Bingo
 fiesta inasal,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,FIESTA INASAL
 fila the look,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,"FILA, THE LOOK"
 fiesta outlet store,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Fiesta Outlet Store (NEW)
@@ -11128,7 +11128,7 @@ ipponyari,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Ipponyari
 ipro repair,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,IPRO REPAIR
 irog,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,Irog
 iqor,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,IQOR
-irefresh,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,iRefresh
+irefresh,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,iREFRESH
 irepair,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,IREPAIR
 irestore,0,0,1,0,0,0,0,0,0,0,0,0,1,1,False,False,Irestore
 irise driving school,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,IRISE DRIVING SCHOOL (0960-247-6510)
@@ -11267,7 +11267,7 @@ jezreel anonuevo,0,0,0,0,0,0,0,0,0,0,0,1,1,1,False,False,JEZREEL ANONUEVO
 jf buchi bread,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,JF BUCHI BREAD
 jethro jewelry shop,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Jethro Jewelry Shop
 jet speed 0922 875 2072 0933 819 1162,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,JET SPEED 0922-875-2072 / 0933-819-1162
-jessi james nino loading station,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Jessi James Nino Loading Station
+jessi james nino loading station,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,JESSI JAMES NINO LOADING STATION
 jems barbers,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Jem's Barbers
 jeli deli pasalubong,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,JELI-DELI PASALUBONG
 jelly skin lab,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,Jelly Skin Lab
@@ -11563,7 +11563,7 @@ ice cream house cocais food stall sbma shawarma,0,0,0,0,0,0,0,0,0,0,0,1,1,1,Fals
 ice kingdom,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Ice Kingdom
 ice print,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,ICE PRINT
 ice queen,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,ICE QUEEN
-icetag cafe,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,ICETAG CAFÉ
+icetag cafe,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,ICETAG CAFE
 icha,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,ICHA
 ibays silver,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Ibay's Silver
 ian dary,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Ian Dary
@@ -11586,7 +11586,7 @@ ian darcy fragrance,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Ian Darcy Fragrance
 hoy house of yogurt lover,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,HOY HOUSE OF YOGURT LOVER
 house of wagyu,0,0,0,0,0,1,0,0,0,0,0,0,1,1,False,False,House Of Wagyu
 hive,0,1,0,0,0,0,0,0,0,0,0,0,1,1,False,False,HIVE
-hollywood spectacles,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Hollywood Spectacles
+hollywood spectacles,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,HOLLYWOOD SPECTACLES
 holy halo,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,Holy Halo
 hom thai food,0,0,0,0,0,0,0,0,1,0,0,0,1,1,False,False,HOM THAI FOOD
 home and beyond,0,0,0,0,0,0,0,1,0,0,0,0,1,1,False,False,HOME AND BEYOND

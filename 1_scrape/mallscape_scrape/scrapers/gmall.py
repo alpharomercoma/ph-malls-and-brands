@@ -2,14 +2,14 @@
 
 ``gaisanomalls.com/mall-directory/`` renders the entire chain-wide tenant table
 server-side and then hands it to a client-side DataTable for paging. That means
-one plain HTTP request returns every row — no browser, no pagination:
+one plain HTTP request returns every row - no browser, no pagination:
 
     <tr><td>GMall of Davao</td><td>Euro Baker Bakeshop</td>
         <td>Lower Ground Floor</td><td>0</td><td>Food</td></tr>
 
 Columns are branch, tenant, floor, an unused numeric column, and category. The
 branch column is what splits the rows across malls, so ``discover_malls``
-derives the mall list from the table itself rather than a hardcoded roster —
+derives the mall list from the table itself rather than a hardcoded roster -
 a new GMall branch appears automatically.
 """
 
@@ -62,7 +62,7 @@ class GmallScraper(MallChainScraper):
         tree = HTMLParser(html)
         for row in tree.css("tr"):
             cells = [re.sub(r"\s+", " ", c.text(strip=True)) for c in row.css("td")]
-            # branch, tenant, floor, [unused numeric], category — the numeric
+            # branch, tenant, floor, [unused numeric], category - the numeric
             # column renders empty, so rows arrive with 4 or 5 cells
             if len(cells) < 4:
                 continue
@@ -84,7 +84,7 @@ class GmallScraper(MallChainScraper):
         if missing:
             self.warn(
                 f"branch(es) offered by the site filter with no tenant rows: "
-                f"{missing} — included as zero-store malls"
+                f"{missing} - included as zero-store malls"
             )
         malls = []
         for branch in sorted(branches):

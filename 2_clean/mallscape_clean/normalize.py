@@ -32,7 +32,7 @@ ALIASES = {
 
 _PARENS = re.compile(r"\([^)]*\)")
 _BRANCH_SUFFIX = re.compile(
-    r"\s*[-–]\s*(atm|kiosk|cart|stall|booth|express|branch|level \d+|[lb]\d+[a-z]?|2nd branch)$",
+    r"\s*[--]\s*(atm|kiosk|cart|stall|booth|express|branch|level \d+|[lb]\d+[a-z]?|2nd branch)$",
     re.IGNORECASE,
 )
 _NON_ALNUM = re.compile(r"[^a-z0-9& ]+")
@@ -44,7 +44,7 @@ def brand_key(raw: str) -> str:
     s = _PARENS.sub(" ", s)                    # drop "(Pedro Gil Wing)" etc.
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
     s = s.lower()
-    s = s.replace("'", "").replace("’", "")
+    s = s.replace("'", "").replace("'", "")
     s = _BRANCH_SUFFIX.sub("", s.strip())
     s = _NON_ALNUM.sub(" ", s)
     s = re.sub(r"\s+", " ", s).strip()
