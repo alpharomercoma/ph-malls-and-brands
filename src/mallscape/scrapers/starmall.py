@@ -40,6 +40,7 @@ class StarmallScraper(MallChainScraper):
     chain = "starmall"
 
     def discover_malls(self) -> list[Mall]:
+        self._check_roster()
         return [
             Mall(
                 chain=self.chain,
@@ -51,6 +52,25 @@ class StarmallScraper(MallChainScraper):
             )
             for slug, (name, region, address) in MALLS.items()
         ]
+
+    def _check_roster(self) -> None:
+        """Hardcoded roster — verify against the live /malls/ page each run so a
+        new Starmall surfaces as a warning instead of vanishing."""
+        try:
+            html = self.fetcher.get_text(f"{BASE}malls/")
+        except Exception as exc:
+            self.warn(f"could not verify mall roster ({type(exc).__name__})")
+            return
+        live = set(re.findall(r'href="[^"]*stores-([a-z-]+)/"', html))
+        if not live:
+            self.warn("mall roster check found no store-page links — markup may have changed")
+            return
+        new = sorted(live - set(MALLS))
+        gone = sorted(set(MALLS) - live)
+        if new:
+            self.warn(f"NEW Starmall not in MALLS: {new} — add it to starmall.py")
+        if gone:
+            self.warn(f"mall(s) in MALLS no longer linked: {gone}")
 
     def scrape_mall(self, mall: Mall) -> list[Store]:
         raw = self.fetcher.get_text(f"{BASE}stores-{mall.mall_id}/")
