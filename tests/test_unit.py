@@ -99,7 +99,7 @@ class TestNormalize:
         assert brand_key("Bonchon | 044-794-3116") == "bonchon"
 
     def test_branch_suffix(self):
-        assert brand_key("BDO - ATM") == "bdo"
+        assert brand_key("BDO - ATM") == "bdo atm"
         assert brand_key("Potato Corner (Center Atrium)") == "potato corner"
 
     def test_aliases(self):
@@ -143,6 +143,12 @@ class TestAyalaRegions:
 
     def test_unknown_when_no_signal(self):
         assert derive_region("Some New Mall", None, None) is None
+
+    def test_smdc_is_not_a_geographic_region(self):
+        from mallscape_scrape.scrapers.sm import public_region
+
+        assert public_region("smdc") is None
+        assert public_region("metro-manila") == "metro-manila"
 
 
 class TestAyalaFixtures:
@@ -394,6 +400,13 @@ class TestCleanStage:
         # a number that IS the name must survive
         assert clean_name("205") == "205"
 
+    def test_brand_matching_preserves_meaningful_parentheticals(self):
+        from mallscape_clean.normalize import brand_key
+
+        assert brand_key("Executive Optical (Fun Optics)") == "executive optical (fun optics)"
+        assert brand_key("Executive Optical (Center Atrium)") == "executive optical"
+        assert brand_key("BPI (ATM)") == "bpi atm"
+
     def test_preserves_acronyms(self):
         from mallscape_clean.clean import clean_name
 
@@ -405,16 +418,14 @@ class TestCleanStage:
         # Mc keeps its internal capital
         assert clean_name("MCDONALD'S") == "McDonald's"
 
-    def test_format_is_modelled_not_merged_away(self):
-        """An ATM booth shares a brand with a branch but is not the same tenant."""
+    def test_atm_is_a_distinct_tenant_identity(self):
         from mallscape_clean.clean import brand_key, store_format
 
         assert store_format("BPI (ATM)") == "atm"
         assert store_format("BPI") == "standard"
         assert store_format("Potato Corner (Kiosk)") == "kiosk"
         assert store_format("Jollibee Drive Thru") == "drive-thru"
-        # the brand still matches across formats, so brand reach stays measurable
-        assert brand_key("BPI (ATM)") == brand_key("BPI")
+        assert brand_key("BPI (ATM)") != brand_key("BPI")
 
     def test_deterministic(self):
         import pandas as pd
@@ -452,7 +463,8 @@ class TestWebsiteStage:
         digest2, second = website_bundle.build("2026-01-01")
         assert digest == digest2
         assert first == second
-        assert first["schema"] == 1
+        assert first["schema"] == 2
+        assert first["brandCategories"] == [[0]]
         assert first["totals"]["properties"] == 1
         # edges are flat pairs, so the length is always even
         assert len(first["edges"]) % 2 == 0

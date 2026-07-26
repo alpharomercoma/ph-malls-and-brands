@@ -3,7 +3,7 @@
  * Three constraints drive the design:
  *   Size    the bundle is columnar with integer indices, so it stays small
  *           enough for a phone. It is fetched once and kept in memory.
- *   Speed   11,660 brands never all reach the DOM. A fixed row height lets the
+ *   Speed   11,489 tenant identities never all reach the DOM. A fixed row height lets the
  *           list render only the visible window plus a small overscan, so
  *           scrolling cost is constant regardless of result count.
  *   Safety  every value from the data is written with textContent. No innerHTML
@@ -43,7 +43,7 @@ async function load() {
   const res = await fetch(src, { cache: 'force-cache' });
   if (!res.ok) throw new Error(`could not load data (${res.status})`);
   const data = await res.json();
-  if (!data || data.schema !== 1) {
+  if (!data || data.schema !== 2) {
     throw new Error(`unsupported bundle schema: ${data && data.schema}`);
   }
   return data;
@@ -96,8 +96,8 @@ function brandPasses(i, opts = {}) {
 
   if (state.query && !d.brandSearch[i].includes(state.query)) return false;
   if (!skipCategory && state.category.size) {
-    const name = b[1] >= 0 ? d.dict.categories[b[1]] : null;
-    if (!name || !state.category.has(name)) return false;
+    const cats = d.brandCategories[i] || (b[1] >= 0 ? [b[1]] : []);
+    if (!cats.some((c) => state.category.has(d.dict.categories[c]))) return false;
   }
   // chain, region and property type all live on the malls this brand occupies,
   // so one pass over them answers every remaining facet at once
@@ -118,7 +118,31 @@ function matchingBrands() {
   const d = state.data;
   const out = [];
   for (let i = 0; i < d.brands.length; i++) if (brandPasses(i)) out.push(i);
-  out.sort((a, b) => d.brands[b][2] - d.brands[a][2] || (d.brands[a][0] < d.brands[b][0] ? -1 : 1));
+  out.sort((a, b) => brandMallCount(b) - brandMallCount(a) || (d.brands[a][0] < d.brands[b][0] ? -1 : 1));
+  return out;
+}
+
+function matchingMallsForBrand(i) {
+  const d = state.data;
+  return d.brandMalls[i].filter((mi) => {
+    const mall = d.malls[mi];
+    return (!state.chain.size || state.chain.has(d.dict.chains[mall[1]])) && mallPasses(mi);
+  });
+}
+
+function brandMallCount(i) {
+  return matchingMallsForBrand(i).length;
+}
+
+function scopedMalls() {
+  const d = state.data;
+  const out = [];
+  for (let i = 0; i < d.malls.length; i++) {
+    const mall = d.malls[i];
+    if (state.chain.size && !state.chain.has(d.dict.chains[mall[1]])) continue;
+    if (!mallPasses(i)) continue;
+    out.push(i);
+  }
   return out;
 }
 
@@ -134,8 +158,9 @@ function matchingMalls() {
       const brands = d.mallBrands[i];
       let ok = false;
       for (let k = 0; k < brands.length; k++) {
-        const c = d.brands[brands[k]][1];
-        if (c >= 0 && state.category.has(d.dict.categories[c])) { ok = true; break; }
+        const bi = brands[k];
+        const cats = d.brandCategories[bi] || (d.brands[bi][1] >= 0 ? [d.brands[bi][1]] : []);
+        if (cats.some((c) => state.category.has(d.dict.categories[c]))) { ok = true; break; }
       }
       if (!ok) continue;
     }
@@ -161,8 +186,11 @@ function facetCounts(facet) {
                 : null;
       if (facet === 'category') {
         for (const bi of d.mallBrands[i]) {
-          const c = d.brands[bi][1];
-          if (c >= 0) counts.set(d.dict.categories[c], (counts.get(d.dict.categories[c]) || 0) + 1);
+          const cats = d.brandCategories[bi] || (d.brands[bi][1] >= 0 ? [d.brands[bi][1]] : []);
+          for (const c of cats) {
+            const name = d.dict.categories[c];
+            counts.set(name, (counts.get(name) || 0) + 1);
+          }
         }
       } else if (key) counts.set(key, (counts.get(key) || 0) + 1);
     }
@@ -172,8 +200,8 @@ function facetCounts(facet) {
     const opts = { skipChain: facet === 'chain', skipCategory: facet === 'category', skipRegion: facet === 'region' };
     if (!brandPasses(i, opts)) continue;
     if (facet === 'category') {
-      const c = d.brands[i][1];
-      if (c >= 0) {
+      const cats = d.brandCategories[i] || (d.brands[i][1] >= 0 ? [d.brands[i][1]] : []);
+      for (const c of cats) {
         const name = d.dict.categories[c];
         counts.set(name, (counts.get(name) || 0) + 1);
       }
@@ -183,7 +211,12 @@ function facetCounts(facet) {
     for (const mi of d.brandMalls[i]) {
       const m = d.malls[mi];
       if (!mallPasses(mi, { skipRegion: facet === 'region' })) continue;
+      // Counting one facet must still respect the others. Without both of
+      // these, selecting an operator left region counts computed over every
+      // mall the brand occupies, so regions that operator does not reach still
+      // showed a non-zero count and stayed enabled.
       if (facet === 'chain' && state.region.size && m[2] >= 0 && !state.region.has(d.dict.regions[m[2]])) continue;
+      if (facet === 'region' && state.chain.size && !state.chain.has(d.dict.chains[m[1]])) continue;
       const key = facet === 'chain' ? d.dict.chains[m[1]] : (m[2] >= 0 ? d.dict.regions[m[2]] : null);
       if (key && !seen.has(key)) { seen.add(key); counts.set(key, (counts.get(key) || 0) + 1); }
     }
@@ -200,21 +233,21 @@ function cell(className, text) {
   return div;
 }
 
-function barCell(value, max) {
+function barCell(value, total) {
   const wrap = document.createElement('div');
   wrap.className = 'bar-cell hide-sm';
   const track = document.createElement('div');
   track.className = 'bar-track';
   const bar = document.createElement('div');
   bar.className = 'bar';
-  const pct = max > 0 ? Math.max(2, Math.round((value / max) * 100)) : 2;
+  const pct = total > 0 ? Math.max(2, Math.round((value / total) * 100)) : 2;
   bar.style.width = pct + '%';
   track.appendChild(bar);
   wrap.appendChild(track);
   return wrap;
 }
 
-function buildRow(index, max) {
+function buildRow(index, total) {
   const d = state.data;
   const row = document.createElement('button');
   row.className = 'row';
@@ -223,19 +256,22 @@ function buildRow(index, max) {
 
   if (state.view === 'brands') {
     const b = d.brands[index];
+    const count = brandMallCount(index);
     row.appendChild(cell('name', b[0]));
     row.appendChild(cell('muted hide-sm', b[1] >= 0 ? label(d.dict.categories[b[1]]) : 'unlabelled'));
-    row.appendChild(cell('n', fmt(b[2])));
-    row.appendChild(barCell(b[2], max));
-    row.setAttribute('aria-label', `${b[0]}, in ${b[2]} malls`);
+    row.appendChild(cell('n', fmt(count)));
+    row.appendChild(barCell(count, total));
+    row.setAttribute('aria-label', `${b[0]}, in ${count} matching malls`);
   } else {
     const m = d.malls[index];
     row.appendChild(cell('name', m[0]));
     row.appendChild(cell('muted hide-sm', d.dict.chains[m[1]]));
     row.appendChild(cell('n', fmt(m[4])));
-    row.appendChild(barCell(m[4], max));
+    row.appendChild(barCell(m[4], total));
     row.setAttribute('aria-label', `${m[0]}, ${m[4]} listings`);
   }
+  const flags = state.view === 'malls' ? (d.quality?.propertyFlags[index] || []) : [];
+  if (flags.length) row.classList.add('has-quality-flag');
   row.addEventListener('click', () => {
     state.expanded = state.expanded === index ? null : index;
     renderList();
@@ -252,7 +288,7 @@ function buildDetail(index) {
   pills.className = 'pills';
 
   if (state.view === 'brands') {
-    const malls = d.brandMalls[index].slice().sort((a, b) => d.malls[b][4] - d.malls[a][4]);
+    const malls = matchingMallsForBrand(index).sort((a, b) => d.malls[b][4] - d.malls[a][4]);
     h.textContent = `Present in ${malls.length} ${malls.length === 1 ? 'mall' : 'malls'}`;
     for (const mi of malls.slice(0, 60)) {
       const p = document.createElement('span');
@@ -282,6 +318,15 @@ function buildDetail(index) {
       pills.appendChild(p);
     }
   }
+  if (state.view === 'malls') {
+    const flags = d.quality?.propertyFlags[index] || [];
+    if (flags.length) {
+      const note = document.createElement('p');
+      note.className = 'quality-note';
+      note.textContent = flags.join(' · ');
+      box.insertBefore(note, pills);
+    }
+  }
   box.appendChild(h);
   box.appendChild(pills);
   return box;
@@ -305,9 +350,9 @@ function renderList() {
   el('empty').hidden = true;
 
   const d = state.data;
-  const max = state.view === 'brands'
-    ? d.brands[rows[0]][2]
-    : d.malls[rows[0]][4];
+  const total = state.view === 'brands'
+    ? scopedMalls().length
+    : rows.reduce((sum, i) => sum + d.malls[i][4], 0);
 
   sizer.style.height = rows.length * ROW_HEIGHT + 'px';
   const first = Math.max(0, Math.floor(viewport.scrollTop / ROW_HEIGHT) - OVERSCAN);
@@ -316,7 +361,7 @@ function renderList() {
 
   const frag = document.createDocumentFragment();
   for (let i = first; i < last; i++) {
-    frag.appendChild(buildRow(rows[i], max));
+    frag.appendChild(buildRow(rows[i], total));
     if (state.expanded === rows[i]) frag.appendChild(buildDetail(rows[i]));
   }
   win.style.transform = `translateY(${first * ROW_HEIGHT}px)`;
@@ -329,8 +374,19 @@ function refresh() {
   el('viewport').scrollTop = 0;
   el('col-2').textContent = state.view === 'brands' ? 'Category' : 'Operator';
   el('col-3').firstChild.textContent = state.view === 'brands' ? 'Malls' : 'Listings';
+  el('col-4').textContent = 'Share';
   paintFacets();
   renderList();
+  renderScope();
+}
+
+function renderScope() {
+  const active = [];
+  for (const [key, title] of [['chain', 'Operator'], ['region', 'Region'], ['category', 'Category']]) {
+    if (state[key].size) active.push(`${title}: ${[...state[key]].map(label).join(' or ')}`);
+  }
+  if (state.mallsOnly) active.push('Malls only');
+  el('scope').textContent = active.length ? `Filtered by ${active.join(' · ')}` : 'Showing the full snapshot';
 }
 
 /* ---------- setup ---------- */
@@ -417,6 +473,7 @@ function closeAllPanels() {
     panel.hidden = true;
     panel.previousElementSibling.setAttribute('aria-expanded', 'false');
   }
+  document.querySelectorAll('.help-popover').forEach((node) => node.remove());
 }
 
 /** Refresh every option's checked state, count and availability. */
@@ -452,7 +509,7 @@ function renderStats() {
     [fmt(t.listings), 'listings',
      'One row per store as published. A brand with outlets on two floors of the same mall counts twice.'],
     [fmt(t.brands), 'brands',
-     'Distinct brands after normalizing names, so BPI, BPI (ATM) and BPI - ATM count as one.'],
+     'Distinct tenant identities after normalizing names. Bank branches and ATMs are counted separately.'],
     [String(state.data.dict.chains.length), 'operators', null],
   ];
   const box = el('stats');
@@ -469,12 +526,41 @@ function renderStats() {
       help.className = 'help';
       help.textContent = '?';
       help.title = explain;
+      help.dataset.help = explain;
       help.setAttribute('aria-label', `${name}: ${explain}`);
       s.appendChild(help);
     }
     card.append(b, s);
     box.appendChild(card);
   }
+}
+
+function wireHelp() {
+  for (const help of document.querySelectorAll('.help')) {
+    if (help.dataset.wired) continue;
+    help.dataset.wired = 'true';
+    help.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const old = help.parentElement.querySelector('.help-popover');
+      document.querySelectorAll('.help-popover').forEach((node) => node.remove());
+      if (old) return;
+      const popover = document.createElement('span');
+      popover.className = 'help-popover';
+      popover.setAttribute('role', 'status');
+      popover.textContent = help.dataset.help || help.title || 'More information';
+      help.parentElement.appendChild(popover);
+    });
+  }
+}
+
+function renderQuality() {
+  const host = el('quality');
+  host.replaceChildren();
+  const title = document.createElement('strong');
+  title.textContent = 'How to read this data';
+  const copy = document.createElement('p');
+  copy.textContent = 'Listings are source rows, not verified open businesses. Brand counts use conservative name matching; unknown categories remain visible. Some operators publish incomplete or duplicated directories.';
+  host.append(title, copy);
 }
 
 function applyTheme(mode) {
@@ -540,6 +626,8 @@ async function main() {
     state.data = prepare(await load());
     el('date').textContent = state.data.date;
     renderStats();
+    wireHelp();
+    renderQuality();
     buildFacets();
     wire();
     refresh();

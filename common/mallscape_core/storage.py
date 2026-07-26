@@ -72,6 +72,27 @@ def write_text(run_date: str, stage: str, name: str, text: str) -> Path:
     return path
 
 
+def validate_snapshot_frames(malls: pd.DataFrame, stores: pd.DataFrame) -> None:
+    """Validate the relational contract shared by every downstream stage."""
+    mall_key = ["chain", "mall_id"]
+    required_malls = {*mall_key, "mall_name"}
+    required_stores = {*mall_key, "store_name_raw"}
+    missing_malls = required_malls - set(malls.columns)
+    missing_stores = required_stores - set(stores.columns)
+    if missing_malls or missing_stores:
+        raise ValueError(
+            f"snapshot schema missing malls={sorted(missing_malls)}, "
+            f"stores={sorted(missing_stores)}"
+        )
+    if malls.duplicated(mall_key).any():
+        raise ValueError("snapshot contains duplicate (chain, mall_id) mall keys")
+    mall_keys = pd.MultiIndex.from_frame(malls[mall_key])
+    store_keys = pd.MultiIndex.from_frame(stores[mall_key])
+    orphaned = store_keys.difference(mall_keys)
+    if len(orphaned):
+        raise ValueError(f"snapshot contains {len(orphaned)} store keys without a mall")
+
+
 def runs() -> list[str]:
     root = DATA_DIR / "snapshots"
     if not root.exists():

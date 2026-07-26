@@ -11,7 +11,7 @@ Columns added
 -------------
 ``store_name``      display form: unicode-normalized, whitespace-collapsed,
                     smart quotes folded, ALL-CAPS title-cased
-``brand_key``       matching key (from :mod:`mallscape_clean.normalize`)
+``brand_key``       user-visible tenant key (from :mod:`mallscape_clean.normalize`)
 ``category_std``    harmonized taxonomy - the twelve chains publish 101
                     different category strings for the same handful of concepts
 ``floor_std``       canonical floor label ("Level 2", "Lower Ground", ...)
@@ -93,10 +93,8 @@ _NAME_NOISE = re.compile(
     r"|\s+[\d][\d\-\s/]{6,}$",
     re.I,
 )
-# Tenant format. A bank branch and an ATM booth are both the BPI brand but are
-# not the same tenant, so the distinction is kept in its own column rather than
-# being folded into brand_key. That way brand reach can still be measured while
-# "how many are only ATMs" stays answerable.
+# Tenant format complements the tenant key. A bank branch and an ATM booth are
+# separate tenant identifiers, and this column supports format-level analysis.
 _FORMATS = (
     ("atm", r"\batm\b|\bautomated teller\b"),
     ("kiosk", r"\bkiosk\b"),
@@ -316,4 +314,26 @@ def category_mapping(stores: pd.DataFrame) -> pd.DataFrame:
     )
     return rows.sort_values(
         ["category_std", "listings", "chain"], ascending=[True, False, True]
+    ).reset_index(drop=True)
+
+
+def normalization_review(stores: pd.DataFrame) -> pd.DataFrame:
+    """Return potentially risky raw-name merges for human review."""
+    df = stores.copy()
+    df["store_name"] = df["store_name_raw"].map(clean_name)
+    df["brand_key"] = df["store_name"].map(brand_key)
+    out = (
+        df[df["brand_key"] != ""]
+        .groupby("brand_key")
+        .agg(
+            raw_variants=("store_name_raw", "nunique"),
+            clean_variants=("store_name", "nunique"),
+            listings=("brand_key", "size"),
+            chains=("chain", "nunique"),
+            examples=("store_name_raw", lambda s: " | ".join(sorted(s.unique())[:8])),
+        )
+        .reset_index()
+    )
+    return out[(out.raw_variants > 1) & ((out.clean_variants > 1) | (out.raw_variants >= 5))].sort_values(
+        ["raw_variants", "listings", "brand_key"], ascending=[False, False, True]
     ).reset_index(drop=True)

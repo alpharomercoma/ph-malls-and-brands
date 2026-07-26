@@ -12,11 +12,11 @@
 - **starmall**: 4 malls, 279 store rows
 - **waltermart**: 46 malls, 1497 store rows
 - **xentro**: 19 malls, 1006 store rows
-- ⚠ malls with 0 stores: ['ayala-vermosa', 'cybergate-bacolod', 'gmall-of-cebu', 'gmall-of-gensan', 'mabalacat', 'san-pascual', 'silang', 'sm-city-la-union', 'sm-city-zamboanga', 'sm-makati', 'tuscany-at-mckinley-hill', 'xentro-mall-antipolo', 'xentro-mall-polangui']
+- ⚠ malls with 0 stores: [('ayala', 'ayala-vermosa'), ('gmall', 'gmall-of-cebu'), ('gmall', 'gmall-of-gensan'), ('megaworld', 'tuscany-at-mckinley-hill'), ('robinsons', 'cybergate-bacolod'), ('sm', 'sm-city-la-union'), ('sm', 'sm-city-zamboanga'), ('sm', 'sm-makati'), ('waltermart', 'mabalacat'), ('waltermart', 'san-pascual'), ('waltermart', 'silang'), ('xentro', 'xentro-mall-antipolo'), ('xentro', 'xentro-mall-polangui')]
 
 _First run - no previous snapshot to diff against._
 
 ## Scraper warnings
-- branch(es) offered by the site filter with no tenant rows: ['GMall of Gensan', 'Gmall of Cebu'] - included as zero-store malls
-- 0 stores for gmall-of-gensan
-- 0 stores for gmall-of-cebu
+- 0 stores for sm-city-la-union
+- 0 stores for sm-city-zamboanga
+- 0 stores for sm-makati

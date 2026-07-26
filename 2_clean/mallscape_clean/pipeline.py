@@ -14,6 +14,7 @@ def run(run_date: str) -> dict[str, float]:
     cleaned = clean.build(stores)
     storage.write(run_date, storage.CLEAN, "stores_clean", cleaned)
     storage.write(run_date, storage.CLEAN, "category_mapping", clean.category_mapping(stores))
+    storage.write(run_date, storage.CLEAN, "normalization_review", clean.normalization_review(stores))
 
     flagged = int((cleaned["dq_flags"] != "").sum())
     stats = {

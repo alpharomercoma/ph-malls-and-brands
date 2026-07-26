@@ -1,6 +1,6 @@
 # Data reference
 
-The scraped data ships with the repository under `data/processed/<date>/`.
+The scraped data ships with the repository under `data/snapshots/<date>/`.
 `data/raw/` (the HTTP cache) and `data/latest/` (a copy of the newest snapshot)
 are not committed — the cache is large, regenerable, and rewritten in place on
 re-runs, so it is scratch space rather than provenance.
@@ -15,6 +15,7 @@ re-runs, so it is scratch space rather than provenance.
 | `brand_summary.*` | — | per brand: malls per chain, total, chain count |
 | `unique_brands.*` | — | brands present in exactly one mall |
 | `mall_summary.*` | — | per mall: store count, brand count, top categories |
+| `normalization_review.*` | — | raw-name variants requiring normalization review |
 | `breakdown.md` | — | deterministic human-readable report (`mallscape report`) |
 | `report.md` | — | validation report from the scrape run |
 
@@ -31,7 +32,7 @@ rebuilt at any time with `mallscape analyze --date <date>`.
 | `chain` | operator id (`sm`, `robinsons`, `ayala`, …) |
 | `mall_id` | stable slug, unique within a chain |
 | `mall_name` | display name as published |
-| `region` | `metro-manila` \| `north-luzon` \| `south-luzon` \| `visayas` \| `mindanao` \| `smdc` \| `others`. **Null for all Megaworld and XentroMall rows** — see open items |
+| `region` | `metro-manila` \| `north-luzon` \| `south-luzon` \| `visayas` \| `mindanao`. Always geographic. Only three operators publish one, so the rest are inferred from name and address by `mallscape_core.geo`; resolved for 327 of 328 properties |
 | `address` | street address where published |
 | `mall_code` | operator-internal id (SM `mallCode`, Ayala numeric id, Contentstack uid) |
 | `source_url` | the page or endpoint the data came from |

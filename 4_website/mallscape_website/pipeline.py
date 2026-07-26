@@ -56,7 +56,13 @@ def run(run_date: str) -> Path:
     html = DATE_RE.sub(f'data-snapshot="{run_date}"', html, count=1)
     index.write_text(html)
 
-    # keep a copy inside the snapshot so the run is self-describing
+    # Keep a copy inside the snapshot so the run is self-describing, pruning
+    # superseded copies for the same reason the site directory is pruned: a
+    # directory holding several bundles cannot say which one is current.
+    snapshot_dir = storage.stage_dir(run_date, storage.WEBSITE)
+    for old in snapshot_dir.glob("data-*.json"):
+        if old.name != name and STALE_BUNDLE.match(old.name):
+            old.unlink()
     storage.write_text(run_date, storage.WEBSITE, name, bundle_mod.dumps(data))
 
     size_kb = (site / name).stat().st_size / 1024

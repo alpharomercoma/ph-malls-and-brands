@@ -65,7 +65,11 @@ class XentroScraper(MallChainScraper):
         html = self.fetcher.get_text(f"{LOCATOR}{mall.mall_id}/")
         tree = HTMLParser(html)
 
-        # address sits in the page header near the mall name
+        # the header carries the street address above the mall name
+        header = tree.css_first(".mall_title h4.tbk__title")
+        if header is not None and not mall.address:
+            mall.address = re.sub(r"\s+", " ", header.text(strip=True)) or None
+
         stores: list[Store] = []
         seen: set[str] = set()
         for block in tree.css("div.zn_text_box"):

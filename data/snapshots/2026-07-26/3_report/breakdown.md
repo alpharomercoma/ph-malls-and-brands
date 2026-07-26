@@ -2,7 +2,13 @@
 
 **328 properties · 42,412 listings · 12 chains**
 
-Generated deterministically from the snapshot in `data/processed/2026-07-26/`. Regenerate with `mallscape report --date 2026-07-26`.
+Generated deterministically from the snapshot in `data/snapshots/2026-07-26/`. Regenerate with `mallscape report --date 2026-07-26`.
+
+## Data quality
+
+11,634 of 42,412 listings have no confidently mapped category.
+501 normalized brand keys have multiple raw variants or require review.
+Raw listings are retained; these signals describe uncertainty rather than removing rows.
 
 ## Chains
 
@@ -16,11 +22,11 @@ Generated deterministically from the snapshot in `data/processed/2026-07-26/`. R
 | megaworld  |         26 |      26 |      2,118 | 2026-07-26 | megaworld-lifestylemalls.com                |
 | ortigas    |          4 |       4 |      1,279 | 2026-07-26 | ortigasmalls.com                            |
 | robinsons  |         54 |      54 |      8,392 | 2026-07-26 | robinsonsmalls.com + vmd.robinsonsmalls.com |
-| sm         |        126 |     101 |     19,640 | 2026-07-26 | smsupermalls.com                            |
+| sm         |        126 |     100 |     19,640 | 2026-07-26 | smsupermalls.com                            |
 | starmall   |          4 |       4 |        279 | 2026-07-26 | starmalls.com.ph                            |
 | waltermart |         46 |      46 |      1,497 | 2026-07-26 | malls.waltermart.com.ph                     |
 | xentro     |         19 |      19 |      1,006 | 2026-07-26 | xentromalls.com                             |
-| **total**  |    **328** | **303** | **42,412** |            |                                             |
+| **total**  |    **328** | **302** | **42,412** |            |                                             |
 
 `properties` counts everything the operator publishes a directory for; `malls` excludes non-mall retail (condo podiums, amusement parks, office annexes). **Use `malls` for chain-vs-chain comparison.**
 
@@ -108,34 +114,34 @@ Generated deterministically from the snapshot in `data/processed/2026-07-26/`. R
 
 ### megaworld (26 properties, 2,118 listings)
 
-| property                          | region | type | listings |
-|-----------------------------------|--------|------|---------:|
-| Venice Grand Canal Mall           | nan    | mall |      301 |
-| Uptown Mall                       | nan    | mall |      244 |
-| Lucky Chinatown Mall              | nan    | mall |      201 |
-| Newport City                      | nan    | mall |      163 |
-| Eastwood Mall                     | nan    | mall |      156 |
-| Festive Walk Mall                 | nan    | mall |      153 |
-| Southwoods Mall                   | nan    | mall |      139 |
-| Eastwood City Walk                | nan    | mall |       92 |
-| Forbes Town                       | nan    | mall |       77 |
-| Eastwood Cyber Mall               | nan    | mall |       65 |
-| Lucky Chinatown - Prosperity Wing | nan    | mall |       56 |
-| San Lorenzo Place Mall            | nan    | mall |       53 |
-| California Garden Square          | nan    | mall |       45 |
-| Festive Walk Parade               | nan    | mall |       42 |
-| Mactan Newtown                    | nan    | mall |       42 |
-| Uptown Parade                     | nan    | mall |       41 |
-| Lucky Chinatown - Imperial Wing   | nan    | mall |       38 |
-| McKinley West                     | nan    | mall |       38 |
-| Alabang West Parade               | nan    | mall |       34 |
-| Paseo Center                      | nan    | mall |       33 |
-| The Greenhouse at Village Square  | nan    | mall |       32 |
-| Arcovia City                      | nan    | mall |       29 |
-| Twin Lakes                        | nan    | mall |       16 |
-| The Clubhouse at Temple Drive     | nan    | mall |       14 |
-| Three Central Mall                | nan    | mall |       14 |
-| Tuscany at McKinley Hill          | nan    | mall |        0 |
+| property                          | region       | type | listings |
+|-----------------------------------|--------------|------|---------:|
+| Venice Grand Canal Mall           | metro-manila | mall |      301 |
+| Uptown Mall                       | metro-manila | mall |      244 |
+| Lucky Chinatown Mall              | metro-manila | mall |      201 |
+| Newport City                      | metro-manila | mall |      163 |
+| Eastwood Mall                     | metro-manila | mall |      156 |
+| Festive Walk Mall                 | visayas      | mall |      153 |
+| Southwoods Mall                   | south-luzon  | mall |      139 |
+| Eastwood City Walk                | metro-manila | mall |       92 |
+| Forbes Town                       | metro-manila | mall |       77 |
+| Eastwood Cyber Mall               | metro-manila | mall |       65 |
+| Lucky Chinatown - Prosperity Wing | metro-manila | mall |       56 |
+| San Lorenzo Place Mall            | metro-manila | mall |       53 |
+| California Garden Square          | metro-manila | mall |       45 |
+| Festive Walk Parade               | visayas      | mall |       42 |
+| Mactan Newtown                    | visayas      | mall |       42 |
+| Uptown Parade                     | metro-manila | mall |       41 |
+| Lucky Chinatown - Imperial Wing   | metro-manila | mall |       38 |
+| McKinley West                     | metro-manila | mall |       38 |
+| Alabang West Parade               | metro-manila | mall |       34 |
+| Paseo Center                      | metro-manila | mall |       33 |
+| The Greenhouse at Village Square  | metro-manila | mall |       32 |
+| Arcovia City                      | metro-manila | mall |       29 |
+| Twin Lakes                        | south-luzon  | mall |       16 |
+| The Clubhouse at Temple Drive     | metro-manila | mall |       14 |
+| Three Central Mall                | metro-manila | mall |       14 |
+| Tuscany at McKinley Hill          | metro-manila | mall |        0 |
 
 ### ortigas (4 properties, 1,279 listings)
 
@@ -295,46 +301,46 @@ Generated deterministically from the snapshot in `data/processed/2026-07-26/`. R
 | SM Center Imus                | south-luzon  | mall               |       67 |
 | SM Megacenter Cabanatuan      | north-luzon  | mall               |       61 |
 | SM City San Fernando Downtown | north-luzon  | mall               |       56 |
-| SMDC Light Mall               | smdc         | residential-retail |       46 |
+| SMDC Light Mall               | metro-manila | residential-retail |       46 |
 | SM Savemore Tacloban          | visayas      | mall               |       40 |
 | SM By the Bay                 | metro-manila | mall               |       39 |
 | SM Center Antipolo Downtown   | metro-manila | mall               |       38 |
-| SMDC Jazz Mall                | smdc         | residential-retail |       38 |
+| SMDC Jazz Mall                | metro-manila | residential-retail |       38 |
 | SM Center Shaw                | metro-manila | mall               |       37 |
 | MOA Square                    | metro-manila | mall               |       30 |
-| SMDC Mplace Mall              | smdc         | residential-retail |       28 |
+| SMDC Mplace Mall              | metro-manila | residential-retail |       28 |
 | SM Center Congressional       | metro-manila | mall               |       25 |
-| SMDC Strip at Mezza           | smdc         | residential-retail |       25 |
-| SMDC Sun Mall                 | smdc         | residential-retail |       24 |
+| SMDC Strip at Mezza           | metro-manila | residential-retail |       25 |
+| SMDC Sun Mall                 | metro-manila | residential-retail |       24 |
 | SM Savemore Apalit            | north-luzon  | mall               |       23 |
-| SMDC Air Mall                 | smdc         | residential-retail |       23 |
-| SMDC Fame Mall                | smdc         | residential-retail |       23 |
-| SMDC Grace Mall               | smdc         | residential-retail |       23 |
+| SMDC Air Mall                 | metro-manila | residential-retail |       23 |
+| SMDC Fame Mall                | metro-manila | residential-retail |       23 |
+| SMDC Grace Mall               | metro-manila | residential-retail |       23 |
 | SM Savemore Nagtahan          | metro-manila | mall               |       21 |
-| SMDC Strip at Grass           | smdc         | residential-retail |       17 |
+| SMDC Strip at Grass           | metro-manila | residential-retail |       17 |
 | SM Hypermarket Sucat Lopez    | metro-manila | mall               |       16 |
 | SM Marketmall Dasmarinas      | south-luzon  | mall               |       16 |
-| SMDC Strip at Sea             | smdc         | residential-retail |       15 |
-| SMDC Strip at Shore           | smdc         | residential-retail |       15 |
+| SMDC Strip at Sea             | metro-manila | residential-retail |       15 |
+| SMDC Strip at Shore           | metro-manila | residential-retail |       15 |
 | SM Hypermarket Lapu-Lapu      | visayas      | mall               |       13 |
-| SMDC Breeze Mall              | smdc         | residential-retail |       11 |
+| SMDC Breeze Mall              | metro-manila | residential-retail |       11 |
 | NU MALL OF ASIA BUILDING      | metro-manila | office-annex       |        9 |
-| Wind Residences               | smdc         | residential-retail |        8 |
+| Wind Residences               | south-luzon  | residential-retail |        8 |
 | Mall Of Asia Arena Annex Bldg | metro-manila | office-annex       |        7 |
-| SMDC Strip at Trees           | smdc         | residential-retail |        7 |
-| SMDC Green Mall               | smdc         | residential-retail |        6 |
-| SMDC Strip at Blue            | smdc         | residential-retail |        5 |
-| SMDC Strip at Shell           | smdc         | residential-retail |        5 |
-| SMDC Strip at Princeton       | smdc         | residential-retail |        4 |
-| SMDC Strip at Berkeley        | smdc         | residential-retail |        2 |
-| SMDC Strip at Shine           | smdc         | residential-retail |        2 |
-| Sky Ranch Baguio              | others       | amusement-park     |        1 |
-| Sky Ranch Pampanga            | others       | amusement-park     |        1 |
-| Sky Ranch Tagaytay            | others       | amusement-park     |        1 |
-| SMBY Amusement Park           | others       | mall               |        1 |
+| SMDC Strip at Trees           | metro-manila | residential-retail |        7 |
+| SMDC Green Mall               | metro-manila | residential-retail |        6 |
+| SMDC Strip at Blue            | metro-manila | residential-retail |        5 |
+| SMDC Strip at Shell           | metro-manila | residential-retail |        5 |
+| SMDC Strip at Princeton       | metro-manila | residential-retail |        4 |
+| SMDC Strip at Berkeley        | metro-manila | residential-retail |        2 |
+| SMDC Strip at Shine           | metro-manila | residential-retail |        2 |
+| Sky Ranch Baguio              | north-luzon  | amusement-park     |        1 |
+| Sky Ranch Pampanga            | north-luzon  | amusement-park     |        1 |
+| Sky Ranch Tagaytay            | south-luzon  | amusement-park     |        1 |
+| SMBY Amusement Park           | nan          | amusement-park     |        1 |
 | SM City La Union              | north-luzon  | mall               |        0 |
 | SM City Zamboanga             | mindanao     | mall               |        0 |
-| SM Makati                     | others       | mall               |        0 |
+| SM Makati                     | metro-manila | mall               |        0 |
 
 ### starmall (4 properties, 279 listings)
 
@@ -398,27 +404,27 @@ Generated deterministically from the snapshot in `data/processed/2026-07-26/`. R
 
 ### xentro (19 properties, 1,006 listings)
 
-| property                 | region | type | listings |
-|--------------------------|--------|------|---------:|
-| Montalban Town Center    | nan    | mall |      167 |
-| Balagtas Town Center     | nan    | mall |      102 |
-| XentroMall Calapan       | nan    | mall |       79 |
-| XentroMall Santiago      | nan    | mall |       78 |
-| XentroMall Lemery        | nan    | mall |       68 |
-| Tanay Town Center        | nan    | mall |       67 |
-| XentroMall Roxas         | nan    | mall |       66 |
-| Mall Of The Valley       | nan    | mall |       64 |
-| Ab Central               | nan    | mall |       55 |
-| Northstar Mall           | nan    | mall |       46 |
-| Morong Centerpoint       | nan    | mall |       41 |
-| XentroMall Tumauini      | nan    | mall |       41 |
-| Sta Ana Public Market    | nan    | mall |       37 |
-| XentroMall Cabagan       | nan    | mall |       32 |
-| Shopking                 | nan    | mall |       27 |
-| Ilagan City Mall Isabela | nan    | mall |       19 |
-| XentroMall San Andres    | nan    | mall |       17 |
-| XentroMall Antipolo      | nan    | mall |        0 |
-| XentroMall Polangui      | nan    | mall |        0 |
+| property                 | region       | type | listings |
+|--------------------------|--------------|------|---------:|
+| Montalban Town Center    | metro-manila | mall |      167 |
+| Balagtas Town Center     | north-luzon  | mall |      102 |
+| XentroMall Calapan       | south-luzon  | mall |       79 |
+| XentroMall Santiago      | north-luzon  | mall |       78 |
+| XentroMall Lemery        | south-luzon  | mall |       68 |
+| Tanay Town Center        | south-luzon  | mall |       67 |
+| XentroMall Roxas         | north-luzon  | mall |       66 |
+| Mall Of The Valley       | north-luzon  | mall |       64 |
+| Ab Central               | metro-manila | mall |       55 |
+| Northstar Mall           | north-luzon  | mall |       46 |
+| Morong Centerpoint       | metro-manila | mall |       41 |
+| XentroMall Tumauini      | north-luzon  | mall |       41 |
+| Sta Ana Public Market    | metro-manila | mall |       37 |
+| XentroMall Cabagan       | north-luzon  | mall |       32 |
+| Shopking                 | metro-manila | mall |       27 |
+| Ilagan City Mall Isabela | north-luzon  | mall |       19 |
+| XentroMall San Andres    | metro-manila | mall |       17 |
+| XentroMall Antipolo      | metro-manila | mall |        0 |
+| XentroMall Polangui      | south-luzon  | mall |        0 |
 
 ## Properties with zero listings
 
@@ -527,22 +533,22 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 ## Brand reach
 
-11,424 distinct brands after normalization.
+11,489 distinct brands after normalization.
 
 | brand                  | malls | chains |
 |------------------------|------:|-------:|
 | WATSONS                |   197 |     12 |
 | POTATO CORNER          |   195 |     11 |
-| BANCO DE ORO           |   179 |     11 |
 | BENCH                  |   176 |     12 |
+| BANCO DE ORO           |   173 |     10 |
 | JOLLIBEE               |   173 |     11 |
 | SAMSUNG                |   169 |     10 |
 | PENSHOPPE              |   163 |     12 |
-| EXECUTIVE OPTICAL      |   157 |     11 |
+| EXECUTIVE OPTICAL      |   154 |     11 |
 | VIVO                   |   144 |     10 |
 | AFICIONADO             |   136 |     10 |
-| OPPO                   |   132 |     11 |
 | FAMOUS BELGIAN WAFFLES |   131 |      5 |
+| OPPO                   |   131 |     11 |
 | KFC                    |   130 |      8 |
 | NATIONAL BOOKSTORE     |   130 |     10 |
 | KETTLE KORN            |   129 |      9 |

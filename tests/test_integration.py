@@ -84,6 +84,17 @@ def test_website_bundle_matches_snapshot_totals(snapshot):
     assert data["totals"]["listings"] == len(STORES)
     assert data["totals"]["malls"] == 2      # one is residential-retail
     assert len(data["malls"]) == len(MALLS)
+    assert data["schema"] == 2
+    assert "quality" in data
+    assert data["brandCategories"]
+
+
+def test_snapshot_contract_rejects_orphan_store():
+    malls = MALLS.copy()
+    stores = STORES.copy()
+    stores.loc[0, "mall_id"] = "missing"
+    with pytest.raises(ValueError, match="without a mall"):
+        storage.validate_snapshot_frames(malls, stores)
 
 
 def test_report_fails_loudly_without_stage1(tmp_path, monkeypatch):

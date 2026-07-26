@@ -25,13 +25,16 @@ is added beside it:
 | `phone_e164` | `+63` form, null when unparseable |
 | `dq_flags` | pipe separated quality flags, empty when clean |
 
-## Brand versus format
+`normalization_review.parquet` / `.csv` lists brand keys with many raw variants
+or multiple cleaned variants for human review. It is diagnostic only; no raw
+listing is removed from `stores_clean`.
 
-A BPI branch and a BPI ATM booth carry the same brand but are not the same
-tenant. Folding them together would make "BPI is in 71 malls" quietly count
-ATM booths as branches. `brand_key` therefore stays the brand, and the format
-lives in its own column: BPI appears in 71 malls, of which 63 have an actual
-branch. 767 listings carry such a qualifier, most often `express` and `atm`.
+## Tenant identity versus format
+
+A BPI branch and a BPI ATM booth are separate mall tenants. `brand_key` keeps
+that distinction (`bpi` versus `bpi atm`), while `store_format` retains the
+explicit format for analysis. This prevents ATM-only locations from inflating
+branch presence.
 
 ## The judgment call
 

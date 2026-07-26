@@ -53,7 +53,7 @@ def test_bundle_is_valid_and_referenced(server):
     path = SITE / name
     assert path.exists(), f"index.html references {name}, which is not on disk"
     data = json.loads(path.read_text())
-    assert data["schema"] == 1
+    assert data["schema"] == 2
     assert data["totals"]["properties"] > 0
     assert len(data["edges"]) % 2 == 0
 
@@ -97,6 +97,22 @@ def test_search_filters(page):
     page.wait_for_timeout(300)
 
 
+def test_brand_counts_and_bars_follow_operator_filter(page):
+    page.fill("#q", "bpi")
+    page.wait_for_timeout(300)
+    row = page.locator(".row").first
+    before = row.locator(".n").inner_text()
+    before_width = row.locator(".bar").evaluate("node => node.style.width")
+    page.click("#dd-chain > button")
+    page.click('.dd-opt[data-facet="chain"][data-value="ayala"]')
+    page.wait_for_timeout(300)
+    row = page.locator(".row").first
+    assert row.locator(".n").inner_text() != before
+    assert row.locator(".bar").evaluate("node => node.style.width") != before_width
+    page.click("#reset")
+    page.wait_for_timeout(200)
+
+
 def test_no_results_state_is_explicit(page):
     page.fill("#q", "zzzzznotarealbrand")
     page.wait_for_timeout(300)
@@ -113,6 +129,26 @@ def test_switching_view_changes_columns(page):
     page.click("#tab-brands")
     page.wait_for_timeout(200)
     assert page.locator("#col-3").inner_text().lower().startswith("malls")
+
+
+def test_filter_scope_is_visible_and_region_is_geographic(page):
+    page.click("#dd-chain > button")
+    page.click('.dd-opt[data-facet="chain"][data-value="sm"]')
+    page.wait_for_timeout(200)
+    assert "Operator: SM" in page.locator("#scope").inner_text()
+    assert page.locator('.dd-opt[data-facet="region"][data-value="smdc"]').count() == 0
+    page.click("#reset")
+
+
+def test_help_controls_open_explanations(page):
+    helps = page.locator(".help")
+    assert helps.count() == 5
+    for i in range(helps.count()):
+        helps.nth(i).click()
+        assert page.locator(".help-popover").is_visible()
+        assert page.locator(".help-popover").inner_text()
+        page.locator("body").click(position={"x": 5, "y": 5})
+        assert page.locator(".help-popover").count() == 0
 
 
 def test_no_horizontal_overflow_on_mobile(page):

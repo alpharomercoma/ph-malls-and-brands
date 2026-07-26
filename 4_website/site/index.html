@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232a78d6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-bundle="data-5ea93741430f.json" data-snapshot="2026-07-26">
+<body data-bundle="data-954dc1cb59a7.json" data-snapshot="2026-07-26">
 <div class="wrap">
 
   <header>
@@ -30,6 +30,7 @@
 
   <main id="app" hidden>
     <div class="stats" id="stats"></div>
+    <section class="quality" id="quality" aria-label="Data quality notes"></section>
 
     <div class="controls">
       <div class="tabs" role="tablist" aria-label="What to browse">
@@ -50,6 +51,7 @@
       <button id="reset" class="chip" type="button" hidden>Clear filters</button>
 
       <span class="count" id="count"></span>
+      <span class="scope" id="scope" aria-live="polite"></span>
     </div>
 
     <div class="panel">
@@ -58,7 +60,7 @@
         <div class="hide-sm" id="col-2">Category</div>
         <div class="n" id="col-3">Malls<button class="help" type="button" id="help-rank"
              title="Ranked by how many separate malls carry the brand, highest first. One mall counts once no matter how many outlets it has there.">?</button></div>
-        <div class="hide-sm"></div>
+        <div class="hide-sm" id="col-4">Share</div>
       </div>
       <div class="viewport" id="viewport" tabindex="0">
         <div class="sizer" id="sizer"><div class="window" id="window"></div></div>

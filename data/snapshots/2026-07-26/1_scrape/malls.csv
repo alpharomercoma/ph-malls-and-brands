@@ -85,37 +85,87 @@ ayala,ayala-up-town-center,U. P. Town Center,metro-manila,"249, U.P. Town Center
 ayala,ayala-vermosa,Ayala Malls Vermosa,south-luzon,"Ayala Malls Vermosa, along Daang Hari Road, corner Vermosa Boulevard, Brgy. Pasong Buaya – 1, Imus City, Cavite",38,https://www.ayalamalls.com/explore/mall-directory/ayala-vermosa,mall,2026-07-26
 ayala,ayala-vertis,Ayala Malls Vertis North,metro-manila,"Ayala Malls Vertis North, Phase 1 & 2, North Avenue, Brgy. Bagong Pag-asa, Q.C.",26,https://www.ayalamalls.com/explore/mall-directory/ayala-vertis,mall,2026-07-26
 ayala,one-ayala-mall,One Ayala,metro-manila,"#1 Ayala Avenue corner EDSA, Ayala Center Makati",37,https://www.ayalamalls.com/explore/mall-directory/one-ayala-mall,mall,2026-07-26
-megaworld,alabang-west-parade,Alabang West Parade,,"Daang Hari Road, Almanza Dos, Las Piñas",blt427facf052922491,https://www.megaworld-lifestylemalls.com/malls/alabang-west-parade,mall,2026-07-26
-megaworld,arcovia-city,Arcovia City,,"E. Rodriguez Jr. Ave, Pasig City",blt42116123ae153298,https://www.megaworld-lifestylemalls.com/malls/arcovia-city,mall,2026-07-26
-megaworld,california-garden-square,California Garden Square,,"Domingo M. Guevara, Mandaluyong City",blt2d6ca900ff713f14,https://www.megaworld-lifestylemalls.com/malls/california-garden-square,mall,2026-07-26
-megaworld,clubhouse-temple-drive,The Clubhouse at Temple Drive,,"Temple Dr, Quezon City",blt425576251ffbc5d3,https://www.megaworld-lifestylemalls.com/malls/clubhouse-temple-drive,mall,2026-07-26
-megaworld,eastwood-city-walk,Eastwood City Walk,,"Eastwood Ave, Bagumbayan, Quezon City",bltdb396c332c3ce9c5,https://www.megaworld-lifestylemalls.com/malls/eastwood-city-walk,mall,2026-07-26
-megaworld,eastwood-cyber-mall,Eastwood Cyber Mall,,"Eastwood Ave, Bagumbayan, Quezon City",blt3fa7b9a40658285c,https://www.megaworld-lifestylemalls.com/malls/eastwood-cyber-mall,mall,2026-07-26
-megaworld,eastwood-mall,Eastwood Mall,,"Eastwood Ave, Bagumbayan, Quezon City",blt25f235b4c0f243a6,https://www.megaworld-lifestylemalls.com/malls/eastwood-mall,mall,2026-07-26
-megaworld,festive-walk-mall-iloilo,Festive Walk Mall,,"Megaworld Blvd, Mandurriao, Iloilo City",blt95579f364261f5b6,https://www.megaworld-lifestylemalls.com/malls/festive-walk-mall-iloilo,mall,2026-07-26
-megaworld,festive-walk-parade,Festive Walk Parade,,"Megaworld Blvd, Mandurriao, Iloilo City",bltdd631d7184256693,https://www.megaworld-lifestylemalls.com/malls/festive-walk-parade,mall,2026-07-26
-megaworld,forbes-town,Forbes Town,,"Forbestown Rd, Taguig City",blt87937163fef72bab,https://www.megaworld-lifestylemalls.com/malls/forbes-town,mall,2026-07-26
-megaworld,greenhouse-village-square,The Greenhouse at Village Square,,"Concha Cruz Drive, corner Alabang–Zapote Rd, Almanza Uno, Las Piñas, Metro Manila",blt06abebbba0afe285,https://www.megaworld-lifestylemalls.com/malls/greenhouse-village-square,mall,2026-07-26
-megaworld,lucky-chinatown-imperial-wing,Lucky Chinatown - Imperial Wing,,"Reina Regente St., Binondo, Manila City",blt471ef2dbd98af5ef,https://www.megaworld-lifestylemalls.com/malls/lucky-chinatown-imperial-wing,mall,2026-07-26
-megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,,"Reina Regente St., Binondo Chinatown, Manila City",blt8fa85c8c37be55db,https://www.megaworld-lifestylemalls.com/malls/lucky-chinatown-mall,mall,2026-07-26
-megaworld,lucky-chinatown-prosperity-wing,Lucky Chinatown - Prosperity Wing,,"Reina Regente St., Binondo, Manila City",blt1693f6604a185521,https://www.megaworld-lifestylemalls.com/malls/lucky-chinatown-prosperity-wing,mall,2026-07-26
-megaworld,mactan-newtown,Mactan Newtown,,"Newtown Blvd, Lapu Lapu City, Cebu",blt9e679b8034e41069,https://www.megaworld-lifestylemalls.com/malls/mactan-newtown,mall,2026-07-26
-megaworld,mckinley-west,McKinley West,,"Fort Bonifacio, Taguig City",blt342808215ee3a14c,https://www.megaworld-lifestylemalls.com/malls/mckinley-west,mall,2026-07-26
-megaworld,newport-city,Newport City,,"Newport Blvd, Pasay",blt7e1b3e00f7796c63,https://www.megaworld-lifestylemalls.com/malls/newport-city,mall,2026-07-26
-megaworld,paseo-center,Paseo Center,,"Paseo de Roxas, Makati City",blta5481d4d00246d73,https://www.megaworld-lifestylemalls.com/malls/paseo-center,mall,2026-07-26
-megaworld,san-lorenzo-place-mall,San Lorenzo Place Mall,,"EDSA Corner Chino Roces Ave, Makati City",blte56c7f74a03f4e6e,https://www.megaworld-lifestylemalls.com/malls/san-lorenzo-place-mall,mall,2026-07-26
-megaworld,southwoods-mall,Southwoods Mall,,"Southwoods Ave, Biñan, Laguna",bltcf87256cdae2873c,https://www.megaworld-lifestylemalls.com/malls/southwoods-mall,mall,2026-07-26
-megaworld,three-central,Three Central Mall,,"Salcedo Village, Valero, Makati City",blt3905d7891027cdba,https://www.megaworld-lifestylemalls.com/malls/three-central,mall,2026-07-26
-megaworld,tuscany-at-mckinley-hill,Tuscany at McKinley Hill,,"Mckinley Hill, Taguig",blt22d5a3dcb40f49de,https://www.megaworld-lifestylemalls.com/malls/tuscany-at-mckinley-hill,mall,2026-07-26
-megaworld,twin-lakes,Twin Lakes,,"Tagaytay - Nasugbu Hwy, Laurel, Batangas",blt72af604700b80d51,https://www.megaworld-lifestylemalls.com/malls/twin-lakes,mall,2026-07-26
-megaworld,uptown-mall,Uptown Mall,,"36th Street, 9th Avenue, Taguig, Metro Manila",blt1dc7454920dee87b,https://www.megaworld-lifestylemalls.com/malls/uptown-mall,mall,2026-07-26
-megaworld,uptown-parade,Uptown Parade,,"38th St Corner 9th Ave., Taguig City",bltbe5a9e375d1fee68,https://www.megaworld-lifestylemalls.com/malls/uptown-parade,mall,2026-07-26
-megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,,"Upper McKinley Rd, Taguig City",bltb8814f64f52b5a84,https://www.megaworld-lifestylemalls.com/malls/venice-grand-canal-mall,mall,2026-07-26
+megaworld,alabang-west-parade,Alabang West Parade,metro-manila,"Daang Hari Road, Almanza Dos, Las Piñas",blt427facf052922491,https://www.megaworld-lifestylemalls.com/malls/alabang-west-parade,mall,2026-07-26
+megaworld,arcovia-city,Arcovia City,metro-manila,"E. Rodriguez Jr. Ave, Pasig City",blt42116123ae153298,https://www.megaworld-lifestylemalls.com/malls/arcovia-city,mall,2026-07-26
+megaworld,california-garden-square,California Garden Square,metro-manila,"Domingo M. Guevara, Mandaluyong City",blt2d6ca900ff713f14,https://www.megaworld-lifestylemalls.com/malls/california-garden-square,mall,2026-07-26
+megaworld,clubhouse-temple-drive,The Clubhouse at Temple Drive,metro-manila,"Temple Dr, Quezon City",blt425576251ffbc5d3,https://www.megaworld-lifestylemalls.com/malls/clubhouse-temple-drive,mall,2026-07-26
+megaworld,eastwood-city-walk,Eastwood City Walk,metro-manila,"Eastwood Ave, Bagumbayan, Quezon City",bltdb396c332c3ce9c5,https://www.megaworld-lifestylemalls.com/malls/eastwood-city-walk,mall,2026-07-26
+megaworld,eastwood-cyber-mall,Eastwood Cyber Mall,metro-manila,"Eastwood Ave, Bagumbayan, Quezon City",blt3fa7b9a40658285c,https://www.megaworld-lifestylemalls.com/malls/eastwood-cyber-mall,mall,2026-07-26
+megaworld,eastwood-mall,Eastwood Mall,metro-manila,"Eastwood Ave, Bagumbayan, Quezon City",blt25f235b4c0f243a6,https://www.megaworld-lifestylemalls.com/malls/eastwood-mall,mall,2026-07-26
+megaworld,festive-walk-mall-iloilo,Festive Walk Mall,visayas,"Megaworld Blvd, Mandurriao, Iloilo City",blt95579f364261f5b6,https://www.megaworld-lifestylemalls.com/malls/festive-walk-mall-iloilo,mall,2026-07-26
+megaworld,festive-walk-parade,Festive Walk Parade,visayas,"Megaworld Blvd, Mandurriao, Iloilo City",bltdd631d7184256693,https://www.megaworld-lifestylemalls.com/malls/festive-walk-parade,mall,2026-07-26
+megaworld,forbes-town,Forbes Town,metro-manila,"Forbestown Rd, Taguig City",blt87937163fef72bab,https://www.megaworld-lifestylemalls.com/malls/forbes-town,mall,2026-07-26
+megaworld,greenhouse-village-square,The Greenhouse at Village Square,metro-manila,"Concha Cruz Drive, corner Alabang–Zapote Rd, Almanza Uno, Las Piñas, Metro Manila",blt06abebbba0afe285,https://www.megaworld-lifestylemalls.com/malls/greenhouse-village-square,mall,2026-07-26
+megaworld,lucky-chinatown-imperial-wing,Lucky Chinatown - Imperial Wing,metro-manila,"Reina Regente St., Binondo, Manila City",blt471ef2dbd98af5ef,https://www.megaworld-lifestylemalls.com/malls/lucky-chinatown-imperial-wing,mall,2026-07-26
+megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,metro-manila,"Reina Regente St., Binondo Chinatown, Manila City",blt8fa85c8c37be55db,https://www.megaworld-lifestylemalls.com/malls/lucky-chinatown-mall,mall,2026-07-26
+megaworld,lucky-chinatown-prosperity-wing,Lucky Chinatown - Prosperity Wing,metro-manila,"Reina Regente St., Binondo, Manila City",blt1693f6604a185521,https://www.megaworld-lifestylemalls.com/malls/lucky-chinatown-prosperity-wing,mall,2026-07-26
+megaworld,mactan-newtown,Mactan Newtown,visayas,"Newtown Blvd, Lapu Lapu City, Cebu",blt9e679b8034e41069,https://www.megaworld-lifestylemalls.com/malls/mactan-newtown,mall,2026-07-26
+megaworld,mckinley-west,McKinley West,metro-manila,"Fort Bonifacio, Taguig City",blt342808215ee3a14c,https://www.megaworld-lifestylemalls.com/malls/mckinley-west,mall,2026-07-26
+megaworld,newport-city,Newport City,metro-manila,"Newport Blvd, Pasay",blt7e1b3e00f7796c63,https://www.megaworld-lifestylemalls.com/malls/newport-city,mall,2026-07-26
+megaworld,paseo-center,Paseo Center,metro-manila,"Paseo de Roxas, Makati City",blta5481d4d00246d73,https://www.megaworld-lifestylemalls.com/malls/paseo-center,mall,2026-07-26
+megaworld,san-lorenzo-place-mall,San Lorenzo Place Mall,metro-manila,"EDSA Corner Chino Roces Ave, Makati City",blte56c7f74a03f4e6e,https://www.megaworld-lifestylemalls.com/malls/san-lorenzo-place-mall,mall,2026-07-26
+megaworld,southwoods-mall,Southwoods Mall,south-luzon,"Southwoods Ave, Biñan, Laguna",bltcf87256cdae2873c,https://www.megaworld-lifestylemalls.com/malls/southwoods-mall,mall,2026-07-26
+megaworld,three-central,Three Central Mall,metro-manila,"Salcedo Village, Valero, Makati City",blt3905d7891027cdba,https://www.megaworld-lifestylemalls.com/malls/three-central,mall,2026-07-26
+megaworld,tuscany-at-mckinley-hill,Tuscany at McKinley Hill,metro-manila,"Mckinley Hill, Taguig",blt22d5a3dcb40f49de,https://www.megaworld-lifestylemalls.com/malls/tuscany-at-mckinley-hill,mall,2026-07-26
+megaworld,twin-lakes,Twin Lakes,south-luzon,"Tagaytay - Nasugbu Hwy, Laurel, Batangas",blt72af604700b80d51,https://www.megaworld-lifestylemalls.com/malls/twin-lakes,mall,2026-07-26
+megaworld,uptown-mall,Uptown Mall,metro-manila,"36th Street, 9th Avenue, Taguig, Metro Manila",blt1dc7454920dee87b,https://www.megaworld-lifestylemalls.com/malls/uptown-mall,mall,2026-07-26
+megaworld,uptown-parade,Uptown Parade,metro-manila,"38th St Corner 9th Ave., Taguig City",bltbe5a9e375d1fee68,https://www.megaworld-lifestylemalls.com/malls/uptown-parade,mall,2026-07-26
+megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila,"Upper McKinley Rd, Taguig City",bltb8814f64f52b5a84,https://www.megaworld-lifestylemalls.com/malls/venice-grand-canal-mall,mall,2026-07-26
 filinvest,festival-mall,Festival Mall,metro-manila,"Filinvest City, Alabang, Muntinlupa",,https://www.filinvestlifemalls.com/shops-directory/festival-mall/,mall,2026-07-26
 filinvest,il-corso,IL Corso,visayas,"Filinvest Cyberzone, Cebu City",,https://www.filinvestlifemalls.com/shops-directory/il-corso/,mall,2026-07-26
 filinvest,fora,Fora Mall,south-luzon,"Tagaytay City, Cavite",,https://www.filinvestlifemalls.com/shops-directory/fora/,mall,2026-07-26
 filinvest,main-square,Main Square,south-luzon,"Bacoor, Cavite",,https://www.filinvestlifemalls.com/shops-directory/main-square/,mall,2026-07-26
 filinvest,dumaguete,Filinvest Malls Dumaguete,visayas,"Dumaguete, Negros Oriental",,https://www.filinvestlifemalls.com/shops-directory/dumaguete/,mall,2026-07-26
+starmall,alabang,Starmall Alabang,metro-manila,"Alabang-Zapote Road, Las Pinas City",,https://starmalls.com.ph/stores-alabang/,mall,2026-07-26
+starmall,edsa-shaw,Starmall EDSA-Shaw,metro-manila,"EDSA cor. Shaw Blvd., Mandaluyong City",,https://starmalls.com.ph/stores-edsa-shaw/,mall,2026-07-26
+starmall,san-jose-del-monte,Starmall San Jose del Monte,north-luzon,"San Jose del Monte, Bulacan",,https://starmalls.com.ph/stores-san-jose-del-monte/,mall,2026-07-26
+starmall,talisay,Starmall Talisay Cebu,visayas,"Talisay City, Cebu",,https://starmalls.com.ph/stores-talisay/,mall,2026-07-26
+waltermart,antipolo,WalterMart Antipolo,metro-manila,,,https://malls.waltermart.com.ph/malls/antipolo/,mall,2026-07-26
+waltermart,arayat,WalterMart Arayat,north-luzon,,,https://malls.waltermart.com.ph/malls/arayat/,mall,2026-07-26
+waltermart,bacoor,WalterMart Bacoor,south-luzon,,,https://malls.waltermart.com.ph/malls/bacoor/,mall,2026-07-26
+waltermart,balanga,WalterMart Balanga,north-luzon,,,https://malls.waltermart.com.ph/malls/balanga/,mall,2026-07-26
+waltermart,balayan,WalterMart Balayan,south-luzon,,,https://malls.waltermart.com.ph/malls/balayan/,mall,2026-07-26
+waltermart,baliwag,WalterMart Baliwag,north-luzon,,,https://malls.waltermart.com.ph/malls/baliwag/,mall,2026-07-26
+waltermart,batangas-city,WalterMart Batangas City,south-luzon,,,https://malls.waltermart.com.ph/malls/batangas-city/,mall,2026-07-26
+waltermart,bicutan,WalterMart Bicutan,metro-manila,,,https://malls.waltermart.com.ph/malls/bicutan/,mall,2026-07-26
+waltermart,cabanatuan,WalterMart Cabanatuan,north-luzon,,,https://malls.waltermart.com.ph/malls/cabanatuan/,mall,2026-07-26
+waltermart,cabuyao,WalterMart Cabuyao,south-luzon,,,https://malls.waltermart.com.ph/malls/cabuyao/,mall,2026-07-26
+waltermart,caloocan,WalterMart Caloocan,metro-manila,,,https://malls.waltermart.com.ph/malls/caloocan/,mall,2026-07-26
+waltermart,candelaria,WalterMart Candelaria,south-luzon,,,https://malls.waltermart.com.ph/malls/candelaria/,mall,2026-07-26
+waltermart,capas,WalterMart Capas,north-luzon,,,https://malls.waltermart.com.ph/malls/capas/,mall,2026-07-26
+waltermart,carmona,WalterMart Carmona,south-luzon,,,https://malls.waltermart.com.ph/malls/carmona/,mall,2026-07-26
+waltermart,concepcion,WalterMart Concepcion,north-luzon,,,https://malls.waltermart.com.ph/malls/concepcion/,mall,2026-07-26
+waltermart,dasmarinas,WalterMart Dasmariñas,south-luzon,,,https://malls.waltermart.com.ph/malls/dasmarinas/,mall,2026-07-26
+waltermart,erodriguez,WalterMart E.Rodriguez,metro-manila,,,https://malls.waltermart.com.ph/malls/erodriguez/,mall,2026-07-26
+waltermart,gapan,WalterMart Gapan,north-luzon,,,https://malls.waltermart.com.ph/malls/gapan/,mall,2026-07-26
+waltermart,general-trias,WalterMart General Trias,south-luzon,,,https://malls.waltermart.com.ph/malls/general-trias/,mall,2026-07-26
+waltermart,guiguinto,WalterMart Guiguinto,north-luzon,,,https://malls.waltermart.com.ph/malls/guiguinto/,mall,2026-07-26
+waltermart,mabalacat,WalterMart Mabalacat,north-luzon,,,https://malls.waltermart.com.ph/malls/mabalacat/,mall,2026-07-26
+waltermart,macapagal,WalterMart Macapagal,metro-manila,,,https://malls.waltermart.com.ph/malls/macapagal/,mall,2026-07-26
+waltermart,makati,WalterMart Makati,metro-manila,,,https://malls.waltermart.com.ph/malls/makati/,mall,2026-07-26
+waltermart,makiling,WalterMart Makiling,south-luzon,,,https://malls.waltermart.com.ph/malls/makiling/,mall,2026-07-26
+waltermart,malolos,WalterMart Malolos,north-luzon,,,https://malls.waltermart.com.ph/malls/malolos/,mall,2026-07-26
+waltermart,muntinlupa,WalterMart Muntinlupa,metro-manila,,,https://malls.waltermart.com.ph/malls/muntinlupa/,mall,2026-07-26
+waltermart,naic,WalterMart Naic,south-luzon,,,https://malls.waltermart.com.ph/malls/naic/,mall,2026-07-26
+waltermart,nasugbu,WalterMart Nasugbu,south-luzon,,,https://malls.waltermart.com.ph/malls/nasugbu/,mall,2026-07-26
+waltermart,north-edsa,WalterMart North EDSA,metro-manila,,,https://malls.waltermart.com.ph/malls/north-edsa/,mall,2026-07-26
+waltermart,paniqui,WalterMart Paniqui,north-luzon,,,https://malls.waltermart.com.ph/malls/paniqui/,mall,2026-07-26
+waltermart,pasay,WalterMart Pasay,metro-manila,,,https://malls.waltermart.com.ph/malls/pasay/,mall,2026-07-26
+waltermart,plaridel,WalterMart Plaridel,north-luzon,,,https://malls.waltermart.com.ph/malls/plaridel/,mall,2026-07-26
+waltermart,san-fernando,WalterMart San Fernando,north-luzon,,,https://malls.waltermart.com.ph/malls/san-fernando/,mall,2026-07-26
+waltermart,san-jose,WalterMart San Jose,north-luzon,,,https://malls.waltermart.com.ph/malls/san-jose/,mall,2026-07-26
+waltermart,san-pascual,WalterMart San Pascual,south-luzon,,,https://malls.waltermart.com.ph/malls/san-pascual/,mall,2026-07-26
+waltermart,silang,WalterMart Silang,south-luzon,,,https://malls.waltermart.com.ph/malls/silang/,mall,2026-07-26
+waltermart,sta-maria,WalterMart Sta. Maria,north-luzon,,,https://malls.waltermart.com.ph/malls/sta-maria/,mall,2026-07-26
+waltermart,sta-rosa,WalterMart Sta. Rosa,south-luzon,,,https://malls.waltermart.com.ph/malls/sta-rosa/,mall,2026-07-26
+waltermart,sta-rosa-bel-air,WalterMart Sta. Rosa Bel-Air,south-luzon,,,https://malls.waltermart.com.ph/malls/sta-rosa-bel-air/,mall,2026-07-26
+waltermart,subic,WalterMart Subic,north-luzon,,,https://malls.waltermart.com.ph/malls/subic/,mall,2026-07-26
+waltermart,sucat,WalterMart Sucat,metro-manila,,,https://malls.waltermart.com.ph/malls/sucat/,mall,2026-07-26
+waltermart,talavera,WalterMart Talavera,north-luzon,,,https://malls.waltermart.com.ph/malls/talavera/,mall,2026-07-26
+waltermart,tanauan,WalterMart Tanauan,south-luzon,,,https://malls.waltermart.com.ph/malls/tanauan/,mall,2026-07-26
+waltermart,taytay,WalterMart Taytay,metro-manila,,,https://malls.waltermart.com.ph/malls/taytay/,mall,2026-07-26
+waltermart,the-junction,WalterMart The Junction,metro-manila,,,https://malls.waltermart.com.ph/malls/the-junction/,mall,2026-07-26
+waltermart,trece-martires,WalterMart Trece Martires,south-luzon,,,https://malls.waltermart.com.ph/malls/trece-martires/,mall,2026-07-26
 araneta,gateway-mall,Gateway Mall,metro-manila,"General Roxas Ave., Araneta City, Cubao, Quezon City",,https://aranetacity.com/shopping/gateway-mall,mall,2026-07-26
 araneta,gateway-mall-2,Gateway Mall 2,metro-manila,"Araneta City, Cubao, Quezon City",,https://aranetacity.com/shopping/gateway-mall-2-shop,mall,2026-07-26
 araneta,ali-mall,Ali Mall,metro-manila,"General Roxas Ave., Araneta City, Cubao, Quezon City",,https://aranetacity.com/shopping/ali-mall,mall,2026-07-26
@@ -126,36 +176,38 @@ ortigas,greenhills,Greenhills,metro-manila,"Ortigas Avenue, Greenhills, San Juan
 ortigas,estancia,Estancia,metro-manila,"Capitol Commons, Meralco Ave., Pasig City",7,https://ortigasmalls.com/mall-directory?selectedMall=7,mall,2026-07-26
 ortigas,tiendesitas,Tiendesitas,metro-manila,"Frontera Verde, Ortigas Ave. cor. C-5, Pasig City",4,https://ortigasmalls.com/mall-directory?selectedMall=4,mall,2026-07-26
 ortigas,the-strip,The Strip,metro-manila,"Capitol Commons, Pasig City",10,https://ortigasmalls.com/mall-directory?selectedMall=10,mall,2026-07-26
-starmall,alabang,Starmall Alabang,metro-manila,"Alabang-Zapote Road, Las Pinas City",,https://starmalls.com.ph/stores-alabang/,mall,2026-07-26
-starmall,edsa-shaw,Starmall EDSA-Shaw,metro-manila,"EDSA cor. Shaw Blvd., Mandaluyong City",,https://starmalls.com.ph/stores-edsa-shaw/,mall,2026-07-26
-starmall,san-jose-del-monte,Starmall San Jose del Monte,north-luzon,"San Jose del Monte, Bulacan",,https://starmalls.com.ph/stores-san-jose-del-monte/,mall,2026-07-26
-starmall,talisay,Starmall Talisay Cebu,visayas,"Talisay City, Cebu",,https://starmalls.com.ph/stores-talisay/,mall,2026-07-26
-xentro,ab-central,Ab Central,,,,https://www.xentromalls.com/mall-locator/ab-central/,mall,2026-07-26
-xentro,balagtas-town-center,Balagtas Town Center,,,,https://www.xentromalls.com/mall-locator/balagtas-town-center/,mall,2026-07-26
-xentro,ilagan-city-mall-isabela,Ilagan City Mall Isabela,,,,https://www.xentromalls.com/mall-locator/ilagan-city-mall-isabela/,mall,2026-07-26
-xentro,mall-of-the-valley,Mall Of The Valley,,,,https://www.xentromalls.com/mall-locator/mall-of-the-valley/,mall,2026-07-26
-xentro,montalban-town-center,Montalban Town Center,,,,https://www.xentromalls.com/mall-locator/montalban-town-center/,mall,2026-07-26
-xentro,morong-centerpoint,Morong Centerpoint,,,,https://www.xentromalls.com/mall-locator/morong-centerpoint/,mall,2026-07-26
-xentro,northstar-mall,Northstar Mall,,,,https://www.xentromalls.com/mall-locator/northstar-mall/,mall,2026-07-26
-xentro,shopking,Shopking,,,,https://www.xentromalls.com/mall-locator/shopking/,mall,2026-07-26
-xentro,sta-ana-public-market,Sta Ana Public Market,,,,https://www.xentromalls.com/mall-locator/sta-ana-public-market/,mall,2026-07-26
-xentro,tanay-town-center,Tanay Town Center,,,,https://www.xentromalls.com/mall-locator/tanay-town-center/,mall,2026-07-26
-xentro,xentro-mall-antipolo,XentroMall Antipolo,,,,https://www.xentromalls.com/mall-locator/xentro-mall-antipolo/,mall,2026-07-26
-xentro,xentro-mall-cabagan,XentroMall Cabagan,,,,https://www.xentromalls.com/mall-locator/xentro-mall-cabagan/,mall,2026-07-26
-xentro,xentro-mall-calapan,XentroMall Calapan,,,,https://www.xentromalls.com/mall-locator/xentro-mall-calapan/,mall,2026-07-26
-xentro,xentro-mall-lemery,XentroMall Lemery,,,,https://www.xentromalls.com/mall-locator/xentro-mall-lemery/,mall,2026-07-26
-xentro,xentro-mall-polangui,XentroMall Polangui,,,,https://www.xentromalls.com/mall-locator/xentro-mall-polangui/,mall,2026-07-26
-xentro,xentro-mall-roxas,XentroMall Roxas,,,,https://www.xentromalls.com/mall-locator/xentro-mall-roxas/,mall,2026-07-26
-xentro,xentro-mall-san-andres,XentroMall San Andres,,,,https://www.xentromalls.com/mall-locator/xentro-mall-san-andres/,mall,2026-07-26
-xentro,xentro-mall-santiago,XentroMall Santiago,,,,https://www.xentromalls.com/mall-locator/xentro-mall-santiago/,mall,2026-07-26
-xentro,xentro-mall-tumauini,XentroMall Tumauini,,,,https://www.xentromalls.com/mall-locator/xentro-mall-tumauini/,mall,2026-07-26
+xentro,ab-central,Ab Central,metro-manila,"M.L. Quezon Ave., Brgy. San Pedro, Angono, Rizal",,https://www.xentromalls.com/mall-locator/ab-central/,mall,2026-07-26
+xentro,balagtas-town-center,Balagtas Town Center,north-luzon,"Mc Arthur Highway, Brgy. Burol 1st, Balagtas, Bulacan",,https://www.xentromalls.com/mall-locator/balagtas-town-center/,mall,2026-07-26
+xentro,ilagan-city-mall-isabela,Ilagan City Mall Isabela,north-luzon,"Pan-Philippine Highway, Ilagan Isabela",,https://www.xentromalls.com/mall-locator/ilagan-city-mall-isabela/,mall,2026-07-26
+xentro,mall-of-the-valley,Mall Of The Valley,north-luzon,"New Central Public Market, Tuguegarao City, Cagayan Valley",,https://www.xentromalls.com/mall-locator/mall-of-the-valley/,mall,2026-07-26
+xentro,montalban-town-center,Montalban Town Center,metro-manila,"3 E. Rodriguez Highway cor. R. Reyes St., San Jose, Rodriguez, Rizal",,https://www.xentromalls.com/mall-locator/montalban-town-center/,mall,2026-07-26
+xentro,morong-centerpoint,Morong Centerpoint,metro-manila,"T. Claudio St., Brgy. San Juan, Morong, Rizal",,https://www.xentromalls.com/mall-locator/morong-centerpoint/,mall,2026-07-26
+xentro,northstar-mall,Northstar Mall,north-luzon,"Pan-Philippine Highway, Ilagan City, Isabela",,https://www.xentromalls.com/mall-locator/northstar-mall/,mall,2026-07-26
+xentro,shopking,Shopking,metro-manila,"Doña Carmen Ave., Quezon City",,https://www.xentromalls.com/mall-locator/shopking/,mall,2026-07-26
+xentro,sta-ana-public-market,Sta Ana Public Market,metro-manila,"2nd Flr.Sta. Ana Public Market, Pedro Gil St., Brgy. 879, Zone 96, Sta. Ana, Manila",,https://www.xentromalls.com/mall-locator/sta-ana-public-market/,mall,2026-07-26
+xentro,tanay-town-center,Tanay Town Center,south-luzon,"F.T. Catapusan St., Brgy. Plaza Aldea, Tanay, Rizal",,https://www.xentromalls.com/mall-locator/tanay-town-center/,mall,2026-07-26
+xentro,xentro-mall-antipolo,XentroMall Antipolo,metro-manila,Sumulong Hi-way Bgy Mambugan Antipolo,,https://www.xentromalls.com/mall-locator/xentro-mall-antipolo/,mall,2026-07-26
+xentro,xentro-mall-cabagan,XentroMall Cabagan,north-luzon,"Ugad Highway, Cabagan, Isabela",,https://www.xentromalls.com/mall-locator/xentro-mall-cabagan/,mall,2026-07-26
+xentro,xentro-mall-calapan,XentroMall Calapan,south-luzon,"Roxas Drive, Lumang Bayan, Calapan City, Oriental Mindoro",,https://www.xentromalls.com/mall-locator/xentro-mall-calapan/,mall,2026-07-26
+xentro,xentro-mall-lemery,XentroMall Lemery,south-luzon,"National Road, Brgy. Malinis, Lemery, Batangas",,https://www.xentromalls.com/mall-locator/xentro-mall-lemery/,mall,2026-07-26
+xentro,xentro-mall-polangui,XentroMall Polangui,south-luzon,Diversion Rd. Bgy Ubaliw Polangui Albay,,https://www.xentromalls.com/mall-locator/xentro-mall-polangui/,mall,2026-07-26
+xentro,xentro-mall-roxas,XentroMall Roxas,north-luzon,"Don Mariano Marcos Ave., Brgy. Rizal, Roxas, Isabela",,https://www.xentromalls.com/mall-locator/xentro-mall-roxas/,mall,2026-07-26
+xentro,xentro-mall-san-andres,XentroMall San Andres,metro-manila,"2467-E Market Rd, Santa Ana, Manila",,https://www.xentromalls.com/mall-locator/xentro-mall-san-andres/,mall,2026-07-26
+xentro,xentro-mall-santiago,XentroMall Santiago,north-luzon,"Pan-Philippine Highway cor. Four Lanes St., Santiago City, Isabela",,https://www.xentromalls.com/mall-locator/xentro-mall-santiago/,mall,2026-07-26
+xentro,xentro-mall-tumauini,XentroMall Tumauini,north-luzon,"San Pedro, Tumauini, Isabela",,https://www.xentromalls.com/mall-locator/xentro-mall-tumauini/,mall,2026-07-26
+gmall,gmall-of-davao,GMall of Davao,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-digos,GMall of Digos,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-gensan,GMall of Gensan,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-tagum,GMall of Tagum,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-toril,GMall of Toril,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-cebu,Gmall of Cebu,visayas,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
 sm,mall-of-asia-arena-annex-bldg,Mall Of Asia Arena Annex Bldg,metro-manila,"Coral Way cor., J.W. Diokno Blvd., Mall of Asia Complex, Brgy. 076 Zone 10, CBP 1-A, 1300 Pasay City, Philippines",MAAX,https://www.smsupermalls.com/mall-directory/mall-of-asia-arena-annex-bldg/information/,office-annex,2026-07-26
 sm,moa-square,MOA Square,metro-manila,MOA Square,SMSQ,https://www.smsupermalls.com/mall-directory/moa-square/information/,mall,2026-07-26
 sm,nu-mall-of-asia-building,NU MALL OF ASIA BUILDING,metro-manila,NU MALL OF ASIA BUILDING,NUMA,https://www.smsupermalls.com/mall-directory/nu-mall-of-asia-building/information/,office-annex,2026-07-26
 sm,s-maison,S Maison,metro-manila,"Seaside Boulevard, Coral Way, Pasay, 1300 Metro Manila",HTSM,https://www.smsupermalls.com/mall-directory/s-maison/information/,mall,2026-07-26
-sm,sky-ranch-baguio,Sky Ranch Baguio,others,Sky Ranch Baguio,SRBG,https://www.smsupermalls.com/mall-directory/sky-ranch-baguio/information/,amusement-park,2026-07-26
-sm,sky-ranch-pampanga,Sky Ranch Pampanga,others,Sky Ranch Pampanga,SRPP,https://www.smsupermalls.com/mall-directory/sky-ranch-pampanga/information/,amusement-park,2026-07-26
-sm,sky-ranch-tagaytay,Sky Ranch Tagaytay,others,Sky Ranch Tagaytay,STYT,https://www.smsupermalls.com/mall-directory/sky-ranch-tagaytay/information/,amusement-park,2026-07-26
+sm,sky-ranch-baguio,Sky Ranch Baguio,north-luzon,Sky Ranch Baguio,SRBG,https://www.smsupermalls.com/mall-directory/sky-ranch-baguio/information/,amusement-park,2026-07-26
+sm,sky-ranch-pampanga,Sky Ranch Pampanga,north-luzon,Sky Ranch Pampanga,SRPP,https://www.smsupermalls.com/mall-directory/sky-ranch-pampanga/information/,amusement-park,2026-07-26
+sm,sky-ranch-tagaytay,Sky Ranch Tagaytay,south-luzon,Sky Ranch Tagaytay,STYT,https://www.smsupermalls.com/mall-directory/sky-ranch-tagaytay/information/,amusement-park,2026-07-26
 sm,sm-aura,SM Aura,metro-manila,"26th Street Corner McKinley Parkway Bonifacio Global City, Taguig City Philippines",SMAU,https://www.smsupermalls.com/mall-directory/sm-aura/information/,mall,2026-07-26
 sm,sm-by-the-bay,SM By the Bay,metro-manila,"Seaside Boulevard, Mall of Asia Complex, Pasay, 1300 Metro Manila",SMBY,https://www.smsupermalls.com/mall-directory/sm-by-the-bay/information/,mall,2026-07-26
 sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao,"Claro M. Recto Ave, Cagayan de Oro, Misamis Oriental",SMCG,https://www.smsupermalls.com/mall-directory/sm-cdo-downtown/information/,mall,2026-07-26
@@ -243,7 +295,7 @@ sm,sm-hypermarket-lapulapu,SM Hypermarket Lapu-Lapu,visayas,"Maximo V. Patalingh
 sm,sm-hypermarket-sucat-lopez,SM Hypermarket Sucat Lopez,metro-manila,"Dr Arcadio Santos Ave, San Isidro, Parañaque, 1700",SHSC,https://www.smsupermalls.com/mall-directory/sm-hypermarket-sucat-lopez/information/,mall,2026-07-26
 sm,sm-jmall,SM J Mall,visayas,"165 A.S. Fortuna Street, Mandaue City, Philippines, 6014",SMMD,https://www.smsupermalls.com/mall-directory/sm-jmall/information/,mall,2026-07-26
 sm,sm-lanang,SM Lanang,mindanao,"J.P. Laurel Ave., Brgy. San Antonio, Agdao District, Davao City",SMLA,https://www.smsupermalls.com/mall-directory/sm-lanang/information/,mall,2026-07-26
-sm,sm-makati,SM Makati,others,SM Makati,SMKT,https://www.smsupermalls.com/mall-directory/sm-makati/information/,mall,2026-07-26
+sm,sm-makati,SM Makati,metro-manila,SM Makati,SMKT,https://www.smsupermalls.com/mall-directory/sm-makati/information/,mall,2026-07-26
 sm,sm-mall-of-asia,SM Mall of Asia,metro-manila,"SM Mall of Asia,Seaside Blvd.,Pasay City, Philippines",SMOA,https://www.smsupermalls.com/mall-directory/sm-mall-of-asia/information/,mall,2026-07-26
 sm,sm-marketmall-dasmarinas,SM Marketmall Dasmarinas,south-luzon,"Dasmari??as, Cavite",SPDM,https://www.smsupermalls.com/mall-directory/sm-marketmall-dasmarinas/information/,mall,2026-07-26
 sm,sm-megacenter-cabanatuan,SM Megacenter Cabanatuan,north-luzon,"Gen. Tinio Street, Brgy. San Roque Norte, 3100 Cabanatuan City, Nueva Ecija",SMMC,https://www.smsupermalls.com/mall-directory/sm-megacenter-cabanatuan/information/,mall,2026-07-26
@@ -253,77 +305,25 @@ sm,sm-savemore-nagtahan,SM Savemore Nagtahan,metro-manila,"G/F Entrance Slot#2, 
 sm,sm-savemore-tacloban,SM Savemore Tacloban,visayas,"Justice Romualdez St, Downtown, Tacloban City, Leyte",SVTA,https://www.smsupermalls.com/mall-directory/sm-savemore-tacloban/information/,mall,2026-07-26
 sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas,"South Road Properties, Cebu City",SMSS,https://www.smsupermalls.com/mall-directory/sm-seaside-city-cebu/information/,mall,2026-07-26
 sm,sm-southmall,SM Southmall,metro-manila,"Alabang-Zapote Road, Pilar Village, Almanza Uno, Las Piñas, Metro Manila, Philippines",SMSM,https://www.smsupermalls.com/mall-directory/sm-southmall/information/,mall,2026-07-26
-sm,smby-amusement-park,SMBY Amusement Park,others,SMBY Amusement Park,BYAP,https://www.smsupermalls.com/mall-directory/smby-amusement-park/information/,mall,2026-07-26
-sm,smdc-air-mall,SMDC Air Mall,smdc,"Air Mall, Malugay and Yakal Streets, Barangay San Antonio, Makati City, Metro Manila, Philippines",AIR1,https://www.smsupermalls.com/mall-directory/smdc-air-mall/information/,residential-retail,2026-07-26
-sm,smdc-breeze-mall,SMDC Breeze Mall,smdc,"Roxas Blvd. San Rafael, Pasay City",BRZ1,https://www.smsupermalls.com/mall-directory/smdc-breeze-mall/information/,residential-retail,2026-07-26
-sm,smdc-fame-mall,SMDC Fame Mall,smdc,"Edsa and Mayflower Street, Barangay HIghway Hills 1550, City of Mandaluyong",FAM1,https://www.smsupermalls.com/mall-directory/smdc-fame-mall/information/,residential-retail,2026-07-26
-sm,smdc-grace-mall,SMDC Grace Mall,smdc,"Cayetano Boulevard, Barangay Ususan, Taguig City",GRC1,https://www.smsupermalls.com/mall-directory/smdc-grace-mall/information/,residential-retail,2026-07-26
-sm,smdc-green-mall,SMDC Green Mall,smdc,"Taft Ave., Malate, City of Manila",GRN1,https://www.smsupermalls.com/mall-directory/smdc-green-mall/information/,residential-retail,2026-07-26
-sm,smdc-jazz-mall,SMDC Jazz Mall,smdc,"Jupiter Corner N. Garcia Sts., Bel-Air Makati City",JAZ1,https://www.smsupermalls.com/mall-directory/smdc-jazz-mall/information/,residential-retail,2026-07-26
-sm,smdc-light-mall,SMDC Light Mall,smdc,"Edsa Cor. Madison St. Brgy. Barangka Ilaya, Mandaluyong City",LGT1,https://www.smsupermalls.com/mall-directory/smdc-light-mall/information/,residential-retail,2026-07-26
-sm,smdc-mplace-mall,SMDC Mplace Mall,smdc,"Mother Ignacia and Panay Ave. Barangay South Triangle, Quezon City",MPL1,https://www.smsupermalls.com/mall-directory/smdc-mplace-mall/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-berkeley,SMDC Strip at Berkeley,smdc,"Katipunan Avenue corner Escalar Street, Loyola Heights, Quezon City",BRK1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-berkeley/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-blue,SMDC Strip at Blue,smdc,"Katipunan Road corner Aurora Blvd., Loyola Heights, Quezon City",BLU1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-blue/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-grass,SMDC Strip at Grass,smdc,"Misamis St. cor. Nueva Vizcaya cor. & Nueva Ecija St., Brgy. Sto. Cristo, Quezon City",GRA1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-grass/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-mezza,SMDC Strip at Mezza,smdc,"Aurora Blvd., Cor. Araneta Ave., Guirayan St., Brgy. Do??a Imelda, Quezon City",MEZA,https://www.smsupermalls.com/mall-directory/smdc-strip-at-mezza/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-princeton,SMDC Strip at Princeton,smdc,"Aurora Blvd. near Gilmore Street, Barangay Valencia, Quezon City",PRN1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-princeton/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-sea,SMDC Strip at Sea,smdc,"Sunrise drive cor. Pearl Road, Mall of Asia Complex, CBP-1A, Pasay City",SEA1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-sea/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-shell,SMDC Strip at Shell,smdc,"EDSA cor. Sunrise Drive, CBP 1-A, Pasay City",SHL1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-shell/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-shine,SMDC Strip at Shine,smdc,"Renaissance Center Meralco Ave., Brgy. Ugong, Pasig City",SHN1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-shine/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-shore,SMDC Strip at Shore,smdc,"Seaside Blvd. and Sunrise Drive, Mall of Asia Complex, Pasay City",SHR1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-shore/information/,residential-retail,2026-07-26
-sm,smdc-strip-at-trees,SMDC Strip at Trees,smdc,"Brgy. Pasong Putik, Novaliches, Quezon City, Metro Manila",TRE1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-trees/information/,residential-retail,2026-07-26
-sm,smdc-sun-mall,SMDC Sun Mall,smdc,"Espana Boulevard corner Mayon Street, Barangay Sta. Teresita, Quezon City",SUN1,https://www.smsupermalls.com/mall-directory/smdc-sun-mall/information/,residential-retail,2026-07-26
+sm,smby-amusement-park,SMBY Amusement Park,,SMBY Amusement Park,BYAP,https://www.smsupermalls.com/mall-directory/smby-amusement-park/information/,amusement-park,2026-07-26
+sm,smdc-air-mall,SMDC Air Mall,metro-manila,"Air Mall, Malugay and Yakal Streets, Barangay San Antonio, Makati City, Metro Manila, Philippines",AIR1,https://www.smsupermalls.com/mall-directory/smdc-air-mall/information/,residential-retail,2026-07-26
+sm,smdc-breeze-mall,SMDC Breeze Mall,metro-manila,"Roxas Blvd. San Rafael, Pasay City",BRZ1,https://www.smsupermalls.com/mall-directory/smdc-breeze-mall/information/,residential-retail,2026-07-26
+sm,smdc-fame-mall,SMDC Fame Mall,metro-manila,"Edsa and Mayflower Street, Barangay HIghway Hills 1550, City of Mandaluyong",FAM1,https://www.smsupermalls.com/mall-directory/smdc-fame-mall/information/,residential-retail,2026-07-26
+sm,smdc-grace-mall,SMDC Grace Mall,metro-manila,"Cayetano Boulevard, Barangay Ususan, Taguig City",GRC1,https://www.smsupermalls.com/mall-directory/smdc-grace-mall/information/,residential-retail,2026-07-26
+sm,smdc-green-mall,SMDC Green Mall,metro-manila,"Taft Ave., Malate, City of Manila",GRN1,https://www.smsupermalls.com/mall-directory/smdc-green-mall/information/,residential-retail,2026-07-26
+sm,smdc-jazz-mall,SMDC Jazz Mall,metro-manila,"Jupiter Corner N. Garcia Sts., Bel-Air Makati City",JAZ1,https://www.smsupermalls.com/mall-directory/smdc-jazz-mall/information/,residential-retail,2026-07-26
+sm,smdc-light-mall,SMDC Light Mall,metro-manila,"Edsa Cor. Madison St. Brgy. Barangka Ilaya, Mandaluyong City",LGT1,https://www.smsupermalls.com/mall-directory/smdc-light-mall/information/,residential-retail,2026-07-26
+sm,smdc-mplace-mall,SMDC Mplace Mall,metro-manila,"Mother Ignacia and Panay Ave. Barangay South Triangle, Quezon City",MPL1,https://www.smsupermalls.com/mall-directory/smdc-mplace-mall/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-berkeley,SMDC Strip at Berkeley,metro-manila,"Katipunan Avenue corner Escalar Street, Loyola Heights, Quezon City",BRK1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-berkeley/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-blue,SMDC Strip at Blue,metro-manila,"Katipunan Road corner Aurora Blvd., Loyola Heights, Quezon City",BLU1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-blue/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-grass,SMDC Strip at Grass,metro-manila,"Misamis St. cor. Nueva Vizcaya cor. & Nueva Ecija St., Brgy. Sto. Cristo, Quezon City",GRA1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-grass/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-mezza,SMDC Strip at Mezza,metro-manila,"Aurora Blvd., Cor. Araneta Ave., Guirayan St., Brgy. Do??a Imelda, Quezon City",MEZA,https://www.smsupermalls.com/mall-directory/smdc-strip-at-mezza/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-princeton,SMDC Strip at Princeton,metro-manila,"Aurora Blvd. near Gilmore Street, Barangay Valencia, Quezon City",PRN1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-princeton/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-sea,SMDC Strip at Sea,metro-manila,"Sunrise drive cor. Pearl Road, Mall of Asia Complex, CBP-1A, Pasay City",SEA1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-sea/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-shell,SMDC Strip at Shell,metro-manila,"EDSA cor. Sunrise Drive, CBP 1-A, Pasay City",SHL1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-shell/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-shine,SMDC Strip at Shine,metro-manila,"Renaissance Center Meralco Ave., Brgy. Ugong, Pasig City",SHN1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-shine/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-shore,SMDC Strip at Shore,metro-manila,"Seaside Blvd. and Sunrise Drive, Mall of Asia Complex, Pasay City",SHR1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-shore/information/,residential-retail,2026-07-26
+sm,smdc-strip-at-trees,SMDC Strip at Trees,metro-manila,"Brgy. Pasong Putik, Novaliches, Quezon City, Metro Manila",TRE1,https://www.smsupermalls.com/mall-directory/smdc-strip-at-trees/information/,residential-retail,2026-07-26
+sm,smdc-sun-mall,SMDC Sun Mall,metro-manila,"Espana Boulevard corner Mayon Street, Barangay Sta. Teresita, Quezon City",SUN1,https://www.smsupermalls.com/mall-directory/smdc-sun-mall/information/,residential-retail,2026-07-26
 sm,the-podium,The Podium,metro-manila,12 ADB Ave. Ortigas CDB,SMKL,https://www.smsupermalls.com/mall-directory/the-podium/information/,mall,2026-07-26
-sm,wind-residences,Wind Residences,smdc,"Tagaytay - Nasugbu Hwy, Tagaytay, Cavite",WND1,https://www.smsupermalls.com/mall-directory/wind-residences/information/,residential-retail,2026-07-26
-waltermart,antipolo,WalterMart Antipolo,metro-manila,,,https://malls.waltermart.com.ph/malls/antipolo/,mall,2026-07-26
-waltermart,arayat,WalterMart Arayat,north-luzon,,,https://malls.waltermart.com.ph/malls/arayat/,mall,2026-07-26
-waltermart,bacoor,WalterMart Bacoor,south-luzon,,,https://malls.waltermart.com.ph/malls/bacoor/,mall,2026-07-26
-waltermart,balanga,WalterMart Balanga,north-luzon,,,https://malls.waltermart.com.ph/malls/balanga/,mall,2026-07-26
-waltermart,balayan,WalterMart Balayan,south-luzon,,,https://malls.waltermart.com.ph/malls/balayan/,mall,2026-07-26
-waltermart,baliwag,WalterMart Baliwag,north-luzon,,,https://malls.waltermart.com.ph/malls/baliwag/,mall,2026-07-26
-waltermart,batangas-city,WalterMart Batangas City,south-luzon,,,https://malls.waltermart.com.ph/malls/batangas-city/,mall,2026-07-26
-waltermart,bicutan,WalterMart Bicutan,metro-manila,,,https://malls.waltermart.com.ph/malls/bicutan/,mall,2026-07-26
-waltermart,cabanatuan,WalterMart Cabanatuan,north-luzon,,,https://malls.waltermart.com.ph/malls/cabanatuan/,mall,2026-07-26
-waltermart,cabuyao,WalterMart Cabuyao,south-luzon,,,https://malls.waltermart.com.ph/malls/cabuyao/,mall,2026-07-26
-waltermart,caloocan,WalterMart Caloocan,metro-manila,,,https://malls.waltermart.com.ph/malls/caloocan/,mall,2026-07-26
-waltermart,candelaria,WalterMart Candelaria,south-luzon,,,https://malls.waltermart.com.ph/malls/candelaria/,mall,2026-07-26
-waltermart,capas,WalterMart Capas,north-luzon,,,https://malls.waltermart.com.ph/malls/capas/,mall,2026-07-26
-waltermart,carmona,WalterMart Carmona,south-luzon,,,https://malls.waltermart.com.ph/malls/carmona/,mall,2026-07-26
-waltermart,concepcion,WalterMart Concepcion,north-luzon,,,https://malls.waltermart.com.ph/malls/concepcion/,mall,2026-07-26
-waltermart,dasmarinas,WalterMart Dasmariñas,south-luzon,,,https://malls.waltermart.com.ph/malls/dasmarinas/,mall,2026-07-26
-waltermart,erodriguez,WalterMart E.Rodriguez,metro-manila,,,https://malls.waltermart.com.ph/malls/erodriguez/,mall,2026-07-26
-waltermart,gapan,WalterMart Gapan,north-luzon,,,https://malls.waltermart.com.ph/malls/gapan/,mall,2026-07-26
-waltermart,general-trias,WalterMart General Trias,south-luzon,,,https://malls.waltermart.com.ph/malls/general-trias/,mall,2026-07-26
-waltermart,guiguinto,WalterMart Guiguinto,north-luzon,,,https://malls.waltermart.com.ph/malls/guiguinto/,mall,2026-07-26
-waltermart,mabalacat,WalterMart Mabalacat,north-luzon,,,https://malls.waltermart.com.ph/malls/mabalacat/,mall,2026-07-26
-waltermart,macapagal,WalterMart Macapagal,metro-manila,,,https://malls.waltermart.com.ph/malls/macapagal/,mall,2026-07-26
-waltermart,makati,WalterMart Makati,metro-manila,,,https://malls.waltermart.com.ph/malls/makati/,mall,2026-07-26
-waltermart,makiling,WalterMart Makiling,south-luzon,,,https://malls.waltermart.com.ph/malls/makiling/,mall,2026-07-26
-waltermart,malolos,WalterMart Malolos,north-luzon,,,https://malls.waltermart.com.ph/malls/malolos/,mall,2026-07-26
-waltermart,muntinlupa,WalterMart Muntinlupa,metro-manila,,,https://malls.waltermart.com.ph/malls/muntinlupa/,mall,2026-07-26
-waltermart,naic,WalterMart Naic,south-luzon,,,https://malls.waltermart.com.ph/malls/naic/,mall,2026-07-26
-waltermart,nasugbu,WalterMart Nasugbu,south-luzon,,,https://malls.waltermart.com.ph/malls/nasugbu/,mall,2026-07-26
-waltermart,north-edsa,WalterMart North EDSA,metro-manila,,,https://malls.waltermart.com.ph/malls/north-edsa/,mall,2026-07-26
-waltermart,paniqui,WalterMart Paniqui,north-luzon,,,https://malls.waltermart.com.ph/malls/paniqui/,mall,2026-07-26
-waltermart,pasay,WalterMart Pasay,metro-manila,,,https://malls.waltermart.com.ph/malls/pasay/,mall,2026-07-26
-waltermart,plaridel,WalterMart Plaridel,north-luzon,,,https://malls.waltermart.com.ph/malls/plaridel/,mall,2026-07-26
-waltermart,san-fernando,WalterMart San Fernando,north-luzon,,,https://malls.waltermart.com.ph/malls/san-fernando/,mall,2026-07-26
-waltermart,san-jose,WalterMart San Jose,north-luzon,,,https://malls.waltermart.com.ph/malls/san-jose/,mall,2026-07-26
-waltermart,san-pascual,WalterMart San Pascual,south-luzon,,,https://malls.waltermart.com.ph/malls/san-pascual/,mall,2026-07-26
-waltermart,silang,WalterMart Silang,south-luzon,,,https://malls.waltermart.com.ph/malls/silang/,mall,2026-07-26
-waltermart,sta-maria,WalterMart Sta. Maria,north-luzon,,,https://malls.waltermart.com.ph/malls/sta-maria/,mall,2026-07-26
-waltermart,sta-rosa,WalterMart Sta. Rosa,south-luzon,,,https://malls.waltermart.com.ph/malls/sta-rosa/,mall,2026-07-26
-waltermart,sta-rosa-bel-air,WalterMart Sta. Rosa Bel-Air,south-luzon,,,https://malls.waltermart.com.ph/malls/sta-rosa-bel-air/,mall,2026-07-26
-waltermart,subic,WalterMart Subic,north-luzon,,,https://malls.waltermart.com.ph/malls/subic/,mall,2026-07-26
-waltermart,sucat,WalterMart Sucat,metro-manila,,,https://malls.waltermart.com.ph/malls/sucat/,mall,2026-07-26
-waltermart,talavera,WalterMart Talavera,north-luzon,,,https://malls.waltermart.com.ph/malls/talavera/,mall,2026-07-26
-waltermart,tanauan,WalterMart Tanauan,south-luzon,,,https://malls.waltermart.com.ph/malls/tanauan/,mall,2026-07-26
-waltermart,taytay,WalterMart Taytay,metro-manila,,,https://malls.waltermart.com.ph/malls/taytay/,mall,2026-07-26
-waltermart,the-junction,WalterMart The Junction,metro-manila,,,https://malls.waltermart.com.ph/malls/the-junction/,mall,2026-07-26
-waltermart,trece-martires,WalterMart Trece Martires,south-luzon,,,https://malls.waltermart.com.ph/malls/trece-martires/,mall,2026-07-26
-gmall,gmall-of-davao,GMall of Davao,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-digos,GMall of Digos,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-gensan,GMall of Gensan,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-tagum,GMall of Tagum,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-toril,GMall of Toril,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-cebu,Gmall of Cebu,visayas,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+sm,wind-residences,Wind Residences,south-luzon,"Tagaytay - Nasugbu Hwy, Tagaytay, Cavite",WND1,https://www.smsupermalls.com/mall-directory/wind-residences/information/,residential-retail,2026-07-26

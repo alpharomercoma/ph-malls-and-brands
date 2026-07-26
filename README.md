@@ -3,7 +3,7 @@
 A reproducible dataset of what is inside Philippine malls, and a site for
 exploring it.
 
-**328 properties, 42,412 store listings, 11,660 brands, 12 operators.**
+**328 properties, 42,412 store listings, 11,489 tenant identities, 12 operators.**
 
 | | |
 |---|---|

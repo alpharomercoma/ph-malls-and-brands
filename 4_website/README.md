@@ -18,7 +18,7 @@ previous bundle is deleted, so the deploy directory always holds exactly one.
 
 ## Why the bundle is shaped the way it is
 
-328 properties, 11,660 brands and 40,664 brand-to-property edges have to reach
+328 properties, 11,489 tenant identities and roughly 41,000 brand-to-property edges have to reach
 a phone. Three choices keep it near 220 KB compressed: columnar arrays instead
 of objects, integer indices into shared dictionaries for every repeated string,
 and edges as one flat integer array read in pairs.
@@ -26,7 +26,7 @@ and edges as one flat integer array read in pairs.
 ## Performance and safety
 
 The list is virtualized. A fixed row height means only the visible window plus
-a small overscan is ever in the DOM, so 11,660 results cost the same to scroll
+a small overscan is ever in the DOM, so 11,489 results cost the same to scroll
 as 50. Search is a substring scan over a lowercased array built once at load,
 which stays well inside a frame; input is debounced so a fast typist triggers
 one pass rather than one per key.

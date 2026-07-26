@@ -43,13 +43,24 @@ def classify_property_type(name: str, region: str | None) -> str:
     comparisons can filter to real malls instead of overstating SM's footprint.
     """
     n = name.lower()
-    if "sky ranch" in n:
+    if "sky ranch" in n or "amusement park" in n:
         return "amusement-park"
     if any(k in n for k in ("annex", "building", "bldg", "tower")):
         return "office-annex"
     if region == "smdc" or n.startswith("smdc"):
         return "residential-retail"
     return "mall"
+
+
+# SM's filter mixes geography with portfolio buckets. "smdc" is its residential
+# arm and "others" is a catch-all; neither is a place, so both are dropped here
+# and the real region is inferred downstream from the name and address.
+NON_GEOGRAPHIC_BUCKETS = frozenset({"smdc", "others"})
+
+
+def public_region(region: str | None) -> str | None:
+    """Return a geographic region, dropping SM's non-geographic buckets."""
+    return None if region in NON_GEOGRAPHIC_BUCKETS else region
 
 
 class SMScraper(MallChainScraper):
@@ -101,7 +112,10 @@ class SMScraper(MallChainScraper):
             self.warn(f"{len(untagged)} malls without region: {untagged}")
 
         for mall in by_code.values():
-            mall.property_type = classify_property_type(mall.mall_name, mall.region)
+            source_region = mall.region
+            mall.property_type = classify_property_type(mall.mall_name, source_region)
+            # SMDC is a residential portfolio bucket, not a geographic region.
+            mall.region = public_region(source_region)
         counts: dict[str, int] = {}
         for mall in by_code.values():
             counts[mall.property_type] = counts.get(mall.property_type, 0) + 1

@@ -93,8 +93,8 @@ def build(run_date: str) -> str:
     if malls is None or stores is None:
         raise SystemExit(f"no snapshot for {run_date}")
 
-    listings = stores.groupby("mall_id").size().rename("listings")
-    malls = malls.merge(listings, on="mall_id", how="left")
+    listings = stores.groupby(["chain", "mall_id"]).size().rename("listings")
+    malls = malls.merge(listings, on=["chain", "mall_id"], how="left")
     malls["listings"] = malls["listings"].fillna(0).astype(int)
 
     out: list[str] = []
@@ -109,9 +109,21 @@ def build(run_date: str) -> str:
     add("")
     add(
         "Generated deterministically from the snapshot in "
-        f"`data/processed/{run_date}/`. Regenerate with "
+        f"`data/snapshots/{run_date}/`. Regenerate with "
         f"`mallscape report --date {run_date}`."
     )
+    add("")
+
+    # ---------- data quality ----------
+    add("## Data quality")
+    add("")
+    unknown = int((stores.get("category_std", "unknown") == "unknown").sum()) if "category_std" in stores else None
+    if unknown is not None:
+        add(f"{unknown:,} of {len(stores):,} listings have no confidently mapped category.")
+    review = storage.read(run_date, storage.CLEAN, "normalization_review")
+    if review is not None:
+        add(f"{len(review):,} normalized brand keys have multiple raw variants or require review.")
+    add("Raw listings are retained; these signals describe uncertainty rather than removing rows.")
     add("")
 
     # ---------- per-chain summary ----------
@@ -271,5 +283,3 @@ def build(run_date: str) -> str:
         add("")
 
     return "\n".join(out).rstrip() + "\n"
-
-

@@ -23,7 +23,9 @@ def build_report(
         lines.append(
             f"- **{chain}**: {len(chain_malls)} malls, {len(chain_stores)} store rows"
         )
-    empty = set(malls["mall_id"]) - set(stores["mall_id"])
+    mall_keys = set(zip(malls["chain"], malls["mall_id"], strict=True))
+    store_keys = set(zip(stores["chain"], stores["mall_id"], strict=True))
+    empty = mall_keys - store_keys
     if empty:
         lines.append(f"- ⚠ malls with 0 stores: {sorted(empty)}")
 
@@ -40,15 +42,15 @@ def build_report(
             if new:
                 lines.append(f"- malls added: {sorted(new)}")
         if prev_stores is not None:
-            cur = stores.groupby("mall_id").size()
-            prev = prev_stores.groupby("mall_id").size()
+            cur = stores.groupby(["chain", "mall_id"]).size()
+            prev = prev_stores.groupby(["chain", "mall_id"]).size()
             both = cur.index.intersection(prev.index)
             delta = (cur[both] - prev[both]) / prev[both]
             drops = delta[delta < -DROP_ALERT]
             if not drops.empty:
                 lines.append(f"- ⚠ store-count drops >{DROP_ALERT:.0%} (possible redesign):")
-                for mall_id, pct in drops.items():
-                    lines.append(f"  - {mall_id}: {prev[mall_id]} → {cur[mall_id]} ({pct:+.0%})")
+                for mall_key, pct in drops.items():
+                    lines.append(f"  - {mall_key}: {prev[mall_key]} → {cur[mall_key]} ({pct:+.0%})")
             else:
                 lines.append("- no anomalous store-count drops")
     else:
