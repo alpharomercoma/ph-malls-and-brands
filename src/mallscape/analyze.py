@@ -35,7 +35,7 @@ def build_tables(run_date: str) -> dict[str, pd.DataFrame]:
     per_chain = (
         presence.groupby(["brand_key", "chain"])["mall_id"].nunique().unstack(fill_value=0)
     )
-    for chain in ("sm", "robinsons"):
+    for chain in sorted(malls["chain"].unique()):
         if chain not in per_chain.columns:
             per_chain[chain] = 0
     display_names = (
@@ -48,9 +48,9 @@ def build_tables(run_date: str) -> dict[str, pd.DataFrame]:
     ).reset_index()
     chain_cols = [c for c in brand_summary.columns if c.startswith("n_malls_")]
     brand_summary["n_malls_total"] = brand_summary[chain_cols].sum(axis=1)
-    brand_summary["in_both_chains"] = (
-        (brand_summary["n_malls_sm"] > 0) & (brand_summary["n_malls_robinsons"] > 0)
-    )
+    brand_summary["n_chains"] = (brand_summary[chain_cols] > 0).sum(axis=1)
+    brand_summary["in_all_chains"] = brand_summary["n_chains"] == len(chain_cols)
+    brand_summary["in_multiple_chains"] = brand_summary["n_chains"] > 1
     brand_summary = (
         brand_summary.merge(display_names, on="brand_key")
         .sort_values("n_malls_total", ascending=False)
@@ -97,14 +97,17 @@ def build_tables(run_date: str) -> dict[str, pd.DataFrame]:
 
 def print_headlines(tables: dict[str, pd.DataFrame]) -> None:
     bs = tables["brand_summary"]
-    print("\n=== Top 15 most visible brands (by #malls, both chains) ===")
-    cols = ["display_name", "n_malls_sm", "n_malls_robinsons", "n_malls_total"]
-    print(bs.head(15)[cols].to_string(index=False))
+    chain_cols = [c for c in bs.columns if c.startswith("n_malls_") and c != "n_malls_total"]
 
-    both = bs[bs["in_both_chains"]]
-    print(f"\nBrands present in BOTH chains: {len(both)}")
-    print(f"Brands only in SM malls:        {len(bs[(bs.n_malls_sm > 0) & (bs.n_malls_robinsons == 0)])}")
-    print(f"Brands only in Robinsons malls: {len(bs[(bs.n_malls_robinsons > 0) & (bs.n_malls_sm == 0)])}")
+    print("\n=== Top 15 most visible brands (by number of malls, all chains) ===")
+    print(bs.head(15)[["display_name", *chain_cols, "n_malls_total"]].to_string(index=False))
+
+    print(f"\nBrands in ALL {len(chain_cols)} chains:  {bs['in_all_chains'].sum()}")
+    print(f"Brands in 2+ chains:      {bs['in_multiple_chains'].sum()}")
+    for col in chain_cols:
+        others = [c for c in chain_cols if c != col]
+        exclusive = bs[(bs[col] > 0) & (bs[others].sum(axis=1) == 0)]
+        print(f"Brands only in {col.replace('n_malls_', ''):10s} {len(exclusive)}")
 
     uniq = tables["unique_brands"]
     print(f"\nBrands unique to a single mall: {len(uniq)}")

@@ -1,8 +1,23 @@
 # mallscape
 
 Recurring scraper + brand-presence analysis for Philippine mall directories.
-Covers **SM Supermalls** (126 malls), **Robinsons Malls** (53 malls) and
-**Ayala Malls** (32 malls).
+Covers **SM Supermalls** (126 properties), **Robinsons Malls** (54) and
+**Ayala Malls** (32) — 212 properties, ~33k store listings.
+
+## Coverage: what's in, what's out, and why
+
+Each operator's own website is an incomplete view of its portfolio, so
+coverage is verified against corporate disclosures rather than assumed:
+
+| Chain | Operator's own count | Directories we scrape | Gap |
+|---|---|---|---|
+| SM | ~80-90 malls (SM Prime) | 126 properties, 123 with directories | The 126 includes non-malls (Sky Ranch parks, SMDC condo podiums, office annexes) — see `property_type` discussion below |
+| Robinsons | 57 malls (RLC, end-2025) | 54 properties, 53 with directories | 7 Robinsons Townville community malls + The Mall @ NUSTAR publish no directory |
+| Ayala | ~46 retail properties (Wikipedia table) | 32 properties, 31 with directories | Arca South (2026), Evo City (2025) and ~12 smaller strips are absent from Ayala's API |
+
+Known gaps live in `registry/<chain>_coverage.json` and are re-reported on
+every run — including the good case, where a previously missing mall finally
+appears upstream and should be moved out of the registry.
 
 ## Quick start
 

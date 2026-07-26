@@ -26,6 +26,7 @@ from importlib import resources
 
 from selectolax.parser import HTMLParser
 
+from .. import coverage
 from ..models import Mall, Store
 from .base import MallChainScraper
 
@@ -105,6 +106,8 @@ class RobinsonsScraper(MallChainScraper):
             # prefix match: the widget uses short names ("The Plaza", "Gen San")
             if not any(k.startswith(key) or key.startswith(k) for k in by_key):
                 self.warn(f"chat-widget mall not matched to registry: {name} ({region})")
+
+        coverage.report_gaps(self, {e["name"] for e in registry})
 
         malls = []
         for entry in registry:
