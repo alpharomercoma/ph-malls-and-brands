@@ -33,6 +33,10 @@ from .base import MallChainScraper
 DRUPAL_BASE = "https://robinsonsmalls.com/mall-info/"
 VMD_BASE = "https://vmd.robinsonsmalls.com"
 SLUG_PATTERNS = ("robinsons-place-{}", "robinsons-{}", "{}")
+# rate/notice prose that some floors put inside li.store-name items
+_RATES_PROSE = re.compile(
+    r"flat rate|overnight parking|lost/damaged|per succeeding hour", re.I
+)
 
 
 def _norm_key(name: str) -> str:
@@ -174,6 +178,10 @@ class RobinsonsScraper(MallChainScraper):
             for item in items:
                 text = re.sub(r"\s+", " ", item.text(separator=" ", strip=True))
                 if not text:
+                    continue
+                if _RATES_PROSE.search(text):
+                    # some floors reuse li.store-name for rate/notice prose
+                    # ("Monday to Sunday and Holidays - P25.00 flat rate ...")
                     continue
                 name, _, phone = (p.strip() for p in text.partition("|"))
                 stores.append(
