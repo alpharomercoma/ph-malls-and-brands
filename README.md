@@ -7,19 +7,38 @@ schedule and diffed against the previous run.
 | | |
 |---|---|
 | Data | [`data/processed/2026-07-26/`](data/processed/2026-07-26/) — committed, see [docs/DATA.md](docs/DATA.md) |
+| Site | [`4_website/site/index.html`](4_website/site/index.html) — generated, self-contained |
 | Breakdown | [`breakdown.md`](data/processed/2026-07-26/breakdown.md) — every chain and property |
 | Design | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | Hard-won lessons | [docs/PITFALLS.md](docs/PITFALLS.md) |
 
-## Quick start
+## Pipeline
+
+```
+1_scrape/   ->  2_clean/   ->  3_report/   ->  4_website/
+raw HTML        standardize    analysis +      self-contained
+& JSON          & normalize    breakdown       static site
+```
 
 ```bash
 uv sync
-uv run mallscape scrape     # all chains (~25 min cold; seconds from cache)
-uv run mallscape analyze    # brand-presence tables
-uv run mallscape report     # deterministic breakdown -> breakdown.md
-uv run pytest               # 37 offline regression tests
+uv run mallscape scrape     # 1 - all chains (~25 min cold; seconds from cache)
+uv run mallscape clean      # 2 - stores_clean.* (non-destructive)
+uv run mallscape analyze    # 3 - brand-presence tables
+uv run mallscape report     # 3 - deterministic breakdown -> breakdown.md
+uv run mallscape website    # 4 - static site -> 4_website/site/index.html
+uv run pytest               # 43 offline regression tests
 ```
+
+Each stage folder holds one Python package (`mallscape_scrape`, `mallscape_clean`,
+`mallscape_report`, `mallscape_website`), with shared models and snapshot I/O in
+`common/mallscape_core`. **Stage N may import stages below it and the core,
+never the reverse** - the dependency direction is the pipeline direction.
+
+Stage 2 is strictly additive: it reads `stores.parquet` and writes
+`stores_clean.parquet` beside it. Raw values are never overwritten, and any
+value that could not be normalized confidently is kept as-is and flagged in
+`dq_flags` rather than coerced.
 
 Re-run monthly or weekly. Each run writes a dated snapshot, diffs itself
 against the previous one, and reports anomalies.
@@ -45,7 +64,7 @@ against the previous one, and reports anomalies.
 annexes). **Filter to `property_type == "mall"` before comparing chains.**
 
 Per-chain scraping notes — endpoints, gotchas, dead domains — live in each
-module's docstring under `src/mallscape/scrapers/`.
+module's docstring under `1_scrape/mallscape_scrape/scrapers/`.
 
 ## Coverage is verified, not assumed
 
@@ -59,7 +78,7 @@ roster is checked against corporate disclosures:
 | Ayala | ~46 properties | 32 | Arca South (2026), Evo City (2025) and ~12 strips are absent from Ayala's own API |
 | GMall | 6 branches | 6 | Cebu and GenSan publish no tenant rows |
 
-Known gaps are **data**, not footnotes: `src/mallscape/registry/*_coverage.json`
+Known gaps are **data**, not footnotes: `1_scrape/mallscape_scrape/registry/*_coverage.json`
 records each one with its evidence, and every run re-reports them — including
 the good case, where a previously missing mall appears upstream and should be
 promoted out of the registry.
@@ -76,7 +95,10 @@ re-check criteria for each. `breakdown.md` reproduces this in full.
 - **Ayala listing counts run ~7% high** — their API returns duplicate
   `(mall, merchant)` pairs with no distinguishing fields. Brand presence is
   unaffected.
-- **Category vocabularies are per-chain** and not harmonized.
+- **Category vocabularies are per-chain in stage 1** (101 distinct strings) and
+  harmonized into 10 canonical buckets by stage 2. Use `category_std` from
+  `stores_clean`, not the raw `category`. About 27% of listings carry no usable
+  category upstream and land in `unknown`.
 
 ## Etiquette
 

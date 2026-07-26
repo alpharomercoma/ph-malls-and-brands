@@ -11,12 +11,12 @@ from pathlib import Path
 
 import pytest
 
-from mallscape.models import Mall
-from mallscape.normalize import brand_key
-from mallscape.scrapers.ayala import derive_region
-from mallscape.scrapers.filinvest import FilinvestScraper
-from mallscape.scrapers.starmall import StarmallScraper
-from mallscape.scrapers.robinsons import RobinsonsScraper, _norm_key
+from mallscape_core.models import Mall
+from mallscape_clean.normalize import brand_key
+from mallscape_scrape.scrapers.ayala import derive_region
+from mallscape_scrape.scrapers.filinvest import FilinvestScraper
+from mallscape_scrape.scrapers.starmall import StarmallScraper
+from mallscape_scrape.scrapers.robinsons import RobinsonsScraper, _norm_key
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -218,7 +218,7 @@ class TestAranetaParser:
     def test_ali_mall_gallery_items(self):
         from unittest.mock import Mock
 
-        from mallscape.scrapers.araneta import AranetaScraper
+        from mallscape_scrape.scrapers.araneta import AranetaScraper
 
         s = AranetaScraper.__new__(AranetaScraper)
         s.warnings = []
@@ -237,7 +237,7 @@ class TestSnapshotIntegrity:
     run must never be published as `latest` or silently analyzed."""
 
     def _snapshot(self, tmp_path, monkeypatch, malls_df, stores_df, date="2026-01-01"):
-        from mallscape import storage
+        from mallscape_core import storage
 
         monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
         out = storage.processed_dir(date)
@@ -295,13 +295,13 @@ class TestAuditRegressions:
         assert "BAKER'S FAIR" in names
 
     def test_xentro_keeps_names_ending_in_period(self):
-        from mallscape.normalize import brand_key
+        from mallscape_clean.normalize import brand_key
         # "INC." / "CORP." / "ACC." are real tenant suffixes, not noise
         assert brand_key("SIETE ESTRELLAS, INC.") != ""
 
     def test_sm_dedupe_key_separates_distinct_outlets(self):
         """Two outlets of one brand on different floors must both survive."""
-        from mallscape.scrapers.sm import SMScraper
+        from mallscape_scrape.scrapers.sm import SMScraper
         keys = set()
         for floor, building in [("2F", "MAIN"), ("GF", "EXPANSION")]:
             keys.add(("", "POTATO CORNER", floor, building))
@@ -311,7 +311,8 @@ class TestAuditRegressions:
 class TestReportDeterminism:
     def test_report_is_byte_identical_across_runs(self, tmp_path, monkeypatch):
         import pandas as pd
-        from mallscape import report, storage
+        from mallscape_report import report
+        from mallscape_core import storage
 
         monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
         out = storage.processed_dir("2026-01-01")
@@ -331,3 +332,89 @@ class TestReportDeterminism:
         assert first == second
         # and it must actually contain the numbers, not just be stable-empty
         assert "3" in first and "A Mall" in first
+
+
+class TestCleanStage:
+    """Stage 2 must standardize without inventing or destroying data."""
+
+    def test_is_non_destructive(self):
+        import pandas as pd
+        from mallscape_clean import clean
+
+        raw = pd.DataFrame({
+            "chain": ["sm"], "mall_id": ["a"], "store_name_raw": ["POTATO CORNER"],
+            "category": ["dining"], "floor": ["2ND FLOOR"], "building": [None],
+            "phone": ["0917-123-4567"], "source": ["sm-api"], "scraped_at": ["2026-01-01"],
+        })
+        before = raw.copy(deep=True)
+        out = clean.build(raw)
+        pd.testing.assert_frame_equal(raw, before)          # input untouched
+        assert out.loc[0, "store_name_raw"] == "POTATO CORNER"  # raw preserved
+        assert out.loc[0, "store_name"] == "Potato Corner"
+        assert out.loc[0, "floor_level"] == 2
+        assert out.loc[0, "phone_e164"] == "+639171234567"
+
+    def test_floor_levels(self):
+        from mallscape_clean.clean import standardize_floor
+        cases = {
+            "2F": 2, "Level 3": 3, "2nd Floor": 2, "SECOND FLOOR": 2,
+            "Ground": 0, "GF": 0, "LGF": -1, "Lower Ground": -1,
+            "Basement 2": -2, "UGF": 1,
+        }
+        for raw, level in cases.items():
+            assert standardize_floor(raw)[1] == level, raw
+        # places, not storeys — must not be assigned a level
+        for raw in ["Kiosk", "Food Hall", "Roof Deck", "Parkway"]:
+            assert standardize_floor(raw)[1] is None, raw
+
+    def test_category_harmonization_across_chains(self):
+        from mallscape_clean.clean import standardize_category
+        for raw in ["dining", "dine", "Food Choices", "DINING / FOOD (KIOSK / CARTS)"]:
+            assert standardize_category(raw, "x") == "dining", raw
+        for raw in ["cyberzone", "cybermart", "gadgets", "telecoms / computers / electronics"]:
+            assert standardize_category(raw, "x") == "electronics", raw
+        # meaningless upstream values must not be forced into a bucket
+        for raw in ["1", "4", "undefined", "all", None]:
+            assert standardize_category(raw, "x") == "unknown", raw
+
+    def test_phone_e164(self):
+        from mallscape_clean.clean import to_e164
+        assert to_e164("0917-123-4567") == "+639171234567"
+        assert to_e164("8354-1053 / 8354-1018") is None   # landline, no area code
+        assert to_e164("(02) 8 462 8888") == "+63284628888"
+        assert to_e164(None) is None
+
+    def test_deterministic(self):
+        import pandas as pd
+        from mallscape_clean import clean
+        raw = pd.DataFrame({
+            "chain": ["sm", "ayala"], "mall_id": ["a", "b"],
+            "store_name_raw": ["B STORE", "A STORE"], "category": ["dine", "shop"],
+            "floor": ["2F", None], "building": [None, None], "phone": [None, None],
+            "source": ["x", "y"], "scraped_at": ["2026-01-01"] * 2,
+        })
+        assert clean.build(raw).equals(clean.build(raw))
+
+
+class TestWebsiteStage:
+    def test_site_is_deterministic_and_self_contained(self, tmp_path, monkeypatch):
+        import pandas as pd
+        from mallscape_core import storage
+        from mallscape_website import build as website
+
+        monkeypatch.setattr(storage, "DATA_DIR", tmp_path)
+        out = storage.processed_dir("2026-01-01")
+        storage.write_table(pd.DataFrame({
+            "chain": ["sm"], "mall_id": ["a"], "mall_name": ["A Mall"],
+            "region": ["metro-manila"], "property_type": ["mall"],
+            "scraped_at": ["2026-01-01"],
+        }), out, "malls")
+        storage.write_table(pd.DataFrame({
+            "chain": ["sm"], "mall_id": ["a"], "store_name_raw": ["X"],
+        }), out, "stores")
+
+        first = website.build("2026-01-01")
+        assert first == website.build("2026-01-01")
+        # no external requests may be embedded — the page must work offline
+        for token in ("http://", "https://", "<script"):
+            assert token not in first, token

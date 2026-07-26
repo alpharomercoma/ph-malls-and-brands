@@ -1,0 +1,130 @@
+chain,category,category_std,listings
+sm,dining,dining,6465
+ayala,dine,dining,1752
+megaworld,dine,dining,872
+waltermart,food choices,dining,414
+gmall,food,dining,297
+filinvest,dining,dining,166
+filinvest,dining / food (kiosk / carts),dining,107
+starmall,dining,dining,92
+sm,food-beverages,dining,29
+sm,fast-food,dining,13
+filinvest,food court,dining,12
+robinsons,dine,dining,11
+sm,breads-pastries-baked-goods,dining,7
+sm,specialty-food,dining,4
+sm,ice-cream-popsicle-shaved-ice-2,dining,3
+sm,coffee-tea-snack-counter-2,dining,2
+sm,fries,dining,2
+sm,juices-shakes-2,dining,2
+sm,milk-dairy,dining,2
+gmall,dining,dining,1
+sm,candies-chocolates-nuts-chips,dining,1
+sm,casual-dining,dining,1
+sm,fine-dining,dining,1
+sm,shawarma-2,dining,1
+sm,waffle,dining,1
+sm,cyberzone,electronics,3426
+waltermart,cybermart,electronics,254
+sm,gadgets,electronics,93
+filinvest,appliances / electronics,electronics,57
+filinvest,telecoms / computers / electronics,electronics,41
+sm,mobile-phone-accessories,electronics,20
+sm,mobile-phones-accessories,electronics,9
+gmall,gadgets,electronics,6
+sm,appliances-electronics-games-2,electronics,1
+sm,entertainment,entertainment,506
+ayala,entertainment,entertainment,104
+sm,cinema,entertainment,81
+waltermart,amusement,entertainment,39
+filinvest,recreational,entertainment,25
+gmall,entertainement,entertainment,25
+megaworld,experience,entertainment,10
+starmall,amusement,entertainment,5
+robinsons,recharge,entertainment,1
+sm,amusement,entertainment,1
+filinvest,apparel,fashion,45
+filinvest,shoes and bags,fashion,43
+filinvest,accessories,fashion,39
+filinvest,fragrance,fashion,12
+sm,shoes-bags-luggages,fashion,7
+sm,fashion-apparel,fashion,4
+sm,fragrances-body-products,fashion,3
+sm,watches,fashion,3
+filinvest,department store,fashion,2
+sm,department-store,fashion,1
+sm,groceries,groceries,75
+filinvest,supermarket,groceries,5
+filinvest,food retail,groceries,4
+filinvest,services / convenience,groceries,4
+sm,wellness,health_beauty,1925
+waltermart,wellness,health_beauty,160
+filinvest,"health, beauty and wellness",health_beauty,122
+filinvest,"health, beauty & wellness (retail)",health_beauty,24
+filinvest,optical shops,health_beauty,24
+sm,beauty-wellness,health_beauty,7
+sm,clinics-laboratories-2,health_beauty,4
+sm,health-beauty-drug-store,health_beauty,2
+sm,beauty-salon-spa-barber-shop,health_beauty,1
+sm,clinics-laboratories,health_beauty,1
+sm,optical,health_beauty,1
+sm,home,home,315
+filinvest,home,home,15
+filinvest,home furnishings,home,6
+filinvest,hardware,home,4
+filinvest,appliances / home stores,home,2
+filinvest,real estate,home,1
+sm,home-office-furnishings-houseware,home,1
+ayala,services,services,600
+megaworld,services,services,571
+waltermart,services,services,240
+sm,atm,services,171
+sm,services,services,163
+gmall,services,services,159
+starmall,services,services,72
+sm,government-offices,services,67
+filinvest,services,services,44
+filinvest,government offices,services,12
+filinvest,banks & atms,services,9
+filinvest,fellowship,services,6
+sm,services-3,services,5
+filinvest,bank / atms,services,4
+filinvest,schools,services,4
+sm,services-4,services,4
+sm,banks,services,2
+filinvest,courier,services,1
+sm,shopping,shopping,4638
+ayala,shop,shopping,2662
+megaworld,shop,shopping,665
+ayala,essentials,shopping,522
+gmall,retail,shopping,441
+waltermart,shops,shopping,390
+starmall,shopping,shopping,101
+filinvest,children's shops,shopping,10
+starmall,essentials,shopping,9
+gmall,shopping,shopping,8
+robinsons,shop,shopping,7
+sm,hobbies-and-specialty,specialty,1264
+filinvest,specialty shops,specialty,58
+filinvest,sporting goods,specialty,18
+filinvest,bookstore & office supplies,specialty,5
+filinvest,hobby shop,specialty,5
+filinvest,photo shops,specialty,5
+sm,specialty-shop-hobbies-novelties,specialty,5
+filinvest,pet shops,specialty,3
+sm,flower-shop-garden,specialty,2
+sm,photography-developing-supplies-3,specialty,1
+sm,sporting-goods,specialty,1
+robinsons,,unknown,8373
+xentro,,unknown,1006
+ortigas,1,unknown,700
+ortigas,4,unknown,354
+fishermall,,unknown,342
+araneta,,unknown,319
+sm,undefined,unknown,213
+ortigas,,unknown,204
+sm,others,unknown,82
+ortigas,9,unknown,21
+filinvest,others,unknown,12
+gmall,all,unknown,7
+sm,cigar-tobacco-accs,unknown,1

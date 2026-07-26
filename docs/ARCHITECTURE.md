@@ -24,6 +24,28 @@ A scraper's only obligation is to turn one operator's mess into `Mall` and
 `Store` rows. Everything downstream — validation, normalization, brand
 matching, reporting — is chain-agnostic and written once.
 
+## Layout
+
+The repository is organized as an explicit four-stage pipeline. Directory names
+carry the stage number for readability; the package inside each carries a valid
+Python identifier, because module names cannot begin with a digit.
+
+```
+common/mallscape_core/      models, snapshot storage        (imported by all)
+1_scrape/mallscape_scrape/  fetcher, 12 scrapers, registries, run validation
+2_clean/mallscape_clean/    name/category/floor/phone normalization
+3_report/mallscape_report/  brand analysis, deterministic breakdown
+4_website/mallscape_website/ self-contained static site
+cli/mallscape/              typer app wiring the stages together
+```
+
+**Stage N may import stages below it and `mallscape_core`, never the reverse.**
+That single rule keeps the pipeline direction and the dependency direction the
+same, so a stage can be run, tested, or replaced on its own.
+
+Stage 2 is additive by contract: it reads stage 1's output and writes a new
+file beside it. Nothing downstream of a scrape ever rewrites a scrape.
+
 ## Modules
 
 | module | responsibility |
