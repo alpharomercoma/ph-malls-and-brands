@@ -1,8 +1,9 @@
 # mallscape
 
 Recurring scraper + brand-presence analysis for Philippine mall directories.
-Covers **SM Supermalls** (126 properties), **Robinsons Malls** (54) and
-**Ayala Malls** (32) — 212 properties, ~33k store listings.
+Covers seven operators: **SM Supermalls**, **Robinsons Malls**, **Ayala Malls**,
+**Megaworld Lifestyle Malls**, **Filinvest Malls** (incl. Festival Mall),
+**Starmall** and **WalterMart**.
 
 ## Coverage: what's in, what's out, and why
 
@@ -85,6 +86,36 @@ probing for new malls. Anything unrecognized lands as a ⚠ warning in
 **Gotcha:** robinsonsmalls.com requires TLS 1.3; macOS system Python 3.9
 fails the handshake. Always run through `uv run` (Python 3.12).
 
+### Megaworld Lifestyle Malls (`scrapers/megaworld.py`)
+JS app backed by **Contentstack** headless CMS. `content_types/mall/entries`
+(26 malls) and `content_types/tenant/entries` (~2,100 tenants) via the public
+delivery `api_key`/`access_token` the site ships to every browser. Richest
+schema of any chain: category, shop_type, floor, landline, operating hours,
+and a `reference` array linking each tenant to its mall uid.
+
+**Gotcha:** `megaworldlifestylemalls.com` (no hyphen) has lapsed and now
+redirects to an unrelated ad/scam domain. The live site is
+`megaworld-lifestylemalls.com`.
+
+### Filinvest Malls (`scrapers/filinvest.py`)
+`filinvestlifemalls.com/shops-directory/<slug>/` — one server-rendered table
+per mall: `<tr class="sp-1">` rows are category headers that apply to every
+row beneath them. Five malls; **Festival Mall is Filinvest's flagship**, not a
+separate operator. `filinvestmalls.com` is a parked lander.
+
+### Starmall (`scrapers/starmall.py`)
+`starmalls.com.ph/stores-<slug>/` — four malls. The directory is an Elementor
+filterable gallery whose cards live inside a JSON-escaped blob, so the parser
+unescapes first, then reads `h5.fg-item-title` plus Contact Number / Location.
+Category comes from the `eael-cf-<category>` class.
+
+### WalterMart (`scrapers/waltermart.py`)
+`waltermart.com.ph` sits behind an sgcaptcha challenge, but
+**`malls.waltermart.com.ph` serves plain HTML with no challenge**. `/malls/`
+lists the malls by region; `/malls/<slug>/<category>` holds the full listing
+with details on `a.wm-store` `data-*` attributes. The mall page itself caps
+each category carousel at 10, so category pages are the authoritative source.
+
 ### Ayala Malls (`scrapers/ayala.py`)
 React SPA backed by a JSON API (endpoints found by observing the
 `/explore/mall-directory` page's network traffic):
@@ -119,7 +150,17 @@ a genuine upstream gap, flagged in the run report rather than silently empty.
 3. Parser changes? Re-run `uv run pytest`; re-parse without re-fetching by
    re-running scrape the same day (raw cache hits).
 
-## Adding another chain (Megaworld, Vista, …)
+## Operators investigated but NOT scraped
+
+`registry/unscraped_chains.json` records operators with no published tenant
+directory, so their absence is a documented finding rather than an oversight:
+**Vista Malls** (~20 malls — store sections render logo carousels only; the dev
+mirror still holds Lorem ipsum), **Primark Town Centers** (~45 locations —
+address and leasing contact only), and **CityMall/DoubleDragon** (43 malls —
+corporate shell site, no directory on any official domain). For all three the
+*mall list* is obtainable if mall-level coverage is ever wanted.
+
+## Adding another chain (Vista, CityMall, …)
 
 1. Subclass `MallChainScraper` (`scrapers/base.py`): implement
    `discover_malls()` and `scrape_mall()` returning the shared `Mall`/`Store`

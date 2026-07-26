@@ -1,0 +1,549 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/static/web/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/web/owlcarousel/owl.theme.default.min.css">
+    <script src="/static/web/owlcarousel/owl.carousel.min.js"></script>
+
+    <link rel="stylesheet" href="/static/web/styles.css"  />
+
+    <title></title>
+    
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="wm-top-header container-xxl d-flex flex-lg-row mx-5">
+          <a class="navbar-brand mb-lg-0 mb-2" href="https://waltermart.com.ph">
+              <img src="/static/web/images/wm-logo-2.png" width="213" alt="waltermart" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-lg-row justify-content-around flex-column align-items-center my-4 my-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">MALLS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/stores">STORES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://waltermart.com.ph/cinemas/">CINEMA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://waltermart.com.ph/in-the-spotlight/">IN THE SPOTLIGHT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://waltermart.com.ph/love-sustainability/">LOVE SUSTAINABILITY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://waltermart.com.ph/about-us/">ABOUT US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://waltermart.com.ph/contact-us">CONTACT US</a>
+              </li>
+            </ul>
+            <form class="d-flex wm-search">
+              <input class="form-control wm-search-input shadow-none" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      
+
+
+<div class="container-fluid py-5 wm-header"> <!-- Header Bar -->
+    <div class="d-flex flex-row justify-content-center align-items-center flex-wrap py-5">
+        
+            <img src="/static/web/images/wm-logo-2.png" alt="waltermart-mall" width="350" style="margin: 15px" />
+            <h1 id="wm-mall">North EDSA</h1>
+        
+    </div>
+</div>
+
+<div class="container-xxl my-5">
+    <div class="row d-flex flex-column">
+        <div class="col-12 d-flex flex-wrap justify-content-center mb-1"> <!-- Search Section -->
+            <div class="mx-4">
+                <h2 class="wm-fas">Find a store</h2>
+            </div>
+            <div>
+                <form class="d-flex wm-search" method="GET">
+                    <input class="form-control wm-search-input shadow-none" name="search-area" value="" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+        </div>
+
+        
+            
+            <div class="col-12 mb-5">
+                    <div class="wm-mall-cat my-5">
+                        <h3 class="wm-mall-cat-title d-flex-inline pe-4">Food Choices</h3>
+                    </div>
+
+                    <div class="row mb-5">
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="ADDAS"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            data-thumbnail="/static/web/images/tenant-placeholder.png"
+                                        
+                                        >
+                                        
+                                            <img src="/static/web/images/tenant-placeholder.png" alt="ADDAS" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        ADDAS
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="ALL ABOUT LEMON"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            data-thumbnail="/static/web/images/tenant-placeholder.png"
+                                        
+                                        >
+                                        
+                                            <img src="/static/web/images/tenant-placeholder.png" alt="ALL ABOUT LEMON" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        ALL ABOUT LEMON
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Aboy&#x27;s Fresh Lumpia"
+                                        data-address="1st Floor, WalterMart North EDSA, 8001-A EDSA, Brgy. Veterans Village, Quezon City"
+                                        data-operatinghours="9AM-9PM"
+                                        data-contactnumber="89824329 / 9222767529"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Aboy_s_Fresh_Lumpia.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Aboy_s_Fresh_Lumpia.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Aboy_s_Fresh_Lumpia.png" alt="Aboy&#x27;s Fresh Lumpia" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Aboy&#x27;s Fresh Lumpia
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Avocadoria.ph"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Avocadoria_NAiJgjS.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Avocadoria_dGHSBS0.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Avocadoria_NAiJgjS.png" alt="Avocadoria.ph" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Avocadoria.ph
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="BBK"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/BBK_7rsZRPl.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/BBK_sWLAUtP.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/BBK_7rsZRPl.png" alt="BBK" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        BBK
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Bonchon"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Bon_Chon_mh7eKnW.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Bon_Chon_aaq5Lms.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Bon_Chon_mh7eKnW.png" alt="Bonchon" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Bonchon
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Buko Express"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Buko_Express_Pies___Sweets_92f6lro.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Buko_Express_Pies___Sweets_oK0RWJD.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Buko_Express_Pies___Sweets_92f6lro.png" alt="Buko Express" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Buko Express
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Buko Juan"
+                                        data-address="Ground Floor, WalterMart North EDSA, 8001-A EDSA, Brgy. Veterans Village, Quezon City"
+                                        data-operatinghours="9AM-9PM"
+                                        data-contactnumber="9510634478 / 9274449278"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Buko_Juan_kRNP3AP.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Buko_Juan_zVRY7Qe.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Buko_Juan_kRNP3AP.png" alt="Buko Juan" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Buko Juan
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Chatime"
+                                        data-address=""
+                                        data-operatinghours="-"
+                                        data-contactnumber="-"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Chatime_aIZn0K0.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Chatime.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Chatime_aIZn0K0.png" alt="Chatime" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Chatime
+                                    </a>
+                                </div>
+                            
+                        
+                            
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-5">
+                                    <a
+                                        href="#"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#wmStoreDetails" 
+                                        class="wm-store d-flex flex-column align-items-center"
+                                        data-name="Chowking"
+                                        data-address="Ground Floor, WalterMart North EDSA, 8001-A EDSA, Brgy. Veterans Village, Quezon City"
+                                        data-operatinghours="9AM-9PM"
+                                        data-contactnumber="(02)8332-1160 / 639989615446"
+                                        
+                                        
+                                        
+                                            data-logo="/media/store/logos/Chowking_S8m0l6k.png"
+                                        
+                                        
+                                            data-thumbnail="/media/store/thumbnails/Chowking_tl4Bdb7.png"
+                                        
+                                        >
+                                        
+                                            <img src="/media/store/logos/Chowking_S8m0l6k.png" alt="Chowking" class="mb-3 mx-auto" style="width: 180px;" />
+                                        
+                                        <br/>
+                                        Chowking
+                                    </a>
+                                </div>
+                            
+                        
+                    </div>
+
+            </div>
+            
+        
+
+        <div class="col-12"> <!-- MODAL -->
+            <div class="modal fade" id="wmStoreDetails" tabindex="-1" aria-labelledby="wmStoreDetailsTitle" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 d-flex align-items-center">
+                            <div class="p-3" style="width: 100%;">
+                                <img id="wm-store-thumbnail" alt="store-name" width="100%">
+                                <!-- <img src="/static/web/images/wm-store-ph.jpg" alt="store-name" width="100%"> -->
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="flex-column justify-content-center px-4 py-5">
+                                <h3 id="wm-store-name" class="wm-label mt-4"></h3>
+                                <address id="wm-store-address"></address>
+                                <p class="mb-4"><span class="wm-label">Operating Hours: </span><span id="wm-store-operatingHours"></span></span> </p>
+                                <p class="mb-5"><span class="wm-label">Contact Number: </span><span id="wm-store-contactNumber"></span></span> </p>
+                                <div id="wm-delivery-opt">
+                                    <p class="wm-label">Have it delivered:</p>
+                                    <div class="wm-store-delivery d-flex justify-content-around mb-5">
+                                        <div id="wm-grab"><span id="grab-link"></span></div>
+                                        <div id="wm-foodpanda"><span id="foodpanda-link">A</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 mb-5">
+            <img src="/static/web/images/promo-banner.jpg" alt="" width="100%" />
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 col-lg-5 d-flex align-items-center mb-3">
+                <div class="flex-column justify-content-center">
+                    <h3 id="wm-mall-name" class="wm-label">North EDSA</h3>
+                    <address id="wm-mall-address">Waltermart Shopping Center, 8001-A EDSA, Brgy. Veterans Village, Quezon City</address>
+                    <p id="wm-mall-operating mb-4"><span class="wm-label">Operating Hours:</span> 9am-9pm</p>
+                    <p id="wm-mall-contact mb-4"><span class="wm-label">Contact Number:</span> 09088963034 </p>
+                    <p id="wm-email-contact mb-5"><span class="wm-label">Email:</span> <a href="/cdn-cgi/l/email-protection#f2858191dc93969f9b9cdc9c9d80869a97968193b285939e8697809f938086dc919d9fdc829a"><span class="__cf_email__" data-cfemail="c7b0b4a4e9a6a3aaaea9e9a9a8b5b3afa2a3b4a687b0a6abb3a2b5aaa6b5b3e9a4a8aae9b7af">[email&#160;protected]</span></a></p>
+
+                    <ul class="list-unstyled d-flex" style="font-size: 2em;">
+                        
+                        
+                        
+                      </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7">
+                <div class="wm-map-container">
+                    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.979238629338!2d121.01884131590572!3d14.657119689766542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b6efe14791f3%3A0x41ccfdc234acf335!2sWalterMart%20Mall%20North%20EDSA!5e0!3m2!1sen!2sph!4v1655178209724!5m2!1sen!2sph" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    jQuery(".wm-store").click(function () {
+        console.log(this.dataset.name)
+        jQuery('#wm-store-name').html(this.dataset.name);
+        jQuery('#wm-store-address').html(this.dataset.address);
+        jQuery('span#wm-store-operatingHours').html(this.dataset.operatinghours);
+        jQuery('span#wm-store-contactNumber').html(this.dataset.contactnumber);
+        jQuery('#wm-store-logo').attr('src', this.dataset.logo);
+        jQuery('#wm-store-thumbnail').attr('src', this.dataset.thumbnail);
+        if(this.dataset.grab || this.dataset.foodpanda){
+            console.log("Existing")
+            jQuery('#wm-delivery-opt').show();
+            if(this.dataset.grab) {
+                jQuery('#wm-grab').show();
+                jQuery('span#grab-link').html(this.dataset.grab);
+            } else {
+                jQuery('#wm-grab').hide();
+                console.log("Grab empty!");
+            }
+            
+            if (this.dataset.foodpanda) {
+                jQuery('span#foodpanda-link').html(this.dataset.foodpanda);
+            } else {
+                jQuery('#wm-foodpanda').hide();
+                console.log("FoodPanda empty!");
+            }
+
+        }
+        else {
+            console.log("Delivery Option Blank!")
+            jQuery('#wm-delivery-opt').hide();
+            console.log("Blank! 2")
+        }
+    });
+</script>
+
+
+
+
+<div class="container-fluid wm-footer">
+    <footer class="py-5 pb-0">
+      <div class="row">
+        <div class="col-lg-3 offset-lg-1 col-12 d-flex flex-column align-items-center align-items-lg-start justify-content-center">
+            <a href="https://waltermart.com.ph"><img src="/static/web/images/wm-footer.png" alt="" class="mb-5" /></a>
+        </div>
+
+        <div class="col-lg-2 col-12 d-flex flex-column align-items-center align-items-lg-start mb-4">
+          <h5 class="pb-4">Links</h5>
+          <ul class="nav flex-column align-items-center align-items-lg-start">
+            <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted text-white">Malls</a></li>
+            <li class="nav-item mb-2"><a href="https://waltermart.com.ph/leasing" class="nav-link p-0 text-muted text-white">Leasing</a></li>
+            <li class="nav-item mb-2"><a href="https://waltermart.com.ph/careers" class="nav-link p-0 text-muted text-white">Careers</a></li>
+            <li class="nav-item mb-2"><a href="https://waltermart.com.ph/privacy-policy" class="nav-link p-0 text-muted text-white">Privacy Policy</a></li>
+            <li class="nav-item mb-2"><a href="https://waltermart.com.ph/terms-of-use" class="nav-link p-0 text-muted text-white">Terms of Use</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-lg-2 col-12 d-flex flex-column align-items-center align-items-lg-start mb-4">
+          <h5 class="pb-4">Happenings</h5>
+          <ul class="nav flex-column align-items-center align-items-lg-start">
+            <li class="nav-item mb-2"><a href="https://waltermart.com.ph/cinemas" class="nav-link p-0 text-muted text-white">Cinemas</a></li>
+            <li class="nav-item mb-2"><a href="https://waltermart.com.ph/happening-now" class="nav-link p-0 text-muted text-white">News & Events</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-lg-2 col-12 d-flex flex-column align-items-center align-items-lg-start mb-4">
+          <h5 class="pb-4">Contact</h5>
+          <ul class="nav flex-column align-items-center align-items-lg-start">
+            <li class="nav-item mb-2"><a href="/cdn-cgi/l/email-protection#82e1f7f1f6edefe7f0e1e3f0e7c2f5e3eef6e7f0efe3f0f6ace1edefacf2ea" class="nav-link p-0 text-muted text-white"><span class="__cf_email__" data-cfemail="e3809690978c8e869180829186a394828f9786918e829197cd808c8ecd938b">[email&#160;protected]</span></a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted text-white">WalterMart Building 8001-A North Edsa, Veterans Village, Quezon City, Philippiness</a></li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <div class="d-flex justify-content-between py-4 mt-4 border-top pb-0 flex-column flex-lg-row align-items-center">
+        <p class="text-white">© 2022 WalterMart. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3"><a class="link-dark" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+          <li class="ms-3"><a class="link-dark" href="#"><i class="fa-brands fa-instagram-square"></i></a></li>
+          <li class="ms-3"><a class="link-dark" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2147761fea30ef8',t:'MTc4NTA4MDA0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -14,6 +14,8 @@ import pytest
 from mallscape.models import Mall
 from mallscape.normalize import brand_key
 from mallscape.scrapers.ayala import derive_region
+from mallscape.scrapers.filinvest import FilinvestScraper
+from mallscape.scrapers.starmall import StarmallScraper
 from mallscape.scrapers.robinsons import RobinsonsScraper, _norm_key
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -155,3 +157,58 @@ class TestAyalaFixtures:
         cats = Counter(s["category"] for s in stores)
         assert set(cats) == {"shop", "dine", "services", "essentials", "entertainment"}
         assert sum(cats.values()) == 297
+
+
+class TestFilinvestParser:
+    def test_festival_mall_full_table(self):
+        s = FilinvestScraper.__new__(FilinvestScraper)
+        s.warnings = []
+        mall = Mall(chain="filinvest", mall_id="festival-mall", mall_name="Festival Mall")
+        html = (FIXTURES / "fil-festival.html").read_text()
+        stores = s.scrape_mall.__wrapped__(s, mall, html) if hasattr(
+            s.scrape_mall, "__wrapped__"
+        ) else _filinvest_parse(s, mall, html)
+        assert len(stores) == 787
+        # category header rows must propagate down to following rows
+        acme = next(x for x in stores if x.store_name_raw == "Acme Jewelry")
+        assert acme.category == "accessories"
+        assert acme.floor == "Upper Ground Floor, West Wing"
+        assert all(x.category for x in stores[:50])
+
+
+def _filinvest_parse(scraper, mall, html):
+    """Drive FilinvestScraper's table parsing against fixture HTML."""
+    from unittest.mock import Mock
+
+    scraper.fetcher = Mock()
+    scraper.fetcher.get_text.return_value = html
+    return scraper.scrape_mall(mall)
+
+
+class TestStarmallParser:
+    def test_alabang_gallery_blob(self):
+        from unittest.mock import Mock
+
+        s = StarmallScraper.__new__(StarmallScraper)
+        s.warnings = []
+        s.fetcher = Mock()
+        s.fetcher.get_text.return_value = (FIXTURES / "starmall-alabang.html").read_text()
+        mall = Mall(chain="starmall", mall_id="alabang", mall_name="Starmall Alabang")
+        stores = s.scrape_mall(mall)
+        assert len(stores) > 100
+        names = {x.store_name_raw for x in stores}
+        assert "ALL BANK" in names
+        allbank = next(x for x in stores if x.store_name_raw == "ALL BANK")
+        assert allbank.phone == "8842-7099"
+        assert allbank.floor == "Level 2"
+
+
+class TestWaltermartParser:
+    def test_category_page_data_attributes(self):
+        from selectolax.parser import HTMLParser
+
+        html = (FIXTURES / "waltermart-category.html").read_text()
+        nodes = HTMLParser(html).css("a.wm-store")
+        names = [n.attributes.get("data-name") for n in nodes]
+        assert "ADDAS" in names
+        assert len(names) >= 10

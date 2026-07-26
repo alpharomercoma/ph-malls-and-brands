@@ -9,12 +9,24 @@ from . import analyze as analyze_mod
 from . import storage, validate
 from .fetch import Fetcher
 from .scrapers.ayala import AyalaScraper
+from .scrapers.filinvest import FilinvestScraper
+from .scrapers.megaworld import MegaworldScraper
 from .scrapers.robinsons import RobinsonsScraper
 from .scrapers.sm import SMScraper
+from .scrapers.starmall import StarmallScraper
+from .scrapers.waltermart import WaltermartScraper
 
 app = typer.Typer(no_args_is_help=True, add_completion=False)
 
-SCRAPERS = {"sm": SMScraper, "robinsons": RobinsonsScraper, "ayala": AyalaScraper}
+SCRAPERS = {
+    "sm": SMScraper,
+    "robinsons": RobinsonsScraper,
+    "ayala": AyalaScraper,
+    "megaworld": MegaworldScraper,
+    "filinvest": FilinvestScraper,
+    "starmall": StarmallScraper,
+    "waltermart": WaltermartScraper,
+}
 
 
 @app.command()

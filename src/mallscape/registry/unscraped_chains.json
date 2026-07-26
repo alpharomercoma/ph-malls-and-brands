@@ -1,0 +1,61 @@
+{
+ "_comment": "PH mall operators investigated 2026-07-26 that are NOT scraped, with the reason. Recorded so the absence is a documented finding rather than an oversight. Re-check periodically: a site redesign may add a directory.",
+ "chains": [
+  {
+   "chain": "vista",
+   "name": "Vista Malls (Vista Land)",
+   "site": "https://vistamalls.com.ph",
+   "malls_known": 20,
+   "mall_slugs": [
+    "evia",
+    "somo",
+    "antipolo",
+    "bataan",
+    "dasma",
+    "general-trias",
+    "iloilo",
+    "imus",
+    "kawit",
+    "lakefront",
+    "las-pinas",
+    "malolos",
+    "naga",
+    "pampanga",
+    "silang",
+    "sta-rosa",
+    "taguig",
+    "tanza",
+    "floriad-lifestyle-district"
+   ],
+   "status": "no-tenant-directory",
+   "finding": "WordPress site with a page per mall and a /stores/<slug>/ route, but the store sections render only logo carousels \u2014 no tenant names in the markup. The dev mirror (dev.vistamalls.com.ph/<mall>/store/) still contains Lorem ipsum placeholders, so the directory was never populated. Mall list IS obtainable from the WP REST API (/wp-json/wp/v2/pages).",
+   "recheck": "If /stores/<slug>/ ever renders named tenants, a scraper is trivial \u2014 the WP API already lists the malls."
+  },
+  {
+   "chain": "primark",
+   "name": "Primark Town Centers (LKY Group)",
+   "site": "https://primark.com.ph",
+   "malls_known": 45,
+   "status": "no-tenant-directory",
+   "finding": "~45 provincial community centers exposed as WordPress pages named location-<place> (plus location-luzon-malls / -visayas-malls / -mindanao-malls index pages). Each page carries only a street address and leasing contact \u2014 no tenant list. Mall list IS obtainable from the WP REST API.",
+   "recheck": "Locations are scrapeable today if mall-level (not brand-level) coverage is ever wanted."
+  },
+  {
+   "chain": "citymall",
+   "name": "CityMall (DoubleDragon)",
+   "site": "https://citymall.com.ph",
+   "malls_known": 43,
+   "status": "no-tenant-directory",
+   "finding": "citymall.com.ph is a thin DoubleDragon corporate shell; /citymall_map returns a 423-byte stub. DoubleDragon reported 43 operating CityMalls at end-2024 with a target of 100 by 2030. These are small community malls anchored by a supermarket; no per-mall tenant directory is published on any official domain found.",
+   "recheck": "Branch list could be assembled from DoubleDragon investor disclosures / Wikipedia if mall-level coverage is wanted."
+  }
+ ],
+ "notes": [
+  "megaworldlifestylemalls.com (no hyphen) has lapsed and now redirects to an unrelated ad/scam domain. The live Megaworld site is megaworld-lifestylemalls.com \u2014 do not re-add the old domain.",
+  "filinvestmalls.com is a parked lander; the live Filinvest site is filinvestlifemalls.com.",
+  "Festival Mall is not a separate operator \u2014 it is Filinvest's flagship and is covered by the filinvest scraper.",
+  "Starmall and Vista Mall are both Vista Land brands but are separate sites; only Starmall publishes tenant directories.",
+  "Filinvest's IL CORSO directory lists only 19 shops, which is sparse for a mall of its size \u2014 an upstream data limitation, not a parse failure (verified against raw table row counts).",
+  "WalterMart IS scraped: waltermart.com.ph is behind an sgcaptcha challenge, but the malls.waltermart.com.ph subdomain serves plain HTML with no challenge. Store data rides on a.wm-store data-* attributes on /malls/<slug>/<category> pages."
+ ]
+}
