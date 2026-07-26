@@ -50,11 +50,16 @@ class GmallScraper(MallChainScraper):
     def __init__(self, fetcher):
         super().__init__(fetcher)
         self._rows_by_mall: dict[str, list[tuple[str, str, str]]] = {}
+        self._filter_branches: list[str] = []
 
     def _load_table(self) -> None:
         if self._rows_by_mall:
             return
-        tree = HTMLParser(self.fetcher.get_text(DIRECTORY))
+        html = self.fetcher.get_text(DIRECTORY)
+        self._filter_branches = sorted(
+            set(re.findall(r'tenant-filter-branch[^>]*value="([^"]+)"', html))
+        )
+        tree = HTMLParser(html)
         for row in tree.css("tr"):
             cells = [re.sub(r"\s+", " ", c.text(strip=True)) for c in row.css("td")]
             # branch, tenant, floor, [unused numeric], category — the numeric
@@ -71,8 +76,18 @@ class GmallScraper(MallChainScraper):
 
     def discover_malls(self) -> list[Mall]:
         self._load_table()
+        # The branch radio filter is the authoritative roster. Deriving malls
+        # from the table's rows alone dropped Cebu and GenSan entirely (they
+        # have zero tenant rows), hiding a 2-of-6 mall undercount.
+        branches = set(self._filter_branches) | set(self._rows_by_mall)
+        missing = sorted(b for b in self._filter_branches if b not in self._rows_by_mall)
+        if missing:
+            self.warn(
+                f"branch(es) offered by the site filter with no tenant rows: "
+                f"{missing} — included as zero-store malls"
+            )
         malls = []
-        for branch in sorted(self._rows_by_mall):
+        for branch in sorted(branches):
             slug = re.sub(r"[^a-z0-9]+", "-", branch.lower()).strip("-")
             region = _region(branch)
             if region is None:

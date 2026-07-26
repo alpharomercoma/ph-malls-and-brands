@@ -34,6 +34,7 @@ MALLS = {
 
 _TITLE = re.compile(r'fg-item-title[^>]*>([^<]+)<', re.I)
 _CATEGORY = re.compile(r"eael-cf-([a-z0-9-]+)", re.I)
+_UNICODE_ESCAPE = re.compile(r"\\u([0-9a-fA-F]{4})")
 
 
 class StarmallScraper(MallChainScraper):
@@ -75,7 +76,10 @@ class StarmallScraper(MallChainScraper):
     def scrape_mall(self, mall: Mall) -> list[Store]:
         raw = self.fetcher.get_text(f"{BASE}stores-{mall.mall_id}/")
         # the gallery items live inside a JSON-escaped attribute blob
-        blob = raw.replace("\\u0022", '"').replace("\\u003C", "<").replace("\\u003E", ">")
+        # Decode EVERY \uXXXX escape, not a hand-picked few: apostrophes
+        # (\u0027) and ampersands (\u0026) were surviving into store names
+        # ("BAKER\u0027S FAIR"), which broke cross-chain brand matching.
+        blob = _UNICODE_ESCAPE.sub(lambda m: chr(int(m.group(1), 16)), raw)
         blob = blob.replace("\\/", "/").replace("\\n", "\n").replace("\\t", "\t")
         blob = htmllib.unescape(blob)
 

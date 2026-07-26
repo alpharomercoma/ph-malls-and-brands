@@ -17,6 +17,7 @@ Market …), all served from the same locator.
 
 from __future__ import annotations
 
+import html as htmllib
 import re
 
 from selectolax.parser import HTMLParser
@@ -70,6 +71,22 @@ class XentroScraper(MallChainScraper):
         for block in tree.css("div.zn_text_box"):
             items = block.css("li")
             if len(items) < MIN_TENANTS_PER_BLOCK:
+                # ShopKing (and potentially others) render the tenant list as
+                # raw text separated by <br> inside a <ul> with no <li> at all.
+                texts = _br_separated(block)
+                if len(texts) >= MIN_TENANTS_PER_BLOCK:
+                    for name in texts:
+                        if name.lower() in seen or len(name) > 90:
+                            continue
+                        seen.add(name.lower())
+                        stores.append(
+                            Store(
+                                chain=self.chain,
+                                mall_id=mall.mall_id,
+                                store_name_raw=name,
+                                source="xentro-html",
+                            )
+                        )
                 continue
             # The same markup holds the leasing-requirements checklist. Casing
             # does not separate them (some malls list tenants in mixed case),
@@ -83,7 +100,9 @@ class XentroScraper(MallChainScraper):
                 # skip nav-ish entries and prose
                 if not name or len(name) > 90 or name.lower() in seen:
                     continue
-                if any(c in name for c in ("©", "@")) or name.endswith("."):
+                # NOTE: do not filter on a trailing "." — real tenants end in
+                # "INC.", "CORP.", "ACC." and were being silently dropped.
+                if any(c in name for c in ("©", "@")):
                     continue
                 seen.add(name.lower())
                 stores.append(
@@ -95,3 +114,19 @@ class XentroScraper(MallChainScraper):
                     )
                 )
         return stores
+
+
+def _br_separated(block) -> list[str]:
+    """Extract tenant names from a <ul> that uses <br> instead of <li>."""
+    ul = block.css_first("ul")
+    if ul is None or ul.css("li"):
+        return []
+    raw = ul.html or ""
+    parts = re.split(r"<br\s*/?>", raw, flags=re.I)
+    out = []
+    for part in parts:
+        text = re.sub(r"<[^>]+>", " ", part)
+        text = re.sub(r"\s+", " ", htmllib.unescape(text)).strip()
+        if text and not _LEASING_FORM.search(text):
+            out.append(text)
+    return out

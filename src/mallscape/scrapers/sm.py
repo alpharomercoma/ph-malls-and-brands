@@ -108,10 +108,11 @@ class SMScraper(MallChainScraper):
         return sorted(by_code.values(), key=lambda m: m.mall_id)
 
     def scrape_mall(self, mall: Mall) -> list[Store]:
-        # Deduplicate by tenant_slug: SM's pagination is not a stable sort, so a
-        # tenant can appear on two consecutive pages. Verified 2026-07 that the
-        # unique set is identical across asc/desc/floor orders and across every
-        # per-category sweep, so this is the complete published directory.
+        # Deduplicate on (slug, name, floor, building): SM's pagination is not
+        # a stable sort, so a tenant can repeat across page boundaries. The key
+        # deliberately includes floor/building because ~1% of records have an
+        # empty tenant_slug — keying on slug alone silently merged genuinely
+        # distinct outlets of the same brand within one mall.
         by_slug: dict[str, Store] = {}
         page = 0
         expected = None
@@ -138,7 +139,16 @@ class SMScraper(MallChainScraper):
             if not batch:
                 break
             for t in batch:
-                slug = t.get("tenant_slug") or t.get("tenant_display_name")
+                # ~1% of records carry an empty tenant_slug, so the key must
+                # also carry floor/building — otherwise two genuinely distinct
+                # outlets of one brand in the same mall collapse into one, and
+                # which floor survives depends on the (unstable) page order.
+                slug = (
+                    t.get("tenant_slug") or "",
+                    (t.get("tenant_display_name") or "").strip(),
+                    (t.get("tenant_floor") or "").strip(),
+                    (t.get("tenant_building") or "").strip(),
+                )
                 by_slug.setdefault(
                     slug,
                     Store(
@@ -156,10 +166,11 @@ class SMScraper(MallChainScraper):
             page += 1
 
         stores = list(by_slug.values())
-        # SM's `counts` is inflated relative to what pagination will actually
-        # serve (it appears to include hidden/inactive tenants). Verified
-        # unrecoverable, so only flag a gap large enough to suggest a real
-        # failure rather than the usual upstream metadata drift.
+        # `counts` still runs ahead of what pagination serves for some malls
+        # (hidden/inactive tenants); verified unrecoverable via asc/desc/floor
+        # ordering and per-category sweeps. The threshold is deliberately loose
+        # for that reason — it is a smoke alarm for a broken mall, not a
+        # completeness assertion.
         if expected:
             shortfall = (expected - len(stores)) / expected
             if not stores:

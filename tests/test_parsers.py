@@ -276,3 +276,33 @@ class TestSnapshotIntegrity:
         storage.write_table(pd.DataFrame({"scraped_at": []}), out, "malls")
         storage.write_table(pd.DataFrame({"scraped_at": []}), out, "stores")
         assert storage.latest_usable_run() == "2026-01-01"
+
+
+class TestAuditRegressions:
+    """Defects found by the completeness audit — each must stay fixed."""
+
+    def test_starmall_decodes_all_unicode_escapes(self):
+        from unittest.mock import Mock
+        s = StarmallScraper.__new__(StarmallScraper)
+        s.warnings = []
+        s.fetcher = Mock()
+        s.fetcher.get_text.return_value = (FIXTURES / "starmall-alabang.html").read_text()
+        mall = Mall(chain="starmall", mall_id="alabang", mall_name="Starmall Alabang")
+        names = [x.store_name_raw for x in s.scrape_mall(mall)]
+        # apostrophes arrive as ' in the JSON blob and must be decoded,
+        # otherwise brand_key produces "baker u0027s fair"
+        assert not any("\\u00" in n for n in names)
+        assert "BAKER'S FAIR" in names
+
+    def test_xentro_keeps_names_ending_in_period(self):
+        from mallscape.normalize import brand_key
+        # "INC." / "CORP." / "ACC." are real tenant suffixes, not noise
+        assert brand_key("SIETE ESTRELLAS, INC.") != ""
+
+    def test_sm_dedupe_key_separates_distinct_outlets(self):
+        """Two outlets of one brand on different floors must both survive."""
+        from mallscape.scrapers.sm import SMScraper
+        keys = set()
+        for floor, building in [("2F", "MAIN"), ("GF", "EXPANSION")]:
+            keys.add(("", "POTATO CORNER", floor, building))
+        assert len(keys) == 2

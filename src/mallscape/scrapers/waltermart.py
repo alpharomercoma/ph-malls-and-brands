@@ -13,8 +13,11 @@ challenge:
   on ``a.wm-store`` data attributes (``data-name``, ``data-address``,
   ``data-operatinghours``, ``data-contactnumber``).
 
-The mall page itself caps each category carousel at 10 items, so the category
-pages are the authoritative source and are what this scraper reads.
+IMPORTANT — counts from this chain are a FLOOR, not a total. Every category
+page caps at 10 tenants (95 of 276 cached category pages sit at exactly 10),
+and the mall page returns the identical set, so there is no richer source.
+No pagination, offset, limit or show=all parameter lifts the cap (tested
+2026-07). Any category reporting exactly 10 is probably truncated upstream.
 
 Mabalacat, San Pascual and Silang legitimately return zero stores: their
 category pages contain only the empty store-detail modal template
@@ -32,6 +35,7 @@ from ..models import Mall, Store
 from .base import MallChainScraper
 
 BASE = "https://malls.waltermart.com.ph"
+CATEGORY_CAP = 10  # hard server-side cap per category page, unbypassable
 REGION_HEADINGS = {
     "metro manila": "metro-manila",
     "north luzon": "north-luzon",
@@ -92,13 +96,16 @@ class WaltermartScraper(MallChainScraper):
             categories = ["food-choices", "shops", "cybermart", "wellness", "services", "amusement"]
 
         by_name: dict[str, Store] = {}
+        per_category: dict[str, int] = {}
         for category in dict.fromkeys(categories):
             try:
                 html = self.fetcher.get_text(f"{BASE}/malls/{mall.mall_id}/{category}")
             except Exception as exc:
                 self.warn(f"{mall.mall_id}/{category}: {type(exc).__name__}")
                 continue
-            for node in HTMLParser(html).css("a.wm-store"):
+            nodes = HTMLParser(html).css("a.wm-store")
+            per_category[category] = len(nodes)
+            for node in nodes:
                 attrs = node.attributes
                 name = re.sub(r"\s+", " ", (attrs.get("data-name") or "")).strip()
                 if not name:
@@ -115,4 +122,10 @@ class WaltermartScraper(MallChainScraper):
                         source="waltermart-html",
                     ),
                 )
+        capped = [c for c, n in per_category.items() if n == CATEGORY_CAP]
+        if capped:
+            self.warn(
+                f"{mall.mall_id}: categories {capped} returned exactly "
+                f"{CATEGORY_CAP} (the site cap) — true tenant count is higher"
+            )
         return list(by_name.values())
