@@ -7,7 +7,8 @@ exploring it.
 
 | | |
 |---|---|
-| Explore | `make dev`, then <http://localhost:3000> |
+| Live site | <https://alpharomercoma.github.io/philippine-mall-explorer/> |
+| Explore locally | `make dev`, then <http://localhost:3000> |
 | Data | [`data/snapshots/2026-07-26/`](data/snapshots/2026-07-26/) |
 | Breakdown | [`breakdown.md`](data/snapshots/2026-07-26/3_report/breakdown.md) |
 | Design | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |

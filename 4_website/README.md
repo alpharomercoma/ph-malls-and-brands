@@ -47,18 +47,27 @@ The output is a plain directory of static files.
 - **Vercel**: `vercel.json` sets the output directory and headers. No build
   command, because there is nothing to build.
 
-### Enabling the GitHub Pages deploy
+### Hosting
 
-The workflow lives at `4_website/deploy/github-pages.yml` rather than in
-`.github/workflows/`, because pushing a workflow file needs a token with the
-`workflow` scope and the default one does not have it. To enable it:
+Live at <https://alpharomercoma.github.io/philippine-mall-explorer/>.
 
 ```bash
-gh auth refresh -s workflow          # one time, opens a browser
-mkdir -p .github/workflows
-git mv 4_website/deploy/github-pages.yml .github/workflows/pages.yml
-git commit -am "enable pages deploy" && git push
+make deploy      # build, then publish to the gh-pages branch
 ```
 
-Then set Pages to "GitHub Actions" in the repository settings. Vercel needs
-none of this: point it at the repo and `vercel.json` does the rest.
+Pages serves the `gh-pages` branch from its root, so `4_website/deploy/publish.sh`
+copies the site directory to the top level of an orphan branch. That route was
+chosen deliberately over a workflow: pushing anything into `.github/workflows/`
+requires a token carrying the `workflow` scope, which the default one does not
+have, so a workflow-based deploy fails at `git push` for most contributors.
+
+The script refuses to publish if `index.html` points at a bundle that is not
+present, which is the one failure that would otherwise produce a live page
+showing nothing. It also writes `.nojekyll`, without which Pages runs the files
+through Jekyll and drops anything it does not recognize.
+
+An Actions workflow is still available at `4_website/deploy/github-pages.yml`
+for anyone who does have the scope: move it to `.github/workflows/` and switch
+the Pages source to "GitHub Actions".
+
+Vercel needs none of this. Point it at the repo and `vercel.json` does the rest.

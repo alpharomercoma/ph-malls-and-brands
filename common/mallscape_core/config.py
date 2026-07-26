@@ -82,7 +82,7 @@ SITE_PORT: int = _int("MALLSCAPE_SITE_PORT", 3000, minimum=1)
 SITE_TITLE: str = _str("MALLSCAPE_SITE_TITLE", "Philippine Mall Explorer")
 SITE_REPO_URL: str = _str(
     "MALLSCAPE_SITE_REPO_URL",
-    "https://github.com/alpharomercoma/ph-malls-and-brands",
+    "https://github.com/alpharomercoma/philippine-mall-explorer",
 )
 
 

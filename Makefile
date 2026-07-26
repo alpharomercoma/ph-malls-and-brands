@@ -1,6 +1,6 @@
 # Philippine Mall Explorer. `make help` lists targets.
 .DEFAULT_GOAL := help
-.PHONY: help setup all scrape clean report site dev check lint test integration e2e
+.PHONY: help setup all scrape clean report site dev deploy check lint test integration e2e
 
 help:  ## show this list
 	@grep -E '^[a-z-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[1m%-12s\033[0m %s\n", $$1, $$2}'
@@ -25,6 +25,9 @@ site:  ## stage 4: build the static site
 
 dev:  ## build and serve on http://localhost:3000
 	uv run mallscape website --serve
+
+deploy: site  ## publish the built site to GitHub Pages
+	./4_website/deploy/publish.sh
 
 check: lint test integration  ## everything that runs without a browser
 	@echo "check passed"
