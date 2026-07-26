@@ -1,0 +1,38 @@
+"""Chain-scraper interface. Adding a new mall chain = one new subclass."""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+
+from ..fetch import Fetcher
+from ..models import Mall, Store
+
+
+class MallChainScraper(ABC):
+    chain: str  # short id, e.g. "sm"
+
+    def __init__(self, fetcher: Fetcher):
+        self.fetcher = fetcher
+        self.warnings: list[str] = []
+
+    def warn(self, msg: str) -> None:
+        self.warnings.append(msg)
+        print(f"  [warn:{self.chain}] {msg}")
+
+    @abstractmethod
+    def discover_malls(self) -> list[Mall]: ...
+
+    @abstractmethod
+    def scrape_mall(self, mall: Mall) -> list[Store]: ...
+
+    def scrape_all(self) -> tuple[list[Mall], list[Store]]:
+        malls = self.discover_malls()
+        print(f"[{self.chain}] discovered {len(malls)} malls")
+        stores: list[Store] = []
+        for i, mall in enumerate(malls, 1):
+            mall_stores = self.scrape_mall(mall)
+            if not mall_stores:
+                self.warn(f"0 stores for {mall.mall_id}")
+            stores.extend(mall_stores)
+            print(f"[{self.chain}] {i}/{len(malls)} {mall.mall_id}: {len(mall_stores)} stores")
+        return malls, stores
