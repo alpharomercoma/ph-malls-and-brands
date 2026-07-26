@@ -10,7 +10,7 @@ sm,sm-city-santa-rosa,537,403,"dining (146), shopping (103), undefined (100)",SM
 sm,sm-city-pampanga,516,475,"dining (187), shopping (124), cyberzone (84)",SM City Pampanga,north-luzon,55
 sm,sm-city-cebu,497,480,"shopping (143), dining (135), cyberzone (92)",SM City Cebu,visayas,56
 ayala,ayala-market-market,478,428,"shop (238), dine (143), services (49)",Market! Market!,metro-manila,119
-gmall,gmall-of-davao,438,414,"retail (209), food (138), services (71)",GMall of Davao,mindanao,200
+gmall,gmall-of-davao,438,414,"retail (209), food (138), services (71)",GMall of Davao,mindanao,190
 sm,sm-city-clark,434,431,"dining (161), shopping (110), cyberzone (71)",SM City Clark,north-luzon,49
 robinsons,robinsons-magnolia,405,401,,Robinsons Magnolia,metro-manila,153
 robinsons,robinsons-galleria-ortigas,404,395,,Robinsons Galleria,metro-manila,100
@@ -38,7 +38,7 @@ sm,sm-city-bacoor,276,275,"dining (94), shopping (59), cyberzone (58)",SM City B
 ayala,ayala-capitol-central,268,188,"shop (123), dine (91), services (24)",Ayala Malls Capitol Central,visayas,42
 sm,sm-city-lipa,262,262,"dining (95), shopping (77), cyberzone (43)",SM City Lipa,south-luzon,13
 sm,sm-city-cabanatuan,259,259,"dining (74), shopping (64), cyberzone (62)",SM City Cabanatuan,north-luzon,18
-gmall,gmall-of-tagum,259,255,"retail (131), food (72), services (42)",GMall of Tagum,mindanao,114
+gmall,gmall-of-tagum,259,255,"retail (131), food (72), services (42)",GMall of Tagum,mindanao,113
 sm,sm-lanang,257,254,"dining (79), shopping (70), cyberzone (45)",SM Lanang,mindanao,31
 ayala,ayala-up-town-center,256,220,"shop (110), dine (93), services (28)",U. P. Town Center,metro-manila,17
 megaworld,uptown-mall,244,243,"shop (112), dine (94), services (38)",Uptown Mall,,42
@@ -69,7 +69,7 @@ robinsons,robinsons-metro-east,199,190,,Robinsons Metro East,metro-manila,63
 robinsons,robinsons-palawan,198,167,,Robinsons Place Palawan,south-luzon,67
 robinsons,robinsons-santiago,197,194,,Robinsons Place Santiago,north-luzon,60
 sm,sm-aura,195,194,"shopping (76), dining (51), wellness (18)",SM Aura,metro-manila,24
-fishermall,quezonave,195,187,,Fisher Mall Quezon Avenue,metro-manila,55
+fishermall,quezonave,195,187,,Fisher Mall Quezon Avenue,metro-manila,54
 sm,sm-city-sta-mesa,191,191,"dining (71), cyberzone (44), shopping (30)",SM City Sta. Mesa,metro-manila,12
 sm,sm-city-general-santos,188,184,"dining (63), shopping (49), cyberzone (41)",SM City General Santos,mindanao,28
 ayala,ayala-circuit,188,151,"dine (69), shop (50), services (31)",Ayala Malls Circuit,metro-manila,23

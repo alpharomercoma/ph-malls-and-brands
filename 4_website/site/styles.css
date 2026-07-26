@@ -7,9 +7,9 @@
 
 :root {
   color-scheme: light;
-  --surface: #fcfcfb;
+  --surface: #faf9f6;
   --surface-2: #ffffff;
-  --surface-3: #f2f1ee;
+  --surface-3: #f1efe9;
   --line: #e0deda;
   --line-strong: #c9c6c0;
   --ink: #17171a;
@@ -17,7 +17,8 @@
   --ink-3: #78766f;
   --accent: #2a78d6;
   --accent-ink: #ffffff;
-  --accent-soft: #e7f0fb;
+  --accent-soft: #e6eefb;
+  --accent-2: #1baf7a;   /* second validated hue, category dots only */
   --radius: 10px;
   --row-h: 44px;
 }
@@ -35,6 +36,7 @@
   --accent: #3987e5;
   --accent-ink: #0b1420;
   --accent-soft: #17263a;
+  --accent-2: #199e70;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,6 +53,7 @@
     --accent: #3987e5;
     --accent-ink: #0b1420;
     --accent-soft: #17263a;
+    --accent-2: #199e70;
   }
 }
 
@@ -197,4 +200,87 @@ code { background: var(--surface-3); border-radius: 4px; padding: 1px 5px; font-
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- explanations ---------- */
+.help {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; margin-left: 5px; padding: 0;
+  border-radius: 50%; border: 1px solid var(--line-strong);
+  background: transparent; color: var(--ink-3);
+  font-size: 10px; line-height: 1; min-height: 0; cursor: help;
+}
+.help:hover { border-color: var(--accent); color: var(--accent); }
+.stat { position: relative; }
+.stat span { display: flex; align-items: center; }
+
+/* ---------- mobile presentation ---------- */
+@media (max-width: 640px) {
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat { padding: 10px 12px; }
+  .stat b { font-size: 1.2rem; }
+  .stat:first-child { grid-column: 1 / -1; }
+  .stat:first-child b { font-size: 1.7rem; }
+  .controls { padding: 10px; gap: 6px; }
+  .search { flex: 1 1 100%; order: -1; }
+  .tabs { flex: 1 1 100%; }
+  .tabs button { flex: 1; }
+  select { flex: 1 1 calc(50% - 3px); min-width: 0; }
+  #mallsOnly { flex: 1 1 100%; }
+  .row .n { font-weight: 600; }
+  .detail { padding: 10px 12px; }
+  .pill { font-size: 0.78rem; padding: 3px 8px; }
+  footer { font-size: 0.76rem; }
+}
+
+/* ---------- multi-select dropdowns ----------
+   A compact trigger in the control row opens a box of checkboxes, so several
+   values can be active at once without the controls growing. */
+.dd { position: relative; }
+.dd > button {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 7px 11px; min-height: 38px;
+  white-space: nowrap;
+}
+.dd > button[aria-expanded="true"] { border-color: var(--accent); }
+.dd .badge {
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 999px; padding: 0 6px; min-width: 18px;
+  font-size: 0.72rem; line-height: 18px; text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.dd .caret { color: var(--ink-3); font-size: 0.7rem; }
+
+.dd-panel {
+  position: absolute; z-index: 20; top: calc(100% + 5px); left: 0;
+  min-width: 232px; max-height: 320px; overflow-y: auto;
+  background: var(--surface-2); border: 1px solid var(--line-strong);
+  border-radius: var(--radius); padding: 5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+}
+:root[data-theme="dark"] .dd-panel { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); }
+.dd-panel[hidden] { display: none; }
+.dd-opt {
+  display: flex; align-items: center; gap: 9px; width: 100%;
+  padding: 7px 9px; border: 0; border-radius: 7px; background: none;
+  text-align: left; min-height: 36px; font-size: 0.88rem;
+}
+.dd-opt:hover:not(:disabled) { background: var(--surface-3); }
+.dd-opt:disabled { opacity: 0.4; cursor: not-allowed; }
+.dd-opt .box {
+  width: 15px; height: 15px; flex: 0 0 15px; border-radius: 4px;
+  border: 1.5px solid var(--line-strong); display: inline-flex;
+  align-items: center; justify-content: center; font-size: 10px;
+  color: var(--accent-ink);
+}
+.dd-opt[aria-checked="true"] .box { background: var(--accent); border-color: var(--accent); }
+.dd-panel--cat .dd-opt[aria-checked="true"] .box { background: var(--accent-2); border-color: var(--accent-2); }
+.dd-opt .label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.dd-opt .n2 { color: var(--ink-3); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 640px) {
+  .dd { flex: 1 1 calc(50% - 3px); }
+  .dd > button { width: 100%; justify-content: space-between; }
+  .dd-panel { min-width: 100%; max-height: 260px; }
 }

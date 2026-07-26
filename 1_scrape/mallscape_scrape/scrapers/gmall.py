@@ -23,6 +23,7 @@ from mallscape_core.models import Mall, Store
 from mallscape_scrape.scrapers.base import MallChainScraper
 
 DIRECTORY = "https://gaisanomalls.com/mall-directory/"
+_ESCAPED_QUOTE = re.compile(r"\\+(['\"])")
 
 # DSG Sons operates in Mindanao plus one Cebu mall
 REGION_BY_KEYWORD = (
@@ -61,7 +62,7 @@ class GmallScraper(MallChainScraper):
         )
         tree = HTMLParser(html)
         for row in tree.css("tr"):
-            cells = [re.sub(r"\s+", " ", c.text(strip=True)) for c in row.css("td")]
+            cells = [_cell_text(c) for c in row.css("td")]
             # branch, tenant, floor, [unused numeric], category - the numeric
             # column renders empty, so rows arrive with 4 or 5 cells
             if len(cells) < 4:
@@ -117,3 +118,17 @@ class GmallScraper(MallChainScraper):
             )
             for tenant, floor, category in self._rows_by_mall.get(mall.extra["branch"], [])
         ]
+
+
+def _cell_text(node) -> str:
+    """Normalize one table cell.
+
+    Their CMS writes JS-escaped quotes into the markup, so the page literally
+    contains ``Aaquilah\\'s Jewelry``. The backslash is an artifact of that
+    escaping, not part of the tenant name, so it is removed here rather than
+    being carried into the snapshot.
+    """
+    text = re.sub(r"\s+", " ", node.text(strip=True))
+    # Collapse any run of backslashes before a quote. The escaping is sometimes
+    # doubled, so a single literal replacement is not enough.
+    return _ESCAPED_QUOTE.sub(r"\1", text)

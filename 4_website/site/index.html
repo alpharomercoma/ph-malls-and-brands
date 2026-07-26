@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232a78d6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-bundle="data-ae665cfb1c04.json" data-snapshot="2026-07-26">
+<body data-bundle="data-721b54993cf5.json" data-snapshot="2026-07-26">
 <div class="wrap">
 
   <header>
@@ -41,10 +41,13 @@
         <input id="q" type="search" placeholder="Search by name" autocomplete="off" spellcheck="false" aria-label="Search by name">
       </label>
 
-      <select id="chain" aria-label="Operator"></select>
-      <select id="region" aria-label="Region"></select>
-      <select id="category" aria-label="Category"></select>
-      <button id="mallsOnly" class="chip" type="button" aria-pressed="false">Malls only</button>
+      <div class="dd" id="dd-chain"></div>
+      <div class="dd" id="dd-region"></div>
+      <div class="dd" id="dd-category"></div>
+
+      <button id="mallsOnly" class="chip" type="button" aria-pressed="false"
+              title="Hides condo retail podiums, amusement parks and office annexes, so operators are compared on malls alone.">Malls only</button>
+      <button id="reset" class="chip" type="button" hidden>Clear filters</button>
 
       <span class="count" id="count"></span>
     </div>
@@ -53,7 +56,8 @@
       <div class="thead">
         <div>Name</div>
         <div class="hide-sm" id="col-2">Category</div>
-        <div class="n" id="col-3">Malls</div>
+        <div class="n" id="col-3">Malls<button class="help" type="button" id="help-rank"
+             title="Ranked by how many separate malls carry the brand, highest first. One mall counts once no matter how many outlets it has there.">?</button></div>
         <div class="hide-sm"></div>
       </div>
       <div class="viewport" id="viewport" tabindex="0">

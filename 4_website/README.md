@@ -46,3 +46,19 @@ The output is a plain directory of static files.
   fails the deploy if `index.html` points at a bundle that is not committed.
 - **Vercel**: `vercel.json` sets the output directory and headers. No build
   command, because there is nothing to build.
+
+### Enabling the GitHub Pages deploy
+
+The workflow lives at `4_website/deploy/github-pages.yml` rather than in
+`.github/workflows/`, because pushing a workflow file needs a token with the
+`workflow` scope and the default one does not have it. To enable it:
+
+```bash
+gh auth refresh -s workflow          # one time, opens a browser
+mkdir -p .github/workflows
+git mv 4_website/deploy/github-pages.yml .github/workflows/pages.yml
+git commit -am "enable pages deploy" && git push
+```
+
+Then set Pages to "GitHub Actions" in the repository settings. Vercel needs
+none of this: point it at the repo and `vercel.json` does the rest.

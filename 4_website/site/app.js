@@ -19,9 +19,9 @@ const state = {
   data: null,
   view: 'brands',
   query: '',
-  chain: '',
-  region: '',
-  category: '',
+  chain: new Set(),
+  region: new Set(),
+  category: new Set(),
   mallsOnly: false,
   expanded: null,
   rows: [],
@@ -29,8 +29,11 @@ const state = {
 
 const el = (id) => document.getElementById(id);
 const fmt = (n) => n.toLocaleString('en-US');
-// taxonomy keys are snake_case; show them as words
-const label = (s) => s.replace(/_/g, ' ').replace(/^./, (c) => c.toUpperCase());
+// dictionary keys are slugs (metro-manila, health_beauty); show them as words
+const SPECIAL = { smdc: 'SMDC', sm: 'SM', gmall: 'GMall', xentro: 'XentroMalls' };
+const label = (s) =>
+  SPECIAL[s] ||
+  s.replace(/[_-]/g, ' ').replace(/\b[a-z]/g, (c) => c.toUpperCase());
 
 /* ---------- loading ---------- */
 
@@ -66,60 +69,126 @@ function prepare(data) {
   return data;
 }
 
-/* ---------- filtering ---------- */
+/* ---------- filtering ----------
+ * Filters are multi-select. Within one facet the values are OR'd (Ayala or SM),
+ * across facets they are AND'd (an Ayala mall AND in Visayas). That is what
+ * people expect from faceted search, and it means widening one facet never
+ * silently narrows another.
+ *
+ * Each facet's option counts are computed with every OTHER facet applied but
+ * not itself, so the numbers show what selecting an option would actually add
+ * rather than what is on screen now. Options that would return nothing are
+ * disabled instead of hidden, so the shape of the data stays visible.
+ */
 
-function chainIndex(name) {
-  return state.data.dict.chains.indexOf(name);
+function mallPasses(mallIdx, { skipRegion = false } = {}) {
+  const d = state.data;
+  const m = d.malls[mallIdx];
+  if (!skipRegion && state.region.size && !state.region.has(d.dict.regions[m[2]])) return false;
+  if (state.mallsOnly && d.dict.propertyTypes[m[3]] !== 'mall') return false;
+  return true;
+}
+
+function brandPasses(i, opts = {}) {
+  const d = state.data;
+  const b = d.brands[i];
+  const { skipChain = false, skipCategory = false, skipRegion = false } = opts;
+
+  if (state.query && !d.brandSearch[i].includes(state.query)) return false;
+  if (!skipCategory && state.category.size) {
+    const name = b[1] >= 0 ? d.dict.categories[b[1]] : null;
+    if (!name || !state.category.has(name)) return false;
+  }
+  // chain, region and property type all live on the malls this brand occupies,
+  // so one pass over them answers every remaining facet at once
+  const malls = d.brandMalls[i];
+  const needChain = !skipChain && state.chain.size > 0;
+  const needMall = needChain || state.region.size > 0 || state.mallsOnly;
+  if (!needMall) return true;
+  for (let k = 0; k < malls.length; k++) {
+    const mi = malls[k];
+    if (needChain && !state.chain.has(d.dict.chains[d.malls[mi][1]])) continue;
+    if (!mallPasses(mi, { skipRegion })) continue;
+    return true;
+  }
+  return false;
 }
 
 function matchingBrands() {
   const d = state.data;
-  const q = state.query;
-  const chainBit = state.chain ? 1 << chainIndex(state.chain) : 0;
-  const catIx = state.category ? d.dict.categories.indexOf(state.category) : -1;
-  const regionIx = state.region ? d.dict.regions.indexOf(state.region) : -1;
   const out = [];
-
-  for (let i = 0; i < d.brands.length; i++) {
-    const b = d.brands[i];
-    if (q && !d.brandSearch[i].includes(q)) continue;
-    if (chainBit && !(b[3] & chainBit)) continue;
-    if (catIx >= 0 && b[1] !== catIx) continue;
-    if (regionIx >= 0 || state.mallsOnly) {
-      // region and property type live on the mall, so check this brand's malls
-      const malls = d.brandMalls[i];
-      let ok = false;
-      for (let k = 0; k < malls.length; k++) {
-        const m = d.malls[malls[k]];
-        if (regionIx >= 0 && m[2] !== regionIx) continue;
-        if (state.mallsOnly && d.dict.propertyTypes[m[3]] !== 'mall') continue;
-        ok = true;
-        break;
-      }
-      if (!ok) continue;
-    }
-    out.push(i);
-  }
+  for (let i = 0; i < d.brands.length; i++) if (brandPasses(i)) out.push(i);
   out.sort((a, b) => d.brands[b][2] - d.brands[a][2] || (d.brands[a][0] < d.brands[b][0] ? -1 : 1));
   return out;
 }
 
 function matchingMalls() {
   const d = state.data;
-  const q = state.query;
-  const chainIx = state.chain ? chainIndex(state.chain) : -1;
-  const regionIx = state.region ? d.dict.regions.indexOf(state.region) : -1;
   const out = [];
   for (let i = 0; i < d.malls.length; i++) {
     const m = d.malls[i];
-    if (q && !d.mallSearch[i].includes(q)) continue;
-    if (chainIx >= 0 && m[1] !== chainIx) continue;
-    if (regionIx >= 0 && m[2] !== regionIx) continue;
-    if (state.mallsOnly && d.dict.propertyTypes[m[3]] !== 'mall') continue;
+    if (state.query && !d.mallSearch[i].includes(state.query)) continue;
+    if (state.chain.size && !state.chain.has(d.dict.chains[m[1]])) continue;
+    if (!mallPasses(i)) continue;
+    if (state.category.size) {
+      const brands = d.mallBrands[i];
+      let ok = false;
+      for (let k = 0; k < brands.length; k++) {
+        const c = d.brands[brands[k]][1];
+        if (c >= 0 && state.category.has(d.dict.categories[c])) { ok = true; break; }
+      }
+      if (!ok) continue;
+    }
     out.push(i);
   }
   out.sort((a, b) => d.malls[b][4] - d.malls[a][4] || (d.malls[a][0] < d.malls[b][0] ? -1 : 1));
   return out;
+}
+
+/** How many results each option of one facet would yield, with the other
+ *  facets still applied. */
+function facetCounts(facet) {
+  const d = state.data;
+  const counts = new Map();
+  if (state.view === 'malls') {
+    for (let i = 0; i < d.malls.length; i++) {
+      const m = d.malls[i];
+      if (state.query && !d.mallSearch[i].includes(state.query)) continue;
+      if (facet !== 'chain' && state.chain.size && !state.chain.has(d.dict.chains[m[1]])) continue;
+      if (!mallPasses(i, { skipRegion: facet === 'region' })) continue;
+      const key = facet === 'chain' ? d.dict.chains[m[1]]
+                : facet === 'region' ? (m[2] >= 0 ? d.dict.regions[m[2]] : null)
+                : null;
+      if (facet === 'category') {
+        for (const bi of d.mallBrands[i]) {
+          const c = d.brands[bi][1];
+          if (c >= 0) counts.set(d.dict.categories[c], (counts.get(d.dict.categories[c]) || 0) + 1);
+        }
+      } else if (key) counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    return counts;
+  }
+  for (let i = 0; i < d.brands.length; i++) {
+    const opts = { skipChain: facet === 'chain', skipCategory: facet === 'category', skipRegion: facet === 'region' };
+    if (!brandPasses(i, opts)) continue;
+    if (facet === 'category') {
+      const c = d.brands[i][1];
+      if (c >= 0) {
+        const name = d.dict.categories[c];
+        counts.set(name, (counts.get(name) || 0) + 1);
+      }
+      continue;
+    }
+    const seen = new Set();
+    for (const mi of d.brandMalls[i]) {
+      const m = d.malls[mi];
+      if (!mallPasses(mi, { skipRegion: facet === 'region' })) continue;
+      if (facet === 'chain' && state.region.size && m[2] >= 0 && !state.region.has(d.dict.regions[m[2]])) continue;
+      const key = facet === 'chain' ? d.dict.chains[m[1]] : (m[2] >= 0 ? d.dict.regions[m[2]] : null);
+      if (key && !seen.has(key)) { seen.add(key); counts.set(key, (counts.get(key) || 0) + 1); }
+    }
+  }
+  return counts;
 }
 
 /* ---------- rendering ---------- */
@@ -258,24 +327,117 @@ function refresh() {
   state.expanded = null;
   state.rows = state.view === 'brands' ? matchingBrands() : matchingMalls();
   el('viewport').scrollTop = 0;
-  el('col-2').textContent = state.view === 'brands' ? 'Category' : 'Chain';
-  el('col-3').textContent = state.view === 'brands' ? 'Malls' : 'Listings';
+  el('col-2').textContent = state.view === 'brands' ? 'Category' : 'Operator';
+  el('col-3').firstChild.textContent = state.view === 'brands' ? 'Malls' : 'Listings';
+  paintFacets();
   renderList();
 }
 
 /* ---------- setup ---------- */
 
-function fillSelect(select, values, allLabel) {
-  const first = document.createElement('option');
-  first.value = '';
-  first.textContent = allLabel;
-  select.appendChild(first);
-  for (const v of values) {
-    const opt = document.createElement('option');
-    opt.value = v;
-    opt.textContent = label(v);
-    select.appendChild(opt);
+const FACETS = [
+  ['chain', 'Operator', 'chains'],
+  ['region', 'Region', 'regions'],
+  ['category', 'Category', 'categories'],
+];
+
+/** A trigger button plus a checkbox panel, one per facet. */
+function buildFacets() {
+  for (const [key, title, dictName] of FACETS) {
+    const host = el(`dd-${key}`);
+    host.replaceChildren();
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-haspopup', 'true');
+    const text = document.createElement('span');
+    text.textContent = title;
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+    badge.hidden = true;
+    const caret = document.createElement('span');
+    caret.className = 'caret';
+    caret.textContent = '\u25be';
+    trigger.append(text, badge, caret);
+
+    const panel = document.createElement('div');
+    panel.className = 'dd-panel' + (key === 'category' ? ' dd-panel--cat' : '');
+    panel.hidden = true;
+
+    for (const value of state.data.dict[dictName]) {
+      const opt = document.createElement('button');
+      opt.type = 'button';
+      opt.className = 'dd-opt';
+      opt.setAttribute('role', 'checkbox');
+      opt.setAttribute('aria-checked', 'false');
+      opt.dataset.facet = key;
+      opt.dataset.value = value;
+
+      const box = document.createElement('span');
+      box.className = 'box';
+      box.textContent = '\u2713';
+      const name = document.createElement('span');
+      name.className = 'label';
+      name.textContent = label(value);
+      const n = document.createElement('span');
+      n.className = 'n2';
+      opt.append(box, name, n);
+
+      opt.addEventListener('click', () => {
+        const set = state[key];
+        if (set.has(value)) set.delete(value);
+        else set.add(value);
+        refresh();
+      });
+      panel.appendChild(opt);
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = panel.hidden;
+      closeAllPanels();
+      panel.hidden = !open;
+      trigger.setAttribute('aria-expanded', String(open));
+    });
+    panel.addEventListener('click', (e) => e.stopPropagation());
+
+    host.append(trigger, panel);
   }
+
+  // one document-level handler closes any open panel
+  document.addEventListener('click', closeAllPanels);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllPanels();
+  });
+}
+
+function closeAllPanels() {
+  for (const panel of document.querySelectorAll('.dd-panel')) {
+    panel.hidden = true;
+    panel.previousElementSibling.setAttribute('aria-expanded', 'false');
+  }
+}
+
+/** Refresh every option's checked state, count and availability. */
+function paintFacets() {
+  for (const [key] of FACETS) {
+    const counts = facetCounts(key);
+    for (const opt of document.querySelectorAll(`.dd-opt[data-facet="${key}"]`)) {
+      const value = opt.dataset.value;
+      const n = counts.get(value) || 0;
+      const on = state[key].has(value);
+      opt.setAttribute('aria-checked', String(on));
+      opt.disabled = n === 0 && !on;
+      opt.querySelector('.n2').textContent = fmt(n);
+    }
+    const badge = el(`dd-${key}`).querySelector('.badge');
+    badge.hidden = state[key].size === 0;
+    badge.textContent = String(state[key].size);
+  }
+  const active =
+    state.chain.size + state.region.size + state.category.size + (state.mallsOnly ? 1 : 0);
+  el('reset').hidden = active === 0;
 }
 
 function renderStats() {
@@ -315,9 +477,14 @@ function wire() {
     timer = setTimeout(() => { state.query = value; refresh(); }, 120);
   });
 
-  for (const [id, key] of [['chain', 'chain'], ['region', 'region'], ['category', 'category']]) {
-    el(id).addEventListener('change', (e) => { state[key] = e.target.value; refresh(); });
-  }
+  el('reset').addEventListener('click', () => {
+    state.chain.clear(); state.region.clear(); state.category.clear();
+    state.mallsOnly = false;
+    el('mallsOnly').setAttribute('aria-pressed', 'false');
+    el('q').value = '';
+    state.query = '';
+    refresh();
+  });
 
   el('mallsOnly').addEventListener('click', (e) => {
     state.mallsOnly = !state.mallsOnly;
@@ -358,9 +525,7 @@ async function main() {
     state.data = prepare(await load());
     el('date').textContent = state.data.date;
     renderStats();
-    fillSelect(el('chain'), state.data.dict.chains, 'All operators');
-    fillSelect(el('region'), state.data.dict.regions, 'All regions');
-    fillSelect(el('category'), state.data.dict.categories, 'All categories');
+    buildFacets();
     wire();
     refresh();
     el('app').hidden = false;

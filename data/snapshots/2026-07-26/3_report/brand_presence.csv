@@ -267,7 +267,7 @@ aap,robinsons,robinsons-dasmarinas,Robinsons Place Dasmarinas,south-luzon
 aap,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 aap,robinsons,robinsons-la-union,Robinsons Place La Union,north-luzon
 aap,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
-aaquilah s jewelry,gmall,gmall-of-davao,GMall of Davao,mindanao
+aaquilahs jewelry,gmall,gmall-of-davao,GMall of Davao,mindanao
 abaca baking,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
 abaca baking,ayala,ayala-malls-central-bloc,Ayala Malls Central Bloc,visayas
 abaca baking company,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
@@ -1036,7 +1036,6 @@ aivee clinic,megaworld,forbes-town,Forbes Town,
 aivee clinic,sm,sm-megamall,SM Megamall,metro-manila
 aivee institute,megaworld,forbes-town,Forbes Town,
 aj cellshoppe,gmall,gmall-of-tagum,GMall of Tagum,mindanao
-aj s jewelry,gmall,gmall-of-digos,GMall of Digos,mindanao
 aj thai street food,filinvest,il-corso,IL Corso,visayas
 aj thai street food,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 aj tin,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
@@ -1050,6 +1049,7 @@ ajisen ramen,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manil
 ajisen ramen,robinsons,robinsons-las-pinas,Robinsons Place Las Pinas,metro-manila
 ajisen ramen,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 ajisen ramen,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
+ajs jewelry,gmall,gmall-of-digos,GMall of Digos,mindanao
 ajt gadget manila,ortigas,greenhills,Greenhills,metro-manila
 akaigawa,filinvest,festival-mall,Festival Mall,metro-manila
 akamon,sm,sm-city-iloilo,SM City Iloilo,visayas
@@ -4043,7 +4043,7 @@ berlein,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 bern oasis of halohalo,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 bernabest siomai house,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 bernardos watch repair,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
-bernie s barbers,gmall,gmall-of-toril,GMall of Toril,mindanao
+bernies barbers,gmall,gmall-of-toril,GMall of Toril,mindanao
 berntech,sm,sm-city-olongapo-downtown,SM City Olongapo Downtown,north-luzon
 berntech,sm,sm-city-telabastagan,SM City Telabastagan,north-luzon
 berovan,filinvest,festival-mall,Festival Mall,metro-manila
@@ -6505,7 +6505,7 @@ carlcare service,sm,sm-cherry-antipolo,SM Center Antipolo Downtown,metro-manila
 carlcare service,sm,sm-city-manila,SM City Manila,metro-manila
 carlcare service,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 carlcare service,sm,sm-city-san-fernando-downtown,SM City San Fernando Downtown,north-luzon
-carlin s flower shop,gmall,gmall-of-davao,GMall of Davao,mindanao
+carlins flower shop,gmall,gmall-of-davao,GMall of Davao,mindanao
 carlins flowershop,sm,sm-city-davao,SM City Davao,mindanao
 carlitos bar and grill,xentro,montalban-town-center,Montalban Town Center,
 carlos bakeshop & cafe,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
@@ -6728,7 +6728,7 @@ cebuana lhullier,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manil
 cebuana lhullier,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 cebus best ricos lechon,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 cebus tasty lechon,sm,sm-city-consolacion,SM City Consolacion,visayas
-cecil s,gmall,gmall-of-davao,GMall of Davao,mindanao
+cecils,gmall,gmall-of-davao,GMall of Davao,mindanao
 cecils snack inn,ayala,ayala-abreeza,Abreeza,mindanao
 cedric time enterprises,ayala,ayala-pavilion,Pavilion Mall,south-luzon
 celebrations,filinvest,festival-mall,Festival Mall,metro-manila
@@ -7226,10 +7226,10 @@ chicken namnam,robinsons,robinsons-malabon,Robinsons Town Mall Malabon,metro-man
 chicken namnam,waltermart,antipolo,WalterMart Antipolo,metro-manila
 chickin,megaworld,festive-walk-parade,Festive Walk Parade,
 chido donuts,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,
-chiekai s collection,gmall,gmall-of-tagum,GMall of Tagum,mindanao
-chiggy s kessaku,gmall,gmall-of-davao,GMall of Davao,mindanao
-chiggy s kessaku,gmall,gmall-of-toril,GMall of Toril,mindanao
+chiekais collection,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 chiggys kesaku,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
+chiggys kessaku,gmall,gmall-of-davao,GMall of Davao,mindanao
+chiggys kessaku,gmall,gmall-of-toril,GMall of Toril,mindanao
 chigue house of kimchi,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
 chika an,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 chika an sa cebu,filinvest,il-corso,IL Corso,visayas
@@ -7690,8 +7690,8 @@ chronos,ortigas,greenhills,Greenhills,metro-manila
 chronos,sm,s-maison,S Maison,metro-manila
 chronos,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 chronos,sm,sm-southmall,SM Southmall,metro-manila
-chua s garden exdeal,gmall,gmall-of-davao,GMall of Davao,mindanao
 chualong telecom sales & services,xentro,tanay-town-center,Tanay Town Center,
+chuas garden exdeal,gmall,gmall-of-davao,GMall of Davao,mindanao
 chungchun rice corn dog,sm,sm-city-baguio,SM City Baguio,north-luzon
 chungchun rice corn dog,sm,sm-city-clark,SM City Clark,north-luzon
 chunky boss,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
@@ -9604,7 +9604,7 @@ delsan office,ayala,ayala-circuit,Ayala Malls Circuit,metro-manila
 delsey juice,filinvest,festival-mall,Festival Mall,metro-manila
 delsey juices,sm,sm-city-novaliches,SM City Novaliches,metro-manila
 dempsey,robinsons,opus,Opus Mall,metro-manila
-dencio s kamayan,gmall,gmall-of-davao,GMall of Davao,mindanao
+dencios kamayan,gmall,gmall-of-davao,GMall of Davao,mindanao
 dencios kamayan,sm,sm-city-davao,SM City Davao,mindanao
 dencios kamayan,sm,sm-lanang,SM Lanang,mindanao
 denim brands depot,ayala,ayala-metropoint,Metro Point Mall,metro-manila
@@ -10745,9 +10745,9 @@ edelyns homemade nuts,sm,sm-city-clark,SM City Clark,north-luzon
 edelyns homemade nuts,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 edelyns homemade nuts,sm,sm-city-telabastagan,SM City Telabastagan,north-luzon
 eden hair & nail station,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
-eden s lechon,gmall,gmall-of-davao,GMall of Davao,mindanao
 edengs toy center,ayala,ayala-market-market,Market! Market!,metro-manila
 edens hair & nail salon,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
+edens lechon,gmall,gmall-of-davao,GMall of Davao,mindanao
 edge,gmall,gmall-of-davao,GMall of Davao,mindanao
 edge care plus,sm,sm-center-sangandaan,SM Center Sangandaan,north-luzon
 edge care plus telecom,sm,sm-city-cauayan,SM City Cauayan,north-luzon
@@ -12174,10 +12174,10 @@ flying tiger copenhagen,filinvest,festival-mall,Festival Mall,metro-manila
 flying tiger copenhagen,sm,sm-city-bicutan,SM City Bicutan,metro-manila
 flying tiger copenhagen,sm,sm-city-laoag,SM City Laoag,north-luzon
 flying tiger copenhagen,sm,sm-megamall,SM Megamall,metro-manila
-flynn s buko shake,gmall,gmall-of-davao,GMall of Davao,mindanao
-flynn s buko shake,gmall,gmall-of-digos,GMall of Digos,mindanao
-flynn s buko shake,gmall,gmall-of-tagum,GMall of Tagum,mindanao
-flynn s buko shake,gmall,gmall-of-toril,GMall of Toril,mindanao
+flynns buko shake,gmall,gmall-of-davao,GMall of Davao,mindanao
+flynns buko shake,gmall,gmall-of-digos,GMall of Digos,mindanao
+flynns buko shake,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+flynns buko shake,gmall,gmall-of-toril,GMall of Toril,mindanao
 flyweight,megaworld,forbes-town,Forbes Town,
 fmf c idol cellphone accessories,xentro,balagtas-town-center,Balagtas Town Center,
 fns,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
@@ -13334,7 +13334,6 @@ geox,sm,sm-city-iloilo,SM City Iloilo,visayas
 geox,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 geri,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,
 gerrs grill,robinsons,robinsons-pagadian,Robinsons Pagadian,mindanao
-gerry s grill,gmall,gmall-of-davao,GMall of Davao,mindanao
 gerrys,megaworld,newport-city,Newport City,
 gerrys,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 gerrys,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
@@ -13354,6 +13353,7 @@ gerrys grill,ayala,ayala-solenad,Ayala Malls Nuvali,south-luzon
 gerrys grill,ayala,ayala-trinoma,Trinoma,metro-manila
 gerrys grill,filinvest,festival-mall,Festival Mall,metro-manila
 gerrys grill,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
+gerrys grill,gmall,gmall-of-davao,GMall of Davao,mindanao
 gerrys grill,megaworld,eastwood-city-walk,Eastwood City Walk,
 gerrys grill,megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,
 gerrys grill,megaworld,southwoods-mall,Southwoods Mall,
@@ -14713,7 +14713,7 @@ gumbo,sm,sm-megamall,SM Megamall,metro-manila
 gunnery ph,filinvest,festival-mall,Festival Mall,metro-manila
 gupit galleria,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
 guri guri orange paradise,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
-gusteau s,gmall,gmall-of-davao,GMall of Davao,mindanao
+gusteaus,gmall,gmall-of-davao,GMall of Davao,mindanao
 guzman studio,sm,sm-city-lucena,SM City Lucena,south-luzon
 gwiyomi gluta spa,sm,sm-center-pulilan,SM Center Pulilan,north-luzon
 gwize,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
@@ -15375,9 +15375,9 @@ hedgren,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 hedgren,sm,sm-megamall,SM Megamall,metro-manila
 helainah eyelash extension,robinsons,robinsons-las-pinas,Robinsons Place Las Pinas,metro-manila
 helen jewelry shop,sm,sm-cherry-shaw,SM Center Shaw,metro-manila
-helen s jewelry,gmall,gmall-of-davao,GMall of Davao,mindanao
-helen s jewelry,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 helens jewelry,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
+helens jewelry,gmall,gmall-of-davao,GMall of Davao,mindanao
+helens jewelry,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 hello,sm,sm-city-baguio,SM City Baguio,north-luzon
 hello baby,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
 hello glasses,waltermart,trece-martires,WalterMart Trece Martires,south-luzon
@@ -15647,8 +15647,8 @@ homerong,sm,sm-center-ormoc,SM Center Ormoc,visayas
 homesitte shawarma,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
 homestar appliances,starmall,alabang,Starmall Alabang,metro-manila
 homeworks iguanas,xentro,xentro-mall-lemery,XentroMall Lemery,
-honey b s,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 honey bakes cafe,sm,sm-city-baguio,SM City Baguio,north-luzon
+honey bs,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 honey bs sweets and crafts,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 honey bunch,robinsons,robinsons-tacloban,Robinsons Place Tacloban,visayas
 honey lemon,filinvest,fora,Fora Mall,south-luzon
@@ -16789,8 +16789,8 @@ indio filipino,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-man
 indio filipino,robinsons,robinsons-malolos,Robinsons Place Malolos,north-luzon
 indio filipino clothing,ortigas,greenhills,Greenhills,metro-manila
 indio filipino clothing,sm,sm-city-bacoor,SM City Bacoor,south-luzon
-ineng s special bbq,gmall,gmall-of-davao,GMall of Davao,mindanao
 inengs special bbq,ayala,ayala-market-market,Market! Market!,metro-manila
+inengs special bbq,gmall,gmall-of-davao,GMall of Davao,mindanao
 inengs special bbq,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 inengs special bbq,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 infinite mobile solutions,robinsons,robinsons-pavia,Robinsons Place Pavia,visayas
@@ -17329,7 +17329,7 @@ jag jeans,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 jag jeans,sm,sm-city-valenzuela,SM City Valenzuela,metro-manila
 jagb drug testing center inc,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 jaime t go scent station,xentro,montalban-town-center,Montalban Town Center,
-jaja s fruit shake,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+jajas fruit shake,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 jaliah,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 jaltan,gmall,gmall-of-davao,GMall of Davao,mindanao
 jamaican pattie,filinvest,festival-mall,Festival Mall,metro-manila
@@ -17689,7 +17689,7 @@ jhs electric shop,sm,sm-lanang,SM Lanang,mindanao
 jian axel sisig station,robinsons,galleria-south,Robinsons Galleria South,south-luzon
 jian cellshop,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
 jiang nan hot pot,megaworld,paseo-center,Paseo Center,
-jickong s bbq hauz,gmall,gmall-of-davao,GMall of Davao,mindanao
+jickongs bbq hauz,gmall,gmall-of-davao,GMall of Davao,mindanao
 jies temporarily closed,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 jieya & cos jewelry shop,megaworld,southwoods-mall,Southwoods Mall,
 jig and josh imaging center,xentro,morong-centerpoint,Morong Centerpoint,
@@ -17743,8 +17743,6 @@ jlo mikro gadget realme,gmall,gmall-of-toril,GMall of Toril,mindanao
 jlo mobile access,gmall,gmall-of-davao,GMall of Davao,mindanao
 jlo mobile load hub,gmall,gmall-of-davao,GMall of Davao,mindanao
 jm peanut world,ayala,ayala-market-market,Market! Market!,metro-manila
-jm s shawarma,gmall,gmall-of-tagum,GMall of Tagum,mindanao
-jm s shawarma,gmall,gmall-of-toril,GMall of Toril,mindanao
 jm shawarama,robinsons,robinsons-ormoc,Robinsons Place Ormoc,visayas
 jm shawarma,ayala,ayala-abreeza,Abreeza,mindanao
 jm shawarma,gmall,gmall-of-davao,GMall of Davao,mindanao
@@ -17766,6 +17764,8 @@ jmj cellphone 1,xentro,xentro-mall-santiago,XentroMall Santiago,
 jmn hobby shop,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
 jmoa,ortigas,greenhills,Greenhills,metro-manila
 jms music studio,filinvest,fora,Fora Mall,south-luzon
+jms shawarma,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+jms shawarma,gmall,gmall-of-toril,GMall of Toril,mindanao
 jms shawarma,robinsons,robinsons-gen-san,Robinsons Place GenSan,mindanao
 jms shawarma,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 jms shawarma,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
@@ -18075,7 +18075,7 @@ jonaima footwear,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manil
 jonaina footwear dingding mobile,xentro,montalban-town-center,Montalban Town Center,
 jonaina footwear skk mobile,xentro,montalban-town-center,Montalban Town Center,
 joneco tech,filinvest,dumaguete,Filinvest Malls Dumaguete,visayas
-joniel s,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+joniels,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 joniels cake and pastries,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 jonies,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
 jonies chicken,sm,sm-city-cebu,SM City Cebu,visayas
@@ -20505,8 +20505,6 @@ lets face it,sm,sm-megamall,SM Megamall,metro-manila
 lets face it,sm,sm-southmall,SM Southmall,metro-manila
 lets face it going straight,sm,sm-city-sucat,SM City Sucat,metro-manila
 letterbee,sm,sm-city-consolacion,SM City Consolacion,visayas
-levi s,gmall,gmall-of-davao,GMall of Davao,mindanao
-levi s,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 levie lifestyle clinic,sm,sm-southmall,SM Southmall,metro-manila
 levis,araneta,gateway-mall,Gateway Mall,metro-manila
 levis,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
@@ -20527,6 +20525,8 @@ levis,ayala,ayala-up-town-center,U. P. Town Center,metro-manila
 levis,ayala,one-ayala-mall,One Ayala,metro-manila
 levis,filinvest,festival-mall,Festival Mall,metro-manila
 levis,filinvest,fora,Fora Mall,south-luzon
+levis,gmall,gmall-of-davao,GMall of Davao,mindanao
+levis,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 levis,megaworld,eastwood-mall,Eastwood Mall,
 levis,megaworld,festive-walk-mall-iloilo,Festive Walk Mall,
 levis,megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,
@@ -20697,7 +20697,6 @@ lifewell,sm,sm-center-san-pedro,SM Center San Pedro,south-luzon
 lifewell,sm,sm-city-caloocan,SM City Caloocan,metro-manila
 lifewell,sm,sm-city-manila,SM City Manila,metro-manila
 lightbox studios,sm,sm-city-bf-paranaque,SM City BF Parañaque,metro-manila
-lighter s galore,gmall,gmall-of-davao,GMall of Davao,mindanao
 lighters galore,araneta,ali-mall,Ali Mall,metro-manila
 lighters galore,araneta,farmers-plaza,Farmers Plaza,metro-manila
 lighters galore,araneta,gateway-mall,Gateway Mall,metro-manila
@@ -20717,6 +20716,7 @@ lighters galore,ayala,ayala-trinoma,Trinoma,metro-manila
 lighters galore,filinvest,festival-mall,Festival Mall,metro-manila
 lighters galore,fishermall,malabon,Fisher Mall Malabon,metro-manila
 lighters galore,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
+lighters galore,gmall,gmall-of-davao,GMall of Davao,mindanao
 lighters galore,megaworld,clubhouse-temple-drive,The Clubhouse at Temple Drive,
 lighters galore,megaworld,eastwood-mall,Eastwood Mall,
 lighters galore,megaworld,uptown-mall,Uptown Mall,
@@ -20826,7 +20826,7 @@ lionesse beauty bar,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metr
 lipa city travels & tours,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
 liquid flask,filinvest,dumaguete,Filinvest Malls Dumaguete,visayas
 liquid flask,robinsons,robinsons-gen-san,Robinsons Place GenSan,mindanao
-lisa s tender lean meat,gmall,gmall-of-davao,GMall of Davao,mindanao
+lisas tender lean meat,gmall,gmall-of-davao,GMall of Davao,mindanao
 listen apparel,robinsons,robinsons-otis,Robinsons Otis,metro-manila
 listening room,sm,sm-megamall,SM Megamall,metro-manila
 lit,ayala,ayala-serendra,Shops at Serendra,metro-manila
@@ -20868,10 +20868,10 @@ liz beauty lounge,megaworld,southwoods-mall,Southwoods Mall,
 lj bikes,waltermart,malolos,WalterMart Malolos,north-luzon
 lj lugawan,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 lj minute key shop,gmall,gmall-of-digos,GMall of Digos,mindanao
-lj s minute key shop,gmall,gmall-of-tagum,GMall of Tagum,mindanao
-lj s minute keyshop,gmall,gmall-of-davao,GMall of Davao,mindanao
 ljc beauty & wellness shop hexi health xc health & beauty shop,xentro,tanay-town-center,Tanay Town Center,
 ljm,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
+ljs minute key shop,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+ljs minute keyshop,gmall,gmall-of-davao,GMall of Davao,mindanao
 ljtc,xentro,northstar-mall,Northstar Mall,
 lkaisei japanese restaurant,sm,sm-city-bacolod,SM City Bacolod,visayas
 llanillo romero optical clinic,sm,sm-city-cagayan-de-oro,SM City CDO Uptown,mindanao
@@ -21731,7 +21731,7 @@ mama lous italian kitchen,sm,sm-city-clark,SM City Clark,north-luzon
 mama lous italian kitchen,sm,sm-city-fairview,SM City Fairview,metro-manila
 mama lous italian kitchen,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 mama lous italian kitchen,sm,sm-city-sto-tomas,SM City Sto. Tomas,south-luzon
-mama maria s pizzeria,gmall,gmall-of-davao,GMall of Davao,mindanao
+mama marias pizzeria,gmall,gmall-of-davao,GMall of Davao,mindanao
 mama sarahs lettuce garden,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
 mamacai,sm,nu-mall-of-asia-building,NU MALL OF ASIA BUILDING,metro-manila
 mamacita,megaworld,forbes-town,Forbes Town,
@@ -22259,7 +22259,7 @@ mars watch,waltermart,sta-rosa,WalterMart Sta. Rosa,south-luzon
 mars watch service center,ayala,ayala-marquee,MarQuee Mall,north-luzon
 mars watch service center,sm,sm-city-sto-tomas,SM City Sto. Tomas,south-luzon
 marshall driving school,sm,sm-city-trece-martires,SM City Trece Martires,south-luzon
-marshi s yummy corn,gmall,gmall-of-digos,GMall of Digos,mindanao
+marshis yummy corn,gmall,gmall-of-digos,GMall of Digos,mindanao
 mart,megaworld,mactan-newtown,Mactan Newtown,
 martabak cafe,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 martines churros corner toyota caravan,xentro,xentro-mall-calapan,XentroMall Calapan,
@@ -22620,7 +22620,6 @@ mbscc,ayala,ayala-the-district-dasmarinas,The District Dasmarinas,south-luzon
 mbt,ayala,ayala-glorietta,Glorietta,metro-manila
 mbt,filinvest,festival-mall,Festival Mall,metro-manila
 mbt fashion,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
-mc donald s,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 mc donalds 2nd flr,xentro,xentro-mall-santiago,XentroMall Santiago,
 mc donalds blue point,xentro,xentro-mall-lemery,XentroMall Lemery,
 mc donalds dessert kiosk funhouses corporation 2,xentro,tanay-town-center,Tanay Town Center,
@@ -22635,7 +22634,6 @@ mccoys pizza house,sm,sm-city-puerto-princesa,SM City Puerto Princesa,south-luzo
 mcdodo,sm,sm-city-manila,SM City Manila,metro-manila
 mcdodo,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 mcdodo,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
-mcdonald s,gmall,gmall-of-davao,GMall of Davao,mindanao
 mcdonalds,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
 mcdonalds,ayala,ayala-circuit,Ayala Malls Circuit,metro-manila
 mcdonalds,ayala,ayala-cloverleaf,Ayala Malls Cloverleaf,metro-manila
@@ -22650,6 +22648,8 @@ mcdonalds,ayala,ayala-vertis,Ayala Malls Vertis North,metro-manila
 mcdonalds,filinvest,festival-mall,Festival Mall,metro-manila
 mcdonalds,fishermall,malabon,Fisher Mall Malabon,metro-manila
 mcdonalds,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
+mcdonalds,gmall,gmall-of-davao,GMall of Davao,mindanao
+mcdonalds,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 mcdonalds,gmall,gmall-of-toril,GMall of Toril,mindanao
 mcdonalds,megaworld,arcovia-city,Arcovia City,
 mcdonalds,megaworld,california-garden-square,California Garden Square,
@@ -23546,7 +23546,7 @@ milano & design,megaworld,uptown-mall,Uptown Mall,
 milas pastries & snacks,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
 milas pastries and snacks,sm,sm-city-bacolod,SM City Bacolod,visayas
 milas tokwat baboy,sm,sm-city-clark,SM City Clark,north-luzon
-milchar s salon and spa,gmall,gmall-of-digos,GMall of Digos,mindanao
+milchars salon and spa,gmall,gmall-of-digos,GMall of Digos,mindanao
 miles cartruck,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
 milk cream,sm,sm-city-tuguegarao,SM City Tuguegarao,north-luzon
 milk pot,sm,sm-city-laoag,SM City Laoag,north-luzon
@@ -24020,7 +24020,7 @@ modern shanghai,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,
 modern shanghai,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 modern smiles,sm,smdc-strip-at-shine,SMDC Strip at Shine,smdc
 moderna,megaworld,uptown-parade,Uptown Parade,
-moi s empanada,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+mois empanada,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 molino grill,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
 mom and me nails,ayala,ayala-harbor-point,Harbor Point,north-luzon
 mom and me nails,ortigas,greenhills,Greenhills,metro-manila
@@ -25005,7 +25005,6 @@ nail it,fishermall,malabon,Fisher Mall Malabon,metro-manila
 nail it,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
 nail lounge,megaworld,southwoods-mall,Southwoods Mall,
 nail lounge,sm,sm-city-laoag,SM City Laoag,north-luzon
-nail s and hair salon,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 nail spa lounge by ellabell,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 nail story,sm,sm-city-puerto-princesa,SM City Puerto Princesa,south-luzon
 nail tropics,ayala,ayala-greenbelt,Greenbelt,metro-manila
@@ -25116,6 +25115,7 @@ nailcrush,waltermart,sta-rosa,WalterMart Sta. Rosa,south-luzon
 nailogy,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
 nailogy,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 nailogy,sm,sm-center-pasig,SM Center Pasig,metro-manila
+nails and hair salon,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 nails dot glow,megaworld,southwoods-mall,Southwoods Mall,
 nails dot glow essence,sm,sm-city-caloocan,SM City Caloocan,metro-manila
 nails dot glow essence,sm,sm-city-lipa,SM City Lipa,south-luzon
@@ -27555,7 +27555,7 @@ payless shoesource,sm,sm-city-san-mateo,SM City San Mateo,metro-manila
 payless shoesource,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 payless shoesource,sm,sm-city-tarlac,SM City Tarlac,north-luzon
 payless shoesource,sm,sm-southmall,SM Southmall,metro-manila
-pazio s grill,gmall,gmall-of-davao,GMall of Davao,mindanao
+pazios grill,gmall,gmall-of-davao,GMall of Davao,mindanao
 pazu,sm,sm-center-pasig,SM Center Pasig,metro-manila
 pazzion,ayala,ayala-trinoma,Trinoma,metro-manila
 pc ak ses uh rees,araneta,farmers-plaza,Farmers Plaza,metro-manila
@@ -31303,9 +31303,9 @@ rockstar,ayala,ayala-glorietta,Glorietta,metro-manila
 rockstar,ortigas,greenhills,Greenhills,metro-manila
 rockstar by centerstage,sm,sm-aura,SM Aura,metro-manila
 rocky mountain chocolate factory,sm,sm-megamall,SM Megamall,metro-manila
-rocky s barbershop,gmall,gmall-of-davao,GMall of Davao,mindanao
 rockys barbershop,ayala,ayala-abreeza,Abreeza,mindanao
 rockys barbershop,ayala,ayala-centrio,Centrio Mall,mindanao
+rockys barbershop,gmall,gmall-of-davao,GMall of Davao,mindanao
 rockys barbershop,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
 rockys barbershop,sm,sm-city-davao,SM City Davao,mindanao
 rockys barbershop,sm,sm-lanang,SM Lanang,mindanao
@@ -31697,8 +31697,8 @@ saad gems,ortigas,greenhills,Greenhills,metro-manila
 sabater optical,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 sabater optical,robinsons,robinsons-sta-rosa,Robinsons Sta. Rosa,south-luzon
 sabater paredes optical,araneta,farmers-plaza,Farmers Plaza,metro-manila
-sabel s kambingan,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 sabella,sm,sm-city-rosales,SM City Rosales,north-luzon
+sabels kambingan,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 sabie bakes,sm,sm-city-puerto-princesa,SM City Puerto Princesa,south-luzon
 sabinas cravings,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
 saboten,ayala,ayala-serendra,Shops at Serendra,metro-manila
@@ -32134,10 +32134,7 @@ santa barbara polo & racquet club,araneta,ali-mall,Ali Mall,metro-manila
 santa barbara polo & racquet club,araneta,gateway-mall,Gateway Mall,metro-manila
 santa barbara polo & raquet 9632236124,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 santibanez flower shop,ayala,ayala-market-market,Market! Market!,metro-manila
-santino s,gmall,gmall-of-davao,GMall of Davao,mindanao
-santino s pizza,gmall,gmall-of-davao,GMall of Davao,mindanao
-santino s pizza,gmall,gmall-of-tagum,GMall of Tagum,mindanao
-santino s pizza,gmall,gmall-of-toril,GMall of Toril,mindanao
+santinos,gmall,gmall-of-davao,GMall of Davao,mindanao
 santinos,gmall,gmall-of-digos,GMall of Digos,mindanao
 santinos,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 santinos,robinsons,robinsons-pagadian,Robinsons Pagadian,mindanao
@@ -32145,6 +32142,9 @@ santinos,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 santinos,sm,sm-center-ormoc,SM Center Ormoc,visayas
 santinos,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 santinos pizza,filinvest,festival-mall,Festival Mall,metro-manila
+santinos pizza,gmall,gmall-of-davao,GMall of Davao,mindanao
+santinos pizza,gmall,gmall-of-tagum,GMall of Tagum,mindanao
+santinos pizza,gmall,gmall-of-toril,GMall of Toril,mindanao
 santinos pizza,robinsons,robinsons-gen-san,Robinsons Place GenSan,mindanao
 santinos supreme italian pizza,ayala,ayala-cloverleaf,Ayala Malls Cloverleaf,metro-manila
 santinos supreme slice,starmall,edsa-shaw,Starmall EDSA-Shaw,metro-manila
@@ -32638,7 +32638,6 @@ shake shack,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 shake shack,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 shake shack,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 shake shack,sm,sm-megamall,SM Megamall,metro-manila
-shakey s,gmall,gmall-of-davao,GMall of Davao,mindanao
 shakeys,ayala,ayala-abreeza,Abreeza,mindanao
 shakeys,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
 shakeys,ayala,ayala-circuit,Ayala Malls Circuit,metro-manila
@@ -32652,6 +32651,7 @@ shakeys,ayala,ayala-trinoma,Trinoma,metro-manila
 shakeys,ayala,ayala-vertis,Ayala Malls Vertis North,metro-manila
 shakeys,filinvest,festival-mall,Festival Mall,metro-manila
 shakeys,fishermall,malabon,Fisher Mall Malabon,metro-manila
+shakeys,gmall,gmall-of-davao,GMall of Davao,mindanao
 shakeys,megaworld,festive-walk-mall-iloilo,Festive Walk Mall,
 shakeys,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,
 shakeys,ortigas,greenhills,Greenhills,metro-manila
@@ -35630,7 +35630,7 @@ surplus shop,sm,sm-megamall,SM Megamall,metro-manila
 surplus shop,sm,sm-savemore-tacloban,SM Savemore Tacloban,visayas
 surplus shop,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 surplus shop,sm,sm-southmall,SM Southmall,metro-manila
-surya int l trading corp,gmall,gmall-of-digos,GMall of Digos,mindanao
+surya intl trading corp,gmall,gmall-of-digos,GMall of Digos,mindanao
 susan canteen norhaimen telecom shop,xentro,tanay-town-center,Tanay Town Center,
 susan milan,ayala,ayala-market-market,Market! Market!,metro-manila
 susans canteen,xentro,morong-centerpoint,Morong Centerpoint,
@@ -35991,7 +35991,6 @@ tasty habit,ortigas,estancia,Estancia,metro-manila
 tasty treats,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 tata ones,gmall,gmall-of-davao,GMall of Davao,mindanao
 tatays inato,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
-tater s,gmall,gmall-of-davao,GMall of Davao,mindanao
 taters,ayala,ayala-abreeza,Abreeza,mindanao
 taters,ayala,ayala-bonifacio-high-street,Bonifacio High Street,metro-manila
 taters,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
@@ -36004,6 +36003,7 @@ taters,ayala,ayala-market-market,Market! Market!,metro-manila
 taters,ayala,ayala-trinoma,Trinoma,metro-manila
 taters,filinvest,festival-mall,Festival Mall,metro-manila
 taters,fishermall,malabon,Fisher Mall Malabon,metro-manila
+taters,gmall,gmall-of-davao,GMall of Davao,mindanao
 taters,gmall,gmall-of-digos,GMall of Digos,mindanao
 taters,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 taters,ortigas,greenhills,Greenhills,metro-manila
@@ -37636,7 +37636,6 @@ tuna republik,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
 tunes corner,robinsons,robinsons-pagadian,Robinsons Pagadian,mindanao
 tung lok seafood,ortigas,greenhills,Greenhills,metro-manila
 tung lok seafood,sm,s-maison,S Maison,metro-manila
-turk s shawarma,gmall,gmall-of-davao,GMall of Davao,mindanao
 turkish grille plus,sm,sm-city-mindpro,SM City Mindpro,mindanao
 turks,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
 turks,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
@@ -37701,6 +37700,7 @@ turks express,sm,sm-city-lucena,SM City Lucena,south-luzon
 turks express,sm,sm-city-san-pablo,SM City San Pablo,south-luzon
 turks sharwarma,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 turks shawarma,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
+turks shawarma,gmall,gmall-of-davao,GMall of Davao,mindanao
 turks shawarma,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 turks shawarma,robinsons,robinsons-dasmarinas,Robinsons Place Dasmarinas,south-luzon
 turks shawarma,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
@@ -40416,9 +40416,9 @@ zara,ayala,ayala-greenbelt,Greenbelt,metro-manila
 zara,ayala,ayala-trinoma,Trinoma,metro-manila
 zara,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 zara,sm,sm-megamall,SM Megamall,metro-manila
-zara s travel,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 zarah fashion boutique argentee,xentro,montalban-town-center,Montalban Town Center,
 zarah juan,ayala,ayala-greenbelt,Greenbelt,metro-manila
+zaras travel,gmall,gmall-of-tagum,GMall of Tagum,mindanao
 zaras travel & tour cebu pacific,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 zarks,megaworld,southwoods-mall,Southwoods Mall,
 zarks burger,ayala,ayala-center-cebu,Ayala Center Cebu,visayas

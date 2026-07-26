@@ -1,0 +1,39 @@
+# Publishes 4_website/site to GitHub Pages. The site is static and the data
+# bundle is committed, so there is nothing to build here: a build step would
+# only add a way for the deploy to disagree with the repository.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths: ["4_website/site/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail if the page points at a missing bundle
+        run: |
+          bundle=$(grep -o 'data-bundle="[^"]*"' 4_website/site/index.html | cut -d'"' -f2)
+          test -f "4_website/site/$bundle" || { echo "index.html references $bundle which is not committed"; exit 1; }
+          echo "bundle present: $bundle"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: 4_website/site
+      - id: deployment
+        uses: actions/deploy-pages@v4

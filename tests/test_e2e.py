@@ -109,10 +109,10 @@ def test_switching_view_changes_columns(page):
     # the header is uppercased by CSS, so compare case-insensitively
     page.click("#tab-malls")
     page.wait_for_timeout(200)
-    assert page.locator("#col-3").inner_text().lower() == "listings"
+    assert page.locator("#col-3").inner_text().lower().startswith("listings")
     page.click("#tab-brands")
     page.wait_for_timeout(200)
-    assert page.locator("#col-3").inner_text().lower() == "malls"
+    assert page.locator("#col-3").inner_text().lower().startswith("malls")
 
 
 def test_no_horizontal_overflow_on_mobile(page):
@@ -134,3 +134,40 @@ def test_store_names_are_never_treated_as_markup(page):
         }"""
     )
     assert injected == 0
+
+
+def test_filters_are_multi_select_and_cross_filter(page):
+    """Within a facet values OR together; across facets they AND."""
+    page.click("#dd-chain > button")
+    page.click('.dd-opt[data-facet="chain"][data-value="ayala"]')
+    page.wait_for_timeout(250)
+    one = int(re.sub(r"[^0-9]", "", page.locator("#count").inner_text()))
+
+    page.click('.dd-opt[data-facet="chain"][data-value="sm"]')
+    page.wait_for_timeout(250)
+    two = int(re.sub(r"[^0-9]", "", page.locator("#count").inner_text()))
+    assert two > one, "adding a second operator must widen the result set"
+
+    page.click("#dd-region > button")
+    page.click('.dd-opt[data-facet="region"][data-value="visayas"]')
+    page.wait_for_timeout(250)
+    narrowed = int(re.sub(r"[^0-9]", "", page.locator("#count").inner_text()))
+    assert narrowed < two, "adding a region must narrow the result set"
+
+    page.click("#reset")
+    page.wait_for_timeout(250)
+    assert page.locator("#reset").is_hidden()
+
+
+def test_impossible_options_are_disabled_not_hidden(page):
+    page.click("#dd-chain > button")
+    page.click('.dd-opt[data-facet="chain"][data-value="starmall"]')
+    page.wait_for_timeout(300)
+    page.click("#dd-region > button")
+    page.wait_for_timeout(150)
+    options = page.locator('.dd-opt[data-facet="region"]')
+    assert options.count() > 0
+    # every option stays visible; unreachable ones are disabled
+    assert page.locator('.dd-opt[data-facet="region"]:disabled').count() > 0
+    page.click("#reset")
+    page.wait_for_timeout(200)

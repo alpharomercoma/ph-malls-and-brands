@@ -65,22 +65,62 @@ _NON_LEVEL = re.compile(
 _SMART = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-"})  # noqa: RUF001 - the table maps these on purpose
 # leading/trailing separators left over from the source markup
 _EDGE_JUNK = re.compile(r"^[\s\-,|]+|[\s\-,|]+$")
+_VOWEL = re.compile(r"[AEIOU]")
+_PUNCT = ".,:;!?()[]{}\"'"
+# Vowel-less tokens that are ordinary words, not acronyms.
+_NOT_ACRONYMS = frozenset({
+    "BY", "MY", "GYM", "SKY", "DRY", "FLY", "TRY", "WHY", "SHY", "SPY",
+    "MR", "MRS", "DR", "JR", "SR", "ST", "TV",
+})
+# Acronyms that do carry a vowel, so the vowel test alone would miss them.
+_ACRONYMS = frozenset({
+    "ADC", "ATM", "BDO", "BPI", "CBTL", "GNC", "KFC", "OPPO", "SM", "UAE",
+    "USA", "UNO", "AXA", "AIA", "ABC", "ACE", "AMA", "IBM", "SSI", "UCPB",
+})
 _PHONE_SPLIT = re.compile(r"\s*(?:/|;|,| or )\s*", re.I)
 
 
 def clean_name(raw: str) -> str:
-    """Display-ready store name. Case is only changed for ALL-CAPS input, where
-    it carries no information - mixed-case names are left alone because their
-    capitalization is usually deliberate (``iStore``, ``BENCH/``)."""
+    """Display-ready store name.
+
+    Case is changed only for ALL-CAPS input, where the capitalization carries
+    no information. Mixed-case names are left alone because their casing is
+    usually deliberate (``iStore``, ``BENCH/``).
+
+    Title-casing an all-caps string damages acronyms: ``CLN`` becomes ``Cln``
+    and ``PLDT`` becomes ``Pldt``. Tokens are therefore kept as-is when they
+    look like an acronym rather than a word. The test is having no vowel,
+    which separates ``PNB``, ``LBC`` and ``BBQ`` from ``BENCH`` and ``HERBS``,
+    plus a short list for the vowel-carrying acronyms that actually occur.
+    """
     s = unicodedata.normalize("NFKC", str(raw)).translate(_SMART)
     s = _EDGE_JUNK.sub("", re.sub(r"\s+", " ", s))
-    if s and s == s.upper():
-        s = s.title()
-        # repair possessives and common initialisms mangled by .title()
-        s = re.sub(r"\b([A-Za-z]+)'S\b", lambda m: m.group(1) + "'s", s)
-        for acronym in ("Atm", "Bdo", "Bpi", "Kfc", "Sm", "Ph", "Tv", "Dvd", "Us", "Uk", "Rrj"):
-            s = re.sub(rf"\b{acronym}\b", acronym.upper(), s)
-    return s
+    if not s or s != s.upper():
+        return s
+
+    out = []
+    for token in s.split(" "):
+        core = token.strip(_PUNCT)
+        if _is_acronym(core):
+            out.append(token)
+            continue
+        titled = token.title()
+        # .title() breaks possessives ("BAKER'S" -> "Baker'S") and any letter
+        # following a digit or apostrophe
+        titled = re.sub(r"(?<=[\'\d])([A-Z])", lambda m: m.group(1).lower(), titled)
+        # Mc/Mac names keep an internal capital: Mcdonald's -> McDonald's
+        titled = re.sub(r"\b(Ma?c)([a-z])", lambda m: m.group(1) + m.group(2).upper(), titled)
+        out.append(titled)
+    return " ".join(out)
+
+
+def _is_acronym(token: str) -> bool:
+    """True when an all-caps token should keep its capitalization."""
+    if len(token) < 2 or not token.isalpha():
+        return False
+    if token in _NOT_ACRONYMS:
+        return False
+    return token in _ACRONYMS or not _VOWEL.search(token)
 
 
 def standardize_category(raw, chain: str) -> str:
@@ -191,6 +231,8 @@ def build(stores: pd.DataFrame, malls: pd.DataFrame | None = None) -> pd.DataFra
     flag(df["floor"].notna() & df["floor_level"].isna(), "floor_level_unresolved")
     flag(df["phone"].notna() & df["phone_e164"].isna(), "phone_unparsed")
     flag(df["store_name"].str.len() > 60, "name_suspiciously_long")
+    # a decimal tail is usually a unit number or price that leaked into the name
+    flag(df["store_name"].str.contains(r"\d+\.\d+$", na=False), "numeric_tail")
     dupe = df.duplicated(subset=["chain", "mall_id", "brand_key", "floor_std"], keep=False)
     flag(dupe, "duplicate_in_mall")
     df["dq_flags"] = ["|".join(f) for f in flags]

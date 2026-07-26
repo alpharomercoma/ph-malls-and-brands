@@ -527,7 +527,7 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 ## Brand reach
 
-11,660 distinct brands after normalization.
+11,645 distinct brands after normalization.
 
 | brand                  | malls | chains |
 |------------------------|------:|-------:|

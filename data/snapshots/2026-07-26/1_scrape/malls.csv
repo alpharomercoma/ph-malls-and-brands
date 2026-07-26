@@ -275,12 +275,6 @@ sm,smdc-strip-at-trees,SMDC Strip at Trees,smdc,"Brgy. Pasong Putik, Novaliches,
 sm,smdc-sun-mall,SMDC Sun Mall,smdc,"Espana Boulevard corner Mayon Street, Barangay Sta. Teresita, Quezon City",SUN1,https://www.smsupermalls.com/mall-directory/smdc-sun-mall/information/,residential-retail,2026-07-26
 sm,the-podium,The Podium,metro-manila,12 ADB Ave. Ortigas CDB,SMKL,https://www.smsupermalls.com/mall-directory/the-podium/information/,mall,2026-07-26
 sm,wind-residences,Wind Residences,smdc,"Tagaytay - Nasugbu Hwy, Tagaytay, Cavite",WND1,https://www.smsupermalls.com/mall-directory/wind-residences/information/,residential-retail,2026-07-26
-gmall,gmall-of-davao,GMall of Davao,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-digos,GMall of Digos,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-gensan,GMall of Gensan,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-tagum,GMall of Tagum,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-toril,GMall of Toril,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
-gmall,gmall-of-cebu,Gmall of Cebu,visayas,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
 waltermart,antipolo,WalterMart Antipolo,metro-manila,,,https://malls.waltermart.com.ph/malls/antipolo/,mall,2026-07-26
 waltermart,arayat,WalterMart Arayat,north-luzon,,,https://malls.waltermart.com.ph/malls/arayat/,mall,2026-07-26
 waltermart,bacoor,WalterMart Bacoor,south-luzon,,,https://malls.waltermart.com.ph/malls/bacoor/,mall,2026-07-26
@@ -327,3 +321,9 @@ waltermart,tanauan,WalterMart Tanauan,south-luzon,,,https://malls.waltermart.com
 waltermart,taytay,WalterMart Taytay,metro-manila,,,https://malls.waltermart.com.ph/malls/taytay/,mall,2026-07-26
 waltermart,the-junction,WalterMart The Junction,metro-manila,,,https://malls.waltermart.com.ph/malls/the-junction/,mall,2026-07-26
 waltermart,trece-martires,WalterMart Trece Martires,south-luzon,,,https://malls.waltermart.com.ph/malls/trece-martires/,mall,2026-07-26
+gmall,gmall-of-davao,GMall of Davao,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-digos,GMall of Digos,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-gensan,GMall of Gensan,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-tagum,GMall of Tagum,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-toril,GMall of Toril,mindanao,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
+gmall,gmall-of-cebu,Gmall of Cebu,visayas,,,https://gaisanomalls.com/mall-directory/,mall,2026-07-26
