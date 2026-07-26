@@ -527,27 +527,27 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 ## Brand reach
 
-11,645 distinct brands after normalization.
+11,424 distinct brands after normalization.
 
 | brand                  | malls | chains |
 |------------------------|------:|-------:|
-| WATSONS                |   196 |     12 |
-| POTATO CORNER          |   194 |     11 |
+| WATSONS                |   197 |     12 |
+| POTATO CORNER          |   195 |     11 |
 | BANCO DE ORO           |   179 |     11 |
 | BENCH                  |   176 |     12 |
-| JOLLIBEE               |   172 |     11 |
-| SAMSUNG                |   168 |     10 |
+| JOLLIBEE               |   173 |     11 |
+| SAMSUNG                |   169 |     10 |
 | PENSHOPPE              |   163 |     12 |
 | EXECUTIVE OPTICAL      |   157 |     11 |
 | VIVO                   |   144 |     10 |
 | AFICIONADO             |   136 |     10 |
+| OPPO                   |   132 |     11 |
 | FAMOUS BELGIAN WAFFLES |   131 |      5 |
-| OPPO                   |   131 |     11 |
+| KFC                    |   130 |      8 |
 | NATIONAL BOOKSTORE     |   130 |     10 |
 | KETTLE KORN            |   129 |      9 |
-| KFC                    |   129 |      8 |
 | MANG INASAL            |   128 |     11 |
-| IAN DARCY              |   124 |      8 |
-| CHOWKING               |   122 |     10 |
+| IAN DARCY              |   127 |      8 |
+| CHOWKING               |   123 |     10 |
+| DUNKIN                 |   118 |      5 |
 | GREENWICH              |   118 |      9 |
-| DUNKIN                 |   117 |      5 |

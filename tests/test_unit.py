@@ -382,6 +382,40 @@ class TestCleanStage:
         assert to_e164("(02) 8 462 8888") == "+63284628888"
         assert to_e164(None) is None
 
+    def test_strips_only_genuine_name_noise(self):
+        """Phones and status markers go; meaningful parentheticals stay."""
+        from mallscape_clean.clean import clean_name
+
+        assert clean_name("ACE Fashion 9209267708") == "ACE Fashion"
+        assert clean_name("ANYTIME FITNESS (Temporarily Closed)") == "Anytime Fitness"
+        assert clean_name("Alkimia By Mumbakki (0946-138-4463)") == "Alkimia By Mumbakki"
+        # a parenthetical that identifies a sub-brand must survive
+        assert clean_name("Executive Optical (Fun Optics)") == "Executive Optical (Fun Optics)"
+        # a number that IS the name must survive
+        assert clean_name("205") == "205"
+
+    def test_preserves_acronyms(self):
+        from mallscape_clean.clean import clean_name
+
+        for acronym in ("CLN", "PLDT", "PNB", "LBC", "BBQ", "BDO"):
+            assert clean_name(acronym) == acronym
+        # vowel-less words are not acronyms
+        assert clean_name("SKY RANCH") == "Sky Ranch"
+        assert clean_name("MY CUP") == "My Cup"
+        # Mc keeps its internal capital
+        assert clean_name("MCDONALD'S") == "McDonald's"
+
+    def test_format_is_modelled_not_merged_away(self):
+        """An ATM booth shares a brand with a branch but is not the same tenant."""
+        from mallscape_clean.clean import brand_key, store_format
+
+        assert store_format("BPI (ATM)") == "atm"
+        assert store_format("BPI") == "standard"
+        assert store_format("Potato Corner (Kiosk)") == "kiosk"
+        assert store_format("Jollibee Drive Thru") == "drive-thru"
+        # the brand still matches across formats, so brand reach stays measurable
+        assert brand_key("BPI (ATM)") == brand_key("BPI")
+
     def test_deterministic(self):
         import pandas as pd
 

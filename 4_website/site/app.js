@@ -442,21 +442,36 @@ function paintFacets() {
 
 function renderStats() {
   const t = state.data.totals;
+  // Each number gets one sentence saying how it was derived. These are the
+  // four places where a reader would otherwise have to guess.
   const tiles = [
-    [fmt(t.properties), 'properties'],
-    [fmt(t.malls), 'malls'],
-    [fmt(t.listings), 'listings'],
-    [fmt(t.brands), 'brands'],
-    [String(state.data.dict.chains.length), 'operators'],
+    [fmt(t.properties), 'properties',
+     'Everything the operators publish a directory for, including condo retail podiums, amusement parks and office annexes.'],
+    [fmt(t.malls), 'malls',
+     'Properties that are actually malls. This is the fair basis for comparing one operator against another.'],
+    [fmt(t.listings), 'listings',
+     'One row per store as published. A brand with outlets on two floors of the same mall counts twice.'],
+    [fmt(t.brands), 'brands',
+     'Distinct brands after normalizing names, so BPI, BPI (ATM) and BPI - ATM count as one.'],
+    [String(state.data.dict.chains.length), 'operators', null],
   ];
   const box = el('stats');
-  for (const [value, label] of tiles) {
+  for (const [value, name, explain] of tiles) {
     const card = document.createElement('div');
     card.className = 'stat';
     const b = document.createElement('b');
     b.textContent = value;
     const s = document.createElement('span');
-    s.textContent = label;
+    s.textContent = name;
+    if (explain) {
+      const help = document.createElement('button');
+      help.type = 'button';
+      help.className = 'help';
+      help.textContent = '?';
+      help.title = explain;
+      help.setAttribute('aria-label', `${name}: ${explain}`);
+      s.appendChild(help);
+    }
     card.append(b, s);
     box.appendChild(card);
   }

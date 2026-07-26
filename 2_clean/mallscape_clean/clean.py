@@ -17,6 +17,10 @@ Columns added
 ``floor_std``       canonical floor label ("Level 2", "Lower Ground", ...)
 ``floor_level``     signed integer level where one can be inferred (basement
                     negative, ground 0); null when the label is not a level
+``store_format``    atm, kiosk, cart, express, drive-thru and so on, else
+                    "standard". A bank branch and an ATM booth share a brand
+                    but are not the same tenant, so the distinction is kept
+                    here rather than folded into ``brand_key``
 ``phone_e164``      first phone in +63 E.164 form, null if unparseable
 ``dq_flags``        pipe-separated data-quality flags, empty string when clean
 
@@ -77,6 +81,36 @@ _ACRONYMS = frozenset({
     "ADC", "ATM", "BDO", "BPI", "CBTL", "GNC", "KFC", "OPPO", "SM", "UAE",
     "USA", "UNO", "AXA", "AIA", "ABC", "ACE", "AMA", "IBM", "SSI", "UCPB",
 })
+# Trailing noise some operators append to the tenant name itself. Only these
+# three shapes are stripped, because they are never part of a business name:
+# a parenthesised phone number, an operational status marker, and a bare phone
+# number tacked onto the end. Other parentheticals are kept, since they often
+# distinguish a real sub-brand ("Executive Optical (Fun Optics)").
+_NAME_NOISE = re.compile(
+    r"\s*\(\s*[\d\-\s/.+]{6,}\)\s*$"
+    r"|\s*\(\s*(?:new|open|opening soon|soon|closed|temporarily closed"
+    r"|temp\.? closed|renovation)\s*\)\s*$"
+    r"|\s+[\d][\d\-\s/]{6,}$",
+    re.I,
+)
+# Tenant format. A bank branch and an ATM booth are both the BPI brand but are
+# not the same tenant, so the distinction is kept in its own column rather than
+# being folded into brand_key. That way brand reach can still be measured while
+# "how many are only ATMs" stays answerable.
+_FORMATS = (
+    ("atm", r"\batm\b|\bautomated teller\b"),
+    ("kiosk", r"\bkiosk\b"),
+    ("cart", r"\bcart\b"),
+    ("booth", r"\bbooth\b"),
+    ("express", r"\bexpress\b"),
+    ("drive-thru", r"\bdrive[\s-]?thru\b|\bdrive[\s-]?through\b"),
+    ("satellite", r"\bsatellite\b"),
+    ("extension", r"\bextension\b|\bannex\b"),
+    ("stall", r"\bstall\b"),
+    ("counter", r"\bcounter\b"),
+    ("takeout", r"\bto[\s-]?go\b|\btake[\s-]?out\b"),
+)
+_FORMAT_RES = tuple((name, re.compile(pat, re.I)) for name, pat in _FORMATS)
 _PHONE_SPLIT = re.compile(r"\s*(?:/|;|,| or )\s*", re.I)
 
 
@@ -94,7 +128,14 @@ def clean_name(raw: str) -> str:
     plus a short list for the vowel-carrying acronyms that actually occur.
     """
     s = unicodedata.normalize("NFKC", str(raw)).translate(_SMART)
-    s = _EDGE_JUNK.sub("", re.sub(r"\s+", " ", s))
+    s = re.sub(r"\s+", " ", s)
+    # strip repeatedly: a name can carry both a status marker and a phone
+    for _ in range(3):
+        stripped = _NAME_NOISE.sub("", s)
+        if stripped == s:
+            break
+        s = stripped
+    s = _EDGE_JUNK.sub("", s)
     if not s or s != s.upper():
         return s
 
@@ -182,6 +223,17 @@ def standardize_floor(raw) -> tuple[str | None, int | None]:
     return text.title() if text == text.upper() else text, None
 
 
+def store_format(raw) -> str:
+    """Classify the tenant format named in the listing, else "standard"."""
+    if raw is None or (isinstance(raw, float) and pd.isna(raw)):
+        return "standard"
+    text = str(raw)
+    for name, pattern in _FORMAT_RES:
+        if pattern.search(text):
+            return name
+    return "standard"
+
+
 def to_e164(raw) -> str | None:
     """First Philippine number in +63 E.164 form, or null if unparseable."""
     if raw is None or (isinstance(raw, float) and pd.isna(raw)):
@@ -215,6 +267,7 @@ def build(stores: pd.DataFrame, malls: pd.DataFrame | None = None) -> pd.DataFra
     floors = [standardize_floor(f) for f in df["floor"]]
     df["floor_std"] = [f[0] for f in floors]
     df["floor_level"] = pd.array([f[1] for f in floors], dtype="Int64")
+    df["store_format"] = df["store_name_raw"].map(store_format)
     df["phone_e164"] = df["phone"].map(to_e164)
 
     # --- data quality flags: describe, never drop ---
@@ -239,7 +292,7 @@ def build(stores: pd.DataFrame, malls: pd.DataFrame | None = None) -> pd.DataFra
 
     ordered = [
         "chain", "mall_id", "store_name_raw", "store_name", "brand_key",
-        "category", "category_std", "floor", "floor_std", "floor_level",
+        "category", "category_std", "store_format", "floor", "floor_std", "floor_level",
         "building", "phone", "phone_e164", "source", "scraped_at", "dq_flags",
     ]
     df = df[[c for c in ordered if c in df.columns]]

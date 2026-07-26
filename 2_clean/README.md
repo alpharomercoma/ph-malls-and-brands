@@ -19,10 +19,19 @@ is added beside it:
 | `store_name` | display form: unicode normalized, whitespace collapsed, ALL CAPS title cased with possessives and initialisms repaired |
 | `brand_key` | matching key used to join a brand across operators |
 | `category_std` | one of ten canonical buckets, harmonized from 101 operator-specific strings |
+| `store_format` | `atm`, `kiosk`, `cart`, `express`, `drive-thru` and so on, else `standard` |
 | `floor_std` | canonical floor label |
 | `floor_level` | signed integer level: basement negative, ground 0, null when the label names a place rather than a storey |
 | `phone_e164` | `+63` form, null when unparseable |
 | `dq_flags` | pipe separated quality flags, empty when clean |
+
+## Brand versus format
+
+A BPI branch and a BPI ATM booth carry the same brand but are not the same
+tenant. Folding them together would make "BPI is in 71 malls" quietly count
+ATM booths as branches. `brand_key` therefore stays the brand, and the format
+lives in its own column: BPI appears in 71 malls, of which 63 have an actual
+branch. 767 listings carry such a qualifier, most often `express` and `atm`.
 
 ## The judgment call
 
