@@ -212,3 +212,21 @@ class TestWaltermartParser:
         names = [n.attributes.get("data-name") for n in nodes]
         assert "ADDAS" in names
         assert len(names) >= 10
+
+
+class TestAranetaParser:
+    def test_ali_mall_gallery_items(self):
+        from unittest.mock import Mock
+
+        from mallscape.scrapers.araneta import AranetaScraper
+
+        s = AranetaScraper.__new__(AranetaScraper)
+        s.warnings = []
+        s.fetcher = Mock()
+        s.fetcher.get_text.return_value = (FIXTURES / "araneta-ali-mall.html").read_text()
+        mall = Mall(chain="araneta", mall_id="ali-mall", mall_name="Ali Mall", extra={"slug": "ali-mall"})
+        stores = s.scrape_mall(mall)
+        # must match the raw gallery-item count exactly (no silent dedupe)
+        assert len(stores) == 88
+        handyman = next(x for x in stores if x.store_name_raw == "HANDYMAN")
+        assert handyman.floor == "LGF"

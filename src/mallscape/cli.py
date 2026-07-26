@@ -8,6 +8,7 @@ import typer
 from . import analyze as analyze_mod
 from . import storage, validate
 from .fetch import Fetcher
+from .scrapers.araneta import AranetaScraper
 from .scrapers.ayala import AyalaScraper
 from .scrapers.filinvest import FilinvestScraper
 from .scrapers.megaworld import MegaworldScraper
@@ -26,6 +27,7 @@ SCRAPERS = {
     "filinvest": FilinvestScraper,
     "starmall": StarmallScraper,
     "waltermart": WaltermartScraper,
+    "araneta": AranetaScraper,
 }
 
 
