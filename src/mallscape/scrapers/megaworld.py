@@ -29,6 +29,12 @@ PAGE = 100
 
 class MegaworldScraper(MallChainScraper):
     chain = "megaworld"
+    # NOT secrets. These are Contentstack *delivery* tokens — read-only, scoped
+    # to the published prod environment, and served to every visitor of
+    # megaworld-lifestylemalls.com in plain JavaScript. They are reproduced here
+    # so the scraper works out of the box; treat them as part of the public
+    # site, not as credentials. If they rotate, re-read them from the site's
+    # network requests.
     extra_headers = {
         "api_key": "blt827157d7af7bc6d4",
         "access_token": "cs12c8f62754c81457af4cc5fc",
