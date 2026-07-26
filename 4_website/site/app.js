@@ -376,8 +376,19 @@ function refresh() {
   state.rows = state.view === 'brands' ? matchingBrands() : matchingMalls();
   el('viewport').scrollTop = 0;
   el('col-2').textContent = state.view === 'brands' ? 'Category' : 'Operator';
-  el('col-3').firstChild.textContent = state.view === 'brands' ? 'Malls' : 'Listings';
-  el('col-4').textContent = 'Share';
+  // The two right-hand columns mean different things per view, so their
+  // labels and their explanations both have to follow the view. Leaving the
+  // brand wording in place while showing property numbers was worse than
+  // having no explanation at all.
+  const brands = state.view === 'brands';
+  el('col-3').firstChild.textContent = brands ? 'Malls' : 'Listings';
+  el('col-4').firstChild.textContent = 'Share';
+  setHelp('help-rank', brands
+    ? 'How many separate malls carry this brand. One mall counts once however many outlets it has there. Sorted highest first.'
+    : 'How many store listings this property publishes. A brand with outlets on two floors counts twice.');
+  setHelp('help-share', brands
+    ? 'This brand\'s malls as a share of the properties matching your current filters, so the bar rescales as you filter.'
+    : 'This property\'s listings as a share of all listings matching your current filters.');
   paintFacets();
   renderList();
   renderScope();
@@ -469,6 +480,14 @@ function buildFacets() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeAllPanels();
   });
+}
+
+function setHelp(id, text) {
+  const b = el(id);
+  if (!b) return;
+  b.title = text;
+  b.setAttribute('aria-label', text);
+  b.dataset.help = text;
 }
 
 function closeAllPanels() {
@@ -628,6 +647,7 @@ async function main() {
 
     state.data = prepare(await load());
     el('date').textContent = state.data.date;
+    el('opcount').textContent = String(state.data.dict.chains.length);
     renderStats();
     wireHelp();
     renderQuality();

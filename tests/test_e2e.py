@@ -142,7 +142,7 @@ def test_filter_scope_is_visible_and_region_is_geographic(page):
 
 def test_help_controls_open_explanations(page):
     helps = page.locator(".help")
-    assert helps.count() == 5
+    assert helps.count() == 6
     for i in range(helps.count()):
         helps.nth(i).click()
         assert page.locator(".help-popover").is_visible()
@@ -207,3 +207,56 @@ def test_impossible_options_are_disabled_not_hidden(page):
     assert page.locator('.dd-opt[data-facet="region"]:disabled').count() > 0
     page.click("#reset")
     page.wait_for_timeout(200)
+
+
+def test_column_help_describes_the_current_view(page):
+    """The right-hand columns mean different things per view, so their
+    explanations have to change with it. Stale wording is worse than none."""
+    page.click("#tab-brands")
+    page.wait_for_timeout(250)
+    page.click("#help-rank")
+    assert "carry this brand" in page.locator(".help-popover").inner_text()
+    page.locator("body").click(position={"x": 5, "y": 5})
+
+    page.click("#tab-malls")
+    page.wait_for_timeout(250)
+    page.click("#help-rank")
+    text = page.locator(".help-popover").inner_text()
+    assert "listings this property publishes" in text
+    assert "brand" not in text.split("A brand")[0]
+    page.locator("body").click(position={"x": 5, "y": 5})
+
+    # the Share column is the least self-evident thing on the page
+    page.click("#help-share")
+    assert page.locator(".help-popover").is_visible()
+    assert "share of all listings" in page.locator(".help-popover").inner_text()
+    page.locator("body").click(position={"x": 5, "y": 5})
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_tooltips_are_legible_not_label_styled(page):
+    """The popover sits inside .stat span and .thead, whose own span rules match
+    it directly with higher specificity. When they win, the tooltip renders as
+    tiny uppercase letter-spaced text and reads as a stray label rather than an
+    explanation, which is indistinguishable from having no tooltip."""
+    page.click(".stat .help")
+    pop = page.locator(".help-popover")
+    assert pop.is_visible()
+    style = pop.evaluate(
+        "n => { const c = getComputedStyle(n);"
+        " return { t: c.textTransform, s: parseFloat(c.fontSize), l: c.letterSpacing }; }"
+    )
+    assert style["t"] == "none", f"tooltip is text-transformed: {style}"
+    assert style["s"] >= 12, f"tooltip text too small: {style}"
+    assert style["l"] == "normal", f"tooltip is letter-spaced: {style}"
+    page.locator("body").click(position={"x": 5, "y": 5})
+
+
+def test_operator_count_matches_the_data(page):
+    """The subtitle used to hardcode the operator count and went stale when a
+    chain was removed."""
+    shown = int(page.locator("#opcount").inner_text())
+    page.click("#dd-chain > button")
+    assert page.locator('.dd-opt[data-facet="chain"]').count() == shown
+    page.locator("body").click(position={"x": 5, "y": 5})
