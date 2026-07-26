@@ -42,7 +42,13 @@ def _retryable(exc: BaseException) -> bool:
 
 
 class Fetcher:
-    def __init__(self, cache_dir: Path, rate: float = 3.0, timeout: float = 30.0):
+    def __init__(
+        self,
+        cache_dir: Path,
+        rate: float = 3.0,
+        timeout: float = 30.0,
+        headers: dict[str, str] | None = None,
+    ):
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.min_interval = 1.0 / rate
@@ -52,6 +58,7 @@ class Fetcher:
                 "User-Agent": USER_AGENT,
                 "X-Requested-With": "XMLHttpRequest",
                 "Accept": "*/*",
+                **(headers or {}),
             },
             timeout=timeout,
             follow_redirects=True,

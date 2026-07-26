@@ -5,12 +5,15 @@ frozen) — the live validation report is what flags the redesign. These tests
 protect against parser regressions while refactoring.
 """
 
+import json
+from collections import Counter
 from pathlib import Path
 
 import pytest
 
 from mallscape.models import Mall
 from mallscape.normalize import brand_key
+from mallscape.scrapers.ayala import derive_region
 from mallscape.scrapers.robinsons import RobinsonsScraper, _norm_key
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -106,3 +109,49 @@ class TestRegistryMatching:
     def test_norm_key_strips_chain_words(self):
         assert _norm_key("Robinsons Place Malolos") == _norm_key("Malolos")
         assert _norm_key("Robinsons Town Mall Malabon") == _norm_key("Malabon")
+
+
+class TestAyalaRegions:
+    """Region derivation is the only inference in the Ayala path (its API
+    publishes no region), so it carries the regression tests."""
+
+    @pytest.mark.parametrize(
+        "text,lat,lon,expected",
+        [
+            # provincial place names appear as MM street names — MM must win
+            ("Greenbelt Mall, Legazpi Street, Makati City", 14.55, 121.02, "metro-manila"),
+            ("Ayala Malls Legazpi, Legazpi City, Albay 4500", 13.15, 123.75, "south-luzon"),
+            # "Rizal Highway" must not be read as Rizal province
+            ("Harbor Point, Subic Bay Freeport Zone, 2200 Zambales", 14.83, 120.28, "north-luzon"),
+            ("Trinoma EDSA cor. North Avenue, QC", 14.65, 121.03, "metro-manila"),
+            ("Vertis North, Brgy. Bagong Pag-asa, Q.C.", 14.65, 121.04, "metro-manila"),
+            # placeholder coordinates (1.001, 1.001) — address must carry it
+            ("Ayala Pavilion Mall Bldg. A, Binan, Laguna", 1.001, 1.001, "south-luzon"),
+            ("Serin, Silang Crossing East Tagaytay City, Cavite", 14.11, 120.26, "south-luzon"),
+            ("Centrio Mall, Cagayan de Oro City 9000", 8.48, 124.65, "mindanao"),
+            ("Ayala Center Cebu, Cebu Business Park, Cebu City", 10.32, 123.91, "visayas"),
+            ("MarQuee Mall, Angeles City, Pampanga 2009", 15.16, 120.61, "north-luzon"),
+        ],
+    )
+    def test_region_derivation(self, text, lat, lon, expected):
+        assert derive_region(text, lat, lon) == expected
+
+    def test_coordinate_fallback_when_address_unhelpful(self):
+        assert derive_region("Some New Mall", 10.3, 123.9) == "visayas"
+
+    def test_unknown_when_no_signal(self):
+        assert derive_region("Some New Mall", None, None) is None
+
+
+class TestAyalaFixtures:
+    def test_all_malls_present(self):
+        malls = json.loads((FIXTURES / "ayala-malls.json").read_text())
+        assert len(malls) == 32
+        assert {m["slugName"] for m in malls} >= {"ayala-glorietta", "ayala-trinoma"}
+
+    def test_store_categories_sum_to_total(self):
+        stores = json.loads((FIXTURES / "ayala-stores-abreeza.json").read_text())
+        assert len(stores) == 297
+        cats = Counter(s["category"] for s in stores)
+        assert set(cats) == {"shop", "dine", "services", "essentials", "entertainment"}
+        assert sum(cats.values()) == 297

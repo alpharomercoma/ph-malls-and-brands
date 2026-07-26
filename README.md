@@ -1,13 +1,15 @@
 # mallscape
 
 Recurring scraper + brand-presence analysis for Philippine mall directories.
-Currently covers **SM Supermalls** (126 malls) and **Robinsons Malls** (53 malls).
+Covers **SM Supermalls** (126 malls), **Robinsons Malls** (53 malls) and
+**Ayala Malls** (32 malls).
 
 ## Quick start
 
 ```bash
 uv sync
-uv run mallscape scrape            # full scrape (~15-20 min, mostly SM's paginated API)
+uv run mallscape scrape            # all chains (~25 min; SM's paginated API dominates)
+uv run mallscape scrape --chain ayala   # or one chain at a time
 uv run mallscape analyze           # build brand-presence tables + print headlines
 uv run pytest                      # parser regression tests (offline, fixture-based)
 ```
@@ -68,6 +70,28 @@ probing for new malls. Anything unrecognized lands as a ⚠ warning in
 **Gotcha:** robinsonsmalls.com requires TLS 1.3; macOS system Python 3.9
 fails the handshake. Always run through `uv run` (Python 3.12).
 
+### Ayala Malls (`scrapers/ayala.py`)
+React SPA backed by a JSON API (endpoints found by observing the
+`/explore/mall-directory` page's network traffic):
+- `GET api.ayalamalls.com/api/explore-v2/malls` — 32 malls with id, slug,
+  street address, lat/lng.
+- `GET .../explore-v2/stores/list?mallSlug=<slug>&category=all` — that mall's
+  directory, one record per store with a category (shop / dine / services /
+  essentials / entertainment).
+
+An empty `mallSlug` returns all 5,640 stores chain-wide in one response; the
+scraper uses that as a per-mall completeness cross-check.
+
+**Gotchas:** the API rejects requests without `Origin`/`Referer` headers for
+the site (declared as `AyalaScraper.extra_headers`). Ayala publishes no region
+field, so `derive_region()` infers it from address text with a lat/lng fallback
+— note Pavilion Mall ships placeholder coordinates (1.001, 1.001), and
+provincial names appear inside MM street addresses ("Legazpi Street, Makati"),
+which is why Metro Manila is matched first. No floor data is exposed (the site
+renders floors through Mappedin's map SDK), so `floor` is null for this chain.
+Ayala Malls Vermosa has `explore=false` upstream and publishes no directory —
+a genuine upstream gap, flagged in the run report rather than silently empty.
+
 ## Maintenance playbook
 
 1. **Run** `uv run mallscape scrape && uv run mallscape analyze`.
@@ -80,11 +104,11 @@ fails the handshake. Always run through `uv run` (Python 3.12).
 3. Parser changes? Re-run `uv run pytest`; re-parse without re-fetching by
    re-running scrape the same day (raw cache hits).
 
-## Adding another chain (Ayala, Megaworld, …)
+## Adding another chain (Megaworld, Vista, …)
 
 1. Subclass `MallChainScraper` (`scrapers/base.py`): implement
    `discover_malls()` and `scrape_mall()` returning the shared `Mall`/`Store`
-   models.
+   models. Set `extra_headers` if the endpoints need them (see `ayala.py`).
 2. Register it in `SCRAPERS` in `cli.py`.
 3. Add fixture pages + tests. Everything downstream (validation, brand
    matching, analysis tables) picks the new chain up automatically.

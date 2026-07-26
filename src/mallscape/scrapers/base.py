@@ -10,6 +10,8 @@ from ..models import Mall, Store
 
 class MallChainScraper(ABC):
     chain: str  # short id, e.g. "sm"
+    # extra HTTP headers this chain's endpoints require (e.g. CORS Origin)
+    extra_headers: dict[str, str] = {}
 
     def __init__(self, fetcher: Fetcher):
         self.fetcher = fetcher

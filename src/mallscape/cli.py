@@ -8,12 +8,13 @@ import typer
 from . import analyze as analyze_mod
 from . import storage, validate
 from .fetch import Fetcher
+from .scrapers.ayala import AyalaScraper
 from .scrapers.robinsons import RobinsonsScraper
 from .scrapers.sm import SMScraper
 
 app = typer.Typer(no_args_is_help=True, add_completion=False)
 
-SCRAPERS = {"sm": SMScraper, "robinsons": RobinsonsScraper}
+SCRAPERS = {"sm": SMScraper, "robinsons": RobinsonsScraper, "ayala": AyalaScraper}
 
 
 @app.command()
@@ -32,8 +33,11 @@ def scrape(
     prev_stores = storage.read_table(run_date, "stores")
 
     for name in chains:
-        fetcher = Fetcher(storage.raw_dir(run_date, name), rate=rate)
-        scraper = SCRAPERS[name](fetcher)
+        cls = SCRAPERS[name]
+        fetcher = Fetcher(
+            storage.raw_dir(run_date, name), rate=rate, headers=cls.extra_headers
+        )
+        scraper = cls(fetcher)
         try:
             malls, stores = scraper.scrape_all()
         finally:
