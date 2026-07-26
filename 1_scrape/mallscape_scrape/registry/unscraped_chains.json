@@ -118,7 +118,6 @@
   "WalterMart IS scraped: waltermart.com.ph is behind an sgcaptcha challenge, but the malls.waltermart.com.ph subdomain serves plain HTML with no challenge. Store data rides on a.wm-store data-* attributes on /malls/<slug>/<category> pages.",
   "xentromall.com.ph is a parked domain; the live XentroMalls site is www.xentromalls.com.",
   "XentroMall Antipolo, Polangui and ShopKing publish only the leasing-requirements checklist on their locator pages, no tenant list \u2014 their zero counts are an upstream gap, verified.",
-  "GMall (DSG Sons) IS scraped: gaisanomalls.com/mall-directory/ ships all 944 tenant rows server-side for a client-side DataTable, so one request gets everything. Their branch filter lists 6 malls (incl. Cebu and GenSan) but only 4 have tenant rows \u2014 an upstream gap.",
   "WalterMart Mabalacat, San Pascual and Silang return zero stores legitimately: their category pages carry only the empty store-detail modal template and no a.wm-store tenant anchors. Verified against the live site 2026-07 \u2014 upstream gap, not a parse failure.",
   "All 12 zero-store malls in the snapshot are VERIFIED upstream gaps, not parse failures (audited 2026-07-27): ayala-vermosa (explore=false); cybergate-bacolod (page, no directory); SM la-union/zamboanga/makati (API returns counts:0); WalterMart mabalacat/san-pascual/silang (empty store-detail modal, no tenant anchors); Xentro antipolo/polangui/shopking (leasing checklist only); Megaworld tuscany-at-mckinley-hill (Contentstack reports 0 tenants referencing it)."
  ]

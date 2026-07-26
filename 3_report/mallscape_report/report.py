@@ -28,7 +28,6 @@ SOURCES = {
     "ortigas": ("ortigasmalls.com", "Laravel/Inertia data-page JSON"),
     "xentro": ("xentromalls.com", "server-rendered HTML"),
     "filinvest": ("filinvestlifemalls.com", "server-rendered HTML table"),
-    "gmall": ("gaisanomalls.com", "server-rendered DataTable"),
     "fishermall": ("fishermall.com.ph", "loadlevel.php HTML fragments"),
     "araneta": ("aranetacity.com", "server-rendered HTML"),
     "starmall": ("starmalls.com.ph", "Elementor JSON-escaped blob"),

@@ -1,13 +1,13 @@
 # Mall directory scrape - breakdown (2026-07-26)
 
-**328 properties · 42,412 listings · 12 chains**
+**322 properties · 41,468 listings · 11 chains**
 
 Generated deterministically from the snapshot in `data/snapshots/2026-07-26/`. Regenerate with `mallscape report --date 2026-07-26`.
 
 ## Data quality
 
-11,634 of 42,412 listings have no confidently mapped category.
-501 normalized brand keys have multiple raw variants or require review.
+11,627 of 41,468 listings have no confidently mapped category.
+482 normalized brand keys have multiple raw variants or require review.
 Raw listings are retained; these signals describe uncertainty rather than removing rows.
 
 ## Chains
@@ -18,7 +18,6 @@ Raw listings are retained; these signals describe uncertainty rather than removi
 | ayala      |         32 |      32 |      5,640 | 2026-07-26 | api.ayalamalls.com                          |
 | filinvest  |          5 |       5 |        956 | 2026-07-26 | filinvestlifemalls.com                      |
 | fishermall |          2 |       2 |        342 | 2026-07-26 | fishermall.com.ph                           |
-| gmall      |          6 |       6 |        944 | 2026-07-26 | gaisanomalls.com                            |
 | megaworld  |         26 |      26 |      2,118 | 2026-07-26 | megaworld-lifestylemalls.com                |
 | ortigas    |          4 |       4 |      1,279 | 2026-07-26 | ortigasmalls.com                            |
 | robinsons  |         54 |      54 |      8,392 | 2026-07-26 | robinsonsmalls.com + vmd.robinsonsmalls.com |
@@ -26,7 +25,7 @@ Raw listings are retained; these signals describe uncertainty rather than removi
 | starmall   |          4 |       4 |        279 | 2026-07-26 | starmalls.com.ph                            |
 | waltermart |         46 |      46 |      1,497 | 2026-07-26 | malls.waltermart.com.ph                     |
 | xentro     |         19 |      19 |      1,006 | 2026-07-26 | xentromalls.com                             |
-| **total**  |    **328** | **302** | **42,412** |            |                                             |
+| **total**  |    **322** | **296** | **41,468** |            |                                             |
 
 `properties` counts everything the operator publishes a directory for; `malls` excludes non-mall retail (condo podiums, amusement parks, office annexes). **Use `malls` for chain-vs-chain comparison.**
 
@@ -100,17 +99,6 @@ Raw listings are retained; these signals describe uncertainty rather than removi
 |---------------------------|--------------|------|---------:|
 | Fisher Mall Quezon Avenue | metro-manila | mall |      195 |
 | Fisher Mall Malabon       | metro-manila | mall |      147 |
-
-### gmall (6 properties, 944 listings)
-
-| property        | region   | type | listings |
-|-----------------|----------|------|---------:|
-| GMall of Davao  | mindanao | mall |      438 |
-| GMall of Tagum  | mindanao | mall |      259 |
-| GMall of Toril  | mindanao | mall |      139 |
-| GMall of Digos  | mindanao | mall |      108 |
-| Gmall of Cebu   | visayas  | mall |        0 |
-| GMall of Gensan | mindanao | mall |        0 |
 
 ### megaworld (26 properties, 2,118 listings)
 
@@ -428,13 +416,11 @@ Raw listings are retained; these signals describe uncertainty rather than removi
 
 ## Properties with zero listings
 
-13 properties publish no tenant directory. Every one was checked against its source and is an upstream gap, not a parse failure.
+11 properties publish no tenant directory. Every one was checked against its source and is an upstream gap, not a parse failure.
 
 | chain      | property                    | id                       |
 |------------|-----------------------------|--------------------------|
 | ayala      | Ayala Malls Vermosa         | ayala-vermosa            |
-| gmall      | Gmall of Cebu               | gmall-of-cebu            |
-| gmall      | GMall of Gensan             | gmall-of-gensan          |
 | megaworld  | Tuscany at McKinley Hill    | tuscany-at-mckinley-hill |
 | robinsons  | Robinsons Cybergate Bacolod | cybergate-bacolod        |
 | sm         | SM City La Union            | sm-city-la-union         |
@@ -533,27 +519,27 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 ## Brand reach
 
-11,489 distinct brands after normalization.
+11,058 distinct brands after normalization.
 
 | brand                  | malls | chains |
 |------------------------|------:|-------:|
-| WATSONS                |   197 |     12 |
-| POTATO CORNER          |   195 |     11 |
-| BENCH                  |   176 |     12 |
-| BANCO DE ORO           |   173 |     10 |
-| JOLLIBEE               |   173 |     11 |
-| SAMSUNG                |   169 |     10 |
-| PENSHOPPE              |   163 |     12 |
-| EXECUTIVE OPTICAL      |   154 |     11 |
-| VIVO                   |   144 |     10 |
-| AFICIONADO             |   136 |     10 |
+| WATSONS                |   193 |     11 |
+| POTATO CORNER          |   191 |     10 |
+| BENCH                  |   172 |     11 |
+| BANCO DE ORO           |   171 |      9 |
+| JOLLIBEE               |   170 |     10 |
+| SAMSUNG                |   168 |      9 |
+| PENSHOPPE              |   159 |     11 |
+| EXECUTIVE OPTICAL      |   152 |     10 |
+| VIVO                   |   140 |      9 |
+| AFICIONADO             |   133 |      9 |
 | FAMOUS BELGIAN WAFFLES |   131 |      5 |
-| OPPO                   |   131 |     11 |
-| KFC                    |   130 |      8 |
-| NATIONAL BOOKSTORE     |   130 |     10 |
-| KETTLE KORN            |   129 |      9 |
-| MANG INASAL            |   128 |     11 |
+| KFC                    |   128 |      7 |
 | IAN DARCY              |   127 |      8 |
-| CHOWKING               |   123 |     10 |
+| OPPO                   |   127 |     10 |
+| NATIONAL BOOKSTORE     |   126 |      9 |
+| KETTLE KORN            |   125 |      8 |
+| MANG INASAL            |   125 |     10 |
+| CHOWKING               |   121 |      9 |
 | DUNKIN                 |   118 |      5 |
-| GREENWICH              |   118 |      9 |
+| ACE HARDWARE           |   115 |      7 |

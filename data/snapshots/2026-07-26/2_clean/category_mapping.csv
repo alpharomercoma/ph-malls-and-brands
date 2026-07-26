@@ -3,7 +3,6 @@ sm,dining,dining,6465
 ayala,dine,dining,1752
 megaworld,dine,dining,872
 waltermart,food choices,dining,414
-gmall,food,dining,297
 filinvest,dining,dining,166
 filinvest,dining / food (kiosk / carts),dining,107
 starmall,dining,dining,92
@@ -18,7 +17,6 @@ sm,coffee-tea-snack-counter-2,dining,2
 sm,fries,dining,2
 sm,juices-shakes-2,dining,2
 sm,milk-dairy,dining,2
-gmall,dining,dining,1
 sm,candies-chocolates-nuts-chips,dining,1
 sm,casual-dining,dining,1
 sm,fine-dining,dining,1
@@ -31,14 +29,12 @@ filinvest,appliances / electronics,electronics,57
 filinvest,telecoms / computers / electronics,electronics,41
 sm,mobile-phone-accessories,electronics,20
 sm,mobile-phones-accessories,electronics,9
-gmall,gadgets,electronics,6
 sm,appliances-electronics-games-2,electronics,1
 sm,entertainment,entertainment,506
 ayala,entertainment,entertainment,104
 sm,cinema,entertainment,81
 waltermart,amusement,entertainment,39
 filinvest,recreational,entertainment,25
-gmall,entertainement,entertainment,25
 megaworld,experience,entertainment,10
 starmall,amusement,entertainment,5
 robinsons,recharge,entertainment,1
@@ -80,7 +76,6 @@ megaworld,services,services,571
 waltermart,services,services,240
 sm,atm,services,171
 sm,services,services,163
-gmall,services,services,159
 starmall,services,services,72
 sm,government-offices,services,67
 filinvest,services,services,44
@@ -97,12 +92,10 @@ sm,shopping,shopping,4638
 ayala,shop,shopping,2662
 megaworld,shop,shopping,665
 ayala,essentials,shopping,522
-gmall,retail,shopping,441
 waltermart,shops,shopping,390
 starmall,shopping,shopping,101
 filinvest,children's shops,shopping,10
 starmall,essentials,shopping,9
-gmall,shopping,shopping,8
 robinsons,shop,shopping,7
 sm,hobbies-and-specialty,specialty,1264
 filinvest,specialty shops,specialty,58
@@ -126,5 +119,4 @@ ortigas,,unknown,204
 sm,others,unknown,82
 ortigas,9,unknown,21
 filinvest,others,unknown,12
-gmall,all,unknown,7
 sm,cigar-tobacco-accs,unknown,1

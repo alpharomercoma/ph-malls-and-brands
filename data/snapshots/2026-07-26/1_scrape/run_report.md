@@ -4,7 +4,6 @@
 - **ayala**: 32 malls, 5640 store rows
 - **filinvest**: 5 malls, 956 store rows
 - **fishermall**: 2 malls, 342 store rows
-- **gmall**: 6 malls, 944 store rows
 - **megaworld**: 26 malls, 2118 store rows
 - **ortigas**: 4 malls, 1279 store rows
 - **robinsons**: 54 malls, 8392 store rows
@@ -12,7 +11,7 @@
 - **starmall**: 4 malls, 279 store rows
 - **waltermart**: 46 malls, 1497 store rows
 - **xentro**: 19 malls, 1006 store rows
-- ⚠ malls with 0 stores: [('ayala', 'ayala-vermosa'), ('gmall', 'gmall-of-cebu'), ('gmall', 'gmall-of-gensan'), ('megaworld', 'tuscany-at-mckinley-hill'), ('robinsons', 'cybergate-bacolod'), ('sm', 'sm-city-la-union'), ('sm', 'sm-city-zamboanga'), ('sm', 'sm-makati'), ('waltermart', 'mabalacat'), ('waltermart', 'san-pascual'), ('waltermart', 'silang'), ('xentro', 'xentro-mall-antipolo'), ('xentro', 'xentro-mall-polangui')]
+- ⚠ malls with 0 stores: [('ayala', 'ayala-vermosa'), ('megaworld', 'tuscany-at-mckinley-hill'), ('robinsons', 'cybergate-bacolod'), ('sm', 'sm-city-la-union'), ('sm', 'sm-city-zamboanga'), ('sm', 'sm-makati'), ('waltermart', 'mabalacat'), ('waltermart', 'san-pascual'), ('waltermart', 'silang'), ('xentro', 'xentro-mall-antipolo'), ('xentro', 'xentro-mall-polangui')]
 
 _First run - no previous snapshot to diff against._
 
@@ -20,3 +19,54 @@ _First run - no previous snapshot to diff against._
 - 0 stores for sm-city-la-union
 - 0 stores for sm-city-zamboanga
 - 0 stores for sm-makati
+- operating malls with no published directory - absent from store data by necessity: Robinsons Townville Pulilan (opened 2010); Robinsons Townville Cabanatuan (opened 2008); Robinsons Townville Meycauayan; Robinsons Townville Regalado; Robinsons Townville BF Paranaque; Robinsons Townville Buhay na Tubig; Robinsons Townville Perdices; The Mall @ NUSTAR (opened 2022)
+- 0 stores for cybergate-bacolod
+- operating malls with no published directory - absent from store data by necessity: Ayala Malls Arca South (opened 2026-02-13); Ayala Malls Evo City (opened 2025-09-05); The District North Point (opened 2013-04-03); Ayala Malls Parklinks
+- ayala-vermosa: no directory published (mall has explore=false in Ayala's API - genuinely absent upstream, not a parse failure)
+- 0 stores for ayala-vermosa
+- 0 stores for tuscany-at-mckinley-hill
+- antipolo: categories ['food-choices', 'shops', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- arayat: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- bacoor: categories ['food-choices', 'shops', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- balanga: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- balayan: categories ['food-choices', 'shops', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- baliwag: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- batangas-city: categories ['food-choices'] returned exactly 10 (the site cap) - true tenant count is higher
+- bicutan: categories ['food-choices', 'shops', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- cabanatuan: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- cabuyao: categories ['food-choices'] returned exactly 10 (the site cap) - true tenant count is higher
+- caloocan: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- candelaria: categories ['food-choices', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- capas: categories ['food-choices'] returned exactly 10 (the site cap) - true tenant count is higher
+- carmona: categories ['food-choices'] returned exactly 10 (the site cap) - true tenant count is higher
+- concepcion: categories ['food-choices', 'shops', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- dasmarinas: categories ['food-choices', 'shops', 'cybermart', 'wellness'] returned exactly 10 (the site cap) - true tenant count is higher
+- erodriguez: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- gapan: categories ['food-choices', 'shops', 'cybermart', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- general-trias: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- guiguinto: categories ['food-choices', 'shops', 'cybermart', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- 0 stores for mabalacat
+- macapagal: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- makati: categories ['food-choices', 'shops', 'cybermart', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- makiling: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- malolos: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- muntinlupa: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- naic: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- nasugbu: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- north-edsa: categories ['food-choices', 'shops', 'cybermart', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- paniqui: categories ['food-choices', 'shops', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- pasay: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- plaridel: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- san-fernando: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- san-jose: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- 0 stores for san-pascual
+- 0 stores for silang
+- sta-maria: categories ['food-choices', 'shops', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- sta-rosa: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- subic: categories ['food-choices', 'shops', 'cybermart'] returned exactly 10 (the site cap) - true tenant count is higher
+- sucat: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- tanauan: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- taytay: categories ['food-choices', 'shops', 'services'] returned exactly 10 (the site cap) - true tenant count is higher
+- trece-martires: categories ['food-choices', 'shops'] returned exactly 10 (the site cap) - true tenant count is higher
+- 0 stores for xentro-mall-antipolo
+- 0 stores for xentro-mall-polangui

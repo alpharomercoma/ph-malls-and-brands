@@ -18,7 +18,7 @@ previous bundle is deleted, so the deploy directory always holds exactly one.
 
 ## Why the bundle is shaped the way it is
 
-328 properties, 11,489 tenant identities and roughly 41,000 brand-to-property edges have to reach
+322 properties, 11,058 tenant identities and roughly 41,000 brand-to-property edges have to reach
 a phone. Three choices keep it near 220 KB compressed: columnar arrays instead
 of objects, integer indices into shared dictionaries for every repeated string,
 and edges as one flat integer array read in pairs.

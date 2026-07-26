@@ -1,6 +1,6 @@
 """Build the compact JSON the site loads.
 
-Size is the whole design constraint: 328 malls, 11,489 tenant identities and 41,000+
+Size is the whole design constraint: 322 malls, 11,058 tenant identities and 41,000+
 brand-to-mall edges have to reach a phone quickly. Three choices keep it small:
 
 1. Columnar arrays of arrays, not arrays of objects, so field names are stored
@@ -106,11 +106,19 @@ def build(run_date: str) -> tuple[str, dict]:
     brand_keys = sorted(per_brand.index)
     brand_ix = {k: i for i, k in enumerate(brand_keys)}
     brand_rows, edges = [], []
+    aliases: dict[int, str] = {}
     for key in brand_keys:
         mall_ids = per_brand[key]
         chain_mask = 0
         for chain, _mid in mall_ids:
             chain_mask |= 1 << chain_ix[chain]
+        # Searching "bpi" must find the branch entity even though its display
+        # name is "Bank of the Philippine Islands". Carry the key as an alias
+        # whenever it is not already findable inside the display name, which
+        # keeps the payload small: most keys are just the lowercased name.
+        display_name = str(display[key])
+        if key not in display_name.lower():
+            aliases[len(brand_rows)] = key
         brand_rows.append([
             str(display[key]),
             cat_ix.get(primary_cat.get(key, ""), -1),
@@ -141,6 +149,8 @@ def build(run_date: str) -> tuple[str, dict]:
         "malls": mall_rows,
         # [name, categoryIdx, mallCount, chainBitmask]
         "brands": brand_rows,
+        # sparse brandIdx -> alias, for names that do not contain their own key
+        "aliases": {str(k): v for k, v in sorted(aliases.items())},
         # Full category membership; the row's category index remains the
         # primary display category for compact rendering.
         "brandCategories": [

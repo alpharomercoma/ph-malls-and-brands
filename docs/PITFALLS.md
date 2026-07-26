@@ -34,10 +34,10 @@ records, and must not silently degrade when part of it is missing.
 
 ## Deriving a roster from data instead of from the roster
 
-GMall's mall list was derived from the tenant table's branch column. Two
-branches (Cebu, GenSan) are offered by the site's own filter but carry zero
-tenant rows, so they never became malls at all — a 2-of-6 undercount invisible
-in every report, including the zero-store list.
+One chain's mall list was derived from its tenant table's branch column. Two
+branches were offered by the site's own filter but carried zero tenant rows, so
+they never became malls at all: a chain-level undercount invisible in every
+report, including the zero-store list.
 
 **Rule:** derive the roster from the site's roster (filter, nav, index), then
 attach data to it. Never infer existence from the presence of data.

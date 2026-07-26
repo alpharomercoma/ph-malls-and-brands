@@ -3,7 +3,7 @@
  * Three constraints drive the design:
  *   Size    the bundle is columnar with integer indices, so it stays small
  *           enough for a phone. It is fetched once and kept in memory.
- *   Speed   11,489 tenant identities never all reach the DOM. A fixed row height lets the
+ *   Speed   11,058 tenant identities never all reach the DOM. A fixed row height lets the
  *           list render only the visible window plus a small overscan, so
  *           scrolling cost is constant regardless of result count.
  *   Safety  every value from the data is written with textContent. No innerHTML
@@ -30,7 +30,7 @@ const state = {
 const el = (id) => document.getElementById(id);
 const fmt = (n) => n.toLocaleString('en-US');
 // dictionary keys are slugs (metro-manila, health_beauty); show them as words
-const SPECIAL = { smdc: 'SMDC', sm: 'SM', gmall: 'GMall', xentro: 'XentroMalls' };
+const SPECIAL = { smdc: 'SMDC', sm: 'SM', xentro: 'XentroMalls' };
 const label = (s) =>
   SPECIAL[s] ||
   s.replace(/[_-]/g, ' ').replace(/\b[a-z]/g, (c) => c.toUpperCase());
@@ -54,7 +54,10 @@ async function load() {
 function prepare(data) {
   // Lowercased names for search. Doing this once turns every keystroke into a
   // plain substring scan over a flat array, which stays well under a frame.
-  data.brandSearch = data.brands.map((b) => b[0].toLowerCase());
+  const aliases = data.aliases || {};
+  data.brandSearch = data.brands.map(
+    (b, i) => (aliases[i] ? `${b[0]} ${aliases[i]}` : b[0]).toLowerCase(),
+  );
   data.mallSearch = data.malls.map((m) => m[0].toLowerCase());
 
   // brand -> its malls, from the flat edge pairs

@@ -3,7 +3,7 @@
 A reproducible dataset of what is inside Philippine malls, and a site for
 exploring it.
 
-**328 properties, 42,412 store listings, 11,489 tenant identities, 12 operators.**
+**322 properties, 41,468 store listings, 11,058 tenant identities, 11 operators.**
 
 | | |
 |---|---|
@@ -85,7 +85,7 @@ markup. See [4_website/README.md](4_website/README.md).
 
 | operator | properties | malls | listings |
 |---|---:|---:|---:|
-| SM Supermalls | 126 | 101 | 19,640 |
+| SM Supermalls | 126 | 100 | 19,640 |
 | Robinsons Malls | 54 | 54 | 8,392 |
 | Ayala Malls | 32 | 32 | 5,640 |
 | Megaworld Lifestyle Malls | 26 | 26 | 2,118 |
@@ -93,7 +93,6 @@ markup. See [4_website/README.md](4_website/README.md).
 | Ortigas Land | 4 | 4 | 1,279 |
 | XentroMalls | 19 | 19 | 1,006 |
 | Filinvest Malls | 5 | 5 | 956 |
-| GMall (DSG Sons) | 6 | 6 | 944 |
 | Fisher Mall | 2 | 2 | 342 |
 | Araneta City | 4 | 4 | 319 |
 | Starmall | 4 | 4 | 279 |
