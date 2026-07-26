@@ -15,6 +15,11 @@ challenge:
 
 The mall page itself caps each category carousel at 10 items, so the category
 pages are the authoritative source and are what this scraper reads.
+
+Mabalacat, San Pascual and Silang legitimately return zero stores: their
+category pages contain only the empty store-detail modal template
+(``#wm-store-name`` etc.) and no ``a.wm-store`` tenant anchors at all.
+Verified against the live site 2026-07 — an upstream gap, not a selector bug.
 """
 
 from __future__ import annotations
