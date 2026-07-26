@@ -82,7 +82,11 @@ class SMScraper(MallChainScraper):
         return sorted(by_code.values(), key=lambda m: m.mall_id)
 
     def scrape_mall(self, mall: Mall) -> list[Store]:
-        stores: list[Store] = []
+        # Deduplicate by tenant_slug: SM's pagination is not a stable sort, so a
+        # tenant can appear on two consecutive pages. Verified 2026-07 that the
+        # unique set is identical across asc/desc/floor orders and across every
+        # per-category sweep, so this is the complete published directory.
+        by_slug: dict[str, Store] = {}
         page = 0
         expected = None
         while page < MAX_PAGES:
@@ -108,7 +112,9 @@ class SMScraper(MallChainScraper):
             if not batch:
                 break
             for t in batch:
-                stores.append(
+                slug = t.get("tenant_slug") or t.get("tenant_display_name")
+                by_slug.setdefault(
+                    slug,
                     Store(
                         chain=self.chain,
                         mall_id=mall.mall_id,
@@ -117,11 +123,24 @@ class SMScraper(MallChainScraper):
                         floor=(t.get("tenant_floor") or "").strip() or None,
                         building=(t.get("tenant_building") or "").strip() or None,
                         source="sm-api",
-                    )
+                    ),
                 )
-            if len(stores) >= expected:
+            if len(by_slug) >= expected:
                 break
             page += 1
-        if expected is not None and len(stores) != expected:
-            self.warn(f"{mall.mall_id}: collected {len(stores)} of {expected} tenants")
+
+        stores = list(by_slug.values())
+        # SM's `counts` is inflated relative to what pagination will actually
+        # serve (it appears to include hidden/inactive tenants). Verified
+        # unrecoverable, so only flag a gap large enough to suggest a real
+        # failure rather than the usual upstream metadata drift.
+        if expected:
+            shortfall = (expected - len(stores)) / expected
+            if not stores:
+                self.warn(f"{mall.mall_id}: API reports {expected} tenants but served none")
+            elif shortfall > 0.20:
+                self.warn(
+                    f"{mall.mall_id}: only {len(stores)} of {expected} reported "
+                    f"tenants served ({shortfall:.0%} short) — investigate"
+                )
         return stores

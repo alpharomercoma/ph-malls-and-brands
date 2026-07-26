@@ -20,7 +20,10 @@ SM and Robinsons region buckets. No floor/level data is exposed by this API
 
 from __future__ import annotations
 
+import datetime as dt
+import json
 import re
+from importlib import resources
 
 from ..models import Mall, Store
 from .base import MallChainScraper
@@ -134,7 +137,42 @@ class AyalaScraper(MallChainScraper):
         unknown = set(self._bulk_counts) - {m.mall_id for m in malls}
         if unknown:
             self.warn(f"stores reference malls missing from /malls: {sorted(unknown)}")
+
+        self._check_known_gaps({m.mall_name.lower() for m in malls})
         return sorted(malls, key=lambda m: m.mall_id)
+
+    def _check_known_gaps(self, api_names: set[str]) -> None:
+        """Report Ayala retail properties known to exist but absent from the API.
+
+        Keeps the coverage limit visible in every run report, and tells us when
+        a previously missing mall (e.g. Arca South) finally lands in the API so
+        it can be dropped from the registry.
+        """
+        raw = resources.files("mallscape.registry").joinpath("ayala_coverage.json").read_text()
+        coverage = json.loads(raw)
+        today = dt.date.today().isoformat()
+        missing_malls, appeared = [], []
+        for entry in coverage["not_in_api"]:
+            name = entry["name"].lower()
+            if any(name in n or n in name for n in api_names):
+                appeared.append(entry["name"])
+            elif (
+                entry["property_type"] == "mall"
+                and entry.get("opened")
+                # skip malls that have not opened yet
+                and entry["opened"][:10] <= today
+            ):
+                missing_malls.append(f"{entry['name']} (opened {entry['opened']})")
+        if missing_malls:
+            self.warn(
+                "known Ayala malls with NO official directory in the API — "
+                "excluded from store data by necessity: " + "; ".join(missing_malls)
+            )
+        for name in appeared:
+            self.warn(
+                f"{name} now appears in the API — remove it from "
+                f"registry/ayala_coverage.json so its stores are scraped"
+            )
 
     def scrape_mall(self, mall: Mall) -> list[Store]:
         rows = self.fetcher.get_json(
