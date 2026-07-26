@@ -11,9 +11,12 @@ from .fetch import Fetcher
 from .scrapers.araneta import AranetaScraper
 from .scrapers.ayala import AyalaScraper
 from .scrapers.filinvest import FilinvestScraper
+from .scrapers.fishermall import FishermallScraper
 from .scrapers.megaworld import MegaworldScraper
+from .scrapers.ortigas import OrtigasScraper
 from .scrapers.robinsons import RobinsonsScraper
 from .scrapers.sm import SMScraper
+from .scrapers.xentro import XentroScraper
 from .scrapers.starmall import StarmallScraper
 from .scrapers.waltermart import WaltermartScraper
 
@@ -28,6 +31,9 @@ SCRAPERS = {
     "starmall": StarmallScraper,
     "waltermart": WaltermartScraper,
     "araneta": AranetaScraper,
+    "fishermall": FishermallScraper,
+    "ortigas": OrtigasScraper,
+    "xentro": XentroScraper,
 }
 
 

@@ -48,6 +48,15 @@
    "status": "no-tenant-directory",
    "finding": "citymall.com.ph is a thin DoubleDragon corporate shell; /citymall_map returns a 423-byte stub. DoubleDragon reported 43 operating CityMalls at end-2024 with a target of 100 by 2030. These are small community malls anchored by a supermarket; no per-mall tenant directory is published on any official domain found.",
    "recheck": "Branch list could be assembled from DoubleDragon investor disclosures / Wikipedia if mall-level coverage is wanted."
+  },
+  {
+   "chain": "shangrila",
+   "name": "Shangri-La Plaza (Shang Properties)",
+   "site": "https://www.shangrila-plaza.com (DEAD)",
+   "malls_known": 1,
+   "status": "no-current-directory",
+   "finding": "Their official domain shangrila-plaza.com no longer resolves (no DNS), and shangrilaplaza.com.ph is a ParkLogic parked page offering the domain for sale. The only surviving official store listing is a Google Sites page at sites.google.com/view/shangcommunity/store-listing, which is explicitly stamped 'Updated as of February 02, 2021' \u2014 COVID-era data, five years stale. NOT scraped: importing 2021 tenants into a 2026 snapshot would silently corrupt month-over-month brand analysis.",
+   "recheck": "Watch for a relaunched Shang Properties mall site. The Google Sites listing IS parseable (same Google Sites structure as the Robinsons VMD parser) if stale data is ever acceptable for a one-off backfill."
   }
  ],
  "notes": [
@@ -56,6 +65,8 @@
   "Festival Mall is not a separate operator \u2014 it is Filinvest's flagship and is covered by the filinvest scraper.",
   "Starmall and Vista Mall are both Vista Land brands but are separate sites; only Starmall publishes tenant directories.",
   "Filinvest's IL CORSO directory lists only 19 shops, which is sparse for a mall of its size \u2014 an upstream data limitation, not a parse failure (verified against raw table row counts).",
-  "WalterMart IS scraped: waltermart.com.ph is behind an sgcaptcha challenge, but the malls.waltermart.com.ph subdomain serves plain HTML with no challenge. Store data rides on a.wm-store data-* attributes on /malls/<slug>/<category> pages."
+  "WalterMart IS scraped: waltermart.com.ph is behind an sgcaptcha challenge, but the malls.waltermart.com.ph subdomain serves plain HTML with no challenge. Store data rides on a.wm-store data-* attributes on /malls/<slug>/<category> pages.",
+  "xentromall.com.ph is a parked domain; the live XentroMalls site is www.xentromalls.com.",
+  "XentroMall Antipolo, Polangui and ShopKing publish only the leasing-requirements checklist on their locator pages, no tenant list \u2014 their zero counts are an upstream gap, verified."
  ]
 }
