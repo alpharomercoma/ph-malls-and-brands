@@ -58,33 +58,61 @@ Parse `props.categories` from the cached Inertia payload into `{id: name}` and
 map each store's id. An id absent from the lookup keeps its raw value and
 raises a scraper warning rather than passing through as data.
 
-### P2. Detect, split and flag combined names (stage 2)
+### P2. Detect combined names and recover brands without splitting (stage 2)
 
 New module `2_clean/mallscape_clean/combined_names.py`.
 
+**Why not split.** Splitting was attempted and rejected on measurement. A
+one-sided longest-attested-prefix/suffix rule splits 212 of 381 rows at roughly
+67% precision, and its failure modes are the damaging kind: `CEBUANA LHUILLIER`
+becomes `cebuana` + `lhuillier`, destroying a real brand; `RCBC ATM` becomes
+`rcbc` + `atm`, inventing a phantom tenant and breaking the deliberate
+bank/ATM separation; `FRESH SALON AND SPA CA EXHIBITS ( PROPERTY PRO )` splits
+at the wrong point entirely. Requiring both halves to be attested raises
+precision but resolves only 45 of 381. No threshold makes guessing a split
+point safe, because the delimiter genuinely is not in the data.
+
 **Detect.** Per mall, compute median token count and the rate at which a
 nationally attested brand is a strict prefix. A mall is suspect when median
-tokens >= 4 or prefix rate >= 0.40. Detection runs for *every* chain, not just
-Xentro, so the next occurrence anywhere is caught.
+tokens >= 4 or prefix rate >= 0.40. Detection runs for *every* chain, so the
+next occurrence anywhere is caught.
 
 **Decide.** Suspect malls are recorded in
 `1_scrape/mallscape_scrape/registry/combined_name_malls.json` with the measured
-evidence. The registry decides what gets split; the heuristic only proposes.
-A mall that crosses the threshold without a registry entry, or an entry whose
-mall no longer crosses it, is a loud warning. This follows the existing rule
-that coverage facts are data, not code.
+evidence. The registry decides; the heuristic only proposes, and disagreement
+in either direction is a loud warning. Coverage facts are data, not code.
 
-**Split.** Dictionary is national brands (in >= 3 malls, excluding the chain
-under repair) plus exact names from the same chain's clean malls. Longest
-attested prefix wins; failing that, longest attested suffix. The remainder
-must contain a letter and be at least two characters. Splits 212 of 381 rows.
+**Recover brands by mention, not by splitting.** For rows in flagged malls:
 
-**Flag.** Both halves keep the original `store_name_raw` for lineage and carry
-`split_combined_name`. The 169 rows that do not split carry
-`combined_name_unsplit` and are written to a review file for a human decision;
-many are genuinely single tenants and need no action.
+* the raw string does **not** become a brand, which removes the fabricated
+  brand keys those malls currently contribute;
+* the row is scanned for occurrences of attested brands as whole words,
+  longest match first, scanning continuing after each match so one brand is
+  never found inside another;
+* each match emits a brand-to-property association;
+* the listing row itself is kept verbatim and flagged `combined_name`.
 
-Xentro listing counts rise. The report states this rather than absorbing it.
+The vocabulary is national brands only: attested in >= 3 malls across other
+chains, raised to >= 8 for single-word names so a generic word is not mistaken
+for a brand. Xentro's own clean malls are deliberately excluded, because
+including them readmits descriptors like `barber shop` and `exhibit`.
+
+This recovers 182 correct associations from 160 of the 381 rows. The remainder
+are purely local businesses (`ANX KABAYAN PAWNSHOP`, `BUGS BUNNY BARBER SHOP`)
+that exist in no other mall and so could never be reached by a brand search
+anyway. Nothing is invented, no real brand is broken, listing totals are
+unchanged, and no manual review is required.
+
+It is a pure function of the snapshot, so it is fully repeatable and pins
+directly into regression tests. These cases are fixed as unit tests:
+
+| input | expected |
+|---|---|
+| `CEBUANA LHUILLIER` | `[cebuana lhuillier]` — one brand, not two |
+| `RCBC ATM` | `[rcbc atm]` — ATM stays distinct from the bank |
+| `SAMSUNG MOBILE CAPTAINS BURGER` | `[samsung]` |
+| `JOLLIBEE MINI GEM EXHIBIT (29)` | `[jollibee]` |
+| `BUGS BUNNY BARBER SHOP` | `[]` — no generic-word false positive |
 
 ### P3. Brand resolution (stage 2)
 
@@ -181,15 +209,17 @@ below the map on a phone; reach shows a denominator.
 
 ## Risks
 
-- Listing totals rise (Xentro splits) and brand totals fall (canonicalization
-  plus fewer fabricated names). README, `breakdown.md` and `DATA.md` are
-  regenerated, and the report states both movements.
-- The splitter will be wrong on some rows. Every split is flagged and carries
-  its original raw name, so it is auditable and reversible.
+- Listing totals are unchanged; brand totals fall, from canonicalization and
+  from flagged malls no longer contributing fabricated names. README,
+  `breakdown.md` and `DATA.md` are regenerated and the report states it.
+- Mention detection has limited recall on purely local businesses. That is a
+  deliberate trade: a missing association for a shop that exists in one mall
+  costs nothing, while a phantom association would undermine brand search.
 - Detection thresholds are tuned to current data. The registry is the decider
   precisely so that a threshold drift warns instead of silently changing data.
 
 ## Open for review
 
-169 unsplit rows in the four affected malls are written to a review file for a
-human decision. No further work depends on that review.
+None. Combined names are resolved autonomously by mention detection, so there
+is no manual review queue and no step that has to be repeated by hand when the
+data changes.
