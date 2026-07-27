@@ -102,6 +102,14 @@ GEOCODER_USER_AGENT: str = _str(
 # the site build checks, so a silent mismatch cannot ship.
 TILE_URL: str = _str("MALLSCAPE_TILE_URL", "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
 TILE_ATTRIBUTION: str = _str("MALLSCAPE_TILE_ATTRIBUTION", "© OpenStreetMap contributors")
+# The page sends no referrer by default, which is right for privacy and wrong
+# for tiles: OpenStreetMap's usage policy requires a valid Referer or an
+# identifying User-Agent, and a browser cannot set the latter. Without one the
+# request is unattributable and gets blocked. This applies to the tile images
+# only, and sends the origin without the path.
+TILE_REFERRER_POLICY: str = _str(
+    "MALLSCAPE_TILE_REFERRER_POLICY", "strict-origin-when-cross-origin"
+)
 
 
 def summary() -> dict[str, object]:

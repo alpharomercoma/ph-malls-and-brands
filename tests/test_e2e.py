@@ -431,3 +431,29 @@ def test_stat_tiles_follow_the_filters(page):
     assert page.locator(".stat").count() == 3
     page.click("#reset")
     page.wait_for_timeout(300)
+
+
+def test_tiles_identify_the_page_without_leaking_the_path(page):
+    """OpenStreetMap's usage policy requires a Referer or an identifying
+    User-Agent, and a browser cannot set the second. The page sends no referrer
+    at all, so tile requests arrived unattributable and were refused.
+
+    The override is deliberately narrow: the document keeps `no-referrer`, and
+    only the tile images opt into sending an origin. A blanket relaxation would
+    leak the referrer to every future destination as well.
+    """
+    _open_map(page)
+    policy = page.evaluate(
+        "() => { const t = document.querySelector('#map img.leaflet-tile');"
+        " return t && t.referrerPolicy; }"
+    )
+    assert policy == "strict-origin-when-cross-origin", (
+        f"tile images must opt into sending an origin, got {policy!r}"
+    )
+    # the document-level default must stay restrictive
+    meta = page.evaluate(
+        "() => document.querySelector('meta[name=referrer]')?.content"
+    )
+    assert meta == "no-referrer", meta
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)

@@ -532,6 +532,7 @@ async function syncMap() {
     await mapview.ensure({
       container: el('map'),
       tiles: document.body.dataset.tiles,
+      referrerPolicy: document.body.dataset.tileReferrer,
       onTileFailure: tileFailureNotice,
     });
   } catch (err) {

@@ -31,6 +31,7 @@ BUNDLE_RE = re.compile(r'data-bundle="[^"]*"')
 DATE_RE = re.compile(r'data-snapshot="[^"]*"')
 TILES_RE = re.compile(r'data-tiles="[^"]*"')
 TILE_ATTR_RE = re.compile(r'data-tile-attribution="[^"]*"')
+TILE_REF_RE = re.compile(r'data-tile-referrer="[^"]*"')
 # Scoped to the policy's own content attribute. A bare `img-src [^;]*;` also
 # matches the words "img-src" in the comment above the tag, and rewrote that
 # instead, leaving the real policy untouched.
@@ -101,6 +102,7 @@ def run(run_date: str) -> Path:
     for pattern, replacement, what in (
         (TILES_RE, f'data-tiles="{config.TILE_URL}"', "data-tiles attribute"),
         (TILE_ATTR_RE, f'data-tile-attribution="{config.TILE_ATTRIBUTION}"', "data-tile-attribution attribute"),
+        (TILE_REF_RE, f'data-tile-referrer="{config.TILE_REFERRER_POLICY}"', "data-tile-referrer attribute"),
     ):
         html, n = pattern.subn(replacement, html, count=1)
         if n != 1:

@@ -47,6 +47,13 @@ Dark mode inverts the raster tiles rather than pulling in a second tile source.
 Attribution is rendered as our own DOM, not through Leaflet's control, so the
 no-`innerHTML` rule holds across the whole page.
 
+Tile requests carry a referrer even though the page sends none. OpenStreetMap's
+usage policy requires a Referer or an identifying User-Agent, and a browser
+cannot supply a User-Agent, so a page with `no-referrer` is unattributable and
+its tiles get refused. The override is set on the tile images only, via
+Leaflet's `referrerPolicy` option, and sends the origin without the path; the
+document keeps `no-referrer` for everything else.
+
 `MALLSCAPE_TILE_URL` is the only thing to change to use a different tile
 server. The build derives the CSP's `img-src` from it, so the policy and the
 request can never disagree, and a template missing `{z}`, `{x}` or `{y}` fails

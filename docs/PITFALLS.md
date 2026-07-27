@@ -226,3 +226,23 @@ those malls and 22 for a control.
 
 Count the thing, not a string that appears near the thing. A control page with
 a known answer turns a plausible number into a checkable one.
+
+
+## A privacy default that broke a third-party dependency
+
+The page sets `no-referrer`, and both the dev server and `vercel.json` send the
+same as a header. That is the right default, and it silently disqualified the
+map: OpenStreetMap's tile usage policy requires either a valid Referer or a
+User-Agent identifying the application, and a browser will not let a page set
+the second. Tiles arrived with `referer:` empty, unattributable, and were
+refused. Nothing in the page reported it, because a blocked tile looks exactly
+like a slow one.
+
+The fix belongs on the element, not the document: Leaflet's `referrerPolicy`
+option sets the attribute on each tile image before its `src`, and an
+element-level policy outranks both the meta tag and the HTTP header. The
+document keeps `no-referrer` for every other destination.
+
+A restrictive default is still a dependency on someone else's terms. When a
+third party states what it needs to serve you, check the request it actually
+receives rather than the policy you intended to send.

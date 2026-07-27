@@ -191,7 +191,7 @@ export function isLoaded() {
 }
 
 /** Create the map on first use. Safe to call repeatedly. */
-export async function ensure({ container, tiles, attribution, onTileFailure }) {
+export async function ensure({ container, tiles, attribution, referrerPolicy, onTileFailure }) {
   onTileError = onTileFailure;
   if (map) return map;
   await loadLeaflet();
@@ -216,7 +216,17 @@ export async function ensure({ container, tiles, attribution, onTileFailure }) {
   // reader in the empty Pacific with no way back except the reset button.
   map.setMaxBounds(L.latLngBounds([1.0, 112.0], [24.0, 132.0]));
 
-  tileLayer = L.tileLayer(tiles, { maxZoom: MAX_ZOOM, attribution: '', crossOrigin: false });
+  // referrerPolicy is set on the tile images only. The document sends no
+  // referrer at all, which leaves the tile host unable to attribute the
+  // request; its usage policy requires either a Referer or an identifying
+  // User-Agent, and a browser cannot supply the second. Leaflet applies this
+  // before setting src, so it governs the request rather than arriving late.
+  tileLayer = L.tileLayer(tiles, {
+    maxZoom: MAX_ZOOM,
+    attribution: '',
+    crossOrigin: false,
+    referrerPolicy: referrerPolicy || 'strict-origin-when-cross-origin',
+  });
   tileLayer.on('tileerror', () => {
     if (tilesFailed) return;
     tilesFailed = true;
