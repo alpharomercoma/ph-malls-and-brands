@@ -66,9 +66,13 @@ function injectScript(src) {
  *  a fetch that will not succeed. */
 function loadLeaflet() {
   if (loading) return loading;
+  // Same version marker as the rest of the assets, so a deploy cannot leave a
+  // visitor running new code against an old library.
+  const v = document.body.dataset.assets;
+  const q = v ? `?v=${v}` : '';
   loading = Promise.all([
-    injectStylesheet('vendor/leaflet.css'),
-    injectScript('vendor/leaflet.js'),
+    injectStylesheet(`vendor/leaflet.css${q}`),
+    injectScript(`vendor/leaflet.js${q}`),
   ]).then(() => {
     if (!window.L) throw new Error('the map library loaded but did not initialise');
     L = window.L;

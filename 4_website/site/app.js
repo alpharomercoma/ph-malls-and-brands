@@ -12,7 +12,18 @@
  *           inline script.
  */
 
-import * as mapview from './map.js';
+/* map.js is imported dynamically so its URL can carry the asset version.
+ * A static specifier cannot, and the deploy host serves code with max-age=600
+ * under a stable name, so without this a visitor can run last deploy's map
+ * code against this deploy's page for ten minutes with no symptom. */
+let mapview = null;
+async function mapModule() {
+  if (!mapview) {
+    const v = document.body.dataset.assets;
+    mapview = await import(`./map.js${v ? `?v=${v}` : ''}`);
+  }
+  return mapview;
+}
 
 const ROW_HEIGHT = 44;   // must match --row-h in styles.css
 const OVERSCAN = 6;      // rows rendered beyond the viewport, to hide scroll seams
@@ -515,7 +526,7 @@ function renderMapList(points) {
     n.className = 'n';
     n.textContent = fmt(point.listings);
     item.append(name, n);
-    item.addEventListener('click', () => mapview.focusOn(point));
+    item.addEventListener('click', () => mapview && mapview.focusOn(point));
     frag.appendChild(item);
   }
   host.replaceChildren(frag);
@@ -527,9 +538,10 @@ async function syncMap() {
   el('mapcount').textContent = `${fmt(points.length)} on the map`;
   renderMapNote(points.length);
   renderMapList(points);
-  mapview.setPopupBuilder(buildPopup);
+  const view = await mapModule();
+  view.setPopupBuilder(buildPopup);
   try {
-    await mapview.ensure({
+    await view.ensure({
       container: el('map'),
       tiles: document.body.dataset.tiles,
       referrerPolicy: document.body.dataset.tileReferrer,
@@ -541,8 +553,8 @@ async function syncMap() {
     el('mapnote').firstChild.textContent = `The map could not start: ${err.message}`;
     return;
   }
-  mapview.refresh();                     // the panel was hidden when it was built
-  mapview.update(points, { fit: true });
+  view.refresh();                        // the panel was hidden when it was built
+  view.update(points, { fit: true });
 }
 
 function refresh() {
@@ -883,7 +895,7 @@ function wire() {
     refresh();
   });
 
-  el('mapfit').addEventListener('click', () => mapview.fitToPoints());
+  el('mapfit').addEventListener('click', () => mapview && mapview.fitToPoints());
 
   el('mallsOnly').addEventListener('click', (e) => {
     state.mallsOnly = !state.mallsOnly;
@@ -903,7 +915,7 @@ function wire() {
   }, { passive: true });
 
   window.addEventListener('resize', () => {
-    if (state.view === 'map') mapview.refresh();
+    if (state.view === 'map' && mapview) mapview.refresh();
     else renderList();
   }, { passive: true });
 

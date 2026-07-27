@@ -182,3 +182,35 @@ def test_partial_scrape_does_not_drop_other_chains(snapshot, monkeypatch):
     # carried rows keep their real date; only the rescraped chain is restamped
     assert set(malls[malls.chain == "sm"].scraped_at) == {"2026-01-01"}
     assert set(malls[malls.chain == "ayala"].scraped_at) == {"2026-01-02"}
+
+
+def test_asset_urls_carry_a_version_that_tracks_their_contents(snapshot, tmp_path, monkeypatch):
+    """Code assets keep stable names and are served with a ten minute max-age,
+    so without a version in the URL a deploy leaves visitors on the previous
+    release's JavaScript with no symptom. This is the guarantee the data bundle
+    already gets from being content-hashed."""
+    import re
+    import shutil
+
+    from mallscape_clean import pipeline as clean_stage
+    from mallscape_core import config
+    from mallscape_website import pipeline as website_stage
+
+    clean_stage.run(snapshot)
+    site = tmp_path / "site"
+    shutil.copytree(config.SITE_DIR, site)
+    monkeypatch.setattr(config, "SITE_DIR", site)
+
+    website_stage.run(snapshot)
+    html = (site / "index.html").read_text()
+    versions = set(re.findall(r'[?&]v=([0-9a-f]{8})', html))
+    stamped = re.search(r'data-assets="([0-9a-f]{8})"', html)
+    assert stamped, "index.html carries no data-assets version"
+    assert versions == {stamped.group(1)}, (versions, stamped.group(1))
+
+    # editing any versioned asset must change every asset URL
+    before = stamped.group(1)
+    (site / "map.js").write_text((site / "map.js").read_text() + "\n// touched\n")
+    website_stage.run(snapshot)
+    after = re.search(r'data-assets="([0-9a-f]{8})"', (site / "index.html").read_text())
+    assert after and after.group(1) != before

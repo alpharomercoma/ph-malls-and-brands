@@ -17,6 +17,7 @@ GitHub Pages, Vercel, or ``python -m http.server`` each want.
 
 from __future__ import annotations
 
+import hashlib
 import http.server
 import re
 import socketserver
@@ -43,6 +44,25 @@ STALE_BUNDLE = re.compile(r"^data-[0-9a-f]{12}\.json$")
 # the CSP allows no remote script or style. A missing one is a broken map, so
 # the build refuses rather than deploying a tab that fails when opened.
 VENDORED = ("vendor/leaflet.js", "vendor/leaflet.css")
+
+# Code assets keep stable names, and the deploy host serves them with a ten
+# minute max-age. Without a version in the URL a deploy leaves visitors running
+# the previous release's JavaScript against this release's page, with no
+# symptom. The data bundle already solves this by being content-hashed; these
+# get the same guarantee through a query string.
+VERSIONED = ("app.js", "map.js", "styles.css", "vendor/leaflet.js", "vendor/leaflet.css")
+ASSET_VERSION_RE = re.compile(r'data-assets="[^"]*"')
+ASSET_QUERY_RE = re.compile(r'(href|src)="(styles\.css|app\.js)\?v=[^"]*"')
+
+
+def asset_version(site: Path) -> str:
+    """One short hash over every cacheable asset. Any change to any of them
+    changes every asset URL, which is blunt and correct: they are deployed
+    together and are only ever valid together."""
+    digest = hashlib.sha256()
+    for name in VERSIONED:
+        digest.update((site / name).read_bytes())
+    return digest.hexdigest()[:8]
 
 
 def tile_origin(tile_url: str) -> str:
@@ -99,7 +119,9 @@ def run(run_date: str) -> Path:
     # same value, in the same place, so no configuration change can leave the
     # page requesting an origin its own CSP blocks.
     origin = tile_origin(config.TILE_URL)
+    version = asset_version(site)
     for pattern, replacement, what in (
+        (ASSET_VERSION_RE, f'data-assets="{version}"', "data-assets attribute"),
         (TILES_RE, f'data-tiles="{config.TILE_URL}"', "data-tiles attribute"),
         (TILE_ATTR_RE, f'data-tile-attribution="{config.TILE_ATTRIBUTION}"', "data-tile-attribution attribute"),
         (TILE_REF_RE, f'data-tile-referrer="{config.TILE_REFERRER_POLICY}"', "data-tile-referrer attribute"),
@@ -113,6 +135,12 @@ def run(run_date: str) -> Path:
         if n != 1:
             raise SystemExit("the Content-Security-Policy in index.html has no img-src directive")
         return match.group(1) + policy + match.group(3)
+
+    html, n = ASSET_QUERY_RE.subn(rf'\1="\2?v={version}"', html)
+    if n != 2:
+        raise SystemExit(
+            f"expected styles.css and app.js to carry ?v= in index.html, rewrote {n}"
+        )
 
     html, n = CSP_RE.subn(rewrite_policy, html, count=1)
     if n != 1:
@@ -132,6 +160,7 @@ def run(run_date: str) -> Path:
     mapped = data["totals"]["mapped"]
     print(f"[website] {name} ({size_kb:,.0f} KB) -> {site}")
     print(f"[website] map: {mapped}/{data['totals']['properties']} properties plotted, tiles {origin}")
+    print(f"[website] assets v{version}")
     return site
 
 
