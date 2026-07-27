@@ -26,7 +26,6 @@ SOURCES = {
     "megaworld": ("megaworld-lifestylemalls.com", "Contentstack headless CMS API"),
     "waltermart": ("malls.waltermart.com.ph", "server-rendered HTML"),
     "ortigas": ("ortigasmalls.com", "Laravel/Inertia data-page JSON"),
-    "xentro": ("xentromalls.com", "server-rendered HTML"),
     "filinvest": ("filinvestlifemalls.com", "server-rendered HTML table"),
     "fishermall": ("fishermall.com.ph", "loadlevel.php HTML fragments"),
     "araneta": ("aranetacity.com", "server-rendered HTML"),
@@ -44,10 +43,6 @@ CAVEATS = {
         "Ayala's API returns duplicate `(mall, merchant)` pairs with distinct "
         "ids but no distinguishing fields, so listing counts run above the "
         "number of unique brands present."
-    ),
-    "xentro": (
-        "Some source list items merge two tenants into one line; those names "
-        "are preserved verbatim rather than split on a guess."
     ),
 }
 

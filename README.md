@@ -3,8 +3,8 @@
 A reproducible dataset of what is inside Philippine malls, and a site for
 exploring it.
 
-**322 properties, 41,468 store listings, 11,058 tenant identities, 11 operators.**
-**309 properties are placed on a map.**
+**303 properties, 40,462 store listings, 10,374 tenant identities, 10 operators.**
+**292 properties are placed on a map.**
 
 | | |
 |---|---|
@@ -108,7 +108,6 @@ the search box and the brand focus apply to both. See
 | Megaworld Lifestyle Malls | 26 | 26 | 2,118 |
 | WalterMart | 46 | 46 | 1,497 |
 | Ortigas Land | 4 | 4 | 1,279 |
-| XentroMalls | 19 | 19 | 1,006 |
 | Filinvest Malls | 5 | 5 | 956 |
 | Fisher Mall | 2 | 2 | 342 |
 | Araneta City | 4 | 4 | 319 |
@@ -125,7 +124,7 @@ around 90 malls. Robinsons reported 57 malls while their site lists 54. Ayala's
 API exposes 32 of roughly 46 properties, missing Arca South and Evo City
 entirely.
 
-Ten operators were investigated and deliberately not scraped, including Vista
+Eleven operators were investigated and are deliberately not scraped, including Vista
 Malls, CityMall, Gaisano Grand and Puregold. Every gap is recorded as data in
 `1_scrape/mallscape_scrape/registry/`, is re-reported on each run, and appears
 in `breakdown.md` with the evidence.
@@ -136,12 +135,12 @@ in `breakdown.md` with the evidence.
   server side and no parameter lifts the cap.
 - **Ayala listing counts run about 7 percent high.** Its API returns duplicate
   merchant rows with no distinguishing fields. Brand presence is unaffected.
-- **Roughly 27 percent of listings carry no usable category upstream** and are
+- **Roughly 26 percent of listings carry no usable category upstream** and are
   reported as `unknown` rather than being guessed.
-- **13 properties have no coordinate** and are absent from the map, which says
+- **11 properties have no coordinate** and are absent from the map, which says
   so under it rather than quietly dropping them. Most are SMDC retail podiums
-  that no public gazetteer lists. Of the 309 that are placed, 263 sit on the
-  building; 46 resolve only to a street or a town and are drawn hollow.
+  that no public gazetteer lists. Of the 292 that are placed, 251 sit on the
+  building; 41 resolve only to a street or a town and are drawn hollow.
 
 ## Configuration
 
@@ -173,7 +172,7 @@ agent, and every response cached so parser work never re-hits a site.
 
 - `region` is null for one property, SMBY Amusement Park, which publishes
   neither an address nor a resolvable coordinate.
-- `property_type` is classified only for SM, so XentroMall's public market
-  currently compares against SM malls as a peer.
+- `property_type` is classified only for SM, so a non-mall property from
+  another operator still compares against SM malls as a peer.
 - Gaisano Capital, LCC Group and NCCC are blocked or unconfirmed rather than
   proven directory-less. Each needs a browser session.

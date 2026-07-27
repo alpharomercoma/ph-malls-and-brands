@@ -1,13 +1,13 @@
 brand_key,raw_variants,clean_variants,listings,chains,examples
 robinsons movieworld,25,2,36,1,ROBINSONS MOVIEWORLD | ROBINSONS MOVIEWORLD ( 0908-811-0150 ) | ROBINSONS MOVIEWORLD ( 0919-087-0827 ) | ROBINSONS MOVIEWORLD ( 0938-860-5351 ) | ROBINSONS MOVIEWORLD ( 0945-795-5202) | ROBINSONS MOVIEWORLD ( 0961-525-0003 ) | ROBINSONS MOVIEWORLD ( 0998-591-3227 ) | ROBINSONS MOVIEWORLD ( 0998-840-3583 )
-potato corner,9,6,234,10,POTATO CORNER | POTATO CORNER (KIOSK) | POTATO CORNER 0932-876-1142 | POTATO CORNER+ | Potato Corner | Potato Corner (pixie Forest) | Potato Corner (timezone) | Potato Corner (x-site)
-mcdonalds,9,6,81,10,MC DONALDS | MCDONALD'S | MCDONALDS | Mc Donald's | McDONALD'S | McDonald's | Mcdonald's | Mcdonald's 9686914110
-bpi atm,9,9,30,5,BPI (ATM booth) (NEW) | BPI (ATM) | BPI (EXPRESS TELLER ATM) | BPI - ATM | BPI ATM | Bank of the Philippine Islands - ATM | Bpi ( Atm – Alabang- Zapote ) | Bpi ( Atm – Bridgeway)
+potato corner,9,6,228,9,POTATO CORNER | POTATO CORNER (KIOSK) | POTATO CORNER 0932-876-1142 | POTATO CORNER+ | Potato Corner | Potato Corner (pixie Forest) | Potato Corner (timezone) | Potato Corner (x-site)
+bpi atm,9,9,29,4,BPI (ATM booth) (NEW) | BPI (ATM) | BPI (EXPRESS TELLER ATM) | BPI - ATM | BPI ATM | Bank of the Philippine Islands - ATM | Bpi ( Atm – Alabang- Zapote ) | Bpi ( Atm – Bridgeway)
+mcdonalds,8,5,79,9,MCDONALD'S | MCDONALDS | Mc Donald's | McDONALD'S | McDonald's | Mcdonald's | Mcdonald's 9686914110 | Mcdonald’s
 levis,7,2,86,7,LEVI'S | LEVI'S (8805-2230) | LEVIS | LEVI’S | Levi's | Levi's 5216-563 | Levi’s
 world of fun,7,2,52,4,WORLD OF FUN | WORLD OF FUN (OPEN) | WORLD OF FUN 9058818079 | WORLD OF FUN 9058818079 (OPEN) | World Of Fun | World of Fun | World of Fun 9063309735
 scents co,7,3,35,4,"THE SCENTS CO | THE SCENTS CO. | THE SCENTS CO. 9973679659 | The Scents Co | The Scents Co. | The Scents Co. 9973679659 | The Scents, Co."
-lots a pizza,7,5,9,6,LOT'S A PIZZA | LOTS A PIZZA | LOTS' A PIZZA | Lot's A Pizza | Lots A Pizza | Lots a Pizza | Lots' A Pizza 📲 0948-122-8792
-watsons,6,3,225,11,WATSON'S | WATSONS | WATSONS 0995-011-1269 | Watsons | Watsons (east Wing) | Watsons 0923-744-0690
+lots a pizza,7,5,8,5,LOT'S A PIZZA | LOTS A PIZZA | LOTS' A PIZZA | Lot's A Pizza | Lots A Pizza | Lots a Pizza | Lots' A Pizza 📲 0948-122-8792
+watsons,6,3,221,10,WATSON'S | WATSONS | WATSONS 0995-011-1269 | Watsons | Watsons (east Wing) | Watsons 0923-744-0690
 ian darcy,6,1,128,8,IAN DARCY | IAN DARCY (NEW) | IAN DARCY 9176263352 | Ian Darcy | Ian Darcy 9176216444 | Ian Darcy 9230870741
 gong cha,6,2,111,9,GONG CHA | GONG CHA (OPEN) | GONG CHA 0938-438-0315 | Gong Cha | Gong Cha 0906-175-3810 | Gong cha
 shakeys,6,2,90,8,SHAKEY'S | SHAKEY'S 9278110353 (OPEN) | SHAKEYS | Shakey's | Shakeys | Shakey’s
@@ -17,7 +17,7 @@ auntie annes,6,2,67,8,AUNTIE ANNE'S | AUNTIE ANNE'S (0994-630-3428) | AUNTIE ANN
 lighters galore,6,2,65,8,LIGHTER'S GALORE | LIGHTERS GALORE | Lighter's Galore | Lighter's Galore 9429565643 | Lighters Galore | Lighters Galore 9393843029
 mr quickie,6,3,63,9,MR QUICKIE | MR. QUICKIE | Mr Quickie | Mr. Quickie | Mr. Quickie 9686914110 | Mr.Quickie
 turks,6,2,56,8,TURKS | TURKS (0985 306 0941) | TURKS 9175677006 | TURKS 995450011 | Turks | Turks 📲 0966-178-6279
-dunkin donuts,6,2,53,6,DUNKIN DONUTS | DUNKIN' DONUTS | Dunkin Donuts | Dunkin' Donuts | Dunkin' Donuts (TEMPORARILY CLOSED) | Dunkin’ Donuts
+dunkin donuts,6,2,52,5,DUNKIN DONUTS | DUNKIN' DONUTS | Dunkin Donuts | Dunkin' Donuts | Dunkin' Donuts (TEMPORARILY CLOSED) | Dunkin’ Donuts
 toys r us,6,4,38,5,"TOYS R US | Toys ""R"" Us | Toys R Us | Toys R Us (new) | Toys R’ Us | Toys ‘R’ Us"
 kids paradise,6,2,25,4,KID'S PARADISE | KIDS PARADISE | KIDS PARADISE (Open) | Kid's Paradise | Kids Paradise | Kids Paradise 9101147695
 i watch,6,5,22,4,I WATCH | I-WATCH | I-Watch | I-watch | i-WATCH | i-Watch
@@ -25,32 +25,32 @@ wash n wear,6,3,18,3,WASH 'N WEAR | WASH N WEAR | WASH N' WEAR | Wash N Wear | W
 pick up coffee,6,4,14,4,PICK UP COFFEE | PICK-UP COFFEE | Pick Up Coffee | Pick up Coffee | Pick-Up Coffee | Pick-up Coffee
 lemon co,6,3,11,2,LEMON CO | THE LEMON CO | THE LEMON CO. | THE LEMON CO. 0920-952-8907 | The Lemon Co | The Lemon Co.
 pnb atm,6,4,9,3,PNB (ATM) | PNB (ATM) (NEW) | PNB - ATM | PNB ATM | PNB ATM 9685728514 | Pnb ( Atm – Alabang Zapote)
-samsung,5,1,171,9,SAMSUNG | SAMSUNG (OPEN) | Samsung | Samsung 5320034 | Samsung 8961-3056
+samsung,5,1,170,8,SAMSUNG | SAMSUNG (OPEN) | Samsung | Samsung 5320034 | Samsung 8961-3056
 dunkin,5,2,121,5,DUNKIN | DUNKIN' | DUNKIN' 9553308377 (NEW) | Dunkin' | Dunkin’
 aquaflask,5,2,117,7,AQUAFLASK | AQUAFLASK (0930-463-6746) | AquaFlask | Aquaflask | Aquaflask 9079115440
-lbc,5,1,108,9,LBC | LBC (0917-802-5235) | LBC (OPEN) | LBC 0917 854 3822 | LBC 9178503089
+lbc,5,1,105,8,LBC | LBC (0917-802-5235) | LBC (OPEN) | LBC 0917 854 3822 | LBC 9178503089
 realme,5,3,100,8,REALME | REALME 0917-123-4115 | RealMe | Realme | realme
 davids salon,5,2,92,7,DAVID'S SALON | DAVIDS SALON | David's Salon | Davids Salon | David’s Salon
 maxs restaurant,5,2,73,5,MAX'S RESTAURANT | MAXS RESTAURANT | Max's Restaurant | Max's Restaurant (OPEN) | Max’s Restaurant
-waffle time,5,1,60,8,WAFFLE TIME | WAFFLE TIME (OPEN) | Waffle Time | Waffle Time (NEW) | Waffle Time 9954641325
+waffle time,5,1,59,7,WAFFLE TIME | WAFFLE TIME (OPEN) | Waffle Time | Waffle Time (NEW) | Waffle Time 9954641325
 macao imperial tea,5,2,56,4,MACAO IMPERIAL TEA | MACAO IMPERIAL TEA (9603534804) | MACAO IMPERIAL TEA 9059164310 | Macao Imperial Tea | Macao Imperial Tea 0917-555-3955
 taters,5,2,53,6,TATER'S | TATERS | TATERS (OPEN) | Tater's | Taters
 brunos barbers,5,3,50,6,BRUNO'S BARBERS | BRUNOS BARBER'S | BRUNOS BARBERS | Bruno's Barbers | Bruno’s Barbers
 buffalos wings n things,5,3,36,6,BUFFALO'S WINGS N' THINGS | BUFFALOS WINGS N THINGS | Buffalo's Wings N Things | Buffalo's Wings N' Things | Buffalo’s Wings N’ Things
-chingu buko house,5,2,35,5,CHINGU BUKO HOUSE | CHINGU BUKO HOUSE 0925-735-0760 | CHINGU BUKO HOUSE 9177725146 | Chingu Buko House | Chingu Buko House 📲 0950-877-1061
 bdo atm,5,5,34,6,BDO (ATM booth) (NEW) | BDO (ATM) | BDO ATM | Banco De Oro- ATM | Bdo ( Atm – Bridgeway)
+chingu buko house,5,2,34,4,CHINGU BUKO HOUSE | CHINGU BUKO HOUSE 0925-735-0760 | CHINGU BUKO HOUSE 9177725146 | Chingu Buko House | Chingu Buko House 📲 0950-877-1061
 vibes massage,5,1,31,4,VIBES MASSAGE | VIBES MASSAGE 0933-862-4925 (NEW) | Vibes Massage | Vibes Massage (OPEN) | Vibes Massage (Temporarily Closed)
 tokyo,5,3,30,6,@ Tokyo (open) | @TOKYO | @Tokyo | TOKYO | Tokyo
-miguelitos ice cream,5,2,29,7,MIGUELITO'S ICE CREAM | MIGUELITOS ICE CREAM | Miguelito's Ice Cream | Miguelitos Ice Cream | Miguelito’s Ice Cream
 res toe run,5,3,28,5,RES TOE RUN | RES-TOE-RUN | Res Toe Run | Res Toe Run 8282-2220 | Res-toe-run
+miguelitos ice cream,5,2,27,6,MIGUELITO'S ICE CREAM | MIGUELITOS ICE CREAM | Miguelito's Ice Cream | Miguelitos Ice Cream | Miguelito’s Ice Cream
 xiaomi,5,1,25,8,XIAOMI | XIAOMI (OPEN) | XIAOMI 0999-167-2888 | XIAOMI 8802-1532 / 09669776715 | Xiaomi
-siomai king,5,2,24,5,SIOMAI KING | SIOMAI KING 0908 783 0318 | Siomai King | Siomai King 9954641325 | siomai king
 ate ricas bacsilog,5,2,22,6,ATE RICA'S BACSILOG | ATE RICA'S BACSILOG 0929-329-5776 | Ate Rica's Bacsilog | Ate Ricas Bacsilog | Ate Rica’s Bacsilog
-rrj mr lee,5,5,22,4,RRJ / MR. LEE | RRJ/ MR.LEE | RRJ/MR. LEE | RRJ/MR.LEE | RRJ/Mr. Lee
+siomai king,5,2,22,4,SIOMAI KING | SIOMAI KING 0908 783 0318 | Siomai King | Siomai King 9954641325 | siomai king
+rrj mr lee,5,5,21,3,RRJ / MR. LEE | RRJ/ MR.LEE | RRJ/MR. LEE | RRJ/MR.LEE | RRJ/Mr. Lee
 giligans,5,2,19,6,GILIGAN'S | GILIGANS | Giligan's | Giligans | Giligan’s
 uncle johns,5,3,19,3,UNCLE JOHN'S | UNCLE JOHN'S (ADRIATICO WING) | UNCLE JOHN'S (PADRE FAURA WING) | Uncle John's | Uncle John's 0998-846-6053
-lil orbits,5,3,12,4,LI'L ORBITS | LIL ORBITS | LIL' ORBITS 0942-240-1066 | Lil Orbits | Lil' Orbits
 chops childrens park,5,3,11,3,CHOPS CHILDREN'S PARK | CHOPS CHILDRENS PARK | Chop's Children's Park | Chops Children's Park | Chops Childrens Park
+lil orbits,5,3,11,3,LI'L ORBITS | LIL ORBITS | LIL' ORBITS 0942-240-1066 | Lil Orbits | Lil' Orbits
 lil orbits mini donuts,5,3,11,5,LIL ORBITS MINI DONUTS | LIL' ORBITS MINI DONUTS | Lil Orbits Mini Donuts | Lil' Orbits Mini Donuts | Li’l Orbits Mini Donuts
 metrobank atm,5,4,11,4,METROBANK - ATM | METROBANK ATM | Metrobank (ATM) | Metrobank (atm – Alabang Zapote) | Metrobank ATM
 eo executive optical,5,3,10,3,EO EXECUTIVE OPTICAL | EO EXECUTIVE OPTICAL (0998-531-9259) | EO Executive Optical | EO-Executive Optical | Eo Executive Optical
@@ -58,9 +58,9 @@ tah mee,5,4,10,5,TAH MEE | TAH- MEE | TAH-MEE | Tah-Mee | Tah-mee
 pick n save,5,3,8,3,PICK N' SAVE | Pick 'N Save | Pick N' Save | Pick N’ Save | Pick ‘n Save
 paiks coffee,5,2,6,4,PAIK'S COFFEE | PAIKS COFFEE | PAIK’S COFFEE | Paik's Coffee | Paik’s Coffee
 farinas ilocos empanada,5,3,5,3,FARINAS ILOCOS EMPANADA | FARIÑAS ILOCOS EMPANADA | Farina's Ilocos Empanada | Farinas Ilocos Empanada | Farina’s Ilocos Empanada
-bdo,4,3,197,9,BANCO DE ORO | BDO | BDO (682-9114 / 0919-063-4948) | Banco de Oro
-goldilocks,4,2,117,10,GOLDILOCK'S | GOLDILOCKS | Goldilocks | Goldilocks 0965-428-5821
-turks shawarma,4,2,86,4,TURK'S SHAWARMA | TURKS SHAWARMA | Turks Shawarma | Turks Shawarma 9328426548
+bdo,4,3,189,8,BANCO DE ORO | BDO | BDO (682-9114 / 0919-063-4948) | Banco de Oro
+goldilocks,4,2,115,9,GOLDILOCK'S | GOLDILOCKS | Goldilocks | Goldilocks 0965-428-5821
+turks shawarma,4,2,85,3,TURK'S SHAWARMA | TURKS SHAWARMA | Turks Shawarma | Turks Shawarma 9328426548
 avocadoria ph,4,3,81,4,AVOCADORIA.PH | AVOCADORIA.PH 0942-522-3176 | Avocadoria.PH | Avocadoria.ph
 bpi,4,4,75,8,BANK OF THE PHILIPPINE ISLANDS | BPI | Bank of the Philippine Islands (BPI) | Bpi
 krispy kreme,4,2,74,7,KRISPY KREME | KRISPY KREME (KIOSK) | Krispy Kreme | Krispy Kreme 9190819300
@@ -96,43 +96,42 @@ aboys fresh lumpia,4,2,16,4,ABOY'S FRESH LUMPIA | ABOYS FRESH LUMPIA | Aboy's Fr
 st pauls,4,3,16,3,ST PAULS | ST. PAUL'S | ST. PAULS | St. Pauls
 bangs prime salon,4,2,15,5,BANGS PRIME SALON | BANG’S PRIME SALON | Bangs Prime Salon | Bang’s Prime Salon
 filbars,4,2,15,6,FILBAR'S | FILBARS | Filbar's | Filbar’s
-yamang bukid,4,2,15,5,YAMANG BUKID | YAMANG-BUKID | Yamang Bukid | Yamang Bukid 9478041524
 julies bakeshop,4,2,14,5,JULIE'S BAKESHOP | JULIES BAKESHOP | Julie's Bakeshop | Julie’s Bakeshop
+yamang bukid,4,2,14,4,YAMANG BUKID | YAMANG-BUKID | Yamang Bukid | Yamang Bukid 9478041524
 mothers touch,4,2,13,3,MOTHER'S TOUCH | MOTHERS TOUCH | Mother's Touch | Mother's Touch 9178676877
 sams everything on sticks,4,3,13,3,SAM'S EVERYTHING ON STICKS | SAMS EVERYTHING ON STICKS | Sam's Everything On Sticks | Sam's Everything on Sticks
 bigbys,4,2,12,3,BIGBY'S | BIGBYS | Bigby's | Bigby’s
 kiehls,4,2,12,4,KIEHL'S | KIEHLS | Kiehl's | Kiehl’s
 m lhuillier,4,2,12,5,M LHUILLIER | M Lhuillier | M. LHUILLIER | M. Lhuillier
-dominos pizza,4,2,9,6,DOMINO'S PIZZA | DOMINOS PIZZA | Domino's Pizza | Domino’s Pizza
 lugang cafe,4,2,9,4,LUGANG CAFE | LUGANG CAFÉ | Lugang Cafe | Lugang Café
-tgp,4,2,9,4,GENERICS PHARMACY | THE GENERICS PHARMACY | The Generics Pharmacy | The Generics Pharmacy 0933-476-6488
+dominos pizza,4,2,8,5,DOMINO'S PIZZA | DOMINOS PIZZA | Domino's Pizza | Domino’s Pizza
 gerrys,4,2,6,3,GERRY'S | GERRYS | Gerry's | Gerry’s
-mr pluffy,4,2,6,2,MR. PLUFFY | MR.PLUFFY | Mr. Pluffy | Mr. Pluffy 9688979455
 tiktilaok,4,2,6,4,TIKTILAOK | TIKTILAOK 0997-746-7278 | TIKTILAOK! | Tiktilaok
+mr pluffy,4,2,5,1,MR. PLUFFY | MR.PLUFFY | Mr. Pluffy | Mr. Pluffy 9688979455
 pos digital,4,4,4,2,PO'S DIGITAL 5320034 | PO's Digital | POS DIGITAL | POS Digital
 executive optical,3,2,155,10,EXECUTIVE OPTICAL | Executive Optical | Executive Optical (alabang-zapote)
-oppo,3,2,128,10,OPPO | OPPO 9367318614 (OPEN) | Oppo
-lbc express,3,2,103,7,LBC EXPRESS | LBC Express | Lbc Express
+oppo,3,2,126,9,OPPO | OPPO 9367318614 (OPEN) | Oppo
+lbc express,3,2,102,6,LBC EXPRESS | LBC Express | Lbc Express
 forme,3,2,83,6,FORME | ForMe | Forme
 breadtalk,3,2,82,6,BREADTALK | BreadTalk | Breadtalk
 tokyo tokyo,3,2,69,7,TOKYO TOKYO | Tokyo Tokyo | Tokyo-Tokyo
 guess,3,2,64,7,GUESS | GUESS? | Guess
 pc express,3,2,59,6,PC EXPRESS | PC Express | Pc Express
-western union,3,2,59,4,WESTERN UNION | Western Union | Western Union (Center Atrium)
 ojo eyewear,3,2,55,6,OJO EYEWEAR | OJO Eyewear | Ojo Eyewear
+western union,3,2,54,3,WESTERN UNION | Western Union | Western Union (Center Atrium)
 dermcare,3,2,52,5,DERMCARE | DermCare 9258558937 | Dermcare
 kenny rogers,3,2,51,4,KENNY ROGERS | Kenny Roger's | Kenny Rogers
 hey sugar waxing salon,3,2,47,4,HEY SUGAR WAXING SALON | HEY SUGAR! WAXING SALON | Hey Sugar! Waxing Salon
 coco fresh tea and juice,3,2,45,3,COCO FRESH TEA AND JUICE | Coco Fresh Tea And Juice | Coco Fresh Tea and Juice
 datablitz,3,2,43,5,DATABLITZ | DataBlitz | Datablitz
 travel club,3,2,43,6,THE TRAVEL CLUB | The Travel Club | Travel Club
-rest n go,3,2,42,7,REST N GO | Rest N Go | Rest N' Go
 llao llao,3,2,41,4,LLAO LLAO | Llao Llao | llao-llao 9175651015
 body shop,3,2,40,6,THE BODY SHOP | THE BODY SHOP (KIOSK) | The Body Shop
-cebuana lhuillier,3,2,39,8,CEBUANA LHUILLIER | CEBUANA LHUILLIER (KIOSK) | Cebuana Lhuillier
+cebuana lhuillier,3,2,38,7,CEBUANA LHUILLIER | CEBUANA LHUILLIER (KIOSK) | Cebuana Lhuillier
 dr kong,3,2,37,6,DR KONG | DR. KONG | Dr. Kong
 tobys,3,2,37,2,TOBYS | Toby's | Toby's 9776592253
 giligans restaurant,3,2,36,3,GILIGAN'S RESTAURANT | GILIGANS RESTAURANT | Giligan’s Restaurant
+rest n go,3,2,35,6,REST N GO | Rest N Go | Rest N' Go
 banh mi kitchen,3,2,30,5,BANH MI KITCHEN | Banh Mi Kitchen | Bánh mì Kitchen
 pan de manila,3,2,30,6,PAN DE MANILA | Pan De Manila | Pan de Manila
 buko ni fruitas,3,2,29,6,BUKO NI FRUITAS | Buko Ni Fruitas | Buko ni Fruitas
@@ -150,7 +149,6 @@ m lhuillier jewellers,3,2,18,3,M LHUILLIER JEWELLERS | M. LHUILLIER JEWELLERS | 
 sandwich guy,3,2,18,3,Sandwich Guy | THE SANDWICH GUY | The Sandwich Guy
 army navy burger burrito,3,2,16,3,ARMY NAVY BURGER + BURRITO | ARMY NAVY BURGER BURRITO | Army Navy Burger + Burrito
 brow studio,3,2,16,4,Brow Studio | THE BROW STUDIO | The Brow Studio
-el bonitos,3,2,16,3,EL BONITO'S | EL BONITOS | El Bonito's
 g shock,3,2,16,6,G-SHOCK | G-Shock | G-shock
 lil people,3,2,16,3,LI'L PEOPLE | LIL PEOPLE | Li'l People
 angels pizza,3,2,15,4,ANGEL'S PIZZA | ANGELS PIZZA | Angel's Pizza
@@ -171,13 +169,11 @@ aqua mineral,3,2,11,5,AQUA MINERAL | AQUA MINERAL (KIOSK) | Aqua Mineral
 dr mobile,3,2,11,4,DR MOBILE | DR. MOBILE | Dr. Mobile
 estee lauder,3,2,11,6,ESTEE LAUDER | Estee Lauder | Estée Lauder
 frankies new york buffalo wings,3,2,11,4,FRANKIE'S NEW YORK BUFFALO WINGS | FRANKIES NEW YORK BUFFALO WINGS | Frankie's New York Buffalo Wings
-i tech,3,3,11,3,I TECH | I-TECH | I.TECH
 jisulife,3,2,11,3,JISULIFE | JisuLife | Jisulife
 mang cha a,3,2,11,3,MANG CHA-A | Mang Cha-A | Mang Cha-a
 tk takoyaki,3,2,11,4,TK TAKOYAKI | TK Takoyaki | Tk Takoyaki
 i2i,3,2,10,4,I2I | I2i | i2i
 pag ibig,3,3,10,3,PAG IBIG | PAG-IBIG | Pag-IBIG
-mr binatog,3,2,9,4,MR BINATOG | MR. BINATOG | Mr. Binatog
 asias lashes,3,2,8,2,ASIA'S LASHES | ASIAS LASHES | Asia's Lashes
 bebang halo halo,3,2,8,3,BEBANG HALO - HALO | BEBANG HALO HALO | Bebang Halo Halo
 choobi choobi,3,2,8,4,CHOOBI CHOOBI | Choobi Choobi | Choobi-Choobi
@@ -185,6 +181,7 @@ co the collectible store,3,3,8,4,CO THE COLLECTIBLE STORE | CO. THE COLLECTIBLE 
 eng bee tin,3,2,8,4,ENG BEE TIN | Eng Bee Tin | Eng bee tin
 henrys cameras,3,2,8,4,HENRY'S CAMERAS | HENRYS CAMERAS | Henry's Cameras
 hq barbershop,3,2,8,4,HQ BARBERSHOP | HQ Barbershop | Hq Barbershop
+mr binatog,3,2,8,3,MR BINATOG | MR. BINATOG | Mr. Binatog
 pedal cafe,3,2,8,4,PEDAL CAFE | Pedal Cafe | Pedal Café
 eo kids & up,3,2,7,4,EO KIDS & UP | EO Kids & Up | Eo Kids & Up
 gourdos,3,2,7,5,GOURDO'S | GOURDOS | Gourdo's
@@ -244,7 +241,7 @@ paraynos empanada,3,2,3,1,PARAYNOS EMPANADA | Parayno's Empanada | Paraynos Empa
 ps bank atm,3,3,3,1,PS BANK (ATM) | PS BANK - ATM | PS Bank (ATM booth) (NEW)
 razons,3,2,3,3,RAZON'S | Razon's | Razons
 sea salt,3,2,3,2,SEA SALT | SEA/SALT | Sea Salt
-ace hardware,2,2,115,7,ACE HARDWARE | Ace Hardware
+ace hardware,2,2,112,6,ACE HARDWARE | Ace Hardware
 sm appliance,2,2,86,2,SM APPLIANCE CENTER | SM Appliance
 sm store,2,2,70,1,SM STORE | THE SM STORE
 mx memoxpress,2,2,54,2,MX MEMOXPRESS | MX MemoXpress
@@ -274,7 +271,9 @@ contis take out nook,2,2,13,2,CONTI'S TAKE OUT NOOK | CONTIS TAKE OUT NOOK
 rcc amazing touch,2,2,13,2,RCC AMAZING TOUCH | Rcc Amazing Touch
 mama lous italian kitchen,2,2,11,3,MAMA LOU'S ITALIAN KITCHEN | MAMA LOUS ITALIAN KITCHEN
 aksesoriz,2,2,10,3,AKSESORIZ | AksesoriZ
+el bonitos,2,2,10,2,EL BONITOS | El Bonito's
 fruitas house of desserts,2,2,10,3,FRUITAS HOUSE OF DESSERTS | Fruitas House of Desserts
+i tech,2,2,10,2,I TECH | I.TECH
 rj guitar center,2,2,10,3,RJ GUITAR CENTER | Rj Guitar Center
 santinos supreme slice pizza,2,2,10,2,SANTINO'S SUPREME SLICE PIZZA | SANTINOS SUPREME SLICE PIZZA
 klgo,2,2,9,2,KLGO | KLGo
@@ -288,7 +287,6 @@ jolos kiddie cart,2,2,7,2,JOLOS KIDDIE CART | Jolo’s Kiddie Cart
 kkv,2,2,7,5,KKV | Kkv
 l time studio,2,2,7,2,L TIME STUDIO | L-TIME STUDIO
 otr korean furniture,2,2,7,3,OTR KOREAN FURNITURE | OTR korean furniture
-andoks,2,2,6,2,ANDOK'S | ANDOKS
 ansons,2,2,6,2,ANSON'S | Ansons
 baliwag lechon manok atbp,2,2,6,2,BALIWAG LECHON MANOK ATBP | Baliwag Lechon Manok Atbp.
 clarks,2,2,6,3,CLARKS | Clark’s
@@ -350,8 +348,6 @@ daily by bos coffee,2,2,3,2,DAILY BY BO'S COFFEE | Daily by Bo's Coffee
 delonghi,2,2,3,2,DELONGHI | De'Longhi
 deoglow,2,2,3,2,DEOGLOW | DeoGlow
 dhl w express,2,2,3,2,DHL / W EXPRESS | DHL W EXPRESS
-diy shop,2,2,3,2,DIY SHOP | THE DIY SHOP
-dunkin donut,2,2,3,2,DUNKIN DONUT | Dunkin' Donut
 e restore,2,2,3,2,E Restore | E- RESTORE
 electronics boutique,2,2,3,3,Electronics Boutique | The Electronics Boutique
 elle de marrer,2,2,3,2,Elle De Marrer 639190954320 | Elle de Marrer
@@ -378,7 +374,6 @@ oppo service center,2,2,3,3,OPPO SERVICE CENTER | Oppo Service Center
 pc worx,2,2,3,2,PC WORX | Pc Worx
 peri peri charcoal chicken & sauce bar,2,2,3,2,PERI-PERI CHARCOAL CHICKEN & SAUCE BAR | Peri-peri Charcoal Chicken & Sauce Bar
 project dc,2,2,3,2,PROJECT DC | Project Dc
-psbank,2,2,3,3,PSBANK | PSBank
 r&b tea,2,2,3,2,R&B TEA | R&b Tea
 samanthas steam boat,2,2,3,2,SAMANTHAS STEAM BOAT | Samantha's Steam Boat
 siapno tada optical,2,2,3,2,SIAPNO-TADA OPTICAL | Siapno Tada Optical

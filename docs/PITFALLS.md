@@ -56,7 +56,7 @@ corruption in a display field.
 
 ## Cosmetic filters that eat real data
 
-XentroMall dropped any name ending in `.` as noise. Real tenants end in
+One scraper dropped any name ending in `.` as noise. Real tenants end in
 `INC.`, `CORP.`, `ACC.` — 21 of them vanished.
 
 **Rule:** filters must target the specific junk observed, by its own
@@ -66,7 +66,7 @@ checklist's actual wording.
 
 ## Assuming one markup shape
 
-XentroMall's ShopKing renders its tenants as `<br>`-separated text inside a
+One community mall rendered its tenants as `<br>`-separated text inside a
 `<ul>` with zero `<li>` elements. The parser read `<li>` only, produced zero
 stores, and the mall was filed as a verified upstream gap. It published 27
 tenants.
@@ -88,7 +88,7 @@ claim.
 ## Site-reused markup
 
 Robinsons puts parking-rate notices inside `li.store-name`, the same element
-used for tenants, so a rates paragraph parsed as a store. XentroMall renders
+used for tenants, so a rates paragraph parsed as a store. One site rendered
 its leasing-requirements checklist in the same `div.zn_text_box` as tenant
 lists.
 
@@ -109,7 +109,7 @@ in `README.md`.
 
 Three operators' "official" sites were dead: `megaworldlifestylemalls.com` (no
 hyphen) now redirects to an ad/scam domain, `filinvestmalls.com` is a parked
-lander, and `xentromall.com.ph` and `shangrilaplaza.com.ph` are both for sale.
+lander, and `shangrilaplaza.com.ph` is for sale.
 Search results and old links point at all of them.
 
 **Rule:** confirm the live domain before writing a scraper, and record the dead

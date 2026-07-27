@@ -9,8 +9,8 @@ re-runs, so it is scratch space rather than provenance.
 
 | file | rows | description |
 |---|---|---|
-| `malls.{parquet,csv}` | 322 | one row per property |
-| `stores.{parquet,csv}` | 41,468 | one row per store listing |
+| `malls.{parquet,csv}` | 303 | one row per property |
+| `stores.{parquet,csv}` | 40,462 | one row per store listing |
 | `brand_presence.*` | — | `(brand_key, chain, mall)` long-format matrix |
 | `brand_summary.*` | — | per brand: malls per chain, total, chain count |
 | `unique_brands.*` | — | brands present in exactly one mall |
@@ -32,12 +32,12 @@ rebuilt at any time with `mallscape analyze --date <date>`.
 | `chain` | operator id (`sm`, `robinsons`, `ayala`, …) |
 | `mall_id` | stable slug, unique within a chain |
 | `mall_name` | display name as published |
-| `region` | `metro-manila` \| `north-luzon` \| `south-luzon` \| `visayas` \| `mindanao`. Always geographic. Only three operators publish one, so the rest are inferred from name and address by `mallscape_core.geo`; resolved for 321 of 322 properties |
+| `region` | `metro-manila` \| `north-luzon` \| `south-luzon` \| `visayas` \| `mindanao`. Always geographic. Only three operators publish one, so the rest are inferred from name and address by `mallscape_core.geo`; resolved for 302 of 303 properties |
 | `address` | street address where published |
 | `mall_code` | operator-internal id (SM `mallCode`, Ayala numeric id, Contentstack uid) |
 | `source_url` | the page or endpoint the data came from |
 | `property_type` | `mall` \| `residential-retail` \| `amusement-park` \| `office-annex`. **Only SM is classified**; everything else defaults to `mall` |
-| `lat`, `lon` | WGS84 decimal degrees, null when unplaced. 309 of 322 are placed |
+| `lat`, `lon` | WGS84 decimal degrees, null when unplaced. 292 of 303 are placed |
 | `geo_source` | `operator` \| `osm` \| `nominatim`. Who the coordinate came from, in descending order of trust |
 | `geo_precision` | `exact` (the building) \| `address` (a street) \| `locality` (a town). The site draws anything below `exact` differently |
 | `scraped_at` | date this chain was actually fetched, not the snapshot date |
@@ -92,7 +92,7 @@ Each candidate is validated before it is stored: it must sit inside the
 Philippine bounding box, and it must have either an exact name match or a
 region consistent with the one already recorded. A candidate that fails is
 discarded rather than downgraded, because a confidently wrong pin is worse than
-a missing one. 13 properties have no coordinate at all and are reported as such.
+a missing one. 11 properties have no coordinate at all and are reported as such.
 
 ## Regenerating
 

@@ -3,8 +3,8 @@
  * Three constraints drive the design:
  *   Size    the bundle is columnar with integer indices, so it stays small
  *           enough for a phone. It is fetched once and kept in memory.
- *   Speed   11,058 tenant identities never all reach the DOM. A fixed row height lets the
- *           list render only the visible window plus a small overscan, so
+ *   Speed   tens of thousands of tenant identities never all reach the DOM. A fixed row
+ *           height lets the list render only the visible window plus an overscan, so
  *           scrolling cost is constant regardless of result count.
  *   Safety  every value from the data is written with textContent. No innerHTML
  *           and no template interpolation of data anywhere, so a store name can
@@ -34,7 +34,7 @@ const state = {
 const el = (id) => document.getElementById(id);
 const fmt = (n) => n.toLocaleString('en-US');
 // dictionary keys are slugs (metro-manila, health_beauty); show them as words
-const SPECIAL = { smdc: 'SMDC', sm: 'SM', xentro: 'XentroMalls' };
+const SPECIAL = { smdc: 'SMDC', sm: 'SM' };
 const label = (s) =>
   SPECIAL[s] ||
   s.replace(/[_-]/g, ' ').replace(/\b[a-z]/g, (c) => c.toUpperCase());

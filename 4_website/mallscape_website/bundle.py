@@ -1,6 +1,6 @@
 """Build the compact JSON the site loads.
 
-Size is the whole design constraint: 322 malls, 11,058 tenant identities and 41,000+
+Size is the whole design constraint: 303 properties, 10,374 tenant identities and 40,000+
 brand-to-mall edges have to reach a phone quickly. Three choices keep it small:
 
 1. Columnar arrays of arrays, not arrays of objects, so field names are stored

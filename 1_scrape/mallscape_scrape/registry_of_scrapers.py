@@ -17,7 +17,6 @@ from mallscape_scrape.scrapers.robinsons import RobinsonsScraper
 from mallscape_scrape.scrapers.sm import SMScraper
 from mallscape_scrape.scrapers.starmall import StarmallScraper
 from mallscape_scrape.scrapers.waltermart import WaltermartScraper
-from mallscape_scrape.scrapers.xentro import XentroScraper
 
 SCRAPERS: dict[str, type[MallChainScraper]] = {
     "sm": SMScraper,
@@ -30,5 +29,4 @@ SCRAPERS: dict[str, type[MallChainScraper]] = {
     "araneta": AranetaScraper,
     "fishermall": FishermallScraper,
     "ortigas": OrtigasScraper,
-    "xentro": XentroScraper,
 }

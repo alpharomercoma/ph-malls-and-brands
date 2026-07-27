@@ -17,17 +17,12 @@ so this spec covers both.
    Inertia payload we already cache. 1,075 of 1,279 Ortigas listings are
    `unknown` for no reason.
 
-2. **Four Xentro malls list two tenants per row.** The source HTML is
-   `<li>Jollibee Auto Sonix Watch Store</li>` with no delimiter. Confirmed at
-   byte level; `wp-json` exposes no cleaner copy (`content.rendered` is empty,
-   the content lives in page-builder post meta), and `/revisions` is 401. The
-   affected malls are montalban-town-center, tanay-town-center,
-   xentro-mall-calapan and xentro-mall-lemery: 381 rows. The other 13 Xentro
-   malls are clean. A rescrape would return byte-identical HTML.
-
-3. **Xentro is stale.** 16 of 19 mall pages were last modified 2019-02-11,
-   seven years before the snapshot. The REST API reports this authoritatively
-   in one request.
+2. **XentroMalls was removed entirely on 2026-07-27.** Four of its 19 mall
+   pages listed two tenants per line with no delimiter, verified at byte level,
+   with no cleaner source available and no XHR to intercept. Separately, 16 of
+   19 pages had not been edited since 2019-02-11. The operator is recorded in
+   `registry/unscraped_chains.json` with that evidence. The detector described
+   in P2 remains, because the next operator to do this must not go unnoticed.
 
 4. **There is no brand resolution step.** `brand_key` is a normalized string,
    so `starbucks coffee` (79 malls) and `starbucks` (57) are two brands and
@@ -61,6 +56,10 @@ raises a scraper warning rather than passing through as data.
 ### P2. Detect combined names and recover brands without splitting (stage 2)
 
 New module `2_clean/mallscape_clean/combined_names.py`.
+
+**Status.** The chain that prompted this has since been removed, so nothing in
+the current snapshot is flagged. The detector stays because the defect is not
+unique to one operator, and silence must not be mistaken for absence.
 
 **Why not split.** Splitting was attempted and rejected on measurement. A
 one-sided longest-attested-prefix/suffix rule splits 212 of 381 rows at roughly

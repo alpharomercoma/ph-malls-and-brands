@@ -301,9 +301,10 @@ class TestAuditRegressions:
         assert not any("\\u00" in n for n in names)
         assert "BAKER'S FAIR" in names
 
-    def test_xentro_keeps_names_ending_in_period(self):
+    def test_names_ending_in_a_period_survive(self):
         from mallscape_clean.normalize import brand_key
-        # "INC." / "CORP." / "ACC." are real tenant suffixes, not noise
+        # "INC." / "CORP." / "ACC." are real tenant suffixes, not noise. A
+        # trailing-period filter once dropped every one of them.
         assert brand_key("SIETE ESTRELLAS, INC.") != ""
 
     def test_sm_dedupe_key_separates_distinct_outlets(self):

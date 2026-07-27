@@ -1,32 +1,32 @@
 # Mall directory scrape - breakdown (2026-07-26)
 
-**322 properties · 41,468 listings · 11 chains**
+**303 properties · 40,462 listings · 10 chains**
 
 Generated deterministically from the snapshot in `data/snapshots/2026-07-26/`. Regenerate with `mallscape report --date 2026-07-26`.
 
 ## Data quality
 
-11,627 of 41,468 listings have no confidently mapped category.
-482 normalized brand keys have multiple raw variants or require review.
+10,621 of 40,462 listings have no confidently mapped category.
+477 normalized brand keys have multiple raw variants or require review.
 Raw listings are retained; these signals describe uncertainty rather than removing rows.
 
 ### Locations
 
-309 of 322 properties have a coordinate.
+292 of 303 properties have a coordinate.
 
 | source    | properties |
 |-----------|-----------:|
-| nominatim |         93 |
+| nominatim |         86 |
 | operator  |         57 |
-| osm       |        159 |
+| osm       |        149 |
 
 | precision | properties |
 |-----------|-----------:|
 | address   |         21 |
-| exact     |        263 |
-| locality  |         25 |
+| exact     |        251 |
+| locality  |         20 |
 
-Without a coordinate, and therefore absent from the map: robinsons:cybergate-bacolod, sm:mall-of-asia-arena-annex-bldg, sm:nu-mall-of-asia-building, sm:sm-city-cagayan-de-oro, sm:smby-amusement-park, sm:smdc-air-mall, sm:smdc-strip-at-mezza, waltermart:bicutan, waltermart:erodriguez, waltermart:sta-rosa-bel-air, waltermart:the-junction, xentro:morong-centerpoint, xentro:xentro-mall-polangui.
+Without a coordinate, and therefore absent from the map: robinsons:cybergate-bacolod, sm:mall-of-asia-arena-annex-bldg, sm:nu-mall-of-asia-building, sm:sm-city-cagayan-de-oro, sm:smby-amusement-park, sm:smdc-air-mall, sm:smdc-strip-at-mezza, waltermart:bicutan, waltermart:erodriguez, waltermart:sta-rosa-bel-air, waltermart:the-junction.
 
 ## Chains
 
@@ -42,8 +42,7 @@ Without a coordinate, and therefore absent from the map: robinsons:cybergate-bac
 | sm         |        126 |     100 |     19,640 | 2026-07-26 | smsupermalls.com                            |
 | starmall   |          4 |       4 |        279 | 2026-07-26 | starmalls.com.ph                            |
 | waltermart |         46 |      46 |      1,497 | 2026-07-26 | malls.waltermart.com.ph                     |
-| xentro     |         19 |      19 |      1,006 | 2026-07-26 | xentromalls.com                             |
-| **total**  |    **322** | **296** | **41,468** |            |                                             |
+| **total**  |    **303** | **277** | **40,462** |            |                                             |
 
 `properties` counts everything the operator publishes a directory for; `malls` excludes non-mall retail (condo podiums, amusement parks, office annexes). **Use `malls` for chain-vs-chain comparison.**
 
@@ -51,7 +50,6 @@ Without a coordinate, and therefore absent from the map: robinsons:cybergate-bac
 
 - **ayala** - Ayala's API returns duplicate `(mall, merchant)` pairs with distinct ids but no distinguishing fields, so listing counts run above the number of unique brands present.
 - **waltermart** - **Counts are a FLOOR.** Every category page caps at 10 tenants and the mall page returns an identical set; no pagination or limit parameter lifts it. Malls with a capped category are truncated upstream.
-- **xentro** - Some source list items merge two tenants into one line; those names are preserved verbatim rather than split on a guess.
 
 ## Properties
 
@@ -408,33 +406,9 @@ Without a coordinate, and therefore absent from the map: robinsons:cybergate-bac
 | WalterMart San Pascual       | south-luzon  | mall |        0 |
 | WalterMart Silang            | south-luzon  | mall |        0 |
 
-### xentro (19 properties, 1,006 listings)
-
-| property                 | region       | type | listings |
-|--------------------------|--------------|------|---------:|
-| Montalban Town Center    | metro-manila | mall |      167 |
-| Balagtas Town Center     | north-luzon  | mall |      102 |
-| XentroMall Calapan       | south-luzon  | mall |       79 |
-| XentroMall Santiago      | north-luzon  | mall |       78 |
-| XentroMall Lemery        | south-luzon  | mall |       68 |
-| Tanay Town Center        | south-luzon  | mall |       67 |
-| XentroMall Roxas         | north-luzon  | mall |       66 |
-| Mall Of The Valley       | north-luzon  | mall |       64 |
-| Ab Central               | metro-manila | mall |       55 |
-| Northstar Mall           | north-luzon  | mall |       46 |
-| Morong Centerpoint       | metro-manila | mall |       41 |
-| XentroMall Tumauini      | north-luzon  | mall |       41 |
-| Sta Ana Public Market    | metro-manila | mall |       37 |
-| XentroMall Cabagan       | north-luzon  | mall |       32 |
-| Shopking                 | metro-manila | mall |       27 |
-| Ilagan City Mall Isabela | north-luzon  | mall |       19 |
-| XentroMall San Andres    | metro-manila | mall |       17 |
-| XentroMall Antipolo      | metro-manila | mall |        0 |
-| XentroMall Polangui      | south-luzon  | mall |        0 |
-
 ## Properties with zero listings
 
-11 properties publish no tenant directory. Every one was checked against its source and is an upstream gap, not a parse failure.
+9 properties publish no tenant directory. Every one was checked against its source and is an upstream gap, not a parse failure.
 
 | chain      | property                    | id                       |
 |------------|-----------------------------|--------------------------|
@@ -447,8 +421,6 @@ Without a coordinate, and therefore absent from the map: robinsons:cybergate-bac
 | waltermart | WalterMart Mabalacat        | mabalacat                |
 | waltermart | WalterMart San Pascual      | san-pascual              |
 | waltermart | WalterMart Silang           | silang                   |
-| xentro     | XentroMall Antipolo         | xentro-mall-antipolo     |
-| xentro     | XentroMall Polangui         | xentro-mall-polangui     |
 
 ## Excluded operators
 
@@ -466,6 +438,7 @@ Operators investigated but not scraped. Each entry records the finding and what 
 | Puregold Price Club                 |     - | out-of-scope-shape         |
 | Shangri-La Plaza (Shang Properties) |     1 | no-current-directory       |
 | Vista Malls (Vista Land)            |    20 | no-tenant-directory        |
+| XentroMalls                         |    19 | removed-unreliable-source  |
 
 **CityMall (DoubleDragon)** - citymall.com.ph is a thin DoubleDragon corporate shell; /citymall_map returns a 423-byte stub. DoubleDragon reported 43 operating CityMalls at end-2024 with a target of 100 by 2030. These are small community malls anchored by a supermarket; no per-mall tenant directory is published on any official domain found.
 
@@ -486,6 +459,8 @@ Operators investigated but not scraped. Each entry records the finding and what 
 **Shangri-La Plaza (Shang Properties)** - Their official domain shangrila-plaza.com no longer resolves (no DNS), and shangrilaplaza.com.ph is a ParkLogic parked page offering the domain for sale. The only surviving official store listing is a Google Sites page at sites.google.com/view/shangcommunity/store-listing, which is explicitly stamped 'Updated as of February 02, 2021' — COVID-era data, five years stale. NOT scraped: importing 2021 tenants into a 2026 snapshot would silently corrupt month-over-month brand analysis.
 
 **Vista Malls (Vista Land)** - WordPress site with a page per mall and a /stores/<slug>/ route, but the store sections render only logo carousels — no tenant names in the markup. The dev mirror (dev.vistamalls.com.ph/<mall>/store/) still contains Lorem ipsum placeholders, so the directory was never populated. Mall list IS obtainable from the WP REST API (/wp-json/wp/v2/pages).
+
+**XentroMalls** - Scraped and then removed on 2026-07-27. Four of the 19 mall pages (montalban-town-center, tanay-town-center, xentro-mall-calapan, xentro-mall-lemery) list two tenants per line with no delimiter, e.g. <li>Jollibee Auto Sonix Watch Store</li>. Verified at byte level: no inner markup, no non-breaking space, no repeated space. No cleaner source exists - wp-json returns an empty content.rendered because the content lives in page-builder post meta, /wp/v2/pages/<id>/revisions is 401, and a browser trace shows no XHR for the tenant list. Separately, 16 of 19 pages were last modified 2019-02-11, so the directories are years stale.
 
 ## Known gaps inside scraped chains
 
@@ -537,27 +512,27 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 ## Brand reach
 
-11,058 distinct brands after normalization.
+10,374 distinct brands after normalization.
 
 | brand                  | malls | chains |
 |------------------------|------:|-------:|
-| WATSONS                |   193 |     11 |
-| POTATO CORNER          |   191 |     10 |
-| BENCH                  |   172 |     11 |
-| BANCO DE ORO           |   171 |      9 |
-| JOLLIBEE               |   170 |     10 |
-| SAMSUNG                |   168 |      9 |
-| PENSHOPPE              |   159 |     11 |
+| WATSONS                |   189 |     10 |
+| POTATO CORNER          |   185 |      9 |
+| BENCH                  |   168 |     10 |
+| SAMSUNG                |   167 |      8 |
+| JOLLIBEE               |   166 |      9 |
+| BANCO DE ORO           |   163 |      8 |
+| PENSHOPPE              |   157 |     10 |
 | EXECUTIVE OPTICAL      |   152 |     10 |
-| VIVO                   |   140 |      9 |
-| AFICIONADO             |   133 |      9 |
+| VIVO                   |   137 |      8 |
 | FAMOUS BELGIAN WAFFLES |   131 |      5 |
 | KFC                    |   128 |      7 |
 | IAN DARCY              |   127 |      8 |
-| OPPO                   |   127 |     10 |
 | NATIONAL BOOKSTORE     |   126 |      9 |
-| KETTLE KORN            |   125 |      8 |
-| MANG INASAL            |   125 |     10 |
-| CHOWKING               |   121 |      9 |
+| AFICIONADO             |   125 |      8 |
+| OPPO                   |   125 |      9 |
+| MANG INASAL            |   121 |      9 |
+| KETTLE KORN            |   120 |      7 |
+| CHOWKING               |   119 |      8 |
 | DUNKIN                 |   118 |      5 |
-| ACE HARDWARE           |   115 |      7 |
+| GREENWICH              |   113 |      7 |
