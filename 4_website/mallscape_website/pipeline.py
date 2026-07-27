@@ -20,6 +20,7 @@ from __future__ import annotations
 import http.server
 import re
 import socketserver
+import urllib.parse
 from functools import partial
 from pathlib import Path
 
@@ -28,7 +29,39 @@ from mallscape_website import bundle as bundle_mod
 
 BUNDLE_RE = re.compile(r'data-bundle="[^"]*"')
 DATE_RE = re.compile(r'data-snapshot="[^"]*"')
+TILES_RE = re.compile(r'data-tiles="[^"]*"')
+TILE_ATTR_RE = re.compile(r'data-tile-attribution="[^"]*"')
+# Scoped to the policy's own content attribute. A bare `img-src [^;]*;` also
+# matches the words "img-src" in the comment above the tag, and rewrote that
+# instead, leaving the real policy untouched.
+CSP_RE = re.compile(r'(?s)(<meta http-equiv="Content-Security-Policy"\s+content=")([^"]*)(")')
+IMG_SRC_RE = re.compile(r"img-src [^;]*;")
 STALE_BUNDLE = re.compile(r"^data-[0-9a-f]{12}\.json$")
+
+# Checked into 4_website/site/ and served from the page's own origin, because
+# the CSP allows no remote script or style. A missing one is a broken map, so
+# the build refuses rather than deploying a tab that fails when opened.
+VENDORED = ("vendor/leaflet.js", "vendor/leaflet.css")
+
+
+def tile_origin(tile_url: str) -> str:
+    """The scheme and host the tile template will request, for the CSP.
+
+    Deriving this instead of writing it twice is the point: the policy and the
+    URL cannot drift apart, and pointing MALLSCAPE_TILE_URL at another server
+    keeps working without anyone remembering to edit the header.
+    """
+    parts = urllib.parse.urlsplit(tile_url)
+    if parts.scheme not in ("http", "https") or not parts.netloc:
+        raise SystemExit(
+            f"MALLSCAPE_TILE_URL must be an absolute http(s) URL, got {tile_url!r}"
+        )
+    if "{z}" not in tile_url or "{x}" not in tile_url or "{y}" not in tile_url:
+        raise SystemExit(
+            f"MALLSCAPE_TILE_URL must be a tile template containing {{z}}, {{x}} "
+            f"and {{y}}, got {tile_url!r}"
+        )
+    return f"{parts.scheme}://{parts.netloc}"
 
 
 def run(run_date: str) -> Path:
@@ -38,6 +71,12 @@ def run(run_date: str) -> Path:
         raise SystemExit(
             f"site template missing at {index}. The static assets are checked in, "
             f"not generated; restore them from git."
+        )
+    missing = [name for name in VENDORED if not (site / name).exists()]
+    if missing:
+        raise SystemExit(
+            f"vendored map assets missing from {site}: {', '.join(missing)}. "
+            f"They are checked in; restore them from git."
         )
 
     digest, data = bundle_mod.build(run_date)
@@ -54,6 +93,28 @@ def run(run_date: str) -> Path:
     if n != 1:
         raise SystemExit("index.html has no data-bundle attribute to update")
     html = DATE_RE.sub(f'data-snapshot="{run_date}"', html, count=1)
+
+    # The tile URL and the policy that has to permit it are written from the
+    # same value, in the same place, so no configuration change can leave the
+    # page requesting an origin its own CSP blocks.
+    origin = tile_origin(config.TILE_URL)
+    for pattern, replacement, what in (
+        (TILES_RE, f'data-tiles="{config.TILE_URL}"', "data-tiles attribute"),
+        (TILE_ATTR_RE, f'data-tile-attribution="{config.TILE_ATTRIBUTION}"', "data-tile-attribution attribute"),
+    ):
+        html, n = pattern.subn(replacement, html, count=1)
+        if n != 1:
+            raise SystemExit(f"index.html has no {what} to update")
+
+    def rewrite_policy(match: re.Match) -> str:
+        policy, n = IMG_SRC_RE.subn(f"img-src 'self' data: {origin};", match.group(2), count=1)
+        if n != 1:
+            raise SystemExit("the Content-Security-Policy in index.html has no img-src directive")
+        return match.group(1) + policy + match.group(3)
+
+    html, n = CSP_RE.subn(rewrite_policy, html, count=1)
+    if n != 1:
+        raise SystemExit("index.html has no Content-Security-Policy meta tag to update")
     index.write_text(html)
 
     # Keep a copy inside the snapshot so the run is self-describing, pruning
@@ -66,7 +127,9 @@ def run(run_date: str) -> Path:
     storage.write_text(run_date, storage.WEBSITE, name, bundle_mod.dumps(data))
 
     size_kb = (site / name).stat().st_size / 1024
+    mapped = data["totals"]["mapped"]
     print(f"[website] {name} ({size_kb:,.0f} KB) -> {site}")
+    print(f"[website] map: {mapped}/{data['totals']['properties']} properties plotted, tiles {origin}")
     return site
 
 

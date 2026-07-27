@@ -9,7 +9,7 @@ re-runs, so it is scratch space rather than provenance.
 
 | file | rows | description |
 |---|---|---|
-| `malls.{parquet,csv}` | 328 | one row per property |
+| `malls.{parquet,csv}` | 322 | one row per property |
 | `stores.{parquet,csv}` | 41,468 | one row per store listing |
 | `brand_presence.*` | — | `(brand_key, chain, mall)` long-format matrix |
 | `brand_summary.*` | — | per brand: malls per chain, total, chain count |
@@ -32,11 +32,14 @@ rebuilt at any time with `mallscape analyze --date <date>`.
 | `chain` | operator id (`sm`, `robinsons`, `ayala`, …) |
 | `mall_id` | stable slug, unique within a chain |
 | `mall_name` | display name as published |
-| `region` | `metro-manila` \| `north-luzon` \| `south-luzon` \| `visayas` \| `mindanao`. Always geographic. Only three operators publish one, so the rest are inferred from name and address by `mallscape_core.geo`; resolved for 327 of 322 properties |
+| `region` | `metro-manila` \| `north-luzon` \| `south-luzon` \| `visayas` \| `mindanao`. Always geographic. Only three operators publish one, so the rest are inferred from name and address by `mallscape_core.geo`; resolved for 321 of 322 properties |
 | `address` | street address where published |
 | `mall_code` | operator-internal id (SM `mallCode`, Ayala numeric id, Contentstack uid) |
 | `source_url` | the page or endpoint the data came from |
 | `property_type` | `mall` \| `residential-retail` \| `amusement-park` \| `office-annex`. **Only SM is classified**; everything else defaults to `mall` |
+| `lat`, `lon` | WGS84 decimal degrees, null when unplaced. 309 of 322 are placed |
+| `geo_source` | `operator` \| `osm` \| `nominatim`. Who the coordinate came from, in descending order of trust |
+| `geo_precision` | `exact` (the building) \| `address` (a street) \| `locality` (a town). The site draws anything below `exact` differently |
 | `scraped_at` | date this chain was actually fetched, not the snapshot date |
 
 ## `stores` schema
@@ -76,6 +79,20 @@ presence is unaffected; raw listing counts are inflated by roughly 7%.
 
 **Category vocabularies are not harmonized.** SM's `dining` and Ayala's `dine`
 are not merged. Compare categories within a chain, not across.
+
+## Coordinates
+
+`lat`/`lon` do not come from the operator sites except for Ayala and Megaworld,
+which publish them. Everything else is resolved once by `mallscape geocode`
+against OpenStreetMap and stored in
+`1_scrape/mallscape_scrape/registry/mall_coordinates.json`, which is committed.
+Rebuilding the snapshot therefore reproduces the same coordinates offline.
+
+Each candidate is validated before it is stored: it must sit inside the
+Philippine bounding box, and it must have either an exact name match or a
+region consistent with the one already recorded. A candidate that fails is
+discarded rather than downgraded, because a confidently wrong pin is worse than
+a missing one. 13 properties have no coordinate at all and are reported as such.
 
 ## Regenerating
 

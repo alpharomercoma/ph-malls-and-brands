@@ -8,6 +8,9 @@
 | `stores.parquet` / `.csv` | one row per store listing, exactly as published |
 | `run_report.md` | counts, diff against the previous snapshot, warnings |
 
+`malls` carries `lat`, `lon`, `geo_source` and `geo_precision`. See
+"Coordinates" below for who owns them.
+
 Run it with `uv run mallscape scrape`, or one chain with `--chain sm`.
 
 ## What this stage promises
@@ -28,6 +31,27 @@ Each scraper in `scrapers/` subclasses `MallChainScraper` and implements
 `discover_malls()` and `scrape_mall()`. Its module docstring records the
 endpoints, the quirks, and any dead domain that should not be re-added. Read
 that docstring before changing a parser.
+
+## Coordinates
+
+Ayala and Megaworld publish coordinates in their own APIs, and their scrapers
+record them as `geo_source=operator`. Nothing else may overwrite those.
+
+Every other property is placed from `registry/mall_coordinates.json`, which is
+committed. `pipeline.place()` reads it on every run and never touches the
+network, so the map is reproducible and a scrape works offline.
+
+`uv run mallscape geocode` is the only thing that changes that file. It resolves
+whatever the registry cannot answer, using one Overpass query for every named
+retail feature in the country, then Nominatim at one request per second for the
+remainder. `geocode.py` explains the matching rules; the short version is that a
+candidate needs either an exact name or agreement between its name and the
+region we already hold, because our region test is coarse enough to disagree
+with a correct pin near a boundary.
+
+The registry owns its column outright: if an entry is deleted, the coordinate
+disappears from the next run rather than lingering in the parquet. That is what
+makes `place()` idempotent.
 
 ## The rule that keeps this stage honest
 

@@ -8,11 +8,14 @@ protect against parser regressions while refactoring.
 import json
 from collections import Counter
 from pathlib import Path
+from typing import ClassVar
 
 import pytest
 
 from mallscape_clean.normalize import brand_key
+from mallscape_core.geo import parse_coords
 from mallscape_core.models import Mall
+from mallscape_scrape import geocode
 from mallscape_scrape.scrapers.ayala import derive_region
 from mallscape_scrape.scrapers.filinvest import FilinvestScraper
 from mallscape_scrape.scrapers.robinsons import RobinsonsScraper, _norm_key
@@ -463,8 +466,81 @@ class TestWebsiteStage:
         digest2, second = website_bundle.build("2026-01-01")
         assert digest == digest2
         assert first == second
-        assert first["schema"] == 2
+        assert first["schema"] == 3
         assert first["brandCategories"] == [[0]]
         assert first["totals"]["properties"] == 1
         # edges are flat pairs, so the length is always even
         assert len(first["edges"]) % 2 == 0
+
+
+class TestGeocoding:
+    """Both bugs these cover shipped once and were caught by inspecting output,
+    not by a failing test. They are pinned here so they cannot come back."""
+
+    SM_BACOOR: ClassVar[dict] = {"id": "way/1", "names": ["SM City Bacoor"], "lat": 14.4452, "lon": 120.9504}
+    SM_STORE_FAR: ClassVar[dict] = {"id": "way/2", "names": ["SM Store"], "lat": 7.0496, "lon": 125.5881}
+    SM_STORE_NEAR: ClassVar[dict] = {"id": "way/3", "names": ["SM Store"], "lat": 14.3928, "lon": 120.8509}
+
+    def test_shorter_name_is_not_a_match(self):
+        # "SM Store" shares every one of its tokens with "SM City Bacoor".
+        # Treating that as containment let branch supermarkets outscore malls.
+        assert geocode.score("SM City Bacoor", "SM Store") < 0.90
+
+    def test_longer_name_containing_ours_is_a_match(self):
+        assert geocode.score("SM City Baguio", "SM City Baguio Annex") >= 0.90
+
+    def test_exact_name_survives_a_disagreeing_region(self):
+        # Bacoor is in Cavite, so its region is south-luzon, but its
+        # coordinates fall inside the coarse Metro Manila box. The name is the
+        # stronger evidence and has to win, or the mall goes unplaced.
+        assert geocode.derive_region("", 14.4452, 120.9504) == "metro-manila"
+        hit, reason = geocode.best_match(
+            "SM City Bacoor", "south-luzon",
+            [self.SM_BACOOR, self.SM_STORE_FAR, self.SM_STORE_NEAR],
+        )
+        assert reason == ""
+        assert hit["id"] == "way/1"
+
+    def test_fuzzy_name_in_the_wrong_region_is_rejected(self):
+        hit, reason = geocode.best_match(
+            "Gaisano Grand Cebu", "visayas",
+            [{"id": "way/9", "names": ["Gaisano Grand Cebux"], "lat": 7.05, "lon": 125.58}],
+        )
+        assert hit is None and reason
+
+    def test_two_exact_matches_far_apart_are_ambiguous(self):
+        twin = {"id": "way/4", "names": ["SM City Bacoor"], "lat": 10.3, "lon": 123.9}
+        hit, reason = geocode.best_match("SM City Bacoor", None, [self.SM_BACOOR, twin])
+        assert hit is None
+        assert "ambiguous" in reason
+
+    def test_coordinates_outside_the_country_are_rejected(self):
+        assert parse_coords(51.5, -0.12) is None      # London
+        assert parse_coords("14.55", "121.02") == (14.55, 121.02)
+        assert parse_coords(None, None) is None
+        assert parse_coords("", "") is None
+
+    def test_attach_is_idempotent_and_registry_owned(self, monkeypatch):
+        import pandas as pd
+
+        monkeypatch.setattr(geocode, "load", lambda: {
+            "sm:a": {"lat": 14.5, "lon": 121.0, "source": "osm", "precision": "exact"},
+        })
+        frame = pd.DataFrame({
+            "chain": ["sm", "sm", "ayala"],
+            "mall_id": ["a", "b", "c"],
+            # b carries a stale coordinate from an earlier run; the registry no
+            # longer vouches for it, so attach must drop it rather than keep it.
+            "lat": [None, 9.99, 7.09],
+            "lon": [None, 99.9, 125.6],
+            "geo_source": [None, "osm", "operator"],
+            "geo_precision": [None, "exact", "exact"],
+        })
+        once, missing = geocode.attach(frame)
+        assert missing == ["sm:b"]
+        assert once.loc[0, "lat"] == 14.5
+        assert pd.isna(once.loc[1, "lat"])
+        assert once.loc[2, "lat"] == 7.09          # operator coordinates untouched
+        twice, missing_again = geocode.attach(once)
+        assert missing == missing_again
+        assert twice.equals(once)

@@ -22,7 +22,7 @@ from __future__ import annotations
 
 from typing import ClassVar
 
-from mallscape_core.geo import derive_region
+from mallscape_core.geo import derive_region, parse_coords
 from mallscape_core.models import Mall, Store
 from mallscape_scrape import coverage
 from mallscape_scrape.scrapers.base import MallChainScraper
@@ -46,8 +46,9 @@ class AyalaScraper(MallChainScraper):
         malls = []
         for r in records:
             address = (r.get("location") or "").strip() or None
+            coords = parse_coords(r.get("latitude"), r.get("longitude"))
             region = derive_region(
-                f"{r.get('name', '')} {address or ''}", r.get("latitude"), r.get("longitude")
+                f"{r.get('name', '')} {address or ''}", *(coords or (None, None))
             )
             if region is None:
                 self.warn(f"could not derive region for {r['slugName']} ({address!r})")
@@ -60,6 +61,10 @@ class AyalaScraper(MallChainScraper):
                     address=address,
                     mall_code=r["id"],
                     source_url=f"https://www.ayalamalls.com/explore/mall-directory/{r['slugName']}",
+                    lat=coords[0] if coords else None,
+                    lon=coords[1] if coords else None,
+                    geo_source="operator" if coords else None,
+                    geo_precision="exact" if coords else None,
                     extra={"explore_enabled": r.get("explore")},
                 )
             )

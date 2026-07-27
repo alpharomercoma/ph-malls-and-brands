@@ -4,6 +4,7 @@ A reproducible dataset of what is inside Philippine malls, and a site for
 exploring it.
 
 **322 properties, 41,468 store listings, 11,058 tenant identities, 11 operators.**
+**309 properties are placed on a map.**
 
 | | |
 |---|---|
@@ -48,6 +49,19 @@ nothing interpretive happens here. Full details in [1_scrape/README.md](1_scrape
 Cold, this is about 3,000 requests over 25 minutes. Responses are cached, so
 re-parsing is free and offline.
 
+### 1b. Geocode
+
+```bash
+uv run mallscape geocode
+```
+
+Resolves coordinates for properties the committed registry cannot already
+place, and is the only command that needs the network for the map. Ordinary
+runs read
+[`registry/mall_coordinates.json`](1_scrape/mallscape_scrape/registry/mall_coordinates.json)
+and stay offline, so the map is reproducible. Run this only when a scrape finds
+properties that are new.
+
 ### 2. Clean
 
 ```bash
@@ -80,7 +94,9 @@ uv run mallscape website --serve     # http://localhost:3000
 
 Writes a content hashed JSON bundle next to a checked-in page. The list is
 virtualized, search is instant, and every value is written as text rather than
-markup. See [4_website/README.md](4_website/README.md).
+markup. The Map tab draws the same result set geographically, so every filter,
+the search box and the brand focus apply to both. See
+[4_website/README.md](4_website/README.md).
 
 ## Operators covered
 
@@ -122,6 +138,10 @@ in `breakdown.md` with the evidence.
   merchant rows with no distinguishing fields. Brand presence is unaffected.
 - **Roughly 27 percent of listings carry no usable category upstream** and are
   reported as `unknown` rather than being guessed.
+- **13 properties have no coordinate** and are absent from the map, which says
+  so under it rather than quietly dropping them. Most are SMDC retail podiums
+  that no public gazetteer lists. Of the 309 that are placed, 263 sit on the
+  building; 46 resolve only to a street or a town and are drawn hollow.
 
 ## Configuration
 
@@ -142,7 +162,7 @@ make e2e     # drives the built site in a real browser
 | lint | style and dead code, via ruff |
 | unit | parsers against frozen fixtures, with exact expected counts |
 | integration | the handoff between stages, including carry-forward and schema |
-| end to end | the built site: bundle validity, search, virtualization, mobile layout, no script errors |
+| end to end | the built site: bundle validity, search, virtualization, mobile layout, map plotting and filtering, no script errors |
 
 ## Etiquette
 
@@ -151,8 +171,8 @@ agent, and every response cached so parser work never re-hits a site.
 
 ## Open items
 
-- `region` is null for all Megaworld and XentroMall properties. Megaworld has
-  addresses that `derive_region()` would resolve; it is simply not called.
+- `region` is null for one property, SMBY Amusement Park, which publishes
+  neither an address nor a resolvable coordinate.
 - `property_type` is classified only for SM, so XentroMall's public market
   currently compares against SM malls as a peer.
 - Gaisano Capital, LCC Group and NCCC are blocked or unconfirmed rather than

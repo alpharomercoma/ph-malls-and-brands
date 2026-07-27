@@ -12,8 +12,11 @@
  *           inline script.
  */
 
+import * as mapview from './map.js';
+
 const ROW_HEIGHT = 44;   // must match --row-h in styles.css
 const OVERSCAN = 6;      // rows rendered beyond the viewport, to hide scroll seams
+const POPUP_BRANDS = 6;  // brands named in a map popup before it gets unwieldy
 
 const state = {
   data: null,
@@ -23,6 +26,7 @@ const state = {
   region: new Set(),
   category: new Set(),
   mallsOnly: false,
+  brandFocus: null,      // brand index; a property-scoped filter set from a brand row
   expanded: null,
   rows: [],
 };
@@ -43,7 +47,7 @@ async function load() {
   const res = await fetch(src, { cache: 'force-cache' });
   if (!res.ok) throw new Error(`could not load data (${res.status})`);
   const data = await res.json();
-  if (!data || data.schema !== 2) {
+  if (!data || data.schema !== 3) {
     throw new Error(`unsupported bundle schema: ${data && data.schema}`);
   }
   return data;
@@ -151,9 +155,14 @@ function scopedMalls() {
 
 function matchingMalls() {
   const d = state.data;
+  // A brand focus narrows the properties to the ones carrying that brand. It
+  // only exists in the property-shaped views, so it is tested here rather than
+  // in mallPasses, which brand filtering also runs through.
+  const focus = state.brandFocus === null ? null : new Set(d.brandMalls[state.brandFocus]);
   const out = [];
   for (let i = 0; i < d.malls.length; i++) {
     const m = d.malls[i];
+    if (focus && !focus.has(i)) continue;
     if (state.query && !d.mallSearch[i].includes(state.query)) continue;
     if (state.chain.size && !state.chain.has(d.dict.chains[m[1]])) continue;
     if (!mallPasses(i)) continue;
@@ -178,9 +187,11 @@ function matchingMalls() {
 function facetCounts(facet) {
   const d = state.data;
   const counts = new Map();
-  if (state.view === 'malls') {
+  if (state.view !== 'brands') {
+    const focus = state.brandFocus === null ? null : new Set(d.brandMalls[state.brandFocus]);
     for (let i = 0; i < d.malls.length; i++) {
       const m = d.malls[i];
+      if (focus && !focus.has(i)) continue;
       if (state.query && !d.mallSearch[i].includes(state.query)) continue;
       if (facet !== 'chain' && state.chain.size && !state.chain.has(d.dict.chains[m[1]])) continue;
       if (!mallPasses(i, { skipRegion: facet === 'region' })) continue;
@@ -293,6 +304,26 @@ function buildDetail(index) {
   if (state.view === 'brands') {
     const malls = matchingMallsForBrand(index).sort((a, b) => d.malls[b][4] - d.malls[a][4]);
     h.textContent = `Present in ${malls.length} ${malls.length === 1 ? 'mall' : 'malls'}`;
+    const placed = malls.filter((mi) => d.malls[mi][5] !== null).length;
+    if (placed > 0) {
+      const toMap = document.createElement('button');
+      toMap.type = 'button';
+      toMap.className = 'chip chip--map';
+      toMap.textContent = `Show ${fmt(placed)} on the map`;
+      toMap.addEventListener('click', (event) => {
+        event.stopPropagation();
+        state.brandFocus = index;
+        // The query that found this brand matches brand names. In the
+        // property-shaped views it matches property names instead, so
+        // searching "uniqlo" and then asking for its malls would leave a
+        // filter no property can satisfy and an empty map. The focus is the
+        // more specific expression of the same intent, so it replaces it.
+        state.query = '';
+        el('q').value = '';
+        setView('map');
+      });
+      h.appendChild(toMap);
+    }
     for (const mi of malls.slice(0, 60)) {
       const p = document.createElement('span');
       p.className = 'pill';
@@ -341,9 +372,6 @@ function renderList() {
   const win = el('window');
   const rows = state.rows;
 
-  el('count').textContent =
-    `${fmt(rows.length)} ${state.view === 'brands' ? 'brands' : 'properties'}`;
-
   if (rows.length === 0) {
     sizer.style.height = '0px';
     win.replaceChildren();
@@ -371,9 +399,198 @@ function renderList() {
   win.replaceChildren(frag);
 }
 
+/* ---------- map ----------
+ * The map is the property result set drawn geographically. It shares every
+ * filter, the search box and the brand focus with the list, so the two views
+ * can never disagree about what is in scope. The only thing it adds is that a
+ * property without a resolvable coordinate cannot be drawn, which is stated
+ * under the map rather than hidden.
+ */
+
+function mapPoints() {
+  const d = state.data;
+  const out = [];
+  for (const mi of state.rows) {
+    const m = d.malls[mi];
+    if (m[5] === null || m[6] === null) continue;
+    out.push({
+      index: mi,
+      name: m[0],
+      lat: m[5],
+      lon: m[6],
+      listings: m[4],
+      approximate: d.dict.geoPrecisions[m[8]] === 'locality',
+    });
+  }
+  return out;
+}
+
+/** Popup for one property, built as DOM so no data ever becomes markup. */
+function buildPopup(point) {
+  const d = state.data;
+  const m = d.malls[point.index];
+  const box = document.createElement('div');
+  box.className = 'popup';
+
+  const title = document.createElement('strong');
+  title.textContent = point.name;
+
+  const meta = document.createElement('p');
+  meta.className = 'popup-meta';
+  meta.textContent = [
+    label(d.dict.chains[m[1]]),
+    m[2] >= 0 ? label(d.dict.regions[m[2]]) : 'region unavailable',
+    `${fmt(m[4])} listings`,
+  ].join(' · ');
+  box.append(title, meta);
+
+  const brands = d.mallBrands[point.index]
+    .slice()
+    .sort((a, b) => d.brands[b][2] - d.brands[a][2]);
+  if (brands.length) {
+    const pills = document.createElement('div');
+    pills.className = 'pills';
+    for (const bi of brands.slice(0, POPUP_BRANDS)) {
+      const pill = document.createElement('span');
+      pill.className = 'pill';
+      pill.textContent = d.brands[bi][0];
+      pills.appendChild(pill);
+    }
+    if (brands.length > POPUP_BRANDS) {
+      const rest = document.createElement('span');
+      rest.className = 'pill muted';
+      rest.textContent = `and ${fmt(brands.length - POPUP_BRANDS)} more`;
+      pills.appendChild(rest);
+    }
+    box.appendChild(pills);
+  }
+
+  const flags = d.quality?.propertyFlags[point.index] || [];
+  if (point.approximate) flags.push('approximate location, resolved to the town only');
+  if (flags.length) {
+    const note = document.createElement('p');
+    note.className = 'popup-flag';
+    note.textContent = flags.join(' · ');
+    box.appendChild(note);
+  }
+  return box;
+}
+
+/** Everything under the map: what the marks mean, and what is missing. */
+function renderMapNote(shown) {
+  const note = el('mapnote');
+  note.replaceChildren();
+
+  const legend = document.createElement('span');
+  legend.className = 'legend';
+  for (const [cls, text] of [['dot', 'located'], ['dot dot--approx', 'approximate']]) {
+    const swatch = document.createElement('i');
+    swatch.className = cls;
+    const caption = document.createElement('span');
+    caption.textContent = text;
+    legend.append(swatch, caption);
+  }
+
+  const missing = state.rows.length - shown;
+  const parts = ['Circle area shows listing count.'];
+  if (missing > 0) {
+    parts.push(
+      `${fmt(missing)} of ${fmt(state.rows.length)} matching ${missing === 1 ? 'property has' : 'properties have'} no resolvable location and ${missing === 1 ? 'is' : 'are'} not drawn.`,
+    );
+  }
+  const text = document.createElement('span');
+  text.textContent = parts.join(' ');
+
+  const credit = document.createElement('span');
+  credit.className = 'credit';
+  credit.append(document.createTextNode('Tiles '));
+  const link = document.createElement('a');
+  link.href = 'https://www.openstreetmap.org/copyright';
+  link.rel = 'noopener noreferrer';
+  link.target = '_blank';
+  link.textContent = document.body.dataset.tileAttribution || 'OpenStreetMap contributors';
+  credit.appendChild(link);
+
+  note.append(legend, text, credit);
+}
+
+function tileFailureNotice() {
+  const banner = document.createElement('span');
+  banner.className = 'popup-flag';
+  banner.textContent =
+    'Map tiles could not be loaded, so the background is blank. The markers below are still positioned correctly.';
+  el('mapnote').prepend(banner);
+}
+
+/** The plotted properties, listed beside the map on wide screens.
+ *
+ * The country is far taller than it is wide, so a full-width map has to zoom
+ * out until half the canvas is sea and neighbouring countries. This column
+ * uses that width for something, and gives a way to reach a specific property
+ * by name instead of by hunting for its pin.
+ */
+function renderMapList(points) {
+  const host = el('maplist');
+  const frag = document.createDocumentFragment();
+  const heading = document.createElement('h3');
+  heading.textContent = 'Most listings';
+  frag.appendChild(heading);
+
+  for (const point of [...points].sort((a, b) => b.listings - a.listings)) {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'maplist-item';
+    const name = document.createElement('span');
+    name.className = 'name';
+    name.textContent = point.name;
+    const n = document.createElement('span');
+    n.className = 'n';
+    n.textContent = fmt(point.listings);
+    item.append(name, n);
+    item.addEventListener('click', () => mapview.focusOn(point));
+    frag.appendChild(item);
+  }
+  host.replaceChildren(frag);
+  host.scrollTop = 0;
+}
+
+async function syncMap() {
+  const points = mapPoints();
+  el('mapcount').textContent = `${fmt(points.length)} on the map`;
+  renderMapNote(points.length);
+  renderMapList(points);
+  mapview.setPopupBuilder(buildPopup);
+  try {
+    await mapview.ensure({
+      container: el('map'),
+      tiles: document.body.dataset.tiles,
+      onTileFailure: tileFailureNotice,
+    });
+  } catch (err) {
+    el('mapnote').replaceChildren();
+    tileFailureNotice();
+    el('mapnote').firstChild.textContent = `The map could not start: ${err.message}`;
+    return;
+  }
+  mapview.refresh();                     // the panel was hidden when it was built
+  mapview.update(points, { fit: true });
+}
+
 function refresh() {
   state.expanded = null;
+  const isMap = state.view === 'map';
   state.rows = state.view === 'brands' ? matchingBrands() : matchingMalls();
+  el('listPanel').hidden = isMap;
+  el('mapPanel').hidden = !isMap;
+  el('count').textContent =
+    `${fmt(state.rows.length)} ${state.view === 'brands' ? 'brands' : 'properties'}`;
+  paintFocusChip();
+  if (isMap) {
+    paintFacets();
+    void syncMap();
+    renderScope();
+    return;
+  }
   el('viewport').scrollTop = 0;
   el('col-2').textContent = state.view === 'brands' ? 'Category' : 'Operator';
   // The two right-hand columns mean different things per view, so their
@@ -396,11 +613,40 @@ function refresh() {
 
 function renderScope() {
   const active = [];
+  if (state.brandFocus !== null) {
+    active.push(`Brand: ${state.data.brands[state.brandFocus][0]}`);
+  }
   for (const [key, title] of [['chain', 'Operator'], ['region', 'Region'], ['category', 'Category']]) {
     if (state[key].size) active.push(`${title}: ${[...state[key]].map(label).join(' or ')}`);
   }
   if (state.mallsOnly) active.push('Malls only');
   el('scope').textContent = active.length ? `Filtered by ${active.join(' · ')}` : 'Showing the full snapshot';
+}
+
+/** The brand focus is the one filter set from a row rather than a control, so
+ *  it needs its own visible, dismissible chip. A filter a reader cannot see is
+ *  a filter they will blame on the data. */
+function paintFocusChip() {
+  const chip = el('focus');
+  if (state.brandFocus === null) {
+    chip.hidden = true;
+    return;
+  }
+  const name = state.data.brands[state.brandFocus][0];
+  chip.hidden = false;
+  chip.textContent = `${name} ×`;
+  chip.setAttribute('aria-label', `Stop showing only properties carrying ${name}`);
+}
+
+function setView(view) {
+  // The brand focus filters properties, so it cannot survive a return to the
+  // brand list. Dropping it here beats leaving an invisible filter applied.
+  if (view === 'brands') state.brandFocus = null;
+  state.view = view;
+  for (const [id, name] of [['tab-brands', 'brands'], ['tab-malls', 'malls'], ['tab-map', 'map']]) {
+    el(id).setAttribute('aria-selected', String(view === name));
+  }
+  refresh();
 }
 
 /* ---------- setup ---------- */
@@ -603,11 +849,19 @@ function wire() {
   el('reset').addEventListener('click', () => {
     state.chain.clear(); state.region.clear(); state.category.clear();
     state.mallsOnly = false;
+    state.brandFocus = null;
     el('mallsOnly').setAttribute('aria-pressed', 'false');
     el('q').value = '';
     state.query = '';
     refresh();
   });
+
+  el('focus').addEventListener('click', () => {
+    state.brandFocus = null;
+    refresh();
+  });
+
+  el('mapfit').addEventListener('click', () => mapview.fitToPoints());
 
   el('mallsOnly').addEventListener('click', (e) => {
     state.mallsOnly = !state.mallsOnly;
@@ -615,13 +869,8 @@ function wire() {
     refresh();
   });
 
-  for (const id of ['tab-brands', 'tab-malls']) {
-    el(id).addEventListener('click', () => {
-      state.view = id === 'tab-brands' ? 'brands' : 'malls';
-      el('tab-brands').setAttribute('aria-selected', String(state.view === 'brands'));
-      el('tab-malls').setAttribute('aria-selected', String(state.view === 'malls'));
-      refresh();
-    });
+  for (const [id, view] of [['tab-brands', 'brands'], ['tab-malls', 'malls'], ['tab-map', 'map']]) {
+    el(id).addEventListener('click', () => setView(view));
   }
 
   el('viewport').addEventListener('scroll', () => {
@@ -631,7 +880,10 @@ function wire() {
     requestAnimationFrame(() => { state.ticking = false; renderList(); });
   }, { passive: true });
 
-  window.addEventListener('resize', renderList, { passive: true });
+  window.addEventListener('resize', () => {
+    if (state.view === 'map') mapview.refresh();
+    else renderList();
+  }, { passive: true });
 
   el('theme').addEventListener('click', () => {
     const now = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';

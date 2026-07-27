@@ -17,6 +17,12 @@ class Mall:
     # "mall" vs non-mall retail (amusement park, condo podium, office annex);
     # filter on this before comparing chains - see classify_property_type
     property_type: str = "mall"
+    # Set only by scrapers whose source publishes coordinates. Everything else
+    # is resolved later against the committed registry; see geocode.py.
+    lat: float | None = None
+    lon: float | None = None
+    geo_source: str | None = None   # "operator" | "osm" | "nominatim" | None
+    geo_precision: str | None = None  # "exact" | "address" | "locality" | None
     extra: dict = field(default_factory=dict)
 
     def to_row(self) -> dict:

@@ -11,7 +11,7 @@ import pandas as pd
 
 from mallscape_core import storage
 from mallscape_core.geo import region_for
-from mallscape_scrape import validate
+from mallscape_scrape import geocode, validate
 from mallscape_scrape.fetch import Fetcher
 from mallscape_scrape.registry_of_scrapers import SCRAPERS
 
@@ -71,6 +71,8 @@ def run(chains: list[str], run_date: str, rate: float) -> tuple[pd.DataFrame, pd
         malls_df = pd.concat([prev_malls[~prev_malls["chain"].isin(chains)], malls_df])
         stores_df = pd.concat([prev_stores[~prev_stores["chain"].isin(chains)], stores_df])
 
+    malls_df = place(malls_df)
+
     storage.validate_snapshot_frames(malls_df, stores_df)
     storage.write(run_date, storage.SCRAPE, "malls", malls_df)
     storage.write(run_date, storage.SCRAPE, "stores", stores_df)
@@ -78,3 +80,39 @@ def run(chains: list[str], run_date: str, rate: float) -> tuple[pd.DataFrame, pd
     storage.write_text(run_date, storage.SCRAPE, "run_report.md", report)
     print("\n" + report)
     return malls_df, stores_df
+
+
+def place(malls_df: pd.DataFrame) -> pd.DataFrame:
+    """Attach committed coordinates, then use them to settle any open region.
+
+    Reads the registry only, so this is offline and deterministic. Properties
+    the registry cannot place are named on stdout rather than quietly dropped
+    from the map; `mallscape geocode` is what resolves them.
+    """
+    malls_df, unplaced = geocode.attach(malls_df)
+    # A coordinate answers the region question outright, so anything the text
+    # rules could not classify gets a second chance here rather than staying null.
+    for i, row in malls_df.iterrows():
+        if not row.get("region") and pd.notna(row["lat"]):
+            malls_df.at[i, "region"] = region_for(lat=row["lat"], lon=row["lon"])
+    placed = int(malls_df["lat"].notna().sum())
+    print(f"[scrape] coordinates: {placed}/{len(malls_df)} properties placed")
+    if unplaced:
+        print(
+            f"[scrape] {len(unplaced)} without coordinates, run `mallscape geocode`: "
+            f"{sorted(unplaced)[:8]}"
+        )
+    return malls_df
+
+
+def geocode_run(run_date: str) -> pd.DataFrame:
+    """Stage 1b. Resolve missing coordinates over the network and re-place the
+    snapshot, without re-scraping any directory."""
+    malls_df = storage.read(run_date, storage.SCRAPE, "malls")
+    if malls_df is None:
+        raise SystemExit(f"no stage 1 malls table for {run_date}; run `mallscape scrape` first")
+    _, log = geocode.refresh(malls_df, storage.cache_dir(run_date, "geocode"))
+    print(log)
+    malls_df = place(malls_df)
+    storage.write(run_date, storage.SCRAPE, "malls", malls_df)
+    return malls_df

@@ -25,6 +25,11 @@ MALLS = pd.DataFrame({
     "mall_code": ["A", "B", "1"],
     "source_url": ["u", "u", "u"],
     "property_type": ["mall", "residential-retail", "mall"],
+    # one placed by the operator, one by the registry, one unplaceable
+    "lat": [14.55, 10.31, None],
+    "lon": [121.02, 123.90, None],
+    "geo_source": ["operator", "osm", None],
+    "geo_precision": ["exact", "exact", None],
     "scraped_at": ["2026-01-01"] * 3,
 })
 
@@ -84,9 +89,58 @@ def test_website_bundle_matches_snapshot_totals(snapshot):
     assert data["totals"]["listings"] == len(STORES)
     assert data["totals"]["malls"] == 2      # one is residential-retail
     assert len(data["malls"]) == len(MALLS)
-    assert data["schema"] == 2
+    assert data["schema"] == 3
     assert "quality" in data
     assert data["brandCategories"]
+
+
+def test_website_bundle_carries_usable_coordinates(snapshot):
+    """The map can only be as good as what reaches the bundle, so the contract
+    is checked here rather than in the browser: every plotted property has a
+    coordinate inside the country, and an unplaced one is null, not zero."""
+    from mallscape_clean import pipeline as clean_stage
+    from mallscape_core.geo import in_bounds
+    from mallscape_website import bundle
+
+    clean_stage.run(snapshot)
+    _, data = bundle.build(snapshot)
+    lat_min, lat_max, lon_min, lon_max = 4.5, 21.5, 116.0, 127.0
+    placed = [row for row in data["malls"] if row[5] is not None]
+    assert data["totals"]["mapped"] == len(placed) == 2
+    for row in placed:
+        assert in_bounds(row[5], row[6]), row
+        assert lat_min <= row[5] <= lat_max and lon_min <= row[6] <= lon_max
+        assert data["dict"]["geoSources"][row[7]] in {"operator", "osm", "nominatim"}
+        assert data["dict"]["geoPrecisions"][row[8]] in {"exact", "address", "locality"}
+    unplaced = [row for row in data["malls"] if row[5] is None]
+    assert len(unplaced) == 1
+    assert unplaced[0][6] is None and unplaced[0][7] == -1
+
+
+def test_website_build_keeps_csp_and_tile_url_in_step(snapshot, tmp_path, monkeypatch):
+    """A tile host the page's own policy blocks is a blank map with a console
+    error and no other symptom, so the build derives one from the other."""
+    import shutil
+
+    from mallscape_clean import pipeline as clean_stage
+    from mallscape_core import config
+    from mallscape_website import pipeline as website_stage
+
+    clean_stage.run(snapshot)
+    site = tmp_path / "site"
+    shutil.copytree(config.SITE_DIR, site)
+    monkeypatch.setattr(config, "SITE_DIR", site)
+    monkeypatch.setattr(config, "TILE_URL", "https://tiles.example.org/{z}/{x}/{y}.png")
+
+    website_stage.run(snapshot)
+    html = (site / "index.html").read_text()
+    assert 'data-tiles="https://tiles.example.org/{z}/{x}/{y}.png"' in html
+    assert "img-src 'self' data: https://tiles.example.org;" in html
+    assert "tile.openstreetmap.org" not in html
+
+    monkeypatch.setattr(config, "TILE_URL", "not-a-url")
+    with pytest.raises(SystemExit):
+        website_stage.run(snapshot)
 
 
 def test_snapshot_contract_rejects_orphan_store():

@@ -1,6 +1,6 @@
 # Philippine Mall Explorer. `make help` lists targets.
 .DEFAULT_GOAL := help
-.PHONY: help setup all scrape clean report site dev deploy check lint test integration e2e
+.PHONY: help setup all scrape geocode clean report site dev deploy check lint test integration e2e
 
 help:  ## show this list
 	@grep -E '^[a-z-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[1m%-12s\033[0m %s\n", $$1, $$2}'
@@ -13,6 +13,9 @@ all: clean report site  ## stages 2 to 4 over the committed snapshot
 
 scrape:  ## stage 1: fetch every chain (slow, hits the network)
 	uv run mallscape scrape
+
+geocode:  ## stage 1b: resolve coordinates for unplaced properties (hits the network)
+	uv run mallscape geocode
 
 clean:  ## stage 2: standardize listings
 	uv run mallscape clean

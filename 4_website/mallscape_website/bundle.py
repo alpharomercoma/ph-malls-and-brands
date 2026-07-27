@@ -23,7 +23,11 @@ import pandas as pd
 
 from mallscape_core import storage
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
+
+# Five decimal places is about a metre, which is finer than any of our sources
+# claims to be. Beyond that the digits are noise that only costs bytes.
+COORD_PRECISION = 5
 
 CHAIN_CAVEATS = {
     "waltermart": "incomplete: source caps each category at 10 tenants",
@@ -49,9 +53,31 @@ def build(run_date: str) -> tuple[str, dict]:
     ptype_ix = {v: i for i, v in enumerate(ptypes)}
     cat_ix = {v: i for i, v in enumerate(cats)}
 
+    # Fixed vocabularies, not derived from the data: the map explains what a
+    # pin is worth, and it can only do that if the words never drift.
+    geo_sources = ["operator", "osm", "nominatim"]
+    geo_precisions = ["exact", "address", "locality"]
+    geo_source_ix = {v: i for i, v in enumerate(geo_sources)}
+    geo_precision_ix = {v: i for i, v in enumerate(geo_precisions)}
+    for column, allowed in (("geo_source", geo_sources), ("geo_precision", geo_precisions)):
+        if column not in malls.columns:
+            malls[column] = None
+        unknown = set(malls[column].dropna().unique()) - set(allowed)
+        if unknown:
+            raise SystemExit(
+                f"malls.{column} contains {sorted(unknown)}, which the site cannot "
+                f"label. Add it to bundle.py or fix the scraper."
+            )
+    for column in ("lat", "lon"):
+        if column not in malls.columns:
+            malls[column] = None
+
     listings = stores.groupby(["chain", "mall_id"]).size()
     malls = malls.sort_values("mall_id").reset_index(drop=True)
     mall_ix = {(r.chain, r.mall_id): i for i, r in enumerate(malls.itertuples())}
+
+    def coord(value) -> float | None:
+        return None if pd.isna(value) else round(float(value), COORD_PRECISION)
 
     mall_rows = [
         [
@@ -60,6 +86,10 @@ def build(run_date: str) -> tuple[str, dict]:
             region_ix.get(r.region, -1),
             ptype_ix.get(r.property_type if pd.notna(r.property_type) else "mall", 0),
             int(listings.get((r.chain, r.mall_id), 0)),
+            coord(r.lat),
+            coord(r.lon),
+            geo_source_ix.get(r.geo_source, -1),
+            geo_precision_ix.get(r.geo_precision, -1),
         ]
         for r in malls.itertuples()
     ]
@@ -138,14 +168,18 @@ def build(run_date: str) -> tuple[str, dict]:
             "regions": regions,
             "propertyTypes": ptypes,
             "categories": cats,
+            "geoSources": geo_sources,
+            "geoPrecisions": geo_precisions,
         },
         "totals": {
             "properties": len(malls),
             "malls": int((malls["property_type"] == "mall").sum()),
             "listings": len(stores),
             "brands": len(brand_keys),
+            "mapped": int(malls["lat"].notna().sum()),
         },
-        # [name, chainIdx, regionIdx, propertyTypeIdx, listings]
+        # [name, chainIdx, regionIdx, propertyTypeIdx, listings, lat, lon,
+        #  geoSourceIdx, geoPrecisionIdx]; lat and lon are null when unplaced
         "malls": mall_rows,
         # [name, categoryIdx, mallCount, chainBitmask]
         "brands": brand_rows,

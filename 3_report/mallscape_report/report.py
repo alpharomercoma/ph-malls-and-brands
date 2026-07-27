@@ -125,6 +125,37 @@ def build(run_date: str) -> str:
     add("Raw listings are retained; these signals describe uncertainty rather than removing rows.")
     add("")
 
+    # ---------- location coverage ----------
+    # Reported here rather than only on the map, because "which properties can
+    # be plotted, and how precisely" is a property of the dataset.
+    if "lat" in malls.columns:
+        placed = malls[malls["lat"].notna()]
+        add("### Locations")
+        add("")
+        add(f"{len(placed):,} of {len(malls):,} properties have a coordinate.")
+        if "geo_source" in malls.columns and not placed.empty:
+            by_source = placed["geo_source"].value_counts()
+            add("")
+            add(_fmt_table(
+                [[str(k), f"{int(v):,}"] for k, v in sorted(by_source.items())],
+                ["source", "properties"],
+                align_right={1},
+            ))
+        if "geo_precision" in malls.columns and not placed.empty:
+            by_precision = placed["geo_precision"].value_counts()
+            add("")
+            add(_fmt_table(
+                [[str(k), f"{int(v):,}"] for k, v in sorted(by_precision.items())],
+                ["precision", "properties"],
+                align_right={1},
+            ))
+        unplaced = malls[malls["lat"].isna()]
+        if not unplaced.empty:
+            names = ", ".join(sorted(f"{r.chain}:{r.mall_id}" for r in unplaced.itertuples()))
+            add("")
+            add(f"Without a coordinate, and therefore absent from the map: {names}.")
+        add("")
+
     # ---------- per-chain summary ----------
     add("## Chains")
     add("")

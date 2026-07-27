@@ -114,3 +114,64 @@ Search results and old links point at all of them.
 
 **Rule:** confirm the live domain before writing a scraper, and record the dead
 ones so nobody re-adds them.
+
+## A validator strict enough to reject the right answer
+
+The geocoder accepted a candidate only if the region derived from its
+coordinates equalled the region already recorded for the property. That sounds
+conservative. It is not: `derive_region()` falls back to coarse latitude and
+longitude boxes, and the Metro Manila box reaches well into Cavite and Bulacan.
+So the correct OpenStreetMap feature for "SM City Bacoor" derived to
+`metro-manila`, the property was recorded as `south-luzon`, and the exact
+name match was thrown away. Twenty-two properties were rejected this way.
+
+Two independent signals, both fallible, must be combined rather than ANDed. The
+rule now is that a candidate needs an exact name **or** a corroborating region.
+A merely similar name in the wrong region is still rejected.
+
+## A containment rule that matched everything
+
+The same matcher gave a 0.93 score whenever one name's distinctive tokens were
+a subset of the other's, in either direction. "SM Store" is a subset of "SM
+City Bacoor", so every branch supermarket in the country scored 0.93 against
+every SM property. Once the real match was rejected by the bug above, two of
+these near-ties 400 km apart made the property "ambiguous".
+
+Containment is only evidence in one direction: the candidate may add tokens to
+ours, never drop them. Subset matching also needs a floor on how many tokens
+are being matched, or a one-word name matches the whole dataset.
+
+## Output that becomes input
+
+`attach()` skipped any row that already had a coordinate, so the second run
+treated its own output as operator-supplied truth. Deleting the registry and
+regenerating it therefore preserved 249 coordinates that were no longer in it,
+and the committed registry stopped describing the committed data.
+
+A column with two owners needs a field that says which one wrote each value.
+The test is now `geo_source == "operator"`, not `lat is not None`, and a row the
+registry cannot answer has its coordinate cleared rather than kept.
+
+## Regexes that match the comment above the code
+
+The build rewrites the page's `img-src` so the tile host and the policy
+permitting it cannot drift. `img-src [^;]*;` matched the words "img-src" in the
+HTML comment explaining the tag, consumed everything up to the first semicolon
+of the real policy, and rewrote the comment while leaving the policy untouched.
+The substitution reported success because it did replace exactly one match.
+
+Anchor a rewrite to the structure it targets, not to a string that also appears
+in prose. Counting substitutions proves something was replaced, not that the
+right thing was.
+
+## A filter that means different things in different views
+
+The search box matches brand names in the brand view and property names in the
+property view. "Show these on the map" carried the query across, so searching
+"uniqlo", then asking to see its 64 malls, produced an empty map: no property
+is named Uniqlo. The button had just promised 64.
+
+When one control changes meaning across views, switching views has to decide
+explicitly what happens to it. Here the brand focus is the more specific
+expression of the same intent, so it replaces the query rather than stacking
+with it.

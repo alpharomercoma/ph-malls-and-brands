@@ -10,6 +10,24 @@ Generated deterministically from the snapshot in `data/snapshots/2026-07-26/`. R
 482 normalized brand keys have multiple raw variants or require review.
 Raw listings are retained; these signals describe uncertainty rather than removing rows.
 
+### Locations
+
+309 of 322 properties have a coordinate.
+
+| source    | properties |
+|-----------|-----------:|
+| nominatim |         93 |
+| operator  |         57 |
+| osm       |        159 |
+
+| precision | properties |
+|-----------|-----------:|
+| address   |         21 |
+| exact     |        263 |
+| locality  |         25 |
+
+Without a coordinate, and therefore absent from the map: robinsons:cybergate-bacolod, sm:mall-of-asia-arena-annex-bldg, sm:nu-mall-of-asia-building, sm:sm-city-cagayan-de-oro, sm:smby-amusement-park, sm:smdc-air-mall, sm:smdc-strip-at-mezza, waltermart:bicutan, waltermart:erodriguez, waltermart:sta-rosa-bel-air, waltermart:the-junction, xentro:morong-centerpoint, xentro:xentro-mall-polangui.
+
 ## Chains
 
 | chain      | properties |   malls |   listings | fetched    | source                                      |

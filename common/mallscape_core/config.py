@@ -85,6 +85,24 @@ SITE_REPO_URL: str = _str(
     "https://github.com/alpharomercoma/philippine-mall-explorer",
 )
 
+# --- geocoding ---------------------------------------------------------------
+# Both services are free and need no key. Both ask for an identifying
+# User-Agent and, in Nominatim's case, at most one request per second. Those
+# are the terms we are using them under, so they are the defaults.
+OVERPASS_URL: str = _str("MALLSCAPE_OVERPASS_URL", "https://overpass-api.de/api/interpreter")
+NOMINATIM_URL: str = _str("MALLSCAPE_NOMINATIM_URL", "https://nominatim.openstreetmap.org/search")
+GEOCODE_RATE: float = _float("MALLSCAPE_GEOCODE_RATE", 1.0, minimum=0.05)
+GEOCODE_OVERPASS_TIMEOUT: float = _float("MALLSCAPE_GEOCODE_OVERPASS_TIMEOUT", 180.0, minimum=10.0)
+GEOCODER_USER_AGENT: str = _str(
+    "MALLSCAPE_GEOCODER_USER_AGENT", f"mallscape-geocoder/1.0 (+{SITE_REPO_URL})"
+)
+
+# Tile server for the map. OpenStreetMap's standard tiles are free and need no
+# key. Changing this also means changing the img-src in the page's CSP, which
+# the site build checks, so a silent mismatch cannot ship.
+TILE_URL: str = _str("MALLSCAPE_TILE_URL", "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
+TILE_ATTRIBUTION: str = _str("MALLSCAPE_TILE_ATTRIBUTION", "© OpenStreetMap contributors")
+
 
 def summary() -> dict[str, object]:
     """Effective configuration, for logging and for the doctor command."""
@@ -98,4 +116,8 @@ def summary() -> dict[str, object]:
         "MAX_PAGES": MAX_PAGES,
         "SITE_PORT": SITE_PORT,
         "SITE_TITLE": SITE_TITLE,
+        "OVERPASS_URL": OVERPASS_URL,
+        "NOMINATIM_URL": NOMINATIM_URL,
+        "GEOCODE_RATE": GEOCODE_RATE,
+        "TILE_URL": TILE_URL,
     }

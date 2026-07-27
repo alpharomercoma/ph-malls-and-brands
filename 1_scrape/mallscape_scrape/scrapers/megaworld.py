@@ -22,6 +22,7 @@ from __future__ import annotations
 from typing import ClassVar
 
 from mallscape_core import config
+from mallscape_core.geo import parse_coords
 from mallscape_core.models import Mall, Store
 from mallscape_scrape.scrapers.base import MallChainScraper
 
@@ -81,6 +82,7 @@ class MegaworldScraper(MallChainScraper):
     def discover_malls(self) -> list[Mall]:
         malls = []
         for r in self._entries("mall"):
+            coords = parse_coords(r.get("latitude"), r.get("longitude"))
             malls.append(
                 Mall(
                     chain=self.chain,
@@ -89,6 +91,10 @@ class MegaworldScraper(MallChainScraper):
                     address=(r.get("address") or "").strip() or None,
                     mall_code=r["uid"],
                     source_url=f"https://www.megaworld-lifestylemalls.com/malls/{r.get('url', '')}",
+                    lat=coords[0] if coords else None,
+                    lon=coords[1] if coords else None,
+                    geo_source="operator" if coords else None,
+                    geo_precision="exact" if coords else None,
                     extra={"uid": r["uid"]},
                 )
             )

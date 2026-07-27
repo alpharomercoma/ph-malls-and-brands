@@ -53,25 +53,34 @@ def test_bundle_is_valid_and_referenced(server):
     path = SITE / name
     assert path.exists(), f"index.html references {name}, which is not on disk"
     data = json.loads(path.read_text())
-    assert data["schema"] == 2
+    assert data["schema"] == 3
     assert data["totals"]["properties"] > 0
     assert len(data["edges"]) % 2 == 0
 
 
 @pytest.fixture(scope="module")
-def page(server):
+def browser():
+    """One browser for the module. Playwright's sync API cannot be entered
+    twice from the same thread, so tests that need their own page share this
+    rather than launching again."""
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
-        browser = p.chromium.launch()
-        pg = browser.new_page()
-        errors: list[str] = []
-        pg.on("pageerror", lambda e: errors.append(str(e)))
-        pg.goto(server, wait_until="networkidle")
-        pg.wait_for_selector(".row", timeout=15000)
-        pg.errors = errors
-        yield pg
-        browser.close()
+        instance = p.chromium.launch()
+        yield instance
+        instance.close()
+
+
+@pytest.fixture(scope="module")
+def page(browser, server):
+    pg = browser.new_page()
+    errors: list[str] = []
+    pg.on("pageerror", lambda e: errors.append(str(e)))
+    pg.goto(server, wait_until="networkidle")
+    pg.wait_for_selector(".row", timeout=15000)
+    pg.errors = errors
+    yield pg
+    pg.close()
 
 
 def test_loads_without_script_errors(page):
@@ -260,3 +269,111 @@ def test_operator_count_matches_the_data(page):
     page.click("#dd-chain > button")
     assert page.locator('.dd-opt[data-facet="chain"]').count() == shown
     page.locator("body").click(position={"x": 5, "y": 5})
+
+
+# ---------- map ----------
+
+
+def _open_map(page):
+    page.click("#tab-map")
+    page.wait_for_selector("#mapPanel:not([hidden])", timeout=10000)
+    # Leaflet is fetched on first use, so the first open is the slow one.
+    page.wait_for_selector("#map .leaflet-marker-pane, #map .leaflet-overlay-pane path", timeout=20000)
+
+
+def _plotted(page):
+    return page.locator("#map .leaflet-overlay-pane path").count() + page.locator("#map .cluster").count()
+
+
+def test_map_plots_the_properties(page):
+    _open_map(page)
+    assert page.locator("#error").is_hidden()
+    assert _plotted(page) > 0, "map opened but drew nothing"
+    shown = int(re.sub(r"[^0-9]", "", page.locator("#mapcount").inner_text()))
+    total = json.loads((SITE / _bundle_name()).read_text())["totals"]["mapped"]
+    assert shown == total
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_map_respects_the_filters(page):
+    """The map is the property result set drawn geographically, so a filter has
+    to move it. A map that ignores the controls above it is worse than no map."""
+    _open_map(page)
+    before = int(re.sub(r"[^0-9]", "", page.locator("#mapcount").inner_text()))
+    page.click("#dd-region > button")
+    page.click('.dd-opt[data-facet="region"][data-value="visayas"]')
+    page.wait_for_timeout(400)
+    after = int(re.sub(r"[^0-9]", "", page.locator("#mapcount").inner_text()))
+    assert 0 < after < before
+    assert _plotted(page) > 0
+    page.click("#reset")
+    page.wait_for_timeout(300)
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_map_reports_what_it_cannot_draw(page):
+    """Properties without a resolvable coordinate are stated, not dropped."""
+    data = json.loads((SITE / _bundle_name()).read_text())
+    unplaced = data["totals"]["properties"] - data["totals"]["mapped"]
+    _open_map(page)
+    note = page.locator("#mapnote").inner_text()
+    assert "Circle area shows listing count" in note
+    if unplaced:
+        assert "no resolvable location" in note
+    assert "OpenStreetMap" in note
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_brand_focus_moves_to_the_map(page):
+    page.fill("#q", "jollibee")
+    page.wait_for_timeout(300)
+    page.locator(".row").first.click()
+    page.wait_for_selector(".detail .chip--map", timeout=5000)
+    expected = int(re.sub(r"[^0-9]", "", page.locator(".detail .chip--map").inner_text()))
+    page.click(".detail .chip--map")
+    page.wait_for_selector("#mapPanel:not([hidden])", timeout=10000)
+    assert page.locator("#focus").is_visible()
+    assert "jollibee" in page.locator("#focus").inner_text().lower()
+    assert int(re.sub(r"[^0-9]", "", page.locator("#mapcount").inner_text())) == expected
+    # the focus is a filter, so it must be dismissible from where it is shown
+    page.click("#focus")
+    page.wait_for_timeout(400)
+    assert page.locator("#focus").is_hidden()
+    page.fill("#q", "")
+    page.wait_for_timeout(300)
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_map_does_not_overflow_on_a_phone(page):
+    page.set_viewport_size({"width": 375, "height": 720})
+    _open_map(page)
+    overflow = page.evaluate(
+        "() => document.documentElement.scrollWidth - document.documentElement.clientWidth"
+    )
+    assert overflow <= 0, f"page scrolls horizontally by {overflow}px with the map open"
+    box = page.locator("#map").bounding_box()
+    assert box["width"] <= 375 and box["height"] >= 280
+    page.set_viewport_size({"width": 1280, "height": 900})
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_map_library_is_not_loaded_until_the_map_is_opened(browser, server):
+    """147 KB of Leaflet on a page nobody scrolls to the map on is a cost with
+    no benefit, so it is injected on first use. This is what proves that."""
+    pg = browser.new_page()
+    try:
+        requested: list[str] = []
+        pg.on("request", lambda r: requested.append(r.url))
+        pg.goto(server, wait_until="load")
+        pg.wait_for_selector(".row", timeout=15000)
+        assert not any("leaflet" in url for url in requested), "Leaflet loaded on first paint"
+        pg.click("#tab-map")
+        pg.wait_for_function("() => Boolean(window.L)", timeout=20000)
+        assert any("leaflet.js" in url for url in requested)
+    finally:
+        pg.close()

@@ -58,6 +58,32 @@ REGION_KEYWORDS = (
 )
 _QC_ABBREV = re.compile(r"\bq\.?\s?c\.?\b")
 
+# Generous at every edge: Batanes in the north, Tawi-Tawi in the south. A
+# coordinate outside this is a bad value, not a Philippine property, so it is
+# the one test every coordinate has to pass before anything else uses it.
+PH_BOUNDS = (4.5, 21.5, 116.0, 127.0)   # lat_min, lat_max, lon_min, lon_max
+
+
+def in_bounds(lat: float | None, lon: float | None) -> bool:
+    if lat is None or lon is None:
+        return False
+    lat_min, lat_max, lon_min, lon_max = PH_BOUNDS
+    return lat_min <= lat <= lat_max and lon_min <= lon <= lon_max
+
+
+def parse_coords(lat: object, lon: object) -> tuple[float, float] | None:
+    """Coordinates from a source field, or None if absent or implausible.
+
+    Sources publish these as strings, as numbers, as empty strings and
+    occasionally as zeros. Every one of those has to become None rather than a
+    pin in the Gulf of Guinea.
+    """
+    try:
+        pair = (float(lat), float(lon))
+    except (TypeError, ValueError):
+        return None
+    return pair if in_bounds(*pair) else None
+
 
 def derive_region(text: str, lat: float | None, lon: float | None) -> str | None:
     """Best-effort region bucket from address text, falling back to coordinates."""
@@ -71,7 +97,7 @@ def derive_region(text: str, lat: float | None, lon: float | None) -> str | None
         if any(k in haystack for k in keywords):
             return region
     # coordinate fallback, only for plausible Philippine coordinates
-    if lat and lon and 4.5 <= lat <= 21.5 and 116.0 <= lon <= 127.0:
+    if lat and lon and in_bounds(lat, lon):
         if lat > 14.8:
             return "north-luzon"
         if lat >= 14.35 and 120.85 <= lon <= 121.15:

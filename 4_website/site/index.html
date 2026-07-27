@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Philippine Mall Explorer</title>
 <meta name="description" content="Search brands and tenants across 12 Philippine mall operators.">
-<!-- Strict policy: no inline script, no remote origins. Everything this page
-     needs is served from its own directory. -->
+<!-- Strict policy: no inline script, and code only from this directory. The one
+     remote origin is the map tile host, and the img-src below is rewritten from
+     MALLSCAPE_TILE_URL at build time so the two can never disagree. -->
 <meta http-equiv="Content-Security-Policy"
-      content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none';">
+      content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; base-uri 'none'; form-action 'none';">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232a78d6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-bundle="data-c61b09e41cab.json" data-snapshot="2026-07-26">
+<body data-bundle="data-5adf48abc661.json" data-snapshot="2026-07-26"
+      data-tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      data-tile-attribution="© OpenStreetMap contributors">
 <div class="wrap">
 
   <header>
@@ -36,6 +39,7 @@
       <div class="tabs" role="tablist" aria-label="What to browse">
         <button id="tab-brands" type="button" role="tab" aria-selected="true">Brands</button>
         <button id="tab-malls" type="button" role="tab" aria-selected="false">Properties</button>
+        <button id="tab-map" type="button" role="tab" aria-selected="false">Map</button>
       </div>
 
       <label class="search">
@@ -49,12 +53,25 @@
       <button id="mallsOnly" class="chip" type="button" aria-pressed="false"
               title="Hides condo retail podiums, amusement parks and office annexes, so operators are compared on malls alone.">Malls only</button>
       <button id="reset" class="chip" type="button" hidden>Clear filters</button>
+      <button id="focus" class="chip chip--focus" type="button" hidden></button>
 
       <span class="count" id="count"></span>
       <span class="scope" id="scope" aria-live="polite"></span>
     </div>
 
-    <div class="panel">
+    <div class="panel map-panel" id="mapPanel" hidden>
+      <div class="mapbar">
+        <span class="mapcount" id="mapcount"></span>
+        <button id="mapfit" class="chip" type="button">Fit to results</button>
+      </div>
+      <div class="mapgrid">
+        <div id="map" aria-label="Map of Philippine mall properties" tabindex="0"></div>
+        <aside class="maplist" id="maplist" aria-label="Properties shown on the map"></aside>
+      </div>
+      <p class="mapnote" id="mapnote"></p>
+    </div>
+
+    <div class="panel" id="listPanel">
       <div class="thead">
         <div>Name</div>
         <div class="hide-sm" id="col-2">Category</div>

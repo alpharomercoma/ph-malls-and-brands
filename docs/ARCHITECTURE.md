@@ -32,7 +32,7 @@ Python identifier, because module names cannot begin with a digit.
 
 ```
 common/mallscape_core/      models, snapshot storage        (imported by all)
-1_scrape/mallscape_scrape/  fetcher, 12 scrapers, registries, run validation
+1_scrape/mallscape_scrape/  fetcher, 11 scrapers, geocoder, registries, run validation
 2_clean/mallscape_clean/    name/category/floor/phone normalization
 3_report/mallscape_report/  brand analysis, deterministic breakdown
 4_website/mallscape_website/ self-contained static site
@@ -46,6 +46,12 @@ same, so a stage can be run, tested, or replaced on its own.
 Stage 2 is additive by contract: it reads stage 1's output and writes a new
 file beside it. Nothing downstream of a scrape ever rewrites a scrape.
 
+Geocoding is the one exception to "a stage runs once", and it is stage 1's own:
+`mallscape geocode` resolves coordinates and rewrites stage 1's `malls` table
+rather than adding a fifth stage. It belongs there because the coordinate is a
+property of the property, not an interpretation of it, and because keeping it
+in stage 1 means stages 2 to 4 stay pure functions of a committed snapshot.
+
 ## Modules
 
 | module | responsibility |
@@ -55,11 +61,14 @@ file beside it. Nothing downstream of a scrape ever rewrites a scrape.
 | `scrapers/base.py` | `MallChainScraper` ABC: `discover_malls()` + `scrape_mall()`, plus per-mall failure isolation |
 | `scrapers/*.py` | One module per operator. All the site-specific ugliness lives here |
 | `coverage.py` | Reads `registry/<chain>_coverage.json` and reports known gaps every run |
+| `geocode.py` | Resolves a coordinate per property and owns `registry/mall_coordinates.json`. The only module that talks to a geocoding service, and only from `mallscape geocode` |
+| `geo.py` | Region inference, the Philippine bounding box, and coordinate parsing. One implementation, so every scraper places a property the same way |
 | `normalize.py` | `brand_key()` — collapses raw store names so brands match across chains |
 | `validate.py` | Per-run report: counts, diff vs previous snapshot, anomaly detection |
 | `analyze.py` | Builds the brand-presence tables |
 | `report.py` | Deterministic Markdown breakdown of a snapshot |
 | `storage.py` | Dated snapshots, `latest`, and the usability guards |
+| `4_website/site/map.js` | Points, pixels, clustering and tiles. Deliberately knows nothing about brands or filters, which stay in `app.js` |
 
 ## Two invariants worth protecting
 
