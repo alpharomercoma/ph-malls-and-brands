@@ -37,7 +37,7 @@ rebuilt at any time with `mallscape analyze --date <date>`.
 | `mall_code` | operator-internal id (SM `mallCode`, Ayala numeric id, Contentstack uid) |
 | `source_url` | the page or endpoint the data came from |
 | `property_type` | `mall` \| `residential-retail` \| `amusement-park` \| `office-annex`. **Only SM is classified**; everything else defaults to `mall` |
-| `lat`, `lon` | WGS84 decimal degrees, null when unplaced. 292 of 303 are placed |
+| `lat`, `lon` | WGS84 decimal degrees, null when unplaced. 294 of 303 are placed |
 | `geo_source` | `operator` \| `osm` \| `nominatim`. Who the coordinate came from, in descending order of trust |
 | `geo_precision` | `exact` (the building) \| `address` (a street) \| `locality` (a town). The site draws anything below `exact` differently |
 | `scraped_at` | date this chain was actually fetched, not the snapshot date |
@@ -92,7 +92,7 @@ Each candidate is validated before it is stored: it must sit inside the
 Philippine bounding box, and it must have either an exact name match or a
 region consistent with the one already recorded. A candidate that fails is
 discarded rather than downgraded, because a confidently wrong pin is worse than
-a missing one. 11 properties have no coordinate at all and are reported as such.
+a missing one. 9 properties have no coordinate at all and are reported as such.
 
 ## Regenerating
 

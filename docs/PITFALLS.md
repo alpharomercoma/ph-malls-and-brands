@@ -175,3 +175,54 @@ When one control changes meaning across views, switching views has to decide
 explicitly what happens to it. Here the brand focus is the more specific
 expression of the same intent, so it replaces the query rather than stacking
 with it.
+
+## A foreign key stored as if it were a value
+
+Ortigas publishes `store.type` as `1`, `4`, `9`, and ships the lookup in the
+same payload under `props.categories` (`1=Shop, 4=Dining, 9=Bank`). The scraper
+stored the integer. Everything downstream saw a number where it expected a
+word, mapped it to `unknown`, and 1,075 listings lost a category that was
+sitting in the response the whole time.
+
+When a field is small integers and the payload has a sibling collection, it is
+a key, not a value. The parser now resolves it and warns on an id the lookup
+does not contain.
+
+## A category taxonomy that compares vocabularies, not tenants
+
+Each operator has a catch-all bucket, and they are not the same bucket.
+`shopping` held 9,004 listings across six chains, while `fashion` held 159 and
+came almost entirely from Filinvest, the only operator that labels apparel
+specifically. Bench was `fashion` at Filinvest, `shopping` at SM and `unknown`
+at Robinsons: one brand, eleven labels. Filtering by category returned malls
+whose operator used that word.
+
+The fix is to categorize the brand rather than the listing: the most specific
+label a brand carries anywhere becomes its label everywhere, with `unknown` and
+`shopping` explicitly ranked as generic so a real label always wins. That moved
+category coverage from 73.8% to 89.5% and gave Robinsons 652 fashion listings
+where it had zero.
+
+## Normalizing a name is not resolving an entity
+
+`brand_key` lowercases and folds punctuation. It does not decide that two
+names are the same business, so `starbucks` (57 malls) and `starbucks coffee`
+(79) were two brands and neither number was Starbucks' reach. Thirty-eight such
+pairs existed among brands present in five or more malls.
+
+Resolution is a separate step, and it must be an explicit allow-list. A
+similarity threshold high enough to catch `national book store` /
+`national bookstore` (0.973) also catches `mi store` / `sm store` (0.875),
+which are Xiaomi and The SM Store. The registry now records the merges *and*
+the rejected pairs, so the same false positive is not re-argued every time.
+
+## Counting a marker that only exists in a template
+
+Checking whether three WalterMart malls had tenants, a `grep -c wm-store`
+returned 90 for each, which looked like a directory we had failed to parse. The
+matches were the hidden modal template (`id="wm-store-name"`), present on every
+page whether or not it has tenants. Parsing properly returned zero anchors for
+those malls and 22 for a control.
+
+Count the thing, not a string that appears near the thing. A control page with
+a known answer turns a plausible number into a checkable one.

@@ -177,6 +177,7 @@ brand_key,chain,mall_id,mall_name,region
 9 silog,sm,sm-city-trece-martires,SM City Trece Martires,south-luzon
 99 ranch,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 99 ranch store,waltermart,macapagal,WalterMart Macapagal,metro-manila
+a,ortigas,greenhills,Greenhills,metro-manila
 a & b textile,araneta,ali-mall,Ali Mall,metro-manila
 a & j cellphone accessories,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 a & r beauty,robinsons,robinsons-gentrias,Robinsons Place Gen. Trias,south-luzon
@@ -679,7 +680,6 @@ adidas nbhd,ayala,ayala-up-town-center,U. P. Town Center,metro-manila
 adidas originals,ayala,ayala-manila-bay,Ayala Malls Manila Bay,metro-manila
 adidas originals,megaworld,uptown-mall,Uptown Mall,metro-manila
 adidas originals,sm,the-podium,The Podium,metro-manila
-adidas temporarily closed,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 adionet,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
 adobo connection,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 adora,ayala,ayala-greenbelt,Greenbelt,metro-manila
@@ -783,6 +783,7 @@ aficionado,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
 aficionado,robinsons,robinsons-gentrias,Robinsons Place Gen. Trias,south-luzon
 aficionado,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 aficionado,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
+aficionado,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
 aficionado,robinsons,robinsons-imus,Robinsons Place Imus,south-luzon
 aficionado,robinsons,robinsons-jaro,Robinsons Place Jaro,visayas
 aficionado,robinsons,robinsons-la-union,Robinsons Place La Union,north-luzon
@@ -885,7 +886,6 @@ aficionado,waltermart,subic,WalterMart Subic,north-luzon
 aficionado,waltermart,sucat,WalterMart Sucat,metro-manila
 aficionado,waltermart,taytay,WalterMart Taytay,metro-manila
 aficionado,waltermart,trece-martires,WalterMart Trece Martires,south-luzon
-aficionado (open,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
 aficionado germany perfume,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
 aficionado germany perfume,robinsons,robinsons-starmills,Robinsons Starmills,north-luzon
 aficionado germany perfume,sm,sm-center-ormoc,SM Center Ormoc,visayas
@@ -1003,7 +1003,7 @@ al norain,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 alas nail spa,megaworld,california-garden-square,California Garden Square,metro-manila
 alba,ortigas,estancia,Estancia,metro-manila
 alba,ortigas,greenhills,Greenhills,metro-manila
-albarando & laboga dental clinic (032) 479 9319,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
+albarando & laboga dental clinic,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 alberto,araneta,ali-mall,Ali Mall,metro-manila
 alberto,ayala,ayala-abreeza,Abreeza,mindanao
 alberto,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
@@ -1485,7 +1485,6 @@ anello,sm,sm-city-sucat,SM City Sucat,metro-manila
 anello,sm,sm-city-telabastagan,SM City Telabastagan,north-luzon
 anello,sm,sm-city-valenzuela,SM City Valenzuela,metro-manila
 anello,sm,sm-megamall,SM Megamall,metro-manila
-anew,ortigas,greenhills,Greenhills,metro-manila
 ang karenderia sa cagayan,robinsons,robinsons-cagayan-de-oro,Robinsons Cagayan de Oro,mindanao
 ang nanay,robinsons,robinsons-palawan,Robinsons Place Palawan,south-luzon
 angel k kakanin & merienda,robinsons,robinsons-cybergate-davao,Robinsons Cybergate Davao,mindanao
@@ -2979,7 +2978,7 @@ bark haus,ortigas,estancia,Estancia,metro-manila
 barkhaus,megaworld,eastwood-mall,Eastwood Mall,metro-manila
 barkin blends,ortigas,the-strip,The Strip,metro-manila
 barking fellas,sm,sm-city-fairview,SM City Fairview,metro-manila
-barkyard pet salon 09707766167,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
+barkyard pet salon,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
 barn kitchen,ortigas,estancia,Estancia,metro-manila
 baron,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
 baron barbershop,sm,sm-city-iloilo,SM City Iloilo,visayas
@@ -3176,7 +3175,7 @@ bbq chicken,megaworld,newport-city,Newport City,metro-manila
 bbq chicken,sm,sm-city-fairview,SM City Fairview,metro-manila
 bbq chicken,sm,sm-city-laoag,SM City Laoag,north-luzon
 bbq chicken,sm,sm-city-pampanga,SM City Pampanga,north-luzon
-bbq king temporarily closed,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
+bbq king,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
 bbq nation by the epicurious gastropub,sm,sm-city-davao,SM City Davao,mindanao
 bbq nation by the epicurious gastropub,sm,sm-lanang,SM Lanang,mindanao
 bbrows & nails spa,filinvest,main-square,Main Square,south-luzon
@@ -3887,7 +3886,7 @@ besas,ortigas,estancia,Estancia,metro-manila
 besas,ortigas,greenhills,Greenhills,metro-manila
 beso beso,robinsons,robinsons-santiago,Robinsons Place Santiago,north-luzon
 best cool bicycle,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
-best fried noodles temporarily closed,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
+best fried noodles,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 best lolama,robinsons,robinsons-dasmarinas,Robinsons Place Dasmarinas,south-luzon
 best nephro specialist corporation,robinsons,robinsons-las-pinas,Robinsons Place Las Pinas,metro-manila
 best print,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
@@ -3904,7 +3903,6 @@ better components,sm,sm-city-davao,SM City Davao,mindanao
 better components,sm,sm-city-masinag,SM City Masinag,metro-manila
 better components,sm,sm-lanang,SM Lanang,mindanao
 bettinas fashion boutique,robinsons,robinsons-otis,Robinsons Otis,metro-manila
-bettinas fashion boutique temporarily closed,robinsons,robinsons-otis,Robinsons Otis,metro-manila
 bettys native cake,sm,sm-city-clark,SM City Clark,north-luzon
 bettys native cake,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 bettys native cake,sm,sm-city-tarlac,SM City Tarlac,north-luzon
@@ -4545,7 +4543,7 @@ bodytech,robinsons,robinsons-imus,Robinsons Place Imus,south-luzon
 boho dreams,filinvest,festival-mall,Festival Mall,metro-manila
 boho dreams handcrafts,sm,sm-city-sto-tomas,SM City Sto. Tomas,south-luzon
 boho dreams handcrafts,sm,sm-southmall,SM Southmall,metro-manila
-bohol bee farm (032) 260 7304 0998 563 6149,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
+bohol bee farm,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 bok cellphone accessories shop,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 bok korean fried chicken,megaworld,california-garden-square,California Garden Square,metro-manila
 bok korean fried chicken,megaworld,eastwood-city-walk,Eastwood City Walk,metro-manila
@@ -4659,7 +4657,7 @@ bonchon chicken,megaworld,southwoods-mall,Southwoods Mall,south-luzon
 bondee tea house,sm,sm-city-cabanatuan,SM City Cabanatuan,north-luzon
 bone and bowl,sm,sm-city-urdaneta-central,SM City Urdaneta Central,north-luzon
 bong bongs,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
-bong bongs open,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
+bong bongs,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
 bong villanueva salon,robinsons,robinsons-palawan,Robinsons Place Palawan,south-luzon
 bongbong delicacies,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
 bongbongs,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
@@ -4892,10 +4890,10 @@ box88 coffee house,robinsons,robinsons-pavia,Robinsons Place Pavia,visayas
 boy meets grill,megaworld,mactan-newtown,Mactan Newtown,visayas
 boy zugba,ayala,ayala-centrio,Centrio Mall,mindanao
 boy zugba,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
+boy zugba,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
 boy zugba,sm,sm-city-cagayan-de-oro,SM City CDO Uptown,mindanao
 boy zugba,sm,sm-city-cebu,SM City Cebu,visayas
 boy zugba,sm,sm-city-iloilo,SM City Iloilo,visayas
-boy zugba temporarily closed,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
 boysen,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 bpi,ayala,ayala-abreeza,Abreeza,mindanao
 bpi,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
@@ -5409,11 +5407,11 @@ buenas sausages & fries,robinsons,robinsons-novaliches,Robinsons Novaliches,metr
 buff spa,sm,sm-city-manila,SM City Manila,metro-manila
 buffalo ave,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 buffalo avenue,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
+buffalo avenue,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 buffalo avenue,sm,sm-center-imus,SM Center Imus,south-luzon
 buffalo avenue,sm,sm-southmall,SM Southmall,metro-manila
 buffalo avenue,waltermart,baliwag,WalterMart Baliwag,north-luzon
 buffalo avenue,waltermart,cabanatuan,WalterMart Cabanatuan,north-luzon
-buffalo avenue temporarily closed,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 buffalo wild wings,sm,s-maison,S Maison,metro-manila
 buffalo wings n things,megaworld,newport-city,Newport City,metro-manila
 buffalo wings n things,robinsons,robinsons-malolos,Robinsons Place Malolos,north-luzon
@@ -5661,11 +5659,11 @@ bum equipment,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 bump all you can,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 bump n spin,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 bunny banana,megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,metro-manila
+bunny banana,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 bunny banana,robinsons,robinsons-tacloban,Robinsons Place Tacloban,visayas
 bunny banana,sm,sm-center-pulilan,SM Center Pulilan,north-luzon
 bunny banana,sm,sm-city-bicutan,SM City Bicutan,metro-manila
 bunny banana,waltermart,erodriguez,WalterMart E.Rodriguez,metro-manila
-bunny banana temporarily closed,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 buns burger bombs,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 bunsikjip,megaworld,lucky-chinatown-imperial-wing,Lucky Chinatown - Imperial Wing,metro-manila
 burberry,ayala,ayala-greenbelt,Greenbelt,metro-manila
@@ -6389,7 +6387,7 @@ cdms hair gallery & spa,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 cdo skin experts dermatology & laser clinic,ayala,ayala-centrio,Centrio Mall,mindanao
 cdo skin health experts dermatology laser clinic,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
 cebu fiesta island of the south restaurant,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
-cebu orthopaedic institute l4,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
+cebu orthopaedic institute l,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 cebu pacific,sm,sm-city-butuan,SM City Butuan,mindanao
 cebu pacific,sm,sm-city-davao,SM City Davao,mindanao
 cebu pacific,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
@@ -10659,29 +10657,29 @@ evegate beauty salon,sm,sm-city-naga,SM City Naga,south-luzon
 evegate beauty salon,sm,sm-city-sorsogon,SM City Sorsogon,south-luzon
 evegate tranquilo wellness massage,sm,sm-city-sorsogon,SM City Sorsogon,south-luzon
 events photo booth bicol,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
+ever,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
+ever,ayala,ayala-glorietta,Glorietta,metro-manila
+ever,ayala,ayala-greenbelt,Greenbelt,metro-manila
+ever,ayala,ayala-manila-bay,Ayala Malls Manila Bay,metro-manila
+ever,ayala,ayala-trinoma,Trinoma,metro-manila
+ever,megaworld,newport-city,Newport City,metro-manila
+ever,megaworld,uptown-mall,Uptown Mall,metro-manila
+ever,ortigas,estancia,Estancia,metro-manila
+ever,ortigas,greenhills,Greenhills,metro-manila
+ever,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
+ever,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
+ever,sm,sm-aura,SM Aura,metro-manila
+ever,sm,sm-jmall,SM J Mall,visayas
+ever,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
+ever,sm,sm-megamall,SM Megamall,metro-manila
+ever,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 ever bilena,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
-ever new,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
-ever new,ayala,ayala-glorietta,Glorietta,metro-manila
-ever new,ayala,ayala-greenbelt,Greenbelt,metro-manila
-ever new,ayala,ayala-manila-bay,Ayala Malls Manila Bay,metro-manila
-ever new,ayala,ayala-trinoma,Trinoma,metro-manila
-ever new,megaworld,newport-city,Newport City,metro-manila
-ever new,megaworld,uptown-mall,Uptown Mall,metro-manila
-ever new,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
-ever new,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
-ever new,sm,sm-aura,SM Aura,metro-manila
-ever new,sm,sm-jmall,SM J Mall,visayas
-ever new,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
-ever new,sm,sm-megamall,SM Megamall,metro-manila
-ever new,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 ever new melbourne,filinvest,festival-mall,Festival Mall,metro-manila
 everlast rings,sm,sm-city-calamba,SM City Calamba,south-luzon
 everlast rings,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 everlove,sm,sm-city-bicutan,SM City Bicutan,metro-manila
 everlove,sm,sm-city-dasmarinas,SM City Dasmariñas,south-luzon
 everlove,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
-evernew,ortigas,estancia,Estancia,metro-manila
-evernew,ortigas,greenhills,Greenhills,metro-manila
 everyday coffee roasters,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 everyday laundry,sm,sm-southmall,SM Southmall,metro-manila
 everything but cheese,fishermall,malabon,Fisher Mall Malabon,metro-manila
@@ -11574,7 +11572,7 @@ flexifone,waltermart,concepcion,WalterMart Concepcion,north-luzon
 flexifone,waltermart,talavera,WalterMart Talavera,north-luzon
 flexzone,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
 flight 001,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
-flight 001 (02),robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
+flight 001,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 flip sole,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
 flirt waxing lounge,sm,smdc-light-mall,SMDC Light Mall,metro-manila
 flor accessories,robinsons,robinsons-cagayan-de-oro,Robinsons Cagayan de Oro,mindanao
@@ -12759,8 +12757,8 @@ gerrys grill,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
 gerrys grill,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 gerrys grill,robinsons,robinsons-sta-rosa,Robinsons Sta. Rosa,south-luzon
 gerrys grill,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
+gerrys grill,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 gerrys grill,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
-gerrys grill temporarily closed,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 gerrys restaurant,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
 gerrys restaurant,sm,sm-center-lemery,SM Center Lemery,south-luzon
 gerrys restaurant,sm,sm-center-pulilan,SM Center Pulilan,north-luzon
@@ -13719,6 +13717,7 @@ greentab,megaworld,southwoods-mall,Southwoods Mall,south-luzon
 greentab,robinsons,galleria-south,Robinsons Galleria South,south-luzon
 greentab,robinsons,robinsons-gentrias,Robinsons Place Gen. Trias,south-luzon
 greentab,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
+greentab,robinsons,robinsons-los-banos,Robinsons Town Mall Los Banos,south-luzon
 greentab,sm,sm-center-lemery,SM Center Lemery,south-luzon
 greentab,sm,sm-city-calamba,SM City Calamba,south-luzon
 greentab,sm,sm-city-daet,SM City Daet,south-luzon
@@ -13726,7 +13725,6 @@ greentab,sm,sm-city-lipa,SM City Lipa,south-luzon
 greentab,sm,sm-city-lucena,SM City Lucena,south-luzon
 greentab,sm,sm-city-san-pablo,SM City San Pablo,south-luzon
 greentab,starmall,alabang,Starmall Alabang,metro-manila
-greentab open,robinsons,robinsons-los-banos,Robinsons Town Mall Los Banos,south-luzon
 greentelcom,robinsons,robinsons-gentrias,Robinsons Place Gen. Trias,south-luzon
 greentelcom,robinsons,robinsons-imus,Robinsons Place Imus,south-luzon
 greentelcom,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
@@ -14031,12 +14029,12 @@ gugu manju,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 gugu manju,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
 gugu manju,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 gugu manju,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
+gugu manju,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 gugu manju,robinsons,robinsons-pagadian,Robinsons Pagadian,mindanao
 gugu manju,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 gugu manju,sm,sm-city-fairview,SM City Fairview,metro-manila
 gugu manju,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 gugu manju,waltermart,muntinlupa,WalterMart Muntinlupa,metro-manila
-gugu manju open,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 gui,ayala,ayala-centrio,Centrio Mall,mindanao
 gui,sm,sm-city-davao,SM City Davao,mindanao
 guillers antiques & collectibles,araneta,ali-mall,Ali Mall,metro-manila
@@ -16421,7 +16419,7 @@ its a girl thing,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north
 its a small world kids play center,sm,sm-city-daet,SM City Daet,south-luzon
 its a small world kids play center,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 itsu,araneta,farmers-plaza,Farmers Plaza,metro-manila
-ives and co 09691390522,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
+ives and co,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
 ivy lane by natural art,sm,s-maison,S Maison,metro-manila
 iwatch,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
 iwatch,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
@@ -16875,7 +16873,7 @@ jhs electric shop,sm,sm-lanang,SM Lanang,mindanao
 jian axel sisig station,robinsons,galleria-south,Robinsons Galleria South,south-luzon
 jian cellshop,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
 jiang nan hot pot,megaworld,paseo-center,Paseo Center,metro-manila
-jies temporarily closed,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
+jies,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 jieya & cos jewelry shop,megaworld,southwoods-mall,Southwoods Mall,south-luzon
 jimmy choo,ayala,ayala-greenbelt,Greenbelt,metro-manila
 jims recipe,sm,sm-city-grand-central,SM City Grand Central,metro-manila
@@ -17701,6 +17699,7 @@ kenny rogers,megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,metro-manila
 kenny rogers,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 kenny rogers,ortigas,greenhills,Greenhills,metro-manila
 kenny rogers,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
+kenny rogers,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 kenny rogers,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 kenny rogers,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
 kenny rogers,sm,sm-center-ormoc,SM Center Ormoc,visayas
@@ -17747,7 +17746,6 @@ kenny rogers,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 kenny rogers,sm,sm-megamall,SM Megamall,metro-manila
 kenny rogers,sm,sm-southmall,SM Southmall,metro-manila
 kenny rogers,sm,smdc-light-mall,SMDC Light Mall,metro-manila
-kenny rogers (02),robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 kenny rogers roasters,ayala,ayala-abreeza,Abreeza,mindanao
 kenny rogers roasters,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
 kenny rogers roasters,ayala,ayala-center-cebu,Ayala Center Cebu,visayas
@@ -18414,11 +18412,11 @@ kookee house,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 kookee house,sm,sm-city-laoag,SM City Laoag,north-luzon
 koomi,fishermall,malabon,Fisher Mall Malabon,metro-manila
 koomi,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
+koomi,robinsons,robinsons-la-union,Robinsons Place La Union,north-luzon
 koomi,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 koomi,sm,sm-city-mindpro,SM City Mindpro,mindanao
 koomi,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 koomi,sm,smdc-strip-at-mezza,SMDC Strip at Mezza,metro-manila
-koomi temporarily closed,robinsons,robinsons-la-union,Robinsons Place La Union,north-luzon
 kopi by jims recipe,ortigas,greenhills,Greenhills,metro-manila
 koreana look,robinsons,robinsons-pagadian,Robinsons Pagadian,mindanao
 korn,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
@@ -18506,7 +18504,7 @@ krispy krust empanada,sm,sm-center-dagupan,SM Center Dagupan,north-luzon
 krispy krust empanada,sm,sm-city-baguio,SM City Baguio,north-luzon
 krispy krust empanada,sm,sm-city-tarlac,SM City Tarlac,north-luzon
 kristenzz,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
-kristenzz open,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
+kristenzz,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
 kristine,sm,sm-megamall,SM Megamall,metro-manila
 kristine jewellery,megaworld,newport-city,Newport City,metro-manila
 krizie ice jelly,sm,sm-city-bacolod,SM City Bacolod,visayas
@@ -18993,7 +18991,7 @@ lay bare,megaworld,southwoods-mall,Southwoods Mall,south-luzon
 lay bare,megaworld,three-central,Three Central Mall,metro-manila
 lay bare,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 lay bare,robinsons,robinsons-lipa,Robinsons Place Lipa,south-luzon
-lay bare ((02) 8477 3532 0922 872 3648),robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
+lay bare,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
 lay bare plus,sm,sm-city-legazpi,SM City Legazpi,south-luzon
 lay bare plus,sm,sm-city-tuguegarao,SM City Tuguegarao,north-luzon
 lay bare plus,sm,the-podium,The Podium,metro-manila
@@ -19325,7 +19323,7 @@ lbc express inc,robinsons,robinsons-cagayan-de-oro,Robinsons Cagayan de Oro,mind
 lca cellphone & accessories,robinsons,robinsons-gen-san,Robinsons Place GenSan,mindanao
 ldm driving institute,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 ldm driving institute inc,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
-le cafe temporarily closed,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
+le cafe,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
 le ching tea house,ortigas,greenhills,Greenhills,metro-manila
 le derion flowers,sm,sm-city-iloilo,SM City Iloilo,visayas
 le dessert,robinsons,robinsons-palawan,Robinsons Place Palawan,south-luzon
@@ -20101,7 +20099,7 @@ los churreros,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 los churreros,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 los churreros,sm,sm-city-fairview,SM City Fairview,metro-manila
 los churreros churros,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
-los pedritos (075),robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
+los pedritos,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 los tacos,megaworld,uptown-mall,Uptown Mall,metro-manila
 lost,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 lost bread,sm,sm-city-dasmarinas,SM City Dasmariñas,south-luzon
@@ -20517,6 +20515,7 @@ macao imperial tea,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 macao imperial tea,robinsons,robinsons-malabon,Robinsons Town Mall Malabon,metro-manila
 macao imperial tea,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 macao imperial tea,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
+macao imperial tea,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 macao imperial tea,robinsons,robinsons-pavia,Robinsons Place Pavia,visayas
 macao imperial tea,robinsons,robinsons-santiago,Robinsons Place Santiago,north-luzon
 macao imperial tea,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
@@ -20559,7 +20558,6 @@ macao imperial tea,sm,sm-city-valenzuela,SM City Valenzuela,metro-manila
 macao imperial tea,sm,sm-lanang,SM Lanang,mindanao
 macao imperial tea,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 macao imperial tea,sm,smdc-strip-at-mezza,SMDC Strip at Mezza,metro-manila
-macao imperial tea (075),robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 macbeth,araneta,farmers-plaza,Farmers Plaza,metro-manila
 macbeth,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
 macbeth,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
@@ -21462,11 +21460,11 @@ maxicare,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 maxicare,robinsons,robinsons-dasmarinas,Robinsons Place Dasmarinas,south-luzon
 maxicare,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
 maxicare,robinsons,robinsons-las-pinas,Robinsons Place Las Pinas,metro-manila
+maxicare,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
 maxicare,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 maxicare,robinsons,robinsons-starmills,Robinsons Starmills,north-luzon
 maxicare,robinsons,the-plaza,The Plaza Bagong Silang,metro-manila
 maxicare,sm,sm-city-clark,SM City Clark,north-luzon
-maxicare ((02) 7798 7739),robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
 maxicare primary care center,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 maxicare primary care clinic,robinsons,robinsons-malabon,Robinsons Town Mall Malabon,metro-manila
 maxicare primary care clinic,robinsons,robinsons-otis,Robinsons Otis,metro-manila
@@ -21968,7 +21966,6 @@ mendrez,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 mendrez,sm,sm-city-sucat,SM City Sucat,metro-manila
 mendrez,sm,sm-megacenter-cabanatuan,SM Megacenter Cabanatuan,north-luzon
 mendrez,sm,sm-megamall,SM Megamall,metro-manila
-mendrez temporarily closed,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 mens depot by davids,ortigas,greenhills,Greenhills,metro-manila
 mens room,ortigas,greenhills,Greenhills,metro-manila
 mens room,sm,sm-megamall,SM Megamall,metro-manila
@@ -22217,7 +22214,7 @@ mey lin,sm,sm-megamall,SM Megamall,metro-manila
 mf beauty secrets,sm,sm-city-sucat,SM City Sucat,metro-manila
 mg,filinvest,festival-mall,Festival Mall,metro-manila
 mg gateway,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
-mg gateway temporarily closed,robinsons,robinsons-dumaguete,Robinsons Place Dumaguete,visayas
+mg gateway,robinsons,robinsons-dumaguete,Robinsons Place Dumaguete,visayas
 mgs philippines,sm,sm-center-pasig,SM Center Pasig,metro-manila
 mgs philippines,sm,sm-city-lipa,SM City Lipa,south-luzon
 mh burton,sm,sm-city-bacoor,SM City Bacoor,south-luzon
@@ -23714,7 +23711,7 @@ my greek taverna,sm,sm-city-cebu,SM City Cebu,visayas
 my happy home,ortigas,greenhills,Greenhills,metro-manila
 my health,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 my health clinic,filinvest,festival-mall,Festival Mall,metro-manila
-my health clinic (032) 238 8802 (032) 268 8502,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
+my health clinic,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 my health clinic quezon city,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 my j & s,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 my jewellery box,ortigas,greenhills,Greenhills,metro-manila
@@ -25941,7 +25938,7 @@ panagatan restaurant,robinsons,robinsons-valencia,Robinsons Place Valencia,minda
 panagatan restaurant,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
 panagatan restaurant,sm,sm-city-cagayan-de-oro,SM City CDO Uptown,mindanao
 pananom co,sm,sm-city-sorsogon,SM City Sorsogon,south-luzon
-panapton open,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
+panapton,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 pancake house,ayala,ayala-abreeza,Abreeza,mindanao
 pancake house,ayala,ayala-bonifacio-high-street,Bonifacio High Street,metro-manila
 pancake house,ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas
@@ -26057,7 +26054,6 @@ paotsin,waltermart,cabuyao,WalterMart Cabuyao,south-luzon
 paotsin,waltermart,carmona,WalterMart Carmona,south-luzon
 paotsin,waltermart,sta-rosa-bel-air,WalterMart Sta. Rosa Bel-Air,south-luzon
 paotsin,waltermart,the-junction,WalterMart The Junction,metro-manila
-paotsin temporarily closed,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 papa kebs shawarma and kebab,sm,sm-city-bataan,SM City Bataan,north-luzon
 papatoks food hub,sm,sm-city-pampanga,SM City Pampanga,north-luzon
 papelemento visual arts and scenography,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
@@ -26236,7 +26232,7 @@ passionart gallery,sm,sm-megamall,SM Megamall,metro-manila
 passionnails,filinvest,festival-mall,Festival Mall,metro-manila
 passport foods,sm,sm-city-clark,SM City Clark,north-luzon
 passport foods,sm,sm-city-pampanga,SM City Pampanga,north-luzon
-pasta dolce amore temporarily closed,robinsons,robinsons-la-union,Robinsons Place La Union,north-luzon
+pasta dolce amore,robinsons,robinsons-la-union,Robinsons Place La Union,north-luzon
 pastel baby,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
 pastel baby,sm,sm-city-fairview,SM City Fairview,metro-manila
 pastil nation,megaworld,uptown-mall,Uptown Mall,metro-manila
@@ -27350,7 +27346,7 @@ pinoy siopao,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 pinoy siopao,sm,sm-city-cebu,SM City Cebu,visayas
 pios cotton candy,ayala,ayala-manila-bay,Ayala Malls Manila Bay,metro-manila
 pios cotton candy,filinvest,festival-mall,Festival Mall,metro-manila
-pirates grill open,robinsons,robinsons-sta-rosa,Robinsons Sta. Rosa,south-luzon
+pirates grill,robinsons,robinsons-sta-rosa,Robinsons Sta. Rosa,south-luzon
 pirazzo,robinsons,robinsons-santiago,Robinsons Place Santiago,north-luzon
 pixel point by photoline,sm,sm-aura,SM Aura,metro-manila
 pixelport,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
@@ -27701,6 +27697,7 @@ popeyes,megaworld,lucky-chinatown-prosperity-wing,Lucky Chinatown - Prosperity W
 popeyes,megaworld,newport-city,Newport City,metro-manila
 popeyes,ortigas,greenhills,Greenhills,metro-manila
 popeyes,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
+popeyes,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
 popeyes,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 popeyes,sm,nu-mall-of-asia-building,NU MALL OF ASIA BUILDING,metro-manila
 popeyes,sm,sm-city-bicutan,SM City Bicutan,metro-manila
@@ -27718,7 +27715,6 @@ popeyes,sm,sm-megamall,SM Megamall,metro-manila
 popeyes,sm,sm-southmall,SM Southmall,metro-manila
 popeyes,sm,smdc-fame-mall,SMDC Fame Mall,metro-manila
 popeyes,sm,smdc-jazz-mall,SMDC Jazz Mall,metro-manila
-popeyes (02),robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
 popeyes louisiana kitchen,ayala,ayala-feliz,Ayala Malls Feliz,metro-manila
 popeyes louisiana kitchen,ayala,ayala-market-market,Market! Market!,metro-manila
 popeyes louisiana kitchen,ayala,ayala-trinoma,Trinoma,metro-manila
@@ -27751,9 +27747,9 @@ popperoo,sm,sm-city-valenzuela,SM City Valenzuela,metro-manila
 popperoo,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 poppers pop,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 poppers pop,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
+poppers pop,robinsons,robinsons-malabon,Robinsons Town Mall Malabon,metro-manila
 poppers pop,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
 poppers pop,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
-poppers pop temporarily closed,robinsons,robinsons-malabon,Robinsons Town Mall Malabon,metro-manila
 pops all filipino buffet,sm,sm-cdo-downtown,SM CDO Downtown Premier,mindanao
 popshop,robinsons,robinsons-angeles,Robinsons Angeles,north-luzon
 popshop,robinsons,robinsons-luisita,Robinsons Luisita,north-luzon
@@ -27792,7 +27788,7 @@ posh nails,sm,wind-residences,Wind Residences,south-luzon
 posh nails,waltermart,san-fernando,WalterMart San Fernando,north-luzon
 posh nails hand and foot spa,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 positive living,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
-positive living massage chair temporarily closed,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
+positive living massage chair,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 positive living station,ayala,ayala-market-market,Market! Market!,metro-manila
 positive living station,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 post shop,sm,sm-city-iloilo,SM City Iloilo,visayas
@@ -29507,7 +29503,7 @@ rice in a box,robinsons,robinsons-cainta,Robinsons Cainta,metro-manila
 rice in a box,robinsons,robinsons-dasmarinas,Robinsons Place Dasmarinas,south-luzon
 rice in a box,starmall,san-jose-del-monte,Starmall San Jose del Monte,north-luzon
 richchad coffee shop,robinsons,robinsons-tacloban,Robinsons Place Tacloban,visayas
-richielda cabucos lao (032) 238 1567 0925 706 8455,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
+richielda cabucos lao,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 richmond medical,megaworld,newport-city,Newport City,metro-manila
 richyu fashion,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 ricky reyes,ortigas,greenhills,Greenhills,metro-manila
@@ -29712,7 +29708,7 @@ robinsons homes,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
 robinsons homes,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 robinsons homes,robinsons,robinsons-palawan,Robinsons Place Palawan,south-luzon
 robinsons homes inc,robinsons,robinsons-cagayan-de-oro,Robinsons Cagayan de Oro,mindanao
-robinsons movie world (02),robinsons,robinsons-las-pinas,Robinsons Place Las Pinas,metro-manila
+robinsons movie world,robinsons,robinsons-las-pinas,Robinsons Place Las Pinas,metro-manila
 robinsons movieworld,robinsons,galleria-south,Robinsons Galleria South,south-luzon
 robinsons movieworld,robinsons,robinsons-angeles,Robinsons Angeles,north-luzon
 robinsons movieworld,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
@@ -29726,6 +29722,7 @@ robinsons movieworld,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,met
 robinsons movieworld,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
 robinsons movieworld,robinsons,robinsons-gen-san,Robinsons Place GenSan,mindanao
 robinsons movieworld,robinsons,robinsons-gentrias,Robinsons Place Gen. Trias,south-luzon
+robinsons movieworld,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 robinsons movieworld,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 robinsons movieworld,robinsons,robinsons-iloilo,Robinsons Place Iloilo,visayas
 robinsons movieworld,robinsons,robinsons-imus,Robinsons Place Imus,south-luzon
@@ -29736,6 +29733,7 @@ robinsons movieworld,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manil
 robinsons movieworld,robinsons,robinsons-malolos,Robinsons Place Malolos,north-luzon
 robinsons movieworld,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 robinsons movieworld,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
+robinsons movieworld,robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
 robinsons movieworld,robinsons,robinsons-north-tacloban,Robinsons North Tacloban,visayas
 robinsons movieworld,robinsons,robinsons-ormoc,Robinsons Place Ormoc,visayas
 robinsons movieworld,robinsons,robinsons-pangasinan,Robinsons Place Pangasinan,north-luzon
@@ -29748,10 +29746,7 @@ robinsons movieworld,robinsons,robinsons-tacloban,Robinsons Place Tacloban,visay
 robinsons movieworld,robinsons,robinsons-tagum,Robinsons Place Tagum,mindanao
 robinsons movieworld,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 robinsons movieworld,robinsons,robinsons-valencia,Robinsons Place Valencia,mindanao
-robinsons movieworld ( 063 ),robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 robinsons movieworld ( 8397 1888 loc 36029,robinsons,robinsons-palawan,Robinsons Place Palawan,south-luzon
-robinsons movieworld (054),robinsons,robinsons-naga,Robinsons Place Naga,south-luzon
-robinsons movieworld (085),robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
 robinsons residences,robinsons,robinsons-galleria-cebu,Robinsons Galleria Cebu,visayas
 robinsons super market,robinsons,robinsons-butuan,Robinsons Place Butuan,mindanao
 robinsons supermaket,robinsons,robinsons-gapan,Robinsons Gapan,north-luzon
@@ -31016,7 +31011,7 @@ seoul snow,robinsons,robinsons-malolos,Robinsons Place Malolos,north-luzon
 seoul station,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 seoul yummy,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
 seoul yummy,sm,sm-city-sucat,SM City Sucat,metro-manila
-seoulgyupsal open,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
+seoulgyupsal,robinsons,robinsons-novaliches,Robinsons Novaliches,metro-manila
 seoulskin premier aesthetics,sm,sm-city-batangas,SM City Batangas,south-luzon
 seoulskin premier aesthetics,sm,sm-city-caloocan,SM City Caloocan,metro-manila
 sep vergara fine jewelry,ayala,ayala-marquee,MarQuee Mall,north-luzon
@@ -31187,7 +31182,6 @@ shakeys,sm,sm-mall-of-asia,SM Mall of Asia,metro-manila
 shakeys,sm,sm-megamall,SM Megamall,metro-manila
 shakeys,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 shakeys,waltermart,capas,WalterMart Capas,north-luzon
-shakeys (032) 505 5860,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 shakeys pizza,robinsons,robinsons-ormoc,Robinsons Place Ormoc,visayas
 shama,robinsons,robinsons-antique,Robinsons Place Antique,visayas
 shams,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
@@ -31892,7 +31886,6 @@ skin perfect facial salon,sm,sm-city-dasmarinas,SM City Dasmariñas,south-luzon
 skin perfect facial salon,sm,sm-city-fairview,SM City Fairview,metro-manila
 skin perfect facial salon,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 skin perfect facial salon,sm,sm-city-sucat,SM City Sucat,metro-manila
-skin perfect temporarily closed,robinsons,robinsons-iligan,Robinsons Place Iligan,mindanao
 skin plus,sm,sm-center-angono,SM Center Angono,metro-manila
 skin rejuve,sm,sm-city-puerto-princesa,SM City Puerto Princesa,south-luzon
 skin republic,megaworld,three-central,Three Central Mall,metro-manila
@@ -34161,9 +34154,9 @@ tah mee,megaworld,lucky-chinatown-prosperity-wing,Lucky Chinatown - Prosperity W
 tah mee,ortigas,estancia,Estancia,metro-manila
 tah mee,robinsons,robinsons-gen-san,Robinsons Place GenSan,mindanao
 tah mee,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
+tah mee,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 tah mee,robinsons,robinsons-santiago,Robinsons Place Santiago,north-luzon
 tah mee,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
-tah mee 0968 449 0361 temporarily closed,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 tah mee drinking frozen yogurt,sm,sm-city-baliwag,SM City Baliwag,north-luzon
 tah mee drinking frozen yogurt,sm,sm-city-bicutan,SM City Bicutan,metro-manila
 tah mee drinking frozen yogurt,sm,sm-savemore-tacloban,SM Savemore Tacloban,visayas
@@ -34211,6 +34204,7 @@ takoyadon,robinsons,galleria-south,Robinsons Galleria South,south-luzon
 takoyadon,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 takoyadon,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
 takoyadon,robinsons,robinsons-malolos,Robinsons Place Malolos,north-luzon
+takoyadon,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 takoyadon,robinsons,robinsons-starmills,Robinsons Starmills,north-luzon
 takoyadon,robinsons,robinsons-tuguegarao,Robinsons Place Tuguegarao,north-luzon
 takoyadon,sm,sm-city-baliwag,SM City Baliwag,north-luzon
@@ -34233,7 +34227,6 @@ takoyadon plus,sm,sm-city-novaliches,SM City Novaliches,metro-manila
 takoyadon plus,sm,sm-city-san-mateo,SM City San Mateo,metro-manila
 takoyadon plus,sm,sm-city-trece-martires,SM City Trece Martires,south-luzon
 takoyadon prime,sm,sm-city-legazpi,SM City Legazpi,south-luzon
-takoyadon temporarily closed,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 takoyaki,filinvest,festival-mall,Festival Mall,metro-manila
 takoyaki,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 takoyaki ban chan,fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila
@@ -34910,7 +34903,7 @@ tiktilaok,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 tiktilaok,robinsons,robinsons-fuente,Robinsons Fuente,visayas
 tiktilaok,sm,sm-city-cebu,SM City Cebu,visayas
 tile express shop,sm,sm-southmall,SM Southmall,metro-manila
-tili dhali temporarily closed,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
+tili dhali,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 tim ho wan,ayala,ayala-glorietta,Glorietta,metro-manila
 tim ho wan,ayala,ayala-manila-bay,Ayala Malls Manila Bay,metro-manila
 tim ho wan,ayala,one-ayala-mall,One Ayala,metro-manila
@@ -35461,7 +35454,7 @@ toolbox,waltermart,nasugbu,WalterMart Nasugbu,south-luzon
 toolbox,waltermart,paniqui,WalterMart Paniqui,north-luzon
 tools trading,robinsons,robinsons-cagayan-de-oro,Robinsons Cagayan de Oro,mindanao
 tooth doctor,robinsons,robinsons-galleria-ortigas,Robinsons Galleria,metro-manila
-tooth fairies dental clinic (032) 511 4518,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
+tooth fairies dental clinic,robinsons,robinsons-cybergate-cebu,Robinsons Cybergate Cebu,visayas
 tooth in style dental clinic,sm,sm-city-calamba,SM City Calamba,south-luzon
 tooth in style dental clinic,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 tooth saver avenue dental clinic co,robinsons,galleria-south,Robinsons Galleria South,south-luzon
@@ -36063,7 +36056,7 @@ ucc coffee shop,megaworld,lucky-chinatown-mall,Lucky Chinatown Mall,metro-manila
 ucc mentore,sm,s-maison,S Maison,metro-manila
 ucc park cafe,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 ucpb,megaworld,forbes-town,Forbes Town,metro-manila
-ucpb atm temporarily closed,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
+ucpb atm,robinsons,robinsons-bacolod,Robinsons Place Bacolod,visayas
 udc,sm,sm-city-tuguegarao,SM City Tuguegarao,north-luzon
 udders ice cream,sm,sm-city-bicutan,SM City Bicutan,metro-manila
 udders ice cream,sm,sm-city-caloocan,SM City Caloocan,metro-manila
@@ -36125,8 +36118,8 @@ uncle johns,robinsons,robinsons-luisita,Robinsons Luisita,north-luzon
 uncle johns,robinsons,robinsons-malabon,Robinsons Town Mall Malabon,metro-manila
 uncle johns,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
 uncle johns,robinsons,robinsons-metro-east,Robinsons Metro East,metro-manila
+uncle johns,robinsons,robinsons-sta-rosa,Robinsons Sta. Rosa,south-luzon
 uncle johns,robinsons,robinsons-starmills,Robinsons Starmills,north-luzon
-uncle johns0998 846 6030,robinsons,robinsons-sta-rosa,Robinsons Sta. Rosa,south-luzon
 uncle juans iskrambol,sm,sm-city-sorsogon,SM City Sorsogon,south-luzon
 uncle moes,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 under armour,sm,sm-city-baguio,SM City Baguio,north-luzon
@@ -36218,6 +36211,7 @@ uniqlo,megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila
 uniqlo,ortigas,estancia,Estancia,metro-manila
 uniqlo,ortigas,greenhills,Greenhills,metro-manila
 uniqlo,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
+uniqlo,robinsons,robinsons-dumaguete,Robinsons Place Dumaguete,visayas
 uniqlo,robinsons,robinsons-ilocos,Robinsons Place Ilocos,north-luzon
 uniqlo,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 uniqlo,robinsons,robinsons-manila,Robinsons Place Manila,metro-manila
@@ -36268,7 +36262,6 @@ uniqlo,sm,sm-megamall,SM Megamall,metro-manila
 uniqlo,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 uniqlo,sm,sm-southmall,SM Southmall,metro-manila
 uniqlo,sm,the-podium,The Podium,metro-manila
-uniqlo 0355276359,robinsons,robinsons-dumaguete,Robinsons Place Dumaguete,visayas
 uniqlo coffee,ayala,ayala-glorietta,Glorietta,metro-manila
 unique vision center,sm,sm-city-fairview,SM City Fairview,metro-manila
 unique vision center,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
@@ -36555,7 +36548,7 @@ valsinni bridal salon,sm,sm-seaside-city-cebu,SM Seaside City Cebu,visayas
 vamos,megaworld,paseo-center,Paseo Center,metro-manila
 vanguard,sm,sm-city-fairview,SM City Fairview,metro-manila
 vanguard,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
-vanilla skin 8293 0914 09171799064 temporarily closed,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
+vanilla skin,robinsons,robinsons-magnolia,Robinsons Magnolia,metro-manila
 vanilla softi,sm,sm-city-north-edsa,SM City North Edsa,metro-manila
 vanity box,ayala,ayala-centrio,Centrio Mall,mindanao
 vanity box,sm,sm-city-bacolod,SM City Bacolod,visayas
@@ -36734,7 +36727,7 @@ vikings,sm,sm-city-santa-rosa,SM City Santa Rosa,south-luzon
 vikings,sm,sm-lanang,SM Lanang,mindanao
 vikings,sm,sm-megamall,SM Megamall,metro-manila
 vikings,sm,smdc-jazz-mall,SMDC Jazz Mall,metro-manila
-vikings luxury buffet (02),robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
+vikings luxury buffet,robinsons,robinsons-antipolo,Robinsons Place Antipolo,metro-manila
 vikings venue,sm,sm-by-the-bay,SM By the Bay,metro-manila
 viktor jeans,ayala,ayala-greenbelt,Greenbelt,metro-manila
 vilcrafty handicraft,araneta,farmers-plaza,Farmers Plaza,metro-manila

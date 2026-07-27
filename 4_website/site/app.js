@@ -20,7 +20,7 @@ const POPUP_BRANDS = 6;  // brands named in a map popup before it gets unwieldy
 
 const state = {
   data: null,
-  view: 'brands',
+  view: 'map',   // the map is the landing view; the list is one tab away
   query: '',
   chain: new Set(),
   region: new Set(),
@@ -47,7 +47,7 @@ async function load() {
   const res = await fetch(src, { cache: 'force-cache' });
   if (!res.ok) throw new Error(`could not load data (${res.status})`);
   const data = await res.json();
-  if (!data || data.schema !== 3) {
+  if (!data || data.schema !== 4) {
     throw new Error(`unsupported bundle schema: ${data && data.schema}`);
   }
   return data;
@@ -247,17 +247,20 @@ function cell(className, text) {
   return div;
 }
 
-function barCell(value, total) {
+/** The count, and that count as a share of the malls in scope.
+ *
+ * This replaced an unlabelled bar with no denominator and a 2% floor, which
+ * drew the same mark for a brand in 1 mall as for one in 6. A number with its
+ * denominator named in the column header cannot mislead the same way. */
+function reachCell(value, total) {
   const wrap = document.createElement('div');
-  wrap.className = 'bar-cell hide-sm';
-  const track = document.createElement('div');
-  track.className = 'bar-track';
-  const bar = document.createElement('div');
-  bar.className = 'bar';
-  const pct = total > 0 ? Math.max(2, Math.round((value / total) * 100)) : 2;
-  bar.style.width = pct + '%';
-  track.appendChild(bar);
-  wrap.appendChild(track);
+  wrap.className = 'n reach';
+  const n = document.createElement('b');
+  n.textContent = fmt(value);
+  const pct = document.createElement('span');
+  pct.className = 'pct';
+  pct.textContent = total > 0 ? `${Math.round((value / total) * 100)}%` : '';
+  wrap.append(n, pct);
   return wrap;
 }
 
@@ -268,24 +271,15 @@ function buildRow(index, total) {
   row.type = 'button';
   row.setAttribute('aria-expanded', String(state.expanded === index));
 
-  if (state.view === 'brands') {
+  {
     const b = d.brands[index];
     const count = brandMallCount(index);
     row.appendChild(cell('name', b[0]));
     row.appendChild(cell('muted hide-sm', b[1] >= 0 ? label(d.dict.categories[b[1]]) : 'unlabelled'));
-    row.appendChild(cell('n', fmt(count)));
-    row.appendChild(barCell(count, total));
-    row.setAttribute('aria-label', `${b[0]}, in ${count} matching malls`);
-  } else {
-    const m = d.malls[index];
-    row.appendChild(cell('name', m[0]));
-    row.appendChild(cell('muted hide-sm', d.dict.chains[m[1]]));
-    row.appendChild(cell('n', fmt(m[4])));
-    row.appendChild(barCell(m[4], total));
-    row.setAttribute('aria-label', `${m[0]}, ${m[4]} listings`);
+    row.appendChild(reachCell(count, total));
+    row.setAttribute('aria-label',
+      `${b[0]}, in ${count} of ${total} malls matching your filters`);
   }
-  const flags = state.view === 'malls' ? (d.quality?.propertyFlags[index] || []) : [];
-  if (flags.length) row.classList.add('has-quality-flag');
   row.addEventListener('click', () => {
     state.expanded = state.expanded === index ? null : index;
     renderList();
@@ -301,7 +295,7 @@ function buildDetail(index) {
   const pills = document.createElement('div');
   pills.className = 'pills';
 
-  if (state.view === 'brands') {
+  {
     const malls = matchingMallsForBrand(index).sort((a, b) => d.malls[b][4] - d.malls[a][4]);
     h.textContent = `Present in ${malls.length} ${malls.length === 1 ? 'mall' : 'malls'}`;
     const placed = malls.filter((mi) => d.malls[mi][5] !== null).length;
@@ -336,30 +330,6 @@ function buildDetail(index) {
       p.textContent = `and ${malls.length - 60} more`;
       pills.appendChild(p);
     }
-  } else {
-    const brands = d.mallBrands[index].slice().sort((a, b) => d.brands[b][2] - d.brands[a][2]);
-    h.textContent = `Top brands of ${brands.length}`;
-    for (const bi of brands.slice(0, 60)) {
-      const p = document.createElement('span');
-      p.className = 'pill';
-      p.textContent = d.brands[bi][0];
-      pills.appendChild(p);
-    }
-    if (brands.length > 60) {
-      const p = document.createElement('span');
-      p.className = 'pill muted';
-      p.textContent = `and ${brands.length - 60} more`;
-      pills.appendChild(p);
-    }
-  }
-  if (state.view === 'malls') {
-    const flags = d.quality?.propertyFlags[index] || [];
-    if (flags.length) {
-      const note = document.createElement('p');
-      note.className = 'quality-note';
-      note.textContent = flags.join(' · ');
-      box.insertBefore(note, pills);
-    }
   }
   box.appendChild(h);
   box.appendChild(pills);
@@ -381,9 +351,7 @@ function renderList() {
   el('empty').hidden = true;
 
   const d = state.data;
-  const total = state.view === 'brands'
-    ? scopedMalls().length
-    : rows.reduce((sum, i) => sum + d.malls[i][4], 0);
+  const total = scopedMalls().length;
 
   sizer.style.height = rows.length * ROW_HEIGHT + 'px';
   const first = Math.max(0, Math.floor(viewport.scrollTop / ROW_HEIGHT) - OVERSCAN);
@@ -585,6 +553,8 @@ function refresh() {
   el('count').textContent =
     `${fmt(state.rows.length)} ${state.view === 'brands' ? 'brands' : 'properties'}`;
   paintFocusChip();
+  renderStats();
+  renderHits();
   if (isMap) {
     paintFacets();
     void syncMap();
@@ -593,19 +563,18 @@ function refresh() {
   }
   el('viewport').scrollTop = 0;
   el('col-2').textContent = state.view === 'brands' ? 'Category' : 'Operator';
+  const scope = scopedMalls().length;
   // The two right-hand columns mean different things per view, so their
   // labels and their explanations both have to follow the view. Leaving the
   // brand wording in place while showing property numbers was worse than
   // having no explanation at all.
   const brands = state.view === 'brands';
-  el('col-3').firstChild.textContent = brands ? 'Malls' : 'Listings';
-  el('col-4').firstChild.textContent = 'Share';
+  // The header carries the denominator, which is what made the old Share
+  // column unreadable: a percentage with nothing to divide by.
+  el('col-3').firstChild.textContent = brands ? `Reach of ${fmt(scope)} malls` : 'Listings';
   setHelp('help-rank', brands
-    ? 'How many separate malls carry this brand. One mall counts once however many outlets it has there. Sorted highest first.'
+    ? `How many of the ${fmt(scope)} malls matching your filters carry this brand, and that as a percentage. One mall counts once however many outlets it has there.`
     : 'How many store listings this property publishes. A brand with outlets on two floors counts twice.');
-  setHelp('help-share', brands
-    ? 'This brand\'s malls as a share of the properties matching your current filters, so the bar rescales as you filter.'
-    : 'This property\'s listings as a share of all listings matching your current filters.');
   paintFacets();
   renderList();
   renderScope();
@@ -626,6 +595,52 @@ function renderScope() {
 /** The brand focus is the one filter set from a row rather than a control, so
  *  it needs its own visible, dismissible chip. A filter a reader cannot see is
  *  a filter they will blame on the data. */
+/** Brands matching the query, offered as chips.
+ *
+ * The search box filters property names, so typing a brand in the map view
+ * used to return nothing. These chips are the bridge: they name the brand,
+ * say how many malls carry it, and set the focus when clicked. */
+function renderHits() {
+  const host = el('hits');
+  const d = state.data;
+  host.replaceChildren();
+  if (!state.query || state.view === 'brands' || state.brandFocus !== null) {
+    host.hidden = true;
+    return;
+  }
+  const matches = [];
+  for (let i = 0; i < d.brands.length && matches.length < 60; i++) {
+    if (d.brandSearch[i].includes(state.query)) matches.push(i);
+  }
+  matches.sort((a, b) => d.brands[b][2] - d.brands[a][2]);
+  const top = matches.slice(0, 4);
+  if (!top.length) {
+    host.hidden = true;
+    return;
+  }
+  const lead = document.createElement('span');
+  lead.className = 'hits-lead';
+  lead.textContent = state.rows.length === 0
+    ? `No property is named "${state.query}". Matching brands:`
+    : 'Matching brands:';
+  host.appendChild(lead);
+  for (const bi of top) {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip chip--hit';
+    const placed = d.brandMalls[bi].length;
+    chip.textContent = `${d.brands[bi][0]} · ${fmt(placed)} malls`;
+    chip.addEventListener('click', () => {
+      state.brandFocus = bi;
+      state.query = '';
+      el('q').value = '';
+      setView('map');
+    });
+    host.appendChild(chip);
+  }
+  host.hidden = false;
+}
+
 function paintFocusChip() {
   const chip = el('focus');
   if (state.brandFocus === null) {
@@ -643,7 +658,7 @@ function setView(view) {
   // brand list. Dropping it here beats leaving an invisible filter applied.
   if (view === 'brands') state.brandFocus = null;
   state.view = view;
-  for (const [id, name] of [['tab-brands', 'brands'], ['tab-malls', 'malls'], ['tab-map', 'map']]) {
+  for (const [id, name] of [['tab-map', 'map'], ['tab-brands', 'brands']]) {
     el(id).setAttribute('aria-selected', String(view === name));
   }
   refresh();
@@ -765,22 +780,32 @@ function paintFacets() {
   el('reset').hidden = active === 0;
 }
 
+/** Three tiles, and they follow the filters.
+ *
+ * Five static totals sat above a filtered table and never moved, so filtering
+ * to Visayas still reported 322 properties. Numbers that do not respond to the
+ * controls above them teach a reader to distrust the ones that do. */
 function renderStats() {
-  const t = state.data.totals;
-  // Each number gets one sentence saying how it was derived. These are the
-  // four places where a reader would otherwise have to guess.
+  const d = state.data;
+  const malls = scopedMalls();
+  const isAll = malls.length === d.malls.length;
+  let listings = 0;
+  const brandSet = new Set();
+  for (const mi of malls) {
+    listings += d.malls[mi][4];
+    for (const bi of d.mallBrands[mi]) brandSet.add(bi);
+  }
+  const onlyMalls = malls.filter((mi) => d.dict.propertyTypes[d.malls[mi][3]] === 'mall').length;
   const tiles = [
-    [fmt(t.properties), 'properties',
-     'Everything the operators publish a directory for, including condo retail podiums, amusement parks and office annexes.'],
-    [fmt(t.malls), 'malls',
-     'Properties that are actually malls. This is the fair basis for comparing one operator against another.'],
-    [fmt(t.listings), 'listings',
+    [fmt(malls.length), isAll ? 'properties' : 'properties matching',
+     `Everything the operators publish a directory for, including condo retail podiums, amusement parks and office annexes. ${fmt(onlyMalls)} of these are malls, which is the fair basis for comparing operators.`],
+    [fmt(listings), 'listings',
      'One row per store as published. A brand with outlets on two floors of the same mall counts twice.'],
-    [fmt(t.brands), 'brands',
-     'Distinct tenant identities after normalizing names. Bank branches and ATMs are counted separately.'],
-    [String(state.data.dict.chains.length), 'operators', null],
+    [fmt(brandSet.size), 'brands',
+     'Distinct businesses after resolving spelling variants to one canonical name. Bank branches and ATMs stay separate.'],
   ];
   const box = el('stats');
+  box.replaceChildren();
   for (const [value, name, explain] of tiles) {
     const card = document.createElement('div');
     card.className = 'stat';
@@ -801,6 +826,7 @@ function renderStats() {
     card.append(b, s);
     box.appendChild(card);
   }
+  wireHelp();
 }
 
 function wireHelp() {
@@ -822,13 +848,8 @@ function wireHelp() {
 }
 
 function renderQuality() {
-  const host = el('quality');
-  host.replaceChildren();
-  const title = document.createElement('strong');
-  title.textContent = 'How to read this data';
-  const copy = document.createElement('p');
-  copy.textContent = 'Listings are source rows, not verified open businesses. Brand counts use conservative name matching; unknown categories remain visible. Some operators publish incomplete or duplicated directories.';
-  host.append(title, copy);
+  el('qualityText').textContent =
+    'Listings are source rows, not verified open businesses. Brands resolve spelling variants to one name using a curated list, so nothing merges by guesswork. Categories a brand carries anywhere are applied everywhere, because operators label the same store differently. Some operators publish incomplete or duplicated directories.';
 }
 
 function applyTheme(mode) {
@@ -869,7 +890,7 @@ function wire() {
     refresh();
   });
 
-  for (const [id, view] of [['tab-brands', 'brands'], ['tab-malls', 'malls'], ['tab-map', 'map']]) {
+  for (const [id, view] of [['tab-map', 'map'], ['tab-brands', 'brands']]) {
     el(id).addEventListener('click', () => setView(view));
   }
 
@@ -900,12 +921,11 @@ async function main() {
     state.data = prepare(await load());
     el('date').textContent = state.data.date;
     el('opcount').textContent = String(state.data.dict.chains.length);
-    renderStats();
-    wireHelp();
     renderQuality();
     buildFacets();
     wire();
-    refresh();
+    refresh();          // renders the stats, which follow the filters
+    wireHelp();
     el('app').hidden = false;
     el('loading').hidden = true;
   } catch (err) {

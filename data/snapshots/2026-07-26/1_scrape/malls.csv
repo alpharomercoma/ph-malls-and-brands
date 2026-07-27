@@ -1,8 +1,8 @@
 chain,mall_id,mall_name,region,address,mall_code,source_url,property_type,scraped_at,lat,lon,geo_source,geo_precision
-sm,mall-of-asia-arena-annex-bldg,Mall Of Asia Arena Annex Bldg,metro-manila,"Coral Way cor., J.W. Diokno Blvd., Mall of Asia Complex, Brgy. 076 Zone 10, CBP 1-A, 1300 Pasay City, Philippines",MAAX,https://www.smsupermalls.com/mall-directory/mall-of-asia-arena-annex-bldg/information/,office-annex,2026-07-26,,,,
-sm,moa-square,MOA Square,metro-manila,MOA Square,SMSQ,https://www.smsupermalls.com/mall-directory/moa-square/information/,mall,2026-07-26,14.532405,120.982674,nominatim,exact
-sm,nu-mall-of-asia-building,NU MALL OF ASIA BUILDING,metro-manila,NU MALL OF ASIA BUILDING,NUMA,https://www.smsupermalls.com/mall-directory/nu-mall-of-asia-building/information/,office-annex,2026-07-26,,,,
-sm,s-maison,S Maison,metro-manila,"Seaside Boulevard, Coral Way, Pasay, 1300 Metro Manila",HTSM,https://www.smsupermalls.com/mall-directory/s-maison/information/,mall,2026-07-26,14.5319,120.980498,osm,exact
+sm,mall-of-asia-arena-annex-bldg,Mall Of Asia Arena Annex Bldg,metro-manila,"Coral Way cor., J.W. Diokno Blvd., Mall of Asia Complex, Brgy. 076 Zone 10, CBP 1-A, 1300 Pasay City, Philippines",MAAX,https://www.smsupermalls.com/mall-directory/mall-of-asia-arena-annex-bldg/information/,office-annex,2026-07-26,14.602246,121.048617,osm,exact
+sm,moa-square,MOA Square,metro-manila,MOA Square,SMSQ,https://www.smsupermalls.com/mall-directory/moa-square/information/,mall,2026-07-26,14.576246,121.063238,osm,exact
+sm,nu-mall-of-asia-building,NU MALL OF ASIA BUILDING,metro-manila,NU MALL OF ASIA BUILDING,NUMA,https://www.smsupermalls.com/mall-directory/nu-mall-of-asia-building/information/,office-annex,2026-07-26,14.585939,121.078062,osm,exact
+sm,s-maison,S Maison,metro-manila,"Seaside Boulevard, Coral Way, Pasay, 1300 Metro Manila",HTSM,https://www.smsupermalls.com/mall-directory/s-maison/information/,mall,2026-07-26,14.601129,121.088168,osm,exact
 sm,sky-ranch-baguio,Sky Ranch Baguio,north-luzon,Sky Ranch Baguio,SRBG,https://www.smsupermalls.com/mall-directory/sky-ranch-baguio/information/,amusement-park,2026-07-26,16.406827,120.599974,nominatim,exact
 sm,sky-ranch-pampanga,Sky Ranch Pampanga,north-luzon,Sky Ranch Pampanga,SRPP,https://www.smsupermalls.com/mall-directory/sky-ranch-pampanga/information/,amusement-park,2026-07-26,15.054107,120.697104,nominatim,exact
 sm,sky-ranch-tagaytay,Sky Ranch Tagaytay,south-luzon,Sky Ranch Tagaytay,STYT,https://www.smsupermalls.com/mall-directory/sky-ranch-tagaytay/information/,amusement-park,2026-07-26,14.095046,120.93815,nominatim,exact
@@ -240,10 +240,6 @@ araneta,ali-mall,Ali Mall,metro-manila,"General Roxas Ave., Araneta City, Cubao,
 araneta,farmers-plaza,Farmers Plaza,metro-manila,"General Araneta St., Araneta City, Cubao, Quezon City",,https://aranetacity.com/shopping/farmers-plaza,mall,2026-07-26,14.620166,121.051726,osm,exact
 fishermall,quezonave,Fisher Mall Quezon Avenue,metro-manila,"Quezon Avenue corner Roosevelt Avenue, Quezon City",,https://fishermall.com.ph/storelistqave,mall,2026-07-26,14.633669,121.019269,osm,exact
 fishermall,malabon,Fisher Mall Malabon,metro-manila,"C-4 Road corner Dagat-dagatan Avenue, Brgy. Longos, Malabon",,https://fishermall.com.ph/storelistmlb,mall,2026-07-26,14.656705,120.960712,osm,exact
-ortigas,greenhills,Greenhills,metro-manila,"Ortigas Avenue, Greenhills, San Juan City",1,https://ortigasmalls.com/mall-directory?selectedMall=1,mall,2026-07-26,14.602246,121.048617,osm,exact
-ortigas,estancia,Estancia,metro-manila,"Capitol Commons, Meralco Ave., Pasig City",7,https://ortigasmalls.com/mall-directory?selectedMall=7,mall,2026-07-26,14.576246,121.063238,osm,exact
-ortigas,tiendesitas,Tiendesitas,metro-manila,"Frontera Verde, Ortigas Ave. cor. C-5, Pasig City",4,https://ortigasmalls.com/mall-directory?selectedMall=4,mall,2026-07-26,14.585939,121.078062,osm,exact
-ortigas,the-strip,The Strip,metro-manila,"Capitol Commons, Pasig City",10,https://ortigasmalls.com/mall-directory?selectedMall=10,mall,2026-07-26,14.601129,121.088168,osm,exact
 ayala,ayala-abreeza,Abreeza,mindanao,"J.P. Laurel Ave., Davao City",9,https://www.ayalamalls.com/explore/mall-directory/ayala-abreeza,mall,2026-07-26,7.091,125.61,operator,exact
 ayala,ayala-bonifacio-high-street,Bonifacio High Street,metro-manila,"Bonifacio Global City, Taguig",20,https://www.ayalamalls.com/explore/mall-directory/ayala-bonifacio-high-street,mall,2026-07-26,14.5507,121.0505,operator,exact
 ayala,ayala-capitol-central,Ayala Malls Capitol Central,visayas,"Gatuslao Street, Bacolod City",15,https://www.ayalamalls.com/explore/mall-directory/ayala-capitol-central,mall,2026-07-26,10.677097,122.95013,operator,exact
@@ -302,3 +298,7 @@ megaworld,twin-lakes,Twin Lakes,south-luzon,"Tagaytay - Nasugbu Hwy, Laurel, Bat
 megaworld,uptown-mall,Uptown Mall,metro-manila,"36th Street, 9th Avenue, Taguig, Metro Manila",blt1dc7454920dee87b,https://www.megaworld-lifestylemalls.com/malls/uptown-mall,mall,2026-07-26,14.556658240870812,121.05415815255613,operator,exact
 megaworld,uptown-parade,Uptown Parade,metro-manila,"38th St Corner 9th Ave., Taguig City",bltbe5a9e375d1fee68,https://www.megaworld-lifestylemalls.com/malls/uptown-parade,mall,2026-07-26,14.557613606881308,121.05395430468432,operator,exact
 megaworld,venice-grand-canal-mall,Venice Grand Canal Mall,metro-manila,"Upper McKinley Rd, Taguig City",bltb8814f64f52b5a84,https://www.megaworld-lifestylemalls.com/malls/venice-grand-canal-mall,mall,2026-07-26,14.53406668541967,121.05147305440336,operator,exact
+ortigas,greenhills,Greenhills,metro-manila,"Ortigas Avenue, Greenhills, San Juan City",1,https://ortigasmalls.com/mall-directory?selectedMall=1,mall,2026-07-26,14.602246,121.048617,osm,exact
+ortigas,estancia,Estancia,metro-manila,"Capitol Commons, Meralco Ave., Pasig City",7,https://ortigasmalls.com/mall-directory?selectedMall=7,mall,2026-07-26,14.576246,121.063238,osm,exact
+ortigas,tiendesitas,Tiendesitas,metro-manila,"Frontera Verde, Ortigas Ave. cor. C-5, Pasig City",4,https://ortigasmalls.com/mall-directory?selectedMall=4,mall,2026-07-26,14.585939,121.078062,osm,exact
+ortigas,the-strip,The Strip,metro-manila,"Capitol Commons, Pasig City",10,https://ortigasmalls.com/mall-directory?selectedMall=10,mall,2026-07-26,14.601129,121.088168,osm,exact

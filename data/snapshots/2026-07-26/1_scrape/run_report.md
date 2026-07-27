@@ -10,10 +10,6 @@
 - **sm**: 126 malls, 19640 store rows
 - **starmall**: 4 malls, 279 store rows
 - **waltermart**: 46 malls, 1497 store rows
-- **xentro**: 19 malls, 1006 store rows
-- ⚠ malls with 0 stores: [('ayala', 'ayala-vermosa'), ('megaworld', 'tuscany-at-mckinley-hill'), ('robinsons', 'cybergate-bacolod'), ('sm', 'sm-city-la-union'), ('sm', 'sm-city-zamboanga'), ('sm', 'sm-makati'), ('waltermart', 'mabalacat'), ('waltermart', 'san-pascual'), ('waltermart', 'silang'), ('xentro', 'xentro-mall-antipolo'), ('xentro', 'xentro-mall-polangui')]
+- ⚠ malls with 0 stores: [('ayala', 'ayala-vermosa'), ('megaworld', 'tuscany-at-mckinley-hill'), ('robinsons', 'cybergate-bacolod'), ('sm', 'sm-city-la-union'), ('sm', 'sm-city-zamboanga'), ('sm', 'sm-makati'), ('waltermart', 'mabalacat'), ('waltermart', 'san-pascual'), ('waltermart', 'silang')]
 
 _First run - no previous snapshot to diff against._
-
-## Scraper warnings
-- 0 stores for tuscany-at-mckinley-hill

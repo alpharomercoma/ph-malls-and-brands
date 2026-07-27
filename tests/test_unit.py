@@ -460,14 +460,14 @@ class TestWebsiteStage:
         storage.write("2026-01-01", storage.CLEAN, "stores_clean", pd.DataFrame({
             "chain": ["sm"], "mall_id": ["a"], "store_name_raw": ["X STORE"],
             "store_name": ["X Store"], "brand_key": ["x store"],
-            "category_std": ["shopping"],
+            "brand_canonical": ["x store"], "category_std": ["shopping"],
         }))
 
         digest, first = website_bundle.build("2026-01-01")
         digest2, second = website_bundle.build("2026-01-01")
         assert digest == digest2
         assert first == second
-        assert first["schema"] == 3
+        assert first["schema"] == 4
         assert first["brandCategories"] == [[0]]
         assert first["totals"]["properties"] == 1
         # edges are flat pairs, so the length is always even

@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232a78d6'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-bundle="data-80f59283f1f2.json" data-snapshot="2026-07-26"
+<body data-bundle="data-33032df8560a.json" data-snapshot="2026-07-26"
       data-tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       data-tile-attribution="© OpenStreetMap contributors">
 <div class="wrap">
@@ -33,13 +33,15 @@
 
   <main id="app" hidden>
     <div class="stats" id="stats"></div>
-    <section class="quality" id="quality" aria-label="Data quality notes"></section>
+    <details class="quality" id="quality">
+      <summary>How to read this data</summary>
+      <p id="qualityText"></p>
+    </details>
 
     <div class="controls">
       <div class="tabs" role="tablist" aria-label="What to browse">
-        <button id="tab-brands" type="button" role="tab" aria-selected="true">Brands</button>
-        <button id="tab-malls" type="button" role="tab" aria-selected="false">Properties</button>
-        <button id="tab-map" type="button" role="tab" aria-selected="false">Map</button>
+        <button id="tab-map" type="button" role="tab" aria-selected="true">Map</button>
+        <button id="tab-brands" type="button" role="tab" aria-selected="false">Brands</button>
       </div>
 
       <label class="search">
@@ -56,10 +58,11 @@
       <button id="focus" class="chip chip--focus" type="button" hidden></button>
 
       <span class="count" id="count"></span>
+      <div class="hits" id="hits" hidden></div>
       <span class="scope" id="scope" aria-live="polite"></span>
     </div>
 
-    <div class="panel map-panel" id="mapPanel" hidden>
+    <div class="panel map-panel" id="mapPanel">
       <div class="mapbar">
         <span class="mapcount" id="mapcount"></span>
         <button id="mapfit" class="chip" type="button">Fit to results</button>
@@ -71,13 +74,12 @@
       <p class="mapnote" id="mapnote"></p>
     </div>
 
-    <div class="panel" id="listPanel">
+    <div class="panel" id="listPanel" hidden>
       <div class="thead">
         <div>Name</div>
         <div class="hide-sm" id="col-2">Category</div>
-        <div class="n" id="col-3">Malls<button class="help" type="button" id="help-rank"
-             title="Ranked by how many separate malls carry the brand, highest first. One mall counts once no matter how many outlets it has there.">?</button></div>
-        <div class="hide-sm" id="col-4">Share<button class="help" type="button" id="help-share">?</button></div>
+        <div class="n reach" id="col-3">Reach<button class="help" type="button" id="help-rank"
+             title="How many separate malls carry this brand, and that as a share of the malls matching your filters.">?</button></div>
       </div>
       <div class="viewport" id="viewport" tabindex="0">
         <div class="sizer" id="sizer"><div class="window" id="window"></div></div>

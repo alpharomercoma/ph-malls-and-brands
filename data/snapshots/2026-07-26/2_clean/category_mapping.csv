@@ -3,6 +3,7 @@ sm,dining,dining,6465
 ayala,dine,dining,1752
 megaworld,dine,dining,872
 waltermart,food choices,dining,414
+ortigas,dining,dining,354
 filinvest,dining,dining,166
 filinvest,dining / food (kiosk / carts),dining,107
 starmall,dining,dining,92
@@ -79,6 +80,7 @@ sm,services,services,163
 starmall,services,services,72
 sm,government-offices,services,67
 filinvest,services,services,44
+ortigas,bank,services,21
 filinvest,government offices,services,12
 filinvest,banks & atms,services,9
 filinvest,fellowship,services,6
@@ -90,6 +92,7 @@ sm,banks,services,2
 filinvest,courier,services,1
 sm,shopping,shopping,4638
 ayala,shop,shopping,2662
+ortigas,shop,shopping,700
 megaworld,shop,shopping,665
 ayala,essentials,shopping,522
 waltermart,shops,shopping,390
@@ -109,13 +112,10 @@ sm,flower-shop-garden,specialty,2
 sm,photography-developing-supplies-3,specialty,1
 sm,sporting-goods,specialty,1
 robinsons,,unknown,8373
-ortigas,1,unknown,700
-ortigas,4,unknown,354
 fishermall,,unknown,342
 araneta,,unknown,319
 sm,undefined,unknown,213
 ortigas,,unknown,204
 sm,others,unknown,82
-ortigas,9,unknown,21
 filinvest,others,unknown,12
 sm,cigar-tobacco-accs,unknown,1

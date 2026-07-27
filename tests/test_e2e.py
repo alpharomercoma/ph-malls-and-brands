@@ -53,7 +53,7 @@ def test_bundle_is_valid_and_referenced(server):
     path = SITE / name
     assert path.exists(), f"index.html references {name}, which is not on disk"
     data = json.loads(path.read_text())
-    assert data["schema"] == 3
+    assert data["schema"] == 4
     assert data["totals"]["properties"] > 0
     assert len(data["edges"]) % 2 == 0
 
@@ -77,7 +77,8 @@ def page(browser, server):
     errors: list[str] = []
     pg.on("pageerror", lambda e: errors.append(str(e)))
     pg.goto(server, wait_until="networkidle")
-    pg.wait_for_selector(".row", timeout=15000)
+    # The map is the default view, so there is no table row to wait for.
+    pg.wait_for_selector("#app:not([hidden])", timeout=15000)
     pg.errors = errors
     yield pg
     pg.close()
@@ -91,12 +92,14 @@ def test_loads_without_script_errors(page):
 
 def test_renders_only_a_window_of_rows(page):
     """11k results must not all reach the DOM."""
+    _open_brands(page)
     total = int(re.sub(r"[^0-9]", "", page.locator("#count").inner_text()))
     assert total > 1000
     assert page.locator(".row").count() < 60
 
 
 def test_search_filters(page):
+    _open_brands(page)
     page.fill("#q", "jollibee")
     page.wait_for_timeout(300)
     assert page.locator(".row").count() > 0
@@ -106,23 +109,29 @@ def test_search_filters(page):
     page.wait_for_timeout(300)
 
 
-def test_brand_counts_and_bars_follow_operator_filter(page):
+def test_reach_and_its_denominator_follow_the_operator_filter(page):
+    """Reach replaced an unlabelled bar. Both the count and the percentage have
+    to move with the filters, and the header has to name what they divide by."""
+    page.click("#tab-brands")
+    page.wait_for_timeout(250)
     page.fill("#q", "bpi")
     page.wait_for_timeout(300)
-    row = page.locator(".row").first
-    before = row.locator(".n").inner_text()
-    before_width = row.locator(".bar").evaluate("node => node.style.width")
+    before = page.locator(".row").first.locator(".reach").inner_text()
+    before_header = page.locator("#col-3").inner_text()
     page.click("#dd-chain > button")
     page.click('.dd-opt[data-facet="chain"][data-value="ayala"]')
-    page.wait_for_timeout(300)
-    row = page.locator(".row").first
-    assert row.locator(".n").inner_text() != before
-    assert row.locator(".bar").evaluate("node => node.style.width") != before_width
+    page.wait_for_timeout(400)
+    assert page.locator(".row").first.locator(".reach").inner_text() != before
+    header = page.locator("#col-3").inner_text()
+    assert header != before_header
+    assert "malls" in header.lower(), header
     page.click("#reset")
-    page.wait_for_timeout(200)
+    page.fill("#q", "")
+    page.wait_for_timeout(300)
 
 
 def test_no_results_state_is_explicit(page):
+    _open_brands(page)
     page.fill("#q", "zzzzznotarealbrand")
     page.wait_for_timeout(300)
     assert page.locator("#empty").is_visible()
@@ -130,14 +139,20 @@ def test_no_results_state_is_explicit(page):
     page.wait_for_timeout(300)
 
 
-def test_switching_view_changes_columns(page):
-    # the header is uppercased by CSS, so compare case-insensitively
-    page.click("#tab-malls")
-    page.wait_for_timeout(200)
-    assert page.locator("#col-3").inner_text().lower().startswith("listings")
-    page.click("#tab-brands")
-    page.wait_for_timeout(200)
-    assert page.locator("#col-3").inner_text().lower().startswith("malls")
+def test_map_is_the_default_view(browser, server):
+    """The map is the landing view, and there are only two tabs: the property
+    table was the map's side list with extra columns. Uses its own page so a
+    fresh load is genuinely fresh."""
+    pg = browser.new_page()
+    try:
+        pg.goto(server, wait_until="load")
+        pg.wait_for_selector("#app:not([hidden])", timeout=15000)
+        assert pg.locator(".tabs button").all_inner_texts() == ["Map", "Brands"]
+        assert pg.locator("#tab-map").get_attribute("aria-selected") == "true"
+        assert pg.locator("#mapPanel").is_visible()
+        assert pg.locator("#listPanel").is_hidden()
+    finally:
+        pg.close()
 
 
 def test_filter_scope_is_visible_and_region_is_geographic(page):
@@ -150,8 +165,11 @@ def test_filter_scope_is_visible_and_region_is_geographic(page):
 
 
 def test_help_controls_open_explanations(page):
+    _open_brands(page)
     helps = page.locator(".help")
-    assert helps.count() == 6
+    # three stat tiles plus the Reach column. The Share column and two tiles
+    # were removed because they could not explain themselves.
+    assert helps.count() == 4
     for i in range(helps.count()):
         helps.nth(i).click()
         assert page.locator(".help-popover").is_visible()
@@ -172,6 +190,7 @@ def test_no_horizontal_overflow_on_mobile(page):
 
 def test_store_names_are_never_treated_as_markup(page):
     """Data is written with textContent, so a name containing tags stays text."""
+    _open_brands(page)
     injected = page.evaluate(
         """() => {
             const cell = document.querySelector('.row .name');
@@ -221,27 +240,15 @@ def test_impossible_options_are_disabled_not_hidden(page):
 def test_column_help_describes_the_current_view(page):
     """The right-hand columns mean different things per view, so their
     explanations have to change with it. Stale wording is worse than none."""
-    page.click("#tab-brands")
-    page.wait_for_timeout(250)
-    page.click("#help-rank")
-    assert "carry this brand" in page.locator(".help-popover").inner_text()
-    page.locator("body").click(position={"x": 5, "y": 5})
-
-    page.click("#tab-malls")
-    page.wait_for_timeout(250)
+    _open_brands(page)
     page.click("#help-rank")
     text = page.locator(".help-popover").inner_text()
-    assert "listings this property publishes" in text
-    assert "brand" not in text.split("A brand")[0]
+    assert "carry this brand" in text
+    # the denominator has to be stated, not implied: that was the whole failure
+    # of the column this one replaced
+    assert "matching your filters" in text
+    assert "malls" in text
     page.locator("body").click(position={"x": 5, "y": 5})
-
-    # the Share column is the least self-evident thing on the page
-    page.click("#help-share")
-    assert page.locator(".help-popover").is_visible()
-    assert "share of all listings" in page.locator(".help-popover").inner_text()
-    page.locator("body").click(position={"x": 5, "y": 5})
-    page.click("#tab-brands")
-    page.wait_for_timeout(200)
 
 
 def test_tooltips_are_legible_not_label_styled(page):
@@ -272,6 +279,14 @@ def test_operator_count_matches_the_data(page):
 
 
 # ---------- map ----------
+
+
+def _open_brands(page):
+    """Land on the brand table. The map is the default view, so any test that
+    reads rows or column headers has to ask for this view explicitly."""
+    if page.locator("#tab-brands").get_attribute("aria-selected") != "true":
+        page.click("#tab-brands")
+    page.wait_for_selector(".row", timeout=15000)
 
 
 def _open_map(page):
@@ -362,18 +377,57 @@ def test_map_does_not_overflow_on_a_phone(page):
     page.wait_for_timeout(200)
 
 
-def test_map_library_is_not_loaded_until_the_map_is_opened(browser, server):
-    """147 KB of Leaflet on a page nobody scrolls to the map on is a cost with
-    no benefit, so it is injected on first use. This is what proves that."""
+def test_map_library_is_injected_not_bundled(browser, server):
+    """Leaflet is 147 KB and is injected at runtime rather than shipped in the
+    critical path, so the page renders before it arrives. The map is now the
+    default view, so it does load on first paint - but only after the app has
+    painted, and never as a blocking tag in the document."""
     pg = browser.new_page()
     try:
         requested: list[str] = []
         pg.on("request", lambda r: requested.append(r.url))
         pg.goto(server, wait_until="load")
-        pg.wait_for_selector(".row", timeout=15000)
-        assert not any("leaflet" in url for url in requested), "Leaflet loaded on first paint"
-        pg.click("#tab-map")
+        pg.wait_for_selector("#app:not([hidden])", timeout=15000)
+        served = (SITE / "index.html").read_text()
+        assert "vendor/leaflet.js" not in served, "Leaflet is a blocking tag in the document"
         pg.wait_for_function("() => Boolean(window.L)", timeout=20000)
         assert any("leaflet.js" in url for url in requested)
     finally:
         pg.close()
+
+
+def test_brand_query_reaches_the_map(page):
+    """Searching a brand in the map view filters property names and finds
+    nothing. The brand chips are the bridge, and the empty state has to say so
+    rather than showing a blank map."""
+    page.click("#tab-map")
+    page.wait_for_selector("#mapPanel:not([hidden])", timeout=10000)
+    page.fill("#q", "uniqlo")
+    page.wait_for_timeout(500)
+    hits = page.locator("#hits")
+    assert hits.is_visible()
+    assert "No property is named" in hits.inner_text()
+    chip = hits.locator(".chip--hit").first
+    expected = int(re.sub(r"[^0-9]", "", chip.inner_text()))
+    chip.click()
+    page.wait_for_timeout(1500)
+    assert page.locator("#focus").is_visible()
+    assert int(re.sub(r"[^0-9]", "", page.locator("#mapcount").inner_text())) == expected
+    assert page.input_value("#q") == ""
+    page.click("#focus")
+    page.wait_for_timeout(400)
+
+
+def test_stat_tiles_follow_the_filters(page):
+    """Five static totals above a filtered table taught readers to distrust the
+    numbers that did move."""
+    page.click("#reset") if page.locator("#reset").is_visible() else None
+    page.wait_for_timeout(300)
+    before = page.locator(".stat b").first.inner_text()
+    page.click("#dd-region > button")
+    page.click('.dd-opt[data-facet="region"][data-value="visayas"]')
+    page.wait_for_timeout(500)
+    assert page.locator(".stat b").first.inner_text() != before
+    assert page.locator(".stat").count() == 3
+    page.click("#reset")
+    page.wait_for_timeout(300)

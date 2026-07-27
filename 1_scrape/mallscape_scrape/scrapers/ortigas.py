@@ -69,8 +69,27 @@ class OrtigasScraper(MallChainScraper):
             self.warn("no malls in props.malls")
         return malls
 
+    def _category_names(self, props: dict) -> dict[str, str]:
+        """Map ``store.type`` ids to their labels.
+
+        ``type`` is a foreign key, not a category name: the directory ships
+        ``1``, ``4``, ``7``, ``9`` and the lookup sits beside it in
+        ``props.categories``. Storing the id was silently discarding a real
+        category for 1,075 listings, because everything downstream saw an
+        integer where it expected a word.
+        """
+        names = {}
+        for entry in props.get("categories") or []:
+            key, label = _text(entry.get("id")), _text(entry.get("name"))
+            if key and label:
+                names[key] = label.lower()
+        if not names:
+            self.warn("props.categories is empty - category ids cannot be resolved")
+        return names
+
     def scrape_mall(self, mall: Mall) -> list[Store]:
         props = self._page_props({"selectedMall": mall.extra["id"]})
+        categories = self._category_names(props)
         selected = props.get("selectedMall") or {}
         if str(selected.get("id")) != str(mall.extra["id"]):
             self.warn(
@@ -88,12 +107,18 @@ class OrtigasScraper(MallChainScraper):
                 if not name:
                     # map-coordinate placeholder slot, not a tenant
                     continue
+                type_id = _text(record.get("type"))
+                if type_id and type_id not in categories:
+                    self.warn(
+                        f"{mall.mall_id}: category id {type_id!r} is not in "
+                        f"props.categories - the lookup changed"
+                    )
                 stores.append(
                     Store(
                         chain=self.chain,
                         mall_id=mall.mall_id,
                         store_name_raw=name,
-                        category=_text(record.get("type")).lower() or None,
+                        category=categories.get(type_id) or None,
                         floor=_text(record.get("location")) or floor_name,
                         phone=_text(record.get("contact_number")) or None,
                         source="ortigas-inertia",

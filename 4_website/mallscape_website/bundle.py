@@ -23,7 +23,7 @@ import pandas as pd
 
 from mallscape_core import storage
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 
 # Five decimal places is about a metre, which is finer than any of our sources
 # claims to be. Beyond that the digits are noise that only costs bytes.
@@ -106,29 +106,37 @@ def build(run_date: str) -> tuple[str, dict]:
             flags.append("categories unavailable")
         property_flags.append(flags)
 
-    # --- brands: one row per brand_key, with its most common display name ---
-    named = stores[stores["brand_key"] != ""]
+    # --- brands: one row per canonical brand, with its most common display name ---
+    # brand_canonical, not brand_key: the key is a normalized string, the
+    # canonical is the resolved business. Keying on the former split Starbucks
+    # into two brands of 79 and 57 malls, neither of which was its reach.
+    if "brand_canonical" not in stores.columns:
+        raise SystemExit(
+            "stores_clean has no brand_canonical column. Stage 2 is out of date; "
+            "rerun `mallscape clean`."
+        )
+    named = stores[stores["brand_canonical"] != ""]
     display = (
-        named.groupby("brand_key")["store_name"]
+        named.groupby("brand_canonical")["store_name"]
         .agg(lambda s: s.value_counts().index[0])
         .rename("name")
     )
     primary_cat = (
         named[named["category_std"] != "unknown"]
-        .groupby("brand_key")["category_std"]
+        .groupby("brand_canonical")["category_std"]
         .agg(lambda s: s.value_counts().index[0])
     )
     all_cats = (
         named[named["category_std"] != "unknown"]
-        .groupby("brand_key")["category_std"]
+        .groupby("brand_canonical")["category_std"]
         .agg(lambda s: sorted(set(s)))
     )
     edges_df = (
-        named[["brand_key", "chain", "mall_id"]]
+        named[["brand_canonical", "chain", "mall_id"]]
         .drop_duplicates()
-        .sort_values(["brand_key", "chain", "mall_id"])
+        .sort_values(["brand_canonical", "chain", "mall_id"])
     )
-    per_brand = edges_df.groupby("brand_key").apply(
+    per_brand = edges_df.groupby("brand_canonical").apply(
         lambda frame: list(zip(frame["chain"], frame["mall_id"], strict=True)),
         include_groups=False,
     )

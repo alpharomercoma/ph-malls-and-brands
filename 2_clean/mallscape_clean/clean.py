@@ -35,6 +35,7 @@ import unicodedata
 
 import pandas as pd
 
+from mallscape_clean import brands
 from mallscape_clean.normalize import brand_key
 
 # --- category taxonomy -------------------------------------------------------
@@ -87,10 +88,21 @@ _ACRONYMS = frozenset({
 # number tacked onto the end. Other parentheticals are kept, since they often
 # distinguish a real sub-brand ("Executive Optical (Fun Optics)").
 _NAME_NOISE = re.compile(
-    r"\s*\(\s*[\d\-\s/.+]{6,}\)\s*$"
-    r"|\s*\(\s*(?:new|open|opening soon|soon|closed|temporarily closed"
-    r"|temp\.? closed|renovation)\s*\)\s*$"
-    r"|\s+[\d][\d\-\s/]{6,}$",
+    # a trailing parenthesised phone, allowing the nested parens the sources
+    # actually produce: "Lay Bare ((02) 8477-3532 / 0922-872-3648)"
+    r"\s*\(+\s*(?:\(\s*\d+\s*\))?[\d\-\s/.+()]{6,}\)+\s*$"
+    # an area code written straight onto the name: "Shakey's (032)505-5860"
+    r"|\s*\(\s*\d{2,4}\s*\)\s*[\d][\d\-\s/]{5,}$"
+    # a status marker, parenthesised or bare, optionally after a phone
+    r"|\s*[(\[]?\s*(?:new|open|opening soon|soon to open|soon|closed"
+    r"|temporarily closed|temporary closed|temp\.? closed|renovation"
+    r"|under renovation|for lease|vacant)\s*[)\]]?\s*$"
+    # a bare trailing phone, with or without the apostrophe some sources
+    # prefix it with: "Uniqlo '0355276359"
+    r"|\s+'?[\d][\d\-\s/]{6,}$"
+    # ...and with no space at all: "UNCLE JOHN'S0998-846-6030". Seven digits
+    # is the shortest real phone, which is why "Tech101" and "Super50" survive.
+    r"|(?<=[a-zA-Z])[\d][\d\-\s/]{6,}$",
     re.I,
 )
 # Tenant format complements the tenant key. A bank branch and an ATM booth are
@@ -167,7 +179,8 @@ def standardize_category(raw, chain: str) -> str:
     if raw is None or (isinstance(raw, float) and pd.isna(raw)):
         return "unknown"
     value = str(raw).strip().lower()
-    # Ortigas exposes a numeric type id, which carries no meaning here
+    # A bare number is a foreign key the scraper failed to resolve, not a
+    # category. Ortigas used to arrive this way; see scrapers/ortigas.py.
     if not value or value in _UNKNOWN or value.isdigit():
         return "unknown"
     for pattern, canonical in CATEGORY_RULES:
@@ -232,6 +245,22 @@ def store_format(raw) -> str:
     return "standard"
 
 
+# Values the sources put in the phone column that are not phone numbers. They
+# were being carried through as data and then counted as "unparsed phones",
+# which overstated how much of the parsing was failing.
+_NOT_A_PHONE = re.compile(r"^(?:[.\-_/\s]*|n/?a|none|nil|tba|correct|test|null)$", re.I)
+
+
+def clean_phone(raw) -> str | None:
+    """The published phone, or null when the field holds a placeholder."""
+    if raw is None or (isinstance(raw, float) and pd.isna(raw)):
+        return None
+    text = re.sub(r"\s+", " ", str(raw)).strip()
+    if not text or _NOT_A_PHONE.match(text) or not re.search(r"\d", text):
+        return None
+    return text
+
+
 def to_e164(raw) -> str | None:
     """First Philippine number in +63 E.164 form, or null if unparseable."""
     if raw is None or (isinstance(raw, float) and pd.isna(raw)):
@@ -253,19 +282,57 @@ def to_e164(raw) -> str | None:
     return None
 
 
+# Buckets that say "retail, unspecified". Every operator has one, they mean
+# different things, and a brand labelled anything more specific anywhere should
+# carry that label everywhere. Ranked last so a specific label always wins.
+_GENERIC_CATEGORIES = ("unknown", "shopping")
+
+
+def propagate_categories(df: pd.DataFrame) -> tuple[pd.Series, pd.Series]:
+    """Give every listing of a brand the most specific label that brand carries.
+
+    Operator categories are not comparable: Bench is `fashion` at Filinvest,
+    `shopping` at SM and `unknown` at Robinsons, because only Filinvest labels
+    apparel specifically. Comparing operators on the raw field therefore
+    compares vocabularies rather than tenants.
+
+    Returns (category, source) so the origin of every value stays visible.
+    """
+    specific = df[~df["category_std"].isin(_GENERIC_CATEGORIES) & df["brand_canonical"].ne("")]
+    if specific.empty:
+        return df["category_std"], pd.Series("operator", index=df.index)
+    # Deterministic: most common specific label, ties broken by name.
+    best = (
+        specific.groupby("brand_canonical")["category_std"]
+        .agg(lambda s: sorted(s.value_counts().items(), key=lambda kv: (-kv[1], kv[0]))[0][0])
+    )
+    filled = df["category_std"].copy()
+    source = pd.Series("operator", index=df.index)
+    needs = df["category_std"].isin(_GENERIC_CATEGORIES) & df["brand_canonical"].map(best.get).notna()
+    filled[needs] = df.loc[needs, "brand_canonical"].map(best)
+    source[needs] = "propagated"
+    source[filled.eq("unknown")] = "none"
+    return filled, source
+
+
 def build(stores: pd.DataFrame, malls: pd.DataFrame | None = None) -> pd.DataFrame:
     """Return a cleaned copy. The input frame is never mutated."""
     df = stores.copy()
 
     df["store_name"] = df["store_name_raw"].map(clean_name)
     df["brand_key"] = df["store_name"].map(brand_key)
+    df["brand_canonical"] = brands.resolve(df["brand_key"])
     df["category_std"] = [
         standardize_category(c, ch) for c, ch in zip(df["category"], df["chain"], strict=False)
     ]
+    df["category_std"], df["category_source"] = propagate_categories(df)
     floors = [standardize_floor(f) for f in df["floor"]]
     df["floor_std"] = [f[0] for f in floors]
     df["floor_level"] = pd.array([f[1] for f in floors], dtype="Int64")
     df["store_format"] = df["store_name_raw"].map(store_format)
+    # Normalize the raw column first, so a placeholder like "N/A" becomes null
+    # rather than a phone we then fail to parse.
+    df["phone"] = df["phone"].map(clean_phone)
     df["phone_e164"] = df["phone"].map(to_e164)
 
     # --- data quality flags: describe, never drop ---
@@ -284,13 +351,13 @@ def build(stores: pd.DataFrame, malls: pd.DataFrame | None = None) -> pd.DataFra
     flag(df["store_name"].str.len() > 60, "name_suspiciously_long")
     # a decimal tail is usually a unit number or price that leaked into the name
     flag(df["store_name"].str.contains(r"\d+\.\d+$", na=False), "numeric_tail")
-    dupe = df.duplicated(subset=["chain", "mall_id", "brand_key", "floor_std"], keep=False)
+    dupe = df.duplicated(subset=["chain", "mall_id", "brand_canonical", "floor_std"], keep=False)
     flag(dupe, "duplicate_in_mall")
     df["dq_flags"] = ["|".join(f) for f in flags]
 
     ordered = [
-        "chain", "mall_id", "store_name_raw", "store_name", "brand_key",
-        "category", "category_std", "store_format", "floor", "floor_std", "floor_level",
+        "chain", "mall_id", "store_name_raw", "store_name", "brand_key", "brand_canonical",
+        "category", "category_std", "category_source", "store_format", "floor", "floor_std", "floor_level",
         "building", "phone", "phone_e164", "source", "scraped_at", "dq_flags",
     ]
     df = df[[c for c in ordered if c in df.columns]]

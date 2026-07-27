@@ -3,8 +3,8 @@
 A reproducible dataset of what is inside Philippine malls, and a site for
 exploring it.
 
-**303 properties, 40,462 store listings, 10,374 tenant identities, 10 operators.**
-**292 properties are placed on a map.**
+**303 properties, 40,462 store listings, 10,299 brands, 10 operators.**
+**294 properties are placed on a map.**
 
 | | |
 |---|---|
@@ -67,6 +67,11 @@ properties that are new.
 ```bash
 uv run mallscape clean
 ```
+
+Also resolves brand spelling variants to one canonical brand using a curated
+allow-list, and gives every listing of a brand the most specific category that
+brand carries anywhere. Without the first, Starbucks is two brands of 79 and 57
+malls; without the second, Bench is `fashion` at Filinvest and `shopping` at SM.
 
 Writes `data/snapshots/<date>/2_clean/stores_clean.*`, which keeps every raw
 column and adds normalized ones: display name, brand key, a ten-bucket category
@@ -135,12 +140,17 @@ in `breakdown.md` with the evidence.
   server side and no parameter lifts the cap.
 - **Ayala listing counts run about 7 percent high.** Its API returns duplicate
   merchant rows with no distinguishing fields. Brand presence is unaffected.
-- **Roughly 26 percent of listings carry no usable category upstream** and are
-  reported as `unknown` rather than being guessed.
-- **11 properties have no coordinate** and are absent from the map, which says
+
+- **9 properties have no coordinate** and are absent from the map, which says
   so under it rather than quietly dropping them. Most are SMDC retail podiums
-  that no public gazetteer lists. Of the 292 that are placed, 251 sit on the
-  building; 41 resolve only to a street or a town and are drawn hollow.
+  that no public gazetteer lists.
+- **9 properties publish no tenant directory at all.** Each was verified
+  against the operator's own source: SM's API returns `counts: 0` for three
+  malls while a control returns 357, WalterMart's pages carry no tenant
+  anchors, and Ayala Vermosa is flagged `explore: false` upstream.
+- **Roughly 10 percent of listings still have no category.** Robinsons and
+  Fisher Mall publish none, and propagation can only fill a gap for a brand
+  labelled somewhere else.
 
 ## Configuration
 

@@ -89,7 +89,7 @@ def test_website_bundle_matches_snapshot_totals(snapshot):
     assert data["totals"]["listings"] == len(STORES)
     assert data["totals"]["malls"] == 2      # one is residential-retail
     assert len(data["malls"]) == len(MALLS)
-    assert data["schema"] == 3
+    assert data["schema"] == 4
     assert "quality" in data
     assert data["brandCategories"]
 

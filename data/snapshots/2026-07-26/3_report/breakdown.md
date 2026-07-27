@@ -6,27 +6,27 @@ Generated deterministically from the snapshot in `data/snapshots/2026-07-26/`. R
 
 ## Data quality
 
-10,621 of 40,462 listings have no confidently mapped category.
-477 normalized brand keys have multiple raw variants or require review.
+4,254 of 40,462 listings have no confidently mapped category.
+478 normalized brand keys have multiple raw variants or require review.
 Raw listings are retained; these signals describe uncertainty rather than removing rows.
 
 ### Locations
 
-292 of 303 properties have a coordinate.
+294 of 303 properties have a coordinate.
 
 | source    | properties |
 |-----------|-----------:|
-| nominatim |         86 |
+| nominatim |         85 |
 | operator  |         57 |
-| osm       |        149 |
+| osm       |        152 |
 
 | precision | properties |
 |-----------|-----------:|
 | address   |         21 |
-| exact     |        251 |
+| exact     |        253 |
 | locality  |         20 |
 
-Without a coordinate, and therefore absent from the map: robinsons:cybergate-bacolod, sm:mall-of-asia-arena-annex-bldg, sm:nu-mall-of-asia-building, sm:sm-city-cagayan-de-oro, sm:smby-amusement-park, sm:smdc-air-mall, sm:smdc-strip-at-mezza, waltermart:bicutan, waltermart:erodriguez, waltermart:sta-rosa-bel-air, waltermart:the-junction.
+Without a coordinate, and therefore absent from the map: robinsons:cybergate-bacolod, sm:sm-city-cagayan-de-oro, sm:smby-amusement-park, sm:smdc-air-mall, sm:smdc-strip-at-mezza, waltermart:bicutan, waltermart:erodriguez, waltermart:sta-rosa-bel-air, waltermart:the-junction.
 
 ## Chains
 
@@ -512,7 +512,7 @@ Operators investigated but not scraped. Each entry records the finding and what 
 
 ## Brand reach
 
-10,374 distinct brands after normalization.
+10,341 distinct brands after normalization.
 
 | brand                  | malls | chains |
 |------------------------|------:|-------:|
@@ -528,8 +528,8 @@ Operators investigated but not scraped. Each entry records the finding and what 
 | FAMOUS BELGIAN WAFFLES |   131 |      5 |
 | KFC                    |   128 |      7 |
 | IAN DARCY              |   127 |      8 |
+| AFICIONADO             |   126 |      8 |
 | NATIONAL BOOKSTORE     |   126 |      9 |
-| AFICIONADO             |   125 |      8 |
 | OPPO                   |   125 |      9 |
 | MANG INASAL            |   121 |      9 |
 | KETTLE KORN            |   120 |      7 |

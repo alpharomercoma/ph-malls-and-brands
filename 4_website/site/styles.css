@@ -143,13 +143,13 @@ button:focus-visible, select:focus-visible, input:focus-visible {
 .panel { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .thead, .row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 92px 84px 132px;
+  grid-template-columns: minmax(0, 1fr) 110px 160px;
   align-items: center;
   gap: 10px;
   padding: 0 14px;
 }
 .thead {
-  height: 38px;
+  min-height: 38px;
   border-bottom: 1px solid var(--line);
   color: var(--ink-3);
   font-size: 0.72rem;
@@ -180,10 +180,12 @@ button:focus-visible, select:focus-visible, input:focus-visible {
 .name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .muted { color: var(--ink-3); font-size: 0.82rem; }
 
-/* magnitude bar: thin mark, rounded data end, anchored left */
-.bar-cell { display: flex; align-items: center; gap: 8px; min-width: 0; }
-.bar { height: 6px; border-radius: 3px; background: var(--accent); min-width: 2px; flex: 0 0 auto; }
-.bar-track { flex: 1 1 auto; height: 6px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
+/* Reach: the count with its share beside it. The column header names the
+   denominator, so the percentage is never orphaned. */
+.reach { display: flex; align-items: baseline; justify-content: flex-end; gap: 7px; }
+.reach b { font-variant-numeric: tabular-nums; font-weight: 600; }
+.reach .pct { color: var(--ink-3); font-size: 0.78rem; font-variant-numeric: tabular-nums; min-width: 30px; text-align: right; }
+.thead .reach { justify-content: flex-end; }
 
 .detail { padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--surface-3); }
 .detail h3 { margin: 0 0 8px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
@@ -198,7 +200,7 @@ code { background: var(--surface-3); border-radius: 4px; padding: 1px 5px; font-
 
 @media (max-width: 640px) {
   .wrap { padding: 16px 12px 48px; }
-  .thead, .row { grid-template-columns: minmax(0, 1fr) 64px 96px; gap: 8px; }
+  .thead, .row { grid-template-columns: minmax(0, 1fr) 116px; gap: 8px; }
   .thead .hide-sm, .row .hide-sm { display: none; }
   .viewport { height: 56vh; }
   .count { width: 100%; margin: 2px 0 0; }
@@ -435,15 +437,21 @@ code { background: var(--surface-3); border-radius: 4px; padding: 1px 5px; font-
 }
 .chip--map:hover { border-color: var(--accent); color: var(--accent); }
 
-/* Below this the map would be squeezed by the list, and the Properties tab
-   already lists the same set, so the column goes rather than shrinks. */
+/* Narrow screens stack instead of hiding. The property list is no longer
+   available anywhere else, so removing it here would leave a phone with a map
+   and no way to read the results as a list. */
 @media (max-width: 900px) {
-  .mapgrid { grid-template-columns: minmax(0, 1fr); }
-  .maplist { display: none; }
-}
-
-@media (max-width: 640px) {
-  .mapgrid { height: clamp(340px, 58vh, 520px); }
+  .mapgrid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+  #map { height: clamp(340px, 52vh, 520px); }
+  .maplist {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    max-height: 40vh;
+  }
 }
 
 @media (max-width: 640px) {
@@ -451,3 +459,28 @@ code { background: var(--surface-3); border-radius: 4px; padding: 1px 5px; font-
   .mapnote { font-size: 0.74rem; padding: 9px 12px; }
   .mapnote .credit { margin-left: 0; }
 }
+
+/* ---------- brand hits under the search box ----------
+   The bridge from a brand query to the map. Without it, typing a brand name in
+   the map view filters property names and finds nothing. */
+.hits {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  width: 100%; padding-top: 2px;
+}
+.hits-lead { color: var(--ink-2); font-size: 0.8rem; margin-right: 2px; }
+.chip--hit {
+  background: var(--accent-soft); border-color: var(--accent);
+  color: var(--ink); font-size: 0.8rem;
+}
+.chip--hit:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* ---------- data-quality disclosure ----------
+   Three sentences that never change do not deserve permanent prime space, but
+   they do have to stay one click away. */
+.quality summary {
+  cursor: pointer; color: var(--ink); font-size: 0.85rem; font-weight: 600;
+  list-style: none;
+}
+.quality summary::-webkit-details-marker { display: none; }
+.quality summary::before { content: "\203a  "; color: var(--accent); }
+.quality[open] summary::before { content: "\2039  "; }
