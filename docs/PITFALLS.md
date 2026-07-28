@@ -246,3 +246,33 @@ document keeps `no-referrer` for every other destination.
 A restrictive default is still a dependency on someone else's terms. When a
 third party states what it needs to serve you, check the request it actually
 receives rather than the policy you intended to send.
+
+
+## A z-index scale that was never anyone's to keep private
+
+Opening a filter dropdown over the map showed three of ten operators; the rest
+were painted over by tiles. Leaflet numbers its own panes 400 to 700, its
+controls 800 and its popups 1000, which is fine as long as something contains
+them. Nothing did: `.leaflet-container` is positioned with `z-index: auto`, so
+it opens no stacking context, and all of those numbers competed in the root
+context against the page's own 20.
+
+The trap is what the DOM says while this is broken. The panel is visible, has a
+real bounding box, and wins `elementFromPoint`, because
+`.leaflet-tile-container` sets `pointer-events: none` and hit testing reaches
+straight through the pixels covering it. A test written the obvious way passes
+against the bug. The e2e test therefore screenshots the strip of open panel that
+hangs over the map and asserts its dominant colour is the panel's own
+background; without the fix it reads OpenStreetMap's water blue.
+
+`isolation: isolate` contains a foreign scale without inventing a z-index for
+it. But the first fix then put the stat tiles and the controls on the same
+layer, tree order broke the tie in favour of the controls, and the last line of
+every stat tooltip disappeared behind the control bar - the same bug, one block
+up, introduced by its own fix. Overlays hang downward into the block below, so
+the blocks have to be ordered against each other, not merely lifted above the
+map.
+
+Borrowed z-index numbers are global until contained. And when a fix reorders
+layers, look at every overlay that crosses the boundary it moved, because the
+one you were not testing is where it lands.

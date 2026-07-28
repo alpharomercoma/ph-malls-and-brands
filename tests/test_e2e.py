@@ -11,6 +11,7 @@ Run the full pipeline first:  uv run mallscape build
 
 from __future__ import annotations
 
+import base64
 import json
 import re
 import threading
@@ -455,5 +456,122 @@ def test_tiles_identify_the_page_without_leaking_the_path(page):
         "() => document.querySelector('meta[name=referrer]')?.content"
     )
     assert meta == "no-referrer", meta
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def _dominant_colour(page, clip):
+    """The most common pixel in a screenshot of `clip`, as 'r,g,b'.
+
+    The screenshot is decoded by the browser that produced it. Reading pixels is
+    the point: this bug is invisible to the DOM, so a test that asks the DOM
+    anything cannot fail on it.
+    """
+    png = page.screenshot(clip=clip)
+    return page.evaluate(
+        """async (b64) => {
+            const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+            const bitmap = await createImageBitmap(new Blob([bytes], { type: 'image/png' }));
+            const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(bitmap, 0, 0);
+            const { data } = ctx.getImageData(0, 0, bitmap.width, bitmap.height);
+            const tally = new Map();
+            for (let i = 0; i < data.length; i += 4) {
+                const key = `${data[i]},${data[i + 1]},${data[i + 2]}`;
+                tally.set(key, (tally.get(key) || 0) + 1);
+            }
+            return [...tally].sort((a, b) => b[1] - a[1])[0][0];
+        }""",
+        base64.b64encode(png).decode(),
+    )
+
+
+def _rgb(page, selector, prop="background-color"):
+    css = page.evaluate(
+        "([s, p]) => getComputedStyle(document.querySelector(s)).getPropertyValue(p)",
+        [selector, prop],
+    )
+    return ",".join(re.findall(r"\d+", css)[:3])
+
+
+def test_overlays_paint_above_the_map(page):
+    """Leaflet numbers its own panes 400 to 700 and its controls 800. Those stay
+    Leaflet's business only if something contains them, and nothing did:
+    `.leaflet-container` is positioned with `z-index: auto`, so it opens no
+    stacking context and all of it competed in the root context against ours.
+    A dropdown at z-index 20 opened *behind* the tiles.
+
+    Every DOM-level check passes while that is broken. The panel is visible,
+    has a real bounding box, and even wins elementFromPoint, because
+    `.leaflet-tile-container` sets `pointer-events: none` and hit testing
+    therefore reaches straight through the pixels covering it. So this reads the
+    pixels: inside an open panel, over the map, the dominant colour has to be
+    the panel's own background.
+    """
+    _open_map(page)
+    page.wait_for_timeout(600)          # let the tiles settle so the map is opaque
+    surface = _rgb(page, ".dd-panel")
+    map_box = page.locator("#map").bounding_box()
+
+    for facet in ("chain", "region", "category"):
+        page.click(f"#dd-{facet} > button")
+        panel = page.locator(f"#dd-{facet} .dd-panel")
+        assert panel.is_visible(), f"{facet} panel did not open"
+        box = panel.bounding_box()
+        overlap = box["y"] + box["height"] - map_box["y"]
+        assert overlap > 20, (
+            f"the {facet} panel stops {-overlap:.0f}px short of the map, so this "
+            f"test would pass whether or not the bug is present"
+        )
+        # the strip of panel that hangs over the map, inset to avoid its border
+        clip = {
+            "x": box["x"] + 4,
+            "y": map_box["y"] + 4,
+            "width": box["width"] - 8,
+            "height": min(overlap, 60) - 8,
+        }
+        assert _dominant_colour(page, clip) == surface, (
+            f"the {facet} dropdown is painted behind the map"
+        )
+        page.locator("body").click(position={"x": 5, "y": 5})
+
+    page.click("#tab-brands")
+    page.wait_for_timeout(200)
+
+
+def test_stat_tooltips_paint_above_the_controls(page):
+    """The same bug one block further up, and the one the map's fix caused.
+
+    Stat tooltips hang down from the tiles into the control bar, and the two can
+    be open together: opening a dropdown dismisses a tooltip, but opening a
+    tooltip leaves a dropdown alone. Layering both blocks equally let tree order
+    decide, and the control bar won and cut the last line off every explanation.
+
+    Both surfaces are var(--surface-2), so a dominant colour cannot tell them
+    apart. What can is whether the strip changes at all when the tooltip opens.
+    """
+    _open_map(page)
+    controls = page.locator(".controls").bounding_box()
+    page.click(".stat:first-child .help")
+    pop = page.locator(".help-popover")
+    assert pop.is_visible()
+    box = pop.bounding_box()
+    overlap = box["y"] + box["height"] - controls["y"]
+    assert overlap > 10, (
+        f"the tooltip stops {-overlap:.0f}px short of the controls, so this test "
+        f"would pass whether or not the bug is present"
+    )
+    clip = {
+        "x": box["x"] + 4,
+        "y": controls["y"] + 2,
+        "width": box["width"] - 8,
+        "height": min(overlap, 40) - 4,
+    }
+    covered = page.screenshot(clip=clip)
+    page.locator("body").click(position={"x": 5, "y": 5})
+    assert page.locator(".help-popover").count() == 0
+    bare = page.screenshot(clip=clip)
+    assert covered != bare, "the stat tooltip is painted behind the control bar"
     page.click("#tab-brands")
     page.wait_for_timeout(200)

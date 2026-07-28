@@ -306,6 +306,33 @@ code { background: var(--surface-3); border-radius: 4px; padding: 1px 5px; font-
   .dd-panel { min-width: 100%; max-height: 260px; }
 }
 
+/* ---------- layering ----------
+   Leaflet brings its own z-index scale: panes at 400-700, its controls at 800,
+   popups at 1000. Those numbers are only Leaflet's business if something
+   contains them, and nothing did. `.leaflet-container` is positioned with
+   `z-index: auto`, which forms no stacking context, so all of them competed in
+   the root context against ours - and 400 beats the 20 on an open dropdown.
+   The panel was laid out, styled, and painted over by the tiles.
+
+   Hit testing could not see it: `.leaflet-tile-container` sets
+   `pointer-events: none`, so elementFromPoint returned the panel while the
+   reader saw the map. Only pixels catch this, which is what the e2e test reads.
+
+   `isolation: isolate` contains the map's scale without inventing a z-index for
+   it. The rest is stated rather than left to the painting order of
+   non-positioned stacking contexts: the blocks that open things over the map
+   sit above it, in the order they overlap each other.
+
+   That order is not decorative. Each block's overlay hangs downward into the
+   block below - tooltips from the tiles into the controls, dropdowns from the
+   controls over the map - and the two can be open together, because opening a
+   dropdown dismisses a tooltip but opening a tooltip leaves a dropdown alone.
+   Giving the tiles and the controls the same layer let tree order decide, and
+   the control bar sliced the last line off every stat explanation. */
+#map { isolation: isolate; }
+.stats { position: relative; z-index: 2; }
+.controls { position: relative; z-index: 1; }
+
 /* ---------- map ----------
    leaflet.css is injected at runtime, so it lands after this file and wins any
    tie on specificity. Every override below is therefore scoped by #mapPanel,
