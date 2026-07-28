@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philippine Mall Explorer</title>
+<meta name="description" content="Search brands and tenants across Philippine mall operators.">
+<!-- Strict policy: no inline script, and code only from this directory. The one
+     remote origin is the map tile host, and the img-src below is rewritten from
+     MALLSCAPE_TILE_URL at build time so the two can never disagree. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232a78d6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css?v=bc7e8d10">
+</head>
+<body data-bundle="data-33032df8560a.json" data-snapshot="2026-07-26"
+      data-tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      data-tile-attribution="© OpenStreetMap contributors"
+      data-tile-referrer="strict-origin-when-cross-origin"
+      data-assets="bc7e8d10">
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>Philippine Mall Explorer</h1>
+      <p class="sub">Brands and tenants across <span id="opcount">...</span> mall operators. Snapshot <span id="date">loading</span>.</p>
+    </div>
+    <div class="spacer"></div>
+    <button id="theme" type="button">Dark mode</button>
+  </header>
+
+  <p id="loading" class="empty">Loading data.</p>
+  <p id="error" class="empty" hidden role="alert"></p>
+
+  <main id="app" hidden>
+    <div class="stats" id="stats"></div>
+    <details class="quality" id="quality">
+      <summary>How to read this data</summary>
+      <p id="qualityText"></p>
+    </details>
+
+    <div class="controls">
+      <div class="tabs" role="tablist" aria-label="What to browse">
+        <button id="tab-map" type="button" role="tab" aria-selected="true">Map</button>
+        <button id="tab-brands" type="button" role="tab" aria-selected="false">Brands</button>
+      </div>
+
+      <label class="search">
+        <input id="q" type="search" placeholder="Search by name" autocomplete="off" spellcheck="false" aria-label="Search by name">
+      </label>
+
+      <div class="dd" id="dd-chain"></div>
+      <div class="dd" id="dd-region"></div>
+      <div class="dd" id="dd-category"></div>
+
+      <button id="mallsOnly" class="chip" type="button" aria-pressed="false"
+              title="Hides condo retail podiums, amusement parks and office annexes, so operators are compared on malls alone.">Malls only</button>
+      <button id="reset" class="chip" type="button" hidden>Clear filters</button>
+      <button id="focus" class="chip chip--focus" type="button" hidden></button>
+
+      <span class="count" id="count"></span>
+      <div class="hits" id="hits" hidden></div>
+      <span class="scope" id="scope" aria-live="polite"></span>
+    </div>
+
+    <div class="panel map-panel" id="mapPanel">
+      <div class="mapbar">
+        <span class="mapcount" id="mapcount"></span>
+        <button id="mapfit" class="chip" type="button">Fit to results</button>
+      </div>
+      <div class="mapgrid">
+        <div id="map" aria-label="Map of Philippine mall properties" tabindex="0"></div>
+        <aside class="maplist" id="maplist" aria-label="Properties shown on the map"></aside>
+      </div>
+      <p class="mapnote" id="mapnote"></p>
+    </div>
+
+    <div class="panel" id="listPanel" hidden>
+      <div class="thead">
+        <div>Name</div>
+        <div class="hide-sm" id="col-2">Category</div>
+        <div class="n reach" id="col-3">Reach<button class="help" type="button" id="help-rank"
+             title="How many separate malls carry this brand, and that as a share of the malls matching your filters.">?</button></div>
+      </div>
+      <div class="viewport" id="viewport" tabindex="0">
+        <div class="sizer" id="sizer"><div class="window" id="window"></div></div>
+      </div>
+      <p class="empty" id="empty" hidden>Nothing matches those filters.</p>
+    </div>
+
+    <footer>
+      <p>
+        Counts are listings, so one brand with outlets on two floors counts twice.
+        "Malls only" hides condo retail podiums, amusement parks and office annexes,
+        which is the fair basis for comparing operators. WalterMart totals are a
+        floor, because that site caps each category page at 10 tenants.
+      </p>
+      <p>Built from the committed snapshot. <a href="https://github.com/alpharomercoma/philippine-mall-explorer">Source and data</a>.</p>
+    </footer>
+  </main>
+
+</div>
+<script src="app.js?v=bc7e8d10" type="module"></script>
+</body>
+</html>

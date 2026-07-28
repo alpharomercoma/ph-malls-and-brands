@@ -1,0 +1,513 @@
+/* Philippine Mall Explorer
+   Color budget follows 60/30/10:
+     60% surface  -- page and card backgrounds
+     30% structure -- text, borders, secondary fills
+     10% accent    -- one blue, reserved for interactive state and data marks
+   No gradients anywhere. Both themes are selected values, not an inverted flip. */
+
+:root {
+  color-scheme: light;
+  --surface: #faf9f6;
+  --surface-2: #ffffff;
+  --surface-3: #f1efe9;
+  --line: #e0deda;
+  --line-strong: #c9c6c0;
+  --ink: #17171a;
+  --ink-2: #52514e;
+  --ink-3: #78766f;
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  --accent-soft: #e6eefb;
+  --accent-2: #1baf7a;   /* second validated hue, category dots only */
+  --radius: 10px;
+  --row-h: 44px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #131315;
+  --surface-2: #1a1a1d;
+  --surface-3: #232327;
+  --line: #2e2e33;
+  --line-strong: #43434a;
+  --ink: #f4f4f2;
+  --ink-2: #b9b8b3;
+  --ink-3: #8b8a85;
+  --accent: #3987e5;
+  --accent-ink: #0b1420;
+  --accent-soft: #17263a;
+  --accent-2: #199e70;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #131315;
+    --surface-2: #1a1a1d;
+    --surface-3: #232327;
+    --line: #2e2e33;
+    --line-strong: #43434a;
+    --ink: #f4f4f2;
+    --ink-2: #b9b8b3;
+    --ink-3: #8b8a85;
+    --accent: #3987e5;
+    --accent-ink: #0b1420;
+    --accent-soft: #17263a;
+    --accent-2: #199e70;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 24px 20px 64px; }
+
+/* ---------- header ---------- */
+header { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+h1 { font-size: 1.4rem; margin: 0; letter-spacing: -0.01em; }
+.sub { color: var(--ink-2); font-size: 0.87rem; margin: 2px 0 0; }
+.spacer { flex: 1 1 auto; }
+
+button, select, input {
+  font: inherit;
+  color: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 11px;
+  min-height: 38px;
+}
+button { cursor: pointer; }
+button:hover, select:hover { border-color: var(--line-strong); }
+button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ---------- stat tiles ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 10px;
+  margin: 20px 0 8px;
+}
+.stat {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.stat b { display: block; font-size: 1.45rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat span { display: block; color: var(--ink-3); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+.quality { margin: 10px 0 18px; padding: 12px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); color: var(--ink-2); }
+.quality strong { color: var(--ink); font-size: 0.85rem; }
+.quality p { margin: 3px 0 0; font-size: 0.84rem; }
+
+/* ---------- controls ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 18px 0 10px;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.search { flex: 1 1 240px; min-width: 0; display: flex; }
+.search input { width: 100%; }
+.tabs { display: flex; gap: 4px; background: var(--surface-3); padding: 3px; border-radius: 9px; }
+.tabs button { border: 0; background: transparent; min-height: 32px; padding: 5px 13px; border-radius: 7px; color: var(--ink-2); }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.chip {
+  border-radius: 999px;
+  padding: 5px 12px;
+  min-height: 32px;
+  font-size: 0.85rem;
+  background: var(--surface-3);
+  border: 1px solid transparent;
+}
+.chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.count { color: var(--ink); font-size: 0.85rem; margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 600; }
+.scope { width: 100%; color: var(--ink-3); font-size: 0.8rem; }
+
+/* ---------- table ---------- */
+.panel { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.thead, .row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px 160px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+}
+.thead {
+  min-height: 38px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--surface-2);
+}
+.thead .n, .row .n { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* virtual list: only the visible window is in the DOM */
+.viewport { height: 60vh; min-height: 320px; overflow-y: auto; overflow-x: hidden; position: relative; }
+.sizer { position: relative; width: 100%; }
+.window { position: absolute; top: 0; left: 0; right: 0; }
+.row {
+  height: var(--row-h);
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  background: none;
+  width: 100%;
+  border-left: 0; border-right: 0; border-top: 0;
+  text-align: left;
+  border-radius: 0;
+  min-height: 0;
+}
+.row:hover { background: var(--surface-3); }
+.row[aria-expanded="true"] { background: var(--accent-soft); }
+.row.has-quality-flag .name::after { content: " •"; color: var(--accent); }
+.name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.muted { color: var(--ink-3); font-size: 0.82rem; }
+
+/* Reach: the count with its share beside it. The column header names the
+   denominator, so the percentage is never orphaned. */
+.reach { display: flex; align-items: baseline; justify-content: flex-end; gap: 7px; }
+.reach b { font-variant-numeric: tabular-nums; font-weight: 600; }
+.reach .pct { color: var(--ink-3); font-size: 0.78rem; font-variant-numeric: tabular-nums; min-width: 30px; text-align: right; }
+.thead .reach { justify-content: flex-end; }
+
+.detail { padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--surface-3); }
+.detail h3 { margin: 0 0 8px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); }
+.quality-note { margin: 0 0 8px; color: var(--ink-2); font-size: 0.82rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 0.82rem; }
+
+.empty { padding: 40px 16px; text-align: center; color: var(--ink-3); }
+footer { margin-top: 28px; color: var(--ink-3); font-size: 0.8rem; }
+footer a { color: var(--accent); }
+code { background: var(--surface-3); border-radius: 4px; padding: 1px 5px; font-size: 0.85em; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 16px 12px 48px; }
+  .thead, .row { grid-template-columns: minmax(0, 1fr) 116px; gap: 8px; }
+  .thead .hide-sm, .row .hide-sm { display: none; }
+  .viewport { height: 56vh; }
+  .count { width: 100%; margin: 2px 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- explanations ---------- */
+.help {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; margin-left: 5px; padding: 0;
+  border-radius: 50%; border: 1px solid var(--line-strong);
+  background: transparent; color: var(--ink-3);
+  font-size: 10px; line-height: 1; min-height: 0; cursor: help;
+}
+.help:hover { border-color: var(--accent); color: var(--accent); }
+/* The popover is a <span> inside .stat span and inside .thead, both of which
+   style their spans as small uppercase labels and match it directly. Those
+   selectors carry specificity (0,1,1), so this rule has to exceed them or the
+   tooltip renders as tiny uppercase text and reads as a stray label. */
+.wrap .help-popover {
+  position: absolute; z-index: 30; top: calc(100% + 6px); left: 0;
+  width: min(300px, 80vw); padding: 10px 12px;
+  background: var(--surface-2); border: 1px solid var(--line-strong);
+  border-radius: 8px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+  color: var(--ink); font-size: 0.82rem; font-weight: 400;
+  line-height: 1.45; text-transform: none; letter-spacing: normal;
+  text-align: left; white-space: normal; display: block;
+}
+.stat { position: relative; }
+.stat span { display: flex; align-items: center; }
+
+/* ---------- mobile presentation ---------- */
+@media (max-width: 640px) {
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat { padding: 10px 12px; }
+  .stat b { font-size: 1.2rem; }
+  .stat:first-child { grid-column: 1 / -1; }
+  .stat:first-child b { font-size: 1.7rem; }
+  .controls { padding: 10px; gap: 6px; }
+  .search { flex: 1 1 100%; order: -1; }
+  .tabs { flex: 1 1 100%; }
+  .tabs button { flex: 1; }
+  select { flex: 1 1 calc(50% - 3px); min-width: 0; }
+  #mallsOnly { flex: 1 1 100%; }
+  .row .n { font-weight: 600; }
+  .detail { padding: 10px 12px; }
+  .pill { font-size: 0.78rem; padding: 3px 8px; }
+  footer { font-size: 0.76rem; }
+}
+
+/* ---------- multi-select dropdowns ----------
+   A compact trigger in the control row opens a box of checkboxes, so several
+   values can be active at once without the controls growing. */
+.dd { position: relative; }
+.dd > button {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 7px 11px; min-height: 38px;
+  white-space: nowrap;
+}
+.dd > button[aria-expanded="true"] { border-color: var(--accent); }
+.dd .badge {
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 999px; padding: 0 6px; min-width: 18px;
+  font-size: 0.72rem; line-height: 18px; text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.dd .caret { color: var(--ink-3); font-size: 0.7rem; }
+
+.dd-panel {
+  position: absolute; z-index: 20; top: calc(100% + 5px); left: 0;
+  min-width: 232px; max-height: 320px; overflow-y: auto;
+  background: var(--surface-2); border: 1px solid var(--line-strong);
+  border-radius: var(--radius); padding: 5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+}
+:root[data-theme="dark"] .dd-panel { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); }
+.dd-panel[hidden] { display: none; }
+.dd-opt {
+  display: flex; align-items: center; gap: 9px; width: 100%;
+  padding: 7px 9px; border: 0; border-radius: 7px; background: none;
+  text-align: left; min-height: 36px; font-size: 0.88rem;
+}
+.dd-opt:hover:not(:disabled) { background: var(--surface-3); }
+.dd-opt:disabled { opacity: 0.4; cursor: not-allowed; }
+.dd-opt .box {
+  width: 15px; height: 15px; flex: 0 0 15px; border-radius: 4px;
+  border: 1.5px solid var(--line-strong); display: inline-flex;
+  align-items: center; justify-content: center; font-size: 10px;
+  color: var(--accent-ink);
+}
+.dd-opt[aria-checked="true"] .box { background: var(--accent); border-color: var(--accent); }
+.dd-panel--cat .dd-opt[aria-checked="true"] .box { background: var(--accent-2); border-color: var(--accent-2); }
+.dd-opt .label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.dd-opt .n2 { color: var(--ink-3); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 640px) {
+  .dd { flex: 1 1 calc(50% - 3px); }
+  .dd > button { width: 100%; justify-content: space-between; }
+  .dd-panel { min-width: 100%; max-height: 260px; }
+}
+
+/* ---------- layering ----------
+   Leaflet brings its own z-index scale: panes at 400-700, its controls at 800,
+   popups at 1000. Those numbers are only Leaflet's business if something
+   contains them, and nothing did. `.leaflet-container` is positioned with
+   `z-index: auto`, which forms no stacking context, so all of them competed in
+   the root context against ours - and 400 beats the 20 on an open dropdown.
+   The panel was laid out, styled, and painted over by the tiles.
+
+   Hit testing could not see it: `.leaflet-tile-container` sets
+   `pointer-events: none`, so elementFromPoint returned the panel while the
+   reader saw the map. Only pixels catch this, which is what the e2e test reads.
+
+   `isolation: isolate` contains the map's scale without inventing a z-index for
+   it. The rest is stated rather than left to the painting order of
+   non-positioned stacking contexts: the blocks that open things over the map
+   sit above it, in the order they overlap each other.
+
+   That order is not decorative. Each block's overlay hangs downward into the
+   block below - tooltips from the tiles into the controls, dropdowns from the
+   controls over the map - and the two can be open together, because opening a
+   dropdown dismisses a tooltip but opening a tooltip leaves a dropdown alone.
+   Giving the tiles and the controls the same layer let tree order decide, and
+   the control bar sliced the last line off every stat explanation. */
+#map { isolation: isolate; }
+.stats { position: relative; z-index: 2; }
+.controls { position: relative; z-index: 1; }
+
+/* ---------- map ----------
+   leaflet.css is injected at runtime, so it lands after this file and wins any
+   tie on specificity. Every override below is therefore scoped by #mapPanel,
+   which no Leaflet selector can reach. */
+.map-panel { padding: 0; }
+.mapbar {
+  display: flex; align-items: center; gap: 10px;
+  height: 44px; padding: 0 10px 0 14px;
+  border-bottom: 1px solid var(--line);
+}
+.mapcount {
+  margin-right: auto; font-size: 0.85rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+/* The archipelago is roughly 17 degrees tall and 11 wide, so a short, wide
+   canvas forces a zoom level where most of the view is sea. Height buys back
+   zoom; the list column absorbs the width the map cannot use. */
+.mapgrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 264px;
+  /* The height lives on the row, not on the map. Put it on the map alone and
+     the list, which has no intrinsic limit, stretches the row to 309 items. */
+  height: clamp(400px, 74vh, 760px);
+}
+#map {
+  height: 100%;
+  width: 100%;
+  background: var(--surface-3);
+}
+#map:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.maplist {
+  border-left: 1px solid var(--line);
+  min-height: 0;          /* lets a grid child scroll instead of growing */
+  overflow-y: auto;
+  padding: 8px;
+  background: var(--surface-2);
+}
+.maplist h3 {
+  margin: 4px 6px 8px;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-3);
+}
+.maplist-item {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 6px 8px; min-height: 34px;
+  border: 0; border-radius: 7px; background: none;
+  text-align: left; font-size: 0.83rem;
+}
+.maplist-item:hover { background: var(--surface-3); }
+.maplist-item .name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.maplist-item .n { color: var(--ink-3); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+.mapnote {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
+  margin: 0; padding: 10px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-3); font-size: 0.78rem;
+}
+.mapnote .credit { margin-left: auto; }
+.mapnote a { color: var(--accent); }
+.legend { display: inline-flex; align-items: center; gap: 6px; }
+.legend .dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--accent); border: 1.5px solid var(--accent);
+}
+.legend .dot--approx { background: transparent; }
+.legend span { margin-right: 4px; }
+
+/* markers: one accent hue, area carrying the value */
+#mapPanel .pin { fill: var(--accent); stroke: var(--surface-2); }
+#mapPanel .pin:hover { fill: var(--ink); }
+#mapPanel .pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+#mapPanel .pin--approx { fill: transparent; stroke: var(--accent); stroke-dasharray: 3 2; }
+
+#mapPanel .cluster { background: none; border: 0; }
+#mapPanel .cluster-label {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink);
+  border: 2px solid var(--surface-2);
+  font-size: 0.78rem; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+#mapPanel .cluster:hover .cluster-label { background: var(--ink); }
+
+/* Leaflet chrome, restyled to the page rather than to its own defaults */
+#mapPanel .leaflet-container { font: inherit; background: var(--surface-3); }
+#mapPanel .leaflet-bar a {
+  background: var(--surface-2); color: var(--ink);
+  border-bottom-color: var(--line);
+}
+#mapPanel .leaflet-bar a:hover { background: var(--surface-3); color: var(--ink); }
+#mapPanel .leaflet-bar { border: 1px solid var(--line-strong); box-shadow: none; }
+#mapPanel .leaflet-popup-content-wrapper,
+#mapPanel .leaflet-popup-tip {
+  background: var(--surface-2); color: var(--ink);
+  border: 1px solid var(--line-strong); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+#mapPanel .leaflet-popup-content { margin: 12px 14px; font-size: 0.84rem; line-height: 1.5; }
+#mapPanel .leaflet-popup-close-button { color: var(--ink-3); }
+.popup strong { display: block; font-size: 0.94rem; }
+.popup-meta { margin: 2px 0 8px; color: var(--ink-3); font-size: 0.78rem; }
+/* No scroller here: a fixed height cuts the last row of pills in half, which
+   reads as a rendering fault. The popup shows a short list and says how many
+   more there are, so it can simply be as tall as its content. */
+.popup .pills { gap: 5px; }
+.popup-flag { margin: 8px 0 0; color: var(--ink-2); font-size: 0.76rem; }
+
+/* Tiles are a light-themed raster, so dark mode inverts them rather than
+   pulling in a second tile source. Markers sit above the filter, untouched. */
+:root[data-theme="dark"] #mapPanel .leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.92);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #mapPanel .leaflet-tile {
+    filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.92);
+  }
+}
+
+/* the brand focus chip, and the button that sets it */
+.chip--focus { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip--focus:hover { border-color: var(--accent); }
+.detail h3 { display: flex; align-items: center; gap: 10px; }
+.chip--map {
+  text-transform: none; letter-spacing: normal;
+  font-size: 0.76rem; min-height: 26px; padding: 2px 10px;
+  border: 1px solid var(--line-strong); background: var(--surface-2);
+  color: var(--ink-2);
+}
+.chip--map:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Narrow screens stack instead of hiding. The property list is no longer
+   available anywhere else, so removing it here would leave a phone with a map
+   and no way to read the results as a list. */
+@media (max-width: 900px) {
+  .mapgrid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+  #map { height: clamp(340px, 52vh, 520px); }
+  .maplist {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    max-height: 40vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .mapbar { padding: 0 8px 0 12px; }
+  .mapnote { font-size: 0.74rem; padding: 9px 12px; }
+  .mapnote .credit { margin-left: 0; }
+}
+
+/* ---------- brand hits under the search box ----------
+   The bridge from a brand query to the map. Without it, typing a brand name in
+   the map view filters property names and finds nothing. */
+.hits {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  width: 100%; padding-top: 2px;
+}
+.hits-lead { color: var(--ink-2); font-size: 0.8rem; margin-right: 2px; }
+.chip--hit {
+  background: var(--accent-soft); border-color: var(--accent);
+  color: var(--ink); font-size: 0.8rem;
+}
+.chip--hit:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* ---------- data-quality disclosure ----------
+   Three sentences that never change do not deserve permanent prime space, but
+   they do have to stay one click away. */
+.quality summary {
+  cursor: pointer; color: var(--ink); font-size: 0.85rem; font-weight: 600;
+  list-style: none;
+}
+.quality summary::-webkit-details-marker { display: none; }
+.quality summary::before { content: "\203a  "; color: var(--accent); }
+.quality[open] summary::before { content: "\2039  "; }
